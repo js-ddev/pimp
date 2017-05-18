@@ -4,6 +4,8 @@
         <title>{% block title '' %} - My Silex Application</title>
 
         <link href="{{ asset('css/main.css') }}" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" type="text/css" href="../../../web/css/style.css">
+        <link rel="stylesheet" type="text/css" href="../../../web/css/nouislider.css">
 
         <script type="text/javascript">
             var _gaq = _gaq || [];
@@ -20,4 +22,6 @@
     <body>
         {% block content %}{% endblock %}
     </body>
+    <script type="text/javascript" src="../../../js/nouislider.js"></script>
+    <script type="text/javascript" src="../../../js/main.js"></script>
 </html>

@@ -14,6 +14,10 @@ $app->get('/', function () use ($app) {
 ->bind('homepage')
 ;
 
+$app -> get('/hello/{name}','Controllers\\Home::hello');
+
+$app -> get('/pimpit/','Controllers\\Pimpit::formulaire');
+
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {
         return;
