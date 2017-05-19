@@ -14,6 +14,19 @@ $app->get('/', function () use ($app) {
 ->bind('homepage')
 ;
 
+$app -> get('/hello/{name}','Controllers\\Home::hello');
+
+
+// Groupe de controllers pour le backoffice :
+$bo = $app['controllers_factory'];
+
+
+//Require des fichiers controllers de l'équipe : didier,adrien,rudy,js
+require_once('controllers_js.php' );
+require_once('controllers_didier.php' );
+require_once('controllers_adrien.php' );
+require_once('controllers_rudy.php' );
+
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {
         return;
@@ -29,3 +42,7 @@ $app->error(function (\Exception $e, Request $request, $code) use ($app) {
 
     return new Response($app['twig']->resolveTemplate($templates)->render(array('code' => $code)), $code);
 });
+
+
+// Définition du controller pour le backoffice :
+$app->mount('/bo', $bo);
