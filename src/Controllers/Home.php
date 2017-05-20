@@ -4,7 +4,6 @@ namespace Controllers;
 
 use Silex\Application;
 
-
 class Home{
 
     public function formulaire(Application $app){

@@ -14,6 +14,7 @@ $app->get('/', function () use ($app) {
 ->bind('homepage')
 ;
 
+// la suivante signifie que l'url /hello/john orientera vers la méthode hello du contrôleur Home situé de le fichier src/Controllers/Home.php
 $app -> get('/hello/{name}','Controllers\\Home::hello');
 
 
