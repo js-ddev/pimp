@@ -17,4 +17,15 @@ $app['twig'] = $app->extend('twig', function ($twig, $app) {
     return $twig;
 });
 
+// JS - Enregistrement des services supplémentaires :
+$app -> register(new Silex\Provider\SessionServiceProvider());
+$app -> register(new Silex\Provider\SecurityServiceProvider(), array(
+    'security.firewalls' => array(
+        'secured' => array(
+            'pattern' => '^/',
+            'anonymous' => true,
+            'logout' => true,
+            ),
+        ),
+    ));
 return $app;

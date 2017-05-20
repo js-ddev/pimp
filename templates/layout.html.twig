@@ -1,27 +1,53 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{% block title '' %} - My Silex Application</title>
+        <title>Pimp My CV - {% block title '' %}</title>
 
-        <link href="{{ asset('css/main.css') }}" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" type="text/css" href="../../../web/css/style.css">
-        <link rel="stylesheet" type="text/css" href="../../../web/css/nouislider.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <script type="text/javascript">
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
-            _gaq.push(['_trackPageview']);
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/normalize.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/nouislider.css') }}">
 
-            (function() {
-                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
-        </script>
+        <!-- scripts -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+        <script type="text/javascript" src="{{ asset('js/site.js') }}"></script>
+
     </head>
+
     <body>
-        {% block content %}{% endblock %}
+        <header>
+            <div id="menu-container">                
+                <img id="logo" src="{{ asset('img/logo.png') }}">
+                <div id="menu">
+                    <a href="javascript:;" class="close"></a>
+                    <ul>
+                        <li class="active"><a href="{{ path('homepage') }}">Accueil</a></li>
+                        <li><a href="{{ path('pimpit') }}">Pimp it!</a></li>
+                        <li><a href="{{ path('modeles') }}">Modèles</a></li>
+                        <li><a href="{{ path('mentions-legales') }}">Mentions légales</a></li>
+                        <li><a href="{{ path('contact') }}">Contact</a></li>
+                        <li><a href="{{ path('faq') }}">FAQ</a></li>
+                        <li><a href="{{ path('about') }}">Qui sommes-nous</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Fin menu-container -->
+        </header>
+
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+
+        <footer>
+            {{ "now"|date("Y") }} - Tous droits reservés. 
+        </footer>
+
     </body>
-    <script type="text/javascript" src="../../../js/nouislider.js"></script>
-    <script type="text/javascript" src="../../../js/main.js"></script>
+
+    <script type="text/javascript" src="{{ asset('js/nouislider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
+
 </html>
