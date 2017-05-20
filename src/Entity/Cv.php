@@ -4,7 +4,7 @@ namespace Pimpmycv\Entity;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 
-class Membre
+class Cv
 
 {
     private $id;
@@ -18,7 +18,7 @@ class Membre
     private $famille;
     private $nationalite;
     private $permis_conduire;
-    private $permis_sejour;
+    private $permis_travail;
     private $twitter;
     private $linkedin;
     private $skype;
