@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pimp My CV - {% block title '' %}</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/normalize.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/nouislider.css') }}">
+
+        <!-- scripts -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+        <script type="text/javascript" src="{{ asset('js/site.js') }}"></script>
+
+    </head>
+
+    <body>
+        <header>
+            <div id="menu-container">                
+                <img id="logo" src="{{ asset('img/logo.png') }}">
+                <div id="menu">
+                    <a href="javascript:;" class="close"></a>
+                    <ul>
+                        <li class="active"><a href="{{ path('homepage') }}">Accueil</a></li>
+                        <li><a href="{{ path('pimpit') }}">Pimp it!</a></li>
+                        <li><a href="{{ path('modeles') }}">Modèles</a></li>
+                        <li><a href="{{ path('mentions-legales') }}">Mentions légales</a></li>
+                        <li><a href="{{ path('contact') }}">Contact</a></li>
+                        <li><a href="{{ path('faq') }}">FAQ</a></li>
+                        <li><a href="{{ path('about') }}">Qui sommes-nous</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Fin menu-container -->
+        </header>
+
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+
+        <footer>
+            {{ "now"|date("Y") }} - Tous droits reservés. 
+        </footer>
+
+    </body>
+
+    <script type="text/javascript" src="{{ asset('js/nouislider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
+
+</html>
