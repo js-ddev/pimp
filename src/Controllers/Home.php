@@ -4,7 +4,6 @@ namespace Controllers;
 
 use Silex\Application;
 
-
 class Home{
 
     public function formulaire(Application $app){
@@ -34,6 +33,11 @@ class Home{
 
     public function about(Application $app){
         return $app['twig']->render('about.html.twig');
+
+    }
+
+    public function inscription(Application $app){
+        return $app['twig']->render('inscription.html.twig');
 
     }
 
