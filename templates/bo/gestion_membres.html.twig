@@ -6,7 +6,7 @@
 
 <!-- DF - FIN HEAD, NAVTOP ET NAVSIDE -->
 
-        <!-- DEBUT CONTENU -->
+        <!-- DF - DEBUT CONTENU -->
 
         <div id="page-wrapper">
 
@@ -32,8 +32,7 @@
                 </div>
                 <!-- /.row -->
 
-
-                <!-- DEBUT TABLEAU DES MEMBRES -->
+                <!-- DF - DEBUT TABLEAU DES MEMBRES -->
 
                 <div class="row">
 
@@ -43,43 +42,50 @@
                             <table class="table table-bordered table-hover table-striped">
                                 <thead>
                                     <tr>
-                                        <th>id</th>
-                                        <th>email</th>
-                                        <th>Pseudo</th>
+                                        <th>ID</th>
+                                        <th>Email</th>
                                         <th>Nom</th>
                                         <th>Prénom</th>
-                                        <th>Email</th>
-                                        <th>Civilité</th>
-                                        <th>Statut</th>
-                                        <th>Date enregistrement</th>
+                                        <th>Date de naissance</th>
+                                        <th>Téléphone</th>
+                                        <th>Adresse</th>
+                                        <th>Code Postal</th>
+                                        <th>Ville</th>
+                                        <th>Pays</th>
+                                        <th>Statut membre</th>
+                                        <th>Date d'inscription</th>
+                                        <th>Rôle</th>
                                         <th colspan="3">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php for ($i=0; $i < sizeof($resultats); $i++): ?>
                                     <tr>
-                                        <td>{{ }}<?= $resultats[$i]['id'] ?></td>
-                                        <td><?= $resultats[$i]['email']  ?></td>
-                                        <td><?= $resultats[$i]['nom']  ?></td>
-                                        <td><?= $resultats[$i]['prenom'] ?></td>
-                                        <td><?= $resultats[$i]['email'] ?></td>
-                                        <td><?= $resultats[$i]['civilite'] ?></td>
-                                        <td><?= $resultats[$i]['statut'] ?></td>
-                                        <td><?= $resultats[$i]['date_enregistrement'] ?></td>
+                                        <td>{{ membre.id }}</td>
+                                        <td>{{ membre.email }}</td>
+                                        <td>{{ membre.nom }}</td>
+                                        <td>{{ membre.prenom }}</td>
+                                        <td>{{ membre.date_naissance }}</td>
+                                        <td>{{ membre.telephone }}</td>
+                                        <td>{{ membre.adresse }}</td>
+                                        <td>{{ membre.code_postal }}</td>
+                                        <td>{{ membre.ville }}</td>
+                                        <td>{{ membre.pays }}</td>
+                                        <td>{{ membre.statut_membre }}</td>
+                                        <td>{{ membre.date_inscription }}</td>
+                                        <td>{{ membre.role }}</td>
                                         <td><a href="#"><span class="glyphicon glyphicon-search"></span></a></td>
                                         <td><span class="glyphicon glyphicon-edit"></span></td>
                                         <td><span class="glyphicon glyphicon-trash"></span></td>
                                     </tr>
-                                <?php endfor; ?>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
 
-                <!-- FIN TABLEAU DES membres -->
+                <!-- FIN TABLEAU DES MEMBRES -->
 
-                <!-- DEBUT FORMULAIRE -->
+                <!-- DF - DEBUT FORMULAIRE -->
 
                 <form role="form" method="POST">
 
@@ -87,39 +93,36 @@
 
                         <div class="col-lg-6"> <!-- formulaire coté gauche -->
 
-                            <input type="hidden" name="id_salle" value="<?= $id_salle ?>" />
+                            <input type="hidden" name="id_salle" value="{{ membre.id }}" />
 
                             <div class="form-group">
-                                <label>Titre</label>
-                                <input class="form-control" placeholder="Titre de la salle" name="titre" value="<?= $titre ?>">
+                                <label>Email</label>
+                                <input class="form-control" placeholder="email" name="titre" value="{{ membre.email }}">
                             </div>
 
                             <div class="form-group">
-                                <label>Description</label>
-                                <textarea class="form-control" rows="3" placeholder="Description de la salle" name="description"><?= $description ?></textarea>
-                            </div>
-
-                            <div class="form-group" id="photo">
-                                <?php if(isset($produit_actuel)) : ?>
-                                    <input type="hidden" name="photo_actuelle" value="<?= $photo ?>">
-                                    <img src="<?= RACINE_SITE . 'photo/' . $photo ?>" width="150" /><br/><br/>
-                                <?php endif; ?>
-                                <label>Photo</label>
-                                <input type="file" name="photo">
+                                <label>Nom</label>
+                                <input class="form-control" placeholder="Nom" name="nom" value="{{ membre.nom }}">
                             </div>
 
                             <div class="form-group">
-                                <label>Capacité</label>
-                                <input class="form-control" placeholder="Capacité de la salle" name="capacite" value="<?= $capacite ?>">
+                                <label>Prénom</label>
+                                <input class="form-control" placeholder="Prenom" name="prenom" value="{{ membre.prenom }}">
                             </div>
 
                             <div class="form-group">
-                            <label>Catégorie</label>
-                            <select class="form-control" name="categories" value="<?= $categories ?>">
-                                <option  <?= ($categorie == 'réunion') ? 'selected' : '' ?> value="réunion">Réunion</option>
-                                <option  <?= ($categorie == 'bureau') ? 'selected' : '' ?> value="bureau">Bureau</option>
-                                <option  <?= ($categorie == 'formation') ? 'selected' : '' ?> value="formation">Formation</option>
-                            </select>
+                                <label>Date de naissance</label>
+                                <input class="form-control" placeholder="Date de naissance" name="date_naissance" value="{{ membre.date_naissance }}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Téléphone</label>
+                                <input class="form-control" placeholder="Téléphone" name="telephone" value="{{ membre.telephone }}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Adresse</label>
+                                <input class="form-control" placeholder="Adresse" name="adresse" value="{{ membre.adresse }}">
                             </div>
 
                         </div>
@@ -127,29 +130,39 @@
                         <div class="col-lg-6"> <!-- formulaire coté droit -->
 
                             <div class="form-group">
-                                <label>Pays</label>
-                                <input class="form-control" placeholder="Pays dans laquelle se trouve la salle" name="pays" value="<?= $pays ?>">
+                                <label>Code Postal</label>
+                                <input class="form-control" placeholder="Code Postal" name="code_postal" value="{{ membre.code_postal }}">
                             </div>
 
                             <div class="form-group">
                                 <label>Ville</label>
-                                <input class="form-control" placeholder="Ville dans laquelle se trouve la salle" name="ville" value="<?= $ville ?>">
+                                <input class="form-control" placeholder="Ville" name="ville" value="{{ membre.ville }}">
                             </div>
 
                             <div class="form-group">
-                                <label>Adresse</label>
-                                <textarea class="form-control" rows="3" placeholder="Adresse de la salle" name="adresse"><?= $adresse ?></textarea>
+                                <label>Pays</label>
+                                <input class="form-control" placeholder="Pays" name="pays" value="{{ membre.pays }}">
                             </div>
 
+                            <div class="form-group">
+                            <label>Statut membre</label>
+                            <select class="form-control" name="statut_membre" value="{{ membre.statut_membre }}">
+                                <option selected="" value="enregistre">Enregistré</option>
+                                <option selected="" value="paye">Payé</option>
+                            </select>
+                            </div>
 
                             <div class="form-group">
-                                <label>Code Postal</label>
-                                <input class="form-control" placeholder="Code Postal de la ville dans laquelle se trouve la salle" name="cp" value="<?= $cp ?>">
+                                <label>Date d'inscription</label>
+                                <input class="form-control" placeholder="Date d'inscription" name="date_inscription" value="{{ membre.date_inscription }}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Rôle</label>
+                                <input class="form-control" placeholder="Rôle (administrateur ou utilisateur" name="role" value="{{ membre.role }}">
                             </div>
 
                             <button type="submit" class="btn btn-default">Enregistrer</button>
-
-                            <!-- <a style="display: inline-block; padding: 10px; border: 2px solid red; border-radius: 3px; text-align: center; margin: 20px 0; color: red; font-weight: bold;" href="formulaire_produit.php">Ajouter un produit</a> -->
 
                         </div>
 
@@ -158,7 +171,6 @@
                 </form>
 
                 <!-- FIN FORMULAIRE -->
-
 
             </div>
             <!-- /.container-fluid -->
