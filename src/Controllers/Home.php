@@ -4,7 +4,12 @@ namespace Controllers;
 
 use Silex\Application;
 
+<<<<<<< HEAD
 class Home{
+=======
+class Home
+{
+>>>>>>> ff0a5dc2f2b91a8e49f72ee5654635c8fd340811
 
     public function formulaire(Application $app){
         return $app['twig']->render('pimpit.html.twig');
