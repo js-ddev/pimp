@@ -12,5 +12,7 @@ $app -> get('/faq/','Controllers\\Home::faq') -> bind('faq');
 
 $app -> get('/about/','Controllers\\Home::about') -> bind('about');
 
+$app -> get('/inscription/','Controllers\\Home::inscription') -> bind('inscription');
+
 
 ?>
