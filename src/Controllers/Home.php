@@ -37,5 +37,10 @@ class Home
 
     }
 
+    public function inscription(Application $app){
+        return $app['twig']->render('inscription.html.twig');
+
+    }
+
 }
  ?>
