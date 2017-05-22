@@ -5,6 +5,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Payum\Core\Storage\FilesystemStorage; // Ajout pour le paiement Payum
 
 //Request::setTrustedProxies(array('127.0.0.1'));
 
@@ -47,3 +48,31 @@ $app->error(function (\Exception $e, Request $request, $code) use ($app) {
 
 // Définition du controller pour le backoffice :
 $app->mount('/bo', $bo);
+
+
+// Ajout pour le paiement Payum
+
+
+/*$app['payum.security.token_storage'] = $app->share(function($app) {
+    return new FilesystemStorage('/path/to/storage', 'Payum\Core\Model\Token', 'hash'),
+});
+
+$app['payum.gateways'] = $app->share($app->extend('payum.gateways', function ($gateways) use ($app) {
+    $paypalExpressCheckoutGatewayFactory = new \Payum\Paypal\ExpressCheckout\Nvp\PaypalExpressCheckoutGatewayFactory();
+
+    $gateways['paypal_ec'] = $paypalExpressCheckoutGatewayFactory->create(array(
+        'username' => 'EDIT_ME',
+        'password' => 'EDIT_ME',
+        'signature' => 'EDIT_ME',
+        'sandbox' => true
+    ));
+    
+    return $gateways;
+});
+
+$app['payum.storages'] = $app->share($app->extend('payum.storages', function ($storages) use ($app) {
+    $storages['Payum\Core\Model\Payment'] = new FilesystemStorage('path/to/storage', 'Payum\Core\Model\Payment');
+    
+    return $storages;
+});
+*/
