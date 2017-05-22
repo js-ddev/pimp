@@ -35,10 +35,11 @@ class Bo
 
     /* DF - namespace de backoffice content */
     public function gestion_commandes(Application $app) {
-        $membres = $app['dao.commande'] -> findAll();
+        $commandes = $app['dao.commande'] -> findAll();
         $params = array(
           'commandes' => $commandes);
-    	return $app['twig']->render('/bo/gestion_commandes.html.twig');
+
+    	return $app['twig']->render('/bo/gestion_commandes.html.twig', $params);
      }
 
 }
