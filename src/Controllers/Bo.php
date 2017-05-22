@@ -34,5 +34,10 @@ class Bo
     }
 
 
+    /* DF - namespace de backoffice content */
+    public function commandes(Application $app) {
+    	return $app['twig']->render('/bo/gestion_commandes.html.twig');
+     }
+
 }
  ?>
