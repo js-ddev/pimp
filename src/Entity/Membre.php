@@ -177,12 +177,19 @@ class Membre
     //-------------------------------//
 
     // ROLE--------------------------//
+    public function setRole($role) {
+        return $this->role = $role;
+    }
 
+    public function getRole() {
+        return $this->role;
+    }
+
+    // Ce get est utilisé lors de la vérification pour la connexion
     public function getRoles(){
         return array($this->getRole());
 
     }
-    //-------------------------------//
 
 }
 
