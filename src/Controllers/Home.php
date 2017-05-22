@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Silex\Application;
+use Symfony\Component\HttpFoundation\Request;
 
 class Home
 {
@@ -37,11 +38,32 @@ class Home
 
     }
 
-    public function inscription(Application $app){
+    public function inscription(Request $request, Application $app){
+        $membre = new \Entity\Membre;
+        $membreForm = $app['form.factory'] -> create(\Form\Type\MembreType::class, $membre);
+
+        $membreForm -> handleRequest($request);
+
+        if($membreForm -> isSubmitted() && $membreForm -> isValid()){
+            $salt = substr(md5(time()), 0, 23);
+            $membre -> setSalt($salt);
+
+            $mdp = $membre -> getPassword(); 
+            $password_encode = $app['security.encoder.bcrypt'] -> encodePassword($mdp, $membre -> getSalt());
+
+            $membre -> setPassword($password_encode);
+
+            $app['dao.membre'] -> save($membre);
+            $app['session'] -> getFlashBag() -> add('success', 'Votre inscription a bien été prise en compte !');
+        }
+
+        $membreFormView = $membreForm -> createView();
+
         $params = array(
-        'title' => 'Inscription',
-        'membreForm' => $membreFormView
-    );
+            'title' => 'Inscription',
+            'membreForm' => $membreFormView
+        );
+
         return $app['twig']->render('inscription.html.twig', $params);
 
     }
