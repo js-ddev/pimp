@@ -38,7 +38,6 @@ class MembreDAO extends DAO
 
             $this -> getDb() -> insert('membre', $membreData);
             $membre -> setId($this -> getDb() -> lastInsertId());
-        }
     }
 
     protected function BuildEntityObject(array $value){

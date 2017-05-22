@@ -26,8 +26,13 @@ $app['dao.commande'] = function ($app) {
     return new Model\CommandeDAO($app['db']);
 };
 
-// Adrien - Enregistrement du service de validation des formulaires
-$app->register(new Silex\Provider\ValidatorServiceProvider());
+// Adrien - Enregistrement des services pour les formulaires
+$app -> register(new Silex\Provider\FormServiceProvider());
+$app -> register(new Silex\Provider\ValidatorServiceProvider());
+$app -> register(new Silex\Provider\LocaleServiceProvider());
+$app -> register(new Silex\Provider\TranslationServiceProvider(), array(
+    'translator.messages' => array(),
+));
 
 // JS - Enregistrement des services supplémentaires :
 $app -> register(new Silex\Provider\DoctrineServiceProvider());
