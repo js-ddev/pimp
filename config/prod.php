@@ -15,5 +15,3 @@ $app['db.options'] = array(
     'user' => 'user',
     'password' => 'pimp'
 );
-
-?>

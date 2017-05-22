@@ -26,86 +26,73 @@
 						<h2>Informations obligatoires :</h2>
 
 						<fieldset>
-							<h3>A votre sujet :</h3>
-								{% if membreForm %}
-								{{ form_start(membreForm) }}
+							<h3>A votre sujet :</h2>
+
 							<div class="form-group">
-								<label><b>Prénom</b></label>
-								{{ form_errors(membreForm.prenom) }}
-								{{ form_widget(membreForm.prenom) }}
+								<input type="text" name="prenom" id="prenom" placeholder="Votre prénom *" required/>
+								<label for="prenom"></label>
 							</div>
 
 							<div class="form-group">
-								<label><b>Nom</b></label>
-								{{ form_errors(membreForm.nom) }}
-								{{ form_widget(membreForm.nom) }}
+								<input type="text" name="nom" id="nom" placeholder="Votre nom *"/>
+								<label for="nom"></label>
 							</div>
 
 							<div class="form-group">
-								<label><b>Email</b></label>
-								{{ form_errors(membreForm.email) }}
-								{{ form_widget(membreForm.email) }}
+								<input type="email" name="email" id="email" placeholder="Votre adresse email *"/>
+								<label for="email"></label>
 							</div>
 
 							<div class="form-group">
-								<label><b>Date de naissance</b></label>
-								{{ form_errors(membreForm.date_naissance) }}
-								{{ form_widget(membreForm.date_naissance) }}
+								<input type="date" name="date_naissance" id="date_naissance" placeholder="Votre date de naissance *"/>
+								<label for="date_naissance"></label>
 							</div>
 
 							<div class="form-group">
-								<label><b>Photo</b></label>
-
-<!-- Manque le code pour l'envoi du fichier Photo -->
+								<input type="file" name="photo" id="photo" placeholder="Si vous souhaitez nous envoyer votre photo de CV"/>
+								<label for="photo"></label>
 							</div>
-
 						</fieldset>
 
 						<fieldset>
 							<h3>Vos coordonnées :</h2>
 
 							<div class="form-group">
-								<label><b>Adresse</b></label>
-									{{ form_errors(membreForm.adresse) }}
-									{{ form_widget(membreForm.adresse) }}
+								<input type="text" name="adresse" id="adresse" placeholder="Numéro de rue et rue *"/>
+								<label for="adresse"></label>
 							</div>
 
 							<div class="form-group">
-								<label><b>Ville</b></label>
-									{{ form_errors(membreForm.ville) }}
-									{{ form_widget(membreForm.ville) }}
+								<input type="text" name="ville" id="ville" placeholder="Ville *"/>
+								<label for="ville"></label>
 							</div>
 
 							<div class="form-group">
-								<label><b>Code Postal</b></label>
-									{{ form_errors(membreForm.code_postal) }}
-									{{ form_widget(membreForm.code_postal) }}
+								<input type="text" name="code_postal" id="code_postal" placeholder="Code postal *"/>
+								<label for="code_postal"></label>
 							</div>
 
 							<div class="form-group">
-								<label><b>Pays</b></label>
-									{{ form_errors(membreForm.pays) }}
-									{{ form_widget(membreForm.pays) }}
+								<input type="text" name="pays" id="pays" placeholder="Pays *"/>
+								<label for="pays"></label>
 							</div>
-
+							
 							<div class="form-group">
-								<label><b>Téléphone</b></label>
-									{{ form_errors(membreForm.telephone) }}
-									{{ form_widget(membreForm.telephone) }}
+								<input type="text" name="telephone" id="telephone" placeholder="Téléphone *"/>
+								<label for="telephone"></label>
 							</div>
 
 						</fieldset>
 						<h3>Si vous avez déjà un CV, vous pouvez nous l'envoyer :</h3>
 
 						<div class="form-group">
-<!-- Manque le code pour l'envoi du fichier CV -->
+							<input type="file" name="CV" id="CV" placeholder="Veuillez uploader votre CV"/>
+							<label for="CV"></label>
 						</div>
 
 						<div class="form-group">
 							<input type="submit" name="infos" value="Envoyer"/>
 						</div>
-						{{ form_end(membreForm) }}
-						{% endif %}
 					</form>
 
 				</div>

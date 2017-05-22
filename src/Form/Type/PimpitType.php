@@ -13,6 +13,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -33,9 +34,7 @@ class PimpitType extends AbstractType
                         'max' => 40,
                     ))
                 ),
-                'options' => array(
-                    'required' => true,
-                ),
+                'required' => true,
                 'label_attr' => array(
                     'placeholder' => 'Votre prénom',
                     'class' => 'form-control',
@@ -50,9 +49,7 @@ class PimpitType extends AbstractType
                         'max' => 40,
                     ))
                 ),
-                'options' => array(
-                    'required' => true,
-                ),
+                'required' => true,
                 'label_attr' => array(
                     'placeholder' => 'Votre nom',
                     'class' => 'form-control',
@@ -71,17 +68,17 @@ class PimpitType extends AbstractType
             ))
 
             -> add('date_naissance', TextType::class, array(
-                'placeholder' => 'Votre date de naissance',
-                'class' => 'form-control',
+                'label_attr' => array(
+                    'placeholder' => 'Votre date de naissance',
+                    'class' => 'form-control',
+                ),
             ))
-            -> add('attachment', FileType::class, array(
+            -> add('Fichier', FileType::class, array(
                     'label' => 'Votre ancien CV (si vous en avez un)',
                 )
             )
             -> add('adresse', TextType::class, array(
-                'options' => array(
-                    'required' => true,
-                ),
+                'required' => true,
                 'label_attr' => array(
                     'placeholder' => 'Adresse',
                     'class' => 'form-control',
@@ -89,9 +86,7 @@ class PimpitType extends AbstractType
             ))
 
             -> add('ville', TextType::class, array(
-                'options' => array(
-                    'required' => true,
-                ),
+                'required' => true,
                 'label_attr' => array(
                     'placeholder' => 'Ville',
                     'class' => 'form-control',
@@ -99,17 +94,15 @@ class PimpitType extends AbstractType
             ))
 
             -> add('code_postal', TextType::class, array(
-                'options' => array(
-                    'required' => true,
+                'required' => true,
+                'label_attr' => array(
+                    'placeholder' => 'Code postal',
+                    'class' => 'form-control',
                 ),
-                'placeholder' => 'Code Postal',
-                'class' => 'form-control',
             ))
 
             -> add('pays', TextType::class, array(
-                'options' => array(
-                    'required' => true,
-                ),
+                'required' => true,
                 'label_attr' => array(
                     'placeholder' => 'Pays',
                     'class' => 'form-control',
@@ -117,31 +110,13 @@ class PimpitType extends AbstractType
             ))
 
             -> add('telephone', TextType::class, array(
-                'options' => array(
-                    'required' => true,
-                ),
+                'required' => true,
                 'label_attr' => array(
                     'placeholder' => 'Téléphone',
                     'class' => 'form-control',
                 ),
             ));
     }
-
-    public function uploadAction()
-{
-    // ...
-
-    if ($form->isSubmitted() && $form->isValid()) {
-        $someNewFilename = 'cv'.getClientOriginalName();
-        $dir =
-        $form['attachment']->getData()->move($dir, $someNewFilename);
-
-        // ...
-    }
-
-    // ...
-}
-
 
 
 }
