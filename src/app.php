@@ -26,6 +26,11 @@ $app['dao.commande'] = function ($app) {
     return new Model\CommandeDAO($app['db']);
 };
 
+// Rudy - Enregistrement des services obligatoires pour le paiement: 
+//$app->register(new Silex\Provider\UrlGeneratorServiceProvider());
+//$app->register(new Payum\Silex\PayumProvider());
+
+
 // Adrien - Enregistrement des services pour les formulaires
 $app -> register(new Silex\Provider\FormServiceProvider());
 $app -> register(new Silex\Provider\ValidatorServiceProvider());
