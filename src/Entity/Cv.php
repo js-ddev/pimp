@@ -1,6 +1,6 @@
 <?php
 
-namespace Pimpmycv\Entity;
+namespace Entity;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 
