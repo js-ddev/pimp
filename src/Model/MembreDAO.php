@@ -1,18 +1,11 @@
 <?php
 
-namespace Pimpmycv\Model;
+namespace Model;
 
-use Doctrine\DBAL\Connection;
-use Pimpmycv\Entity\Membre;
+use Entity\Membre;
 
-class MembreDAO
+class MembreDAO extends DAO
 {
-    private $db;
-
-    public function __construct(Connection $db)
-    {
-        $this -> db = $db;
-    }
 
     public function findAll(){
         $requete = "SELECT * FROM membre";
@@ -24,31 +17,22 @@ class MembreDAO
 
             $membres[$id] = $this -> BuildEntityObject($value);
 
-
         }
         return $membres;
     }
 
     protected function BuildEntityObject(array $value){
-    $membre = new Produit; // JS crée un nouvel objet produit
+    $membre = new Membre; // JS - crée un nouvel objet produit
 
-    $membre -> setIdProduit($value['id']);
-
-    // JS A suivre selon les setters qui auront été créés !
-    $membre -> setReference($value['reference']);
-    $membre -> setCategorie($value['categorie']);
-    $membre -> setDescription($value['description']);
-    $membre -> setTitre($value['titre']);
-    $membre -> setCouleur($value['couleur']);
-    $membre -> setPublic($value['public']);
-    $membre -> setTaille($value['taille']);
-    $membre -> setPhoto($value['photo']);
-    $membre -> setPrix($value['prix']);
-    $membre -> setStock($value['stock']);
+// JS - attention manque encore des valeurs :
+    $membre -> setId($value['id']);
+    $membre -> setEmail($value['email']);
+    $membre -> setNom($value['nom']);
+    $membre -> setPrenom($value['prenom']);
 
     return $membre;
 
-}
+    }
 }
 
  ?>

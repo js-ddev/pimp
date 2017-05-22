@@ -1,6 +1,6 @@
 <?php
 
-namespace Pimpmycv\Entity;
+namespace Entity;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -21,7 +21,6 @@ class Membre
     private $statut_membre;
     private $date_inscription;
     private $role;
-    private $salt;
 
     // ID----------------------------//
     public function getId() {
@@ -66,7 +65,7 @@ class Membre
     {
         $this->nom = $nom;
         return $this;
-    } 
+    }
     //-------------------------------//
 
     // PRENOM------------------------//
@@ -154,7 +153,7 @@ class Membre
     //-------------------------------//
 
     // MEMBRE------------------------//
-    public function getStatutMembre() 
+    public function getStatutMembre()
     {
         return $this->statut_membre;
     }
@@ -178,24 +177,10 @@ class Membre
     //-------------------------------//
 
     // ROLE--------------------------//
-    public function getRole()
-    {
-        return $this->role;
-    }
 
-    public function setRole($role) {
-        $this->role = $role;
-    }
-    //-------------------------------//
+    public function getRoles(){
+        return array($this->getRole());
 
-    // SALT--------------------------//
-    public function getSalt()
-    {
-        return $this->salt;
-    }
-
-    public function setSalt($salt) {
-        $this->salt = $salt;
     }
     //-------------------------------//
 
