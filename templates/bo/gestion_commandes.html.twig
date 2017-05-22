@@ -59,7 +59,7 @@
                                     {% for commande in commandes %}
                                     <tr>
                                         <td>{{ commande.id }}</td>
-                                        <td>{{ commande.idMembre }}</td>
+                                        <td><a href="#">{{ commande.idMembre }}</a></td>
                                         <td><a href="#">{{ commande.idCv }}</a></td>
                                         <td>{{ commande.dateCommande }}</td>
                                         <td>{{ commande.statutCommande }}</td>
@@ -67,8 +67,8 @@
                                         <td>{{ commande.prix }}</td>
                                         <td>{{ commande.commentaires }}</td>
                                         <td><a href="#"><span class="glyphicon glyphicon-search"></span></a></td>
-                                        <td><span class="glyphicon glyphicon-edit"></span></td>
-                                        <td><span class="glyphicon glyphicon-trash"></span></td>
+                                        <td><a href="#"><span class="glyphicon glyphicon-edit"></span></a></td>
+                                        <td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>
@@ -81,9 +81,9 @@
 
                 <!-- DF - DEBUT FORMULAIRE -->
 
-                <!-- //////////////////////////////// -->
-                <!-- CETTE PARTIE N'EST PAS COMMENCEE -->
-                <!-- //////////////////////////////// -->
+                <!-- /////////////////////////////////////////////////////////// -->
+                <!-- CETTE PARTIE N'EST PAS COMMENCEE - TOUT LE FORM BUG !!!!! -->
+                <!-- ///////////////////////////////////////////////////////////// -->
 
                 <form role="form" method="POST">
 
@@ -98,7 +98,7 @@
                                 <input class="form-control" placeholder="Date de la commande" name="dateCommande" value="{{ commande.dateCommande }}">
                             </div>
 
-<!--                             <div class="form-group">
+                            <div class="form-group">
                                 <label>Nom</label>
                                 <input class="form-control" placeholder="Nom" name="nom" value="{{ membre.nom }}">
                             </div>
@@ -122,17 +122,17 @@
                             <div class="form-group">
                                 <label>Téléphone</label>
                                 <input class="form-control" placeholder="Téléphone" name="telephone" value="{{ membre.telephone }}">
-                            </div> -->
+                            </div>
 
                         </div>
 
                         <div class="col-lg-6"> <!-- formulaire coté droit -->
 
-<!--                             <div class="form-group">
+                            <div class="form-group">
                                 <label>Code Postal</label>
                                 <input class="form-control" placeholder="Code Postal" name="code_postal" value="{{ membre.code_postal }}">
                             </div>
- -->
+
                         {% endfor %}
 
                             <button type="submit" class="btn btn-default">Enregistrer</button>

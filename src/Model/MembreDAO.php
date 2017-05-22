@@ -53,6 +53,7 @@ class MembreDAO extends DAO
     $membre -> setAdresse($value['adresse']);
     $membre -> setCodePostal($value['code_postal']);
     $membre -> setVille($value['ville']);
+    $membre -> setRole($value['role']);
     $membre -> setPays($value['pays']);
     $membre -> setStatutMembre($value['statut_membre']);
     $membre -> setDateInscription($value['date_inscription']);
