@@ -1,0 +1,75 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+	 <!-- Hero Start -->
+        <section id="hero">
+            <div class="fs-hero hero-img" style="background-image:url(assets/images/bg-11.jpg)">
+                <div class="hero-caption text-white center-left">
+                    <h3 class="font-weight-light">Adventure Mind</h3>
+                    <h1 class="ls-2">Start Your Journey</h1>
+                    <p class="mrg-top-20">Lorem Ipsum is simply dummy text of the printing and typesetting industry. printer took a galley of type and scrambled it to make a type .</p>
+                    <div class="mrg-top-20">
+                        <a href class="btn btn-white-inverse btn-md">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Hero End -->
+            
+    </div>
+    <!-- wrapper -->
+
+    
+    <!-- Modal Start -->
+    <!-- use data-backdrop="static" & data-keyboard="false" to lock modal -->
+    <div class="modal fade modal-center load-active" id="login" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body no-pdd">
+                    <div class="login-panel">
+                        <div class="content-block-2">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-7 col-md-offset-5">
+                                        <div class="text-content pdd-horizon-60">
+                                            <h3 class="mrg-btm-30 mrg-top-15">Sign In</h3>
+                                            <form>
+                                                <div class="form-wrapper">
+                                                    <label><b>User Name</b></label>
+                                                    <input type="text" class="form-control" placeholder="Username">
+                                                </div>
+                                                <div class="form-wrapper">
+                                                    <label><b>Password</b></label>
+                                                    <input type="password" class="form-control" placeholder="Password">
+                                                </div>
+                                                <div>
+                                                <a href=""><i class="text-gray">Forgot Password ?</i></a>
+                                                </div>
+                                                <input class="btn btn-md btn-theme mrg-vertical-20" type="submit" value="Sign in">
+                                            </form>
+                                        </div><!-- /content -->
+                                    </div>
+                                </div>
+                            </div>  
+                            <div class="image-container col-md-5 hidden-xs hidden-sm">
+                                <div class="background-holder theme-overlay has-content" style="background-image:url(assets/images/bg-18.jpg)">
+                                    <div class="content pdd-horizon-50">
+                                        <h3 class="mrg-btm-20 text-white">Sign Up Now!</h3>
+                                        <p class="text-white font-size-14">This Modal is locked on, but you can optionaly turn this fucntion off.</p>
+                                        <button class="btn btn-sm btn-white-inverse mrg-vertical-20">Register</button>
+                                        <ul class="social-btn mrg-top-30">
+                                            <li><a class="btn icon-btn-md btn-white-inverse hover-facebook border-radius-round" href="javascript:void(0);"><i class="ei ei-facebook"></i></a></li>
+                                            <li><a class="btn icon-btn-md btn-white-inverse hover-twitter border-radius-round" href="javascript:void(0);"><i class="ei ei-twitter"></i></a></li>
+                                            <li><a class="btn icon-btn-md btn-white-inverse hover-google-plus border-radius-round" href="javascript:void(0);"><i class="ei ei-google-plus"></i></a></li>
+                                        </ul>
+                                    </div><!-- content -->
+                                </div><!-- /background-holder -->
+                            </div><!-- /image-container -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal End -->
+{% endblock %}
