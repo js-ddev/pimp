@@ -8,11 +8,6 @@ use Symfony\Component\HttpFoundation\Request;
 class Home
 {
 
-    public function formulaire(Application $app){
-        return $app['twig']->render('pimpit.html.twig');
-
-    }
-
     public function modeles(Application $app){
         return $app['twig']->render('modeles.html.twig');
 
@@ -48,7 +43,7 @@ class Home
             $salt = substr(md5(time()), 0, 23);
             $membre -> setSalt($salt);
 
-            $mdp = $membre -> getPassword(); 
+            $mdp = $membre -> getPassword();
             $password_encode = $app['security.encoder.bcrypt'] -> encodePassword($mdp, $membre -> getSalt());
 
             $membre -> setPassword($password_encode);
@@ -65,6 +60,42 @@ class Home
         );
 
         return $app['twig']->render('inscription.html.twig', $params);
+
+    }
+
+// JS - Route pour la connexion à la première page du formulaire Pimpit :
+
+    public function formulaire(Request $request, Application $app){
+        $membre = new \Entity\Membre;
+        $membreForm = $app['form.factory'] -> create(\Form\Type\PimpitType::class, $membre);
+
+        $membreForm -> handleRequest($request);
+
+        if($membreForm -> isSubmitted() && $membreForm -> isValid()){
+            $file = $membre->getFichier();
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+
+            $file->move(
+                    '../../fichiers',
+                $fileName
+            );
+
+            $membre -> setFichier($fileName);
+
+            return $this-> redirect($this -> generateUrl('app_fichier_test'));
+
+            $app['dao.membre'] -> save($membre);
+            $app['session'] -> getFlashBag() -> add('success', 'Votre inscription a bien été prise en compte !');
+        }
+
+        $membreFormView = $membreForm -> createView();
+
+        $params = array(
+            'title' => 'Pimpit',
+            'membreForm' => $membreFormView
+        );
+
+        return $app['twig']->render('pimpit.html.twig', $params);
 
     }
 

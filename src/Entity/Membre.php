@@ -22,6 +22,10 @@ class Membre
     private $date_inscription;
     private $role;
 
+// JS - AJout de la propriété fichier de l'entité cv :
+    private $fichier;
+
+
     // ID----------------------------//
     public function getId() {
         return $this->id;
@@ -119,7 +123,7 @@ class Membre
     // CODE POSTAL-------------------//
     public function getCodepostal()
     {
-        return $this->codepostal;
+        return $this->code_postal;
     }
 
     public function setCodepostal($code_postal) {
@@ -184,6 +188,29 @@ class Membre
     }
     //-------------------------------//
 
-}
+// JS - Ajout du Fichier de l'entité CV :
+    /**
+     * Gets the value of fichier.
+     *
+     * @return mixed
+     */
+    public function getFichier()
+    {
+        return $this->fichier;
+    }
 
-?>
+    /**
+     * Sets the value of fichier.
+     *
+     * @param mixed $fichier the fichier
+     *
+     * @return self
+     */
+    public function setFichier(Cv $fichier)
+    {
+        $this-> fichier = $fichier;
+
+        return $this;
+    }
+
+}

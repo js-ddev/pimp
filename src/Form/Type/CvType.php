@@ -25,16 +25,15 @@ class CvType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options){
         // builder permet de construire les champs un par un :
         $builder
-            -> add('situation', TextType::class, array(
+            -> add('situation', ChoiceType::class, array(
                 'choices' => array(
                     'célibataire' => 'celibataire',
                     'concubinage' => 'concubinage',
                     'marié' => 'marie',
-
                 ))
             )
 
-            -> add('nationalite', PasswordType::class, array(
+            -> add('nationalite', TextType::class, array(
                 'constraints' => array(
                     new Assert\NotBlank(),
                     new Assert\Length(array(
@@ -48,19 +47,17 @@ class CvType extends AbstractType
                 ),
             ))
 
-            -> add('Permis de travail', TextType::class, array(
+            -> add('permis_travail', ChoiceType::class, array(
                 'choices' => array(
-                    'célibataire' => 'celibataire',
-                    'concubinage' => 'concubinage',
-                    'marié' => 'marie',
-
+                    'travail' => 'travail',
+                    'sejour' => 'sejour',
                 ),
                 'expanded' => true,
                 'multiple' => false,
             )
             )
 
-            -> add('Permis de consuire', TextType::class, array(
+            -> add('permis_conduire', ChoiceType::class, array(
                 'choices' => array(
                     'permis_a' => 'Permis A',
                     'permis_b' => 'Permis B',
