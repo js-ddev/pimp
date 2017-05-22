@@ -86,7 +86,7 @@ class Membre
         return $this->date_naissance;
     }
 
-    public function setDateNaissance($prenom) {
+    public function setDateNaissance($date_naissance) {
         $this->date_naissance = $date_naissance;
         return $this;
     }

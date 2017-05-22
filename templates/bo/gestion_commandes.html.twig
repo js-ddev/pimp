@@ -54,15 +54,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>                                    
-                                        <td>{{ commande.id }}</td>
-                                        <td><a href="{{ commande.id_membre }}">{{ commande.id_membre }}</a></td>
-                                        <td><a href="{{ commande.id_cv }}">{{ commande.id_cv }}</td>
-                                        <td>{{ commande.date_commande }}</td>
-                                        <td>{{ commande.statut_commande }}</td>
-                                        <td>{{ commande.prestation }}</td>
-                                        <td>{{ commande.prix }}</td>
-                                        <td>{{ commande.commentaires }}</td>
+                                    <tr>
                                         <td><a href="#"><span class="glyphicon glyphicon-search"></span></a></td>
                                         <td><span class="glyphicon glyphicon-edit"></span></td>
                                         <td><span class="glyphicon glyphicon-trash"></span></td>
@@ -87,74 +79,7 @@
 
                         <div class="col-lg-6"> <!-- formulaire coté gauche -->
 
-                            <input type="hidden" name="id_salle" value="{{ membre.id }}" />
-
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input class="form-control" placeholder="email" name="titre" value="{{ membre.email }}">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Nom</label>
-                                <input class="form-control" placeholder="Nom" name="nom" value="{{ membre.nom }}">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Prénom</label>
-                                <input class="form-control" placeholder="Prenom" name="prenom" value="{{ membre.prenom }}">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Date de naissance</label>
-                                <input class="form-control" placeholder="Date de naissance" name="date_naissance" value="{{ membre.date_naissance }}">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Téléphone</label>
-                                <input class="form-control" placeholder="Téléphone" name="telephone" value="{{ membre.telephone }}">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Adresse</label>
-                                <input class="form-control" placeholder="Adresse" name="adresse" value="{{ membre.adresse }}">
-                            </div>
-
-                        </div>
-
-                        <div class="col-lg-6"> <!-- formulaire coté droit -->
-
-                            <div class="form-group">
-                                <label>Code Postal</label>
-                                <input class="form-control" placeholder="Code Postal" name="code_postal" value="{{ membre.code_postal }}">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Ville</label>
-                                <input class="form-control" placeholder="Ville" name="ville" value="{{ membre.ville }}">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Pays</label>
-                                <input class="form-control" placeholder="Pays" name="pays" value="{{ membre.pays }}">
-                            </div>
-
-                            <div class="form-group">
-                            <label>Statut membre</label>
-                            <select class="form-control" name="statut_membre" value="{{ membre.statut_membre }}">
-                                <option selected="" value="enregistre">Enregistré</option>
-                                <option selected="" value="paye">Payé</option>
-                            </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Date d'inscription</label>
-                                <input class="form-control" placeholder="Date d'inscription" name="date_inscription" value="{{ membre.date_inscription }}">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Rôle</label>
-                                <input class="form-control" placeholder="Rôle (administrateur ou utilisateur" name="role" value="{{ membre.role }}">
-                            </div>
+                    
 
                             <button type="submit" class="btn btn-default">Enregistrer</button>
 
