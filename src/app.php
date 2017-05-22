@@ -22,6 +22,13 @@ $app['dao.membre'] = function ($app) {
     return new Model\MembreDAO($app['db']);
 };
 
+$app['dao.commande'] = function ($app) {
+    return new Model\CommandeDAO($app['db']);
+};
+
+// Adrien - Enregistrement du service de validation des formulaires
+$app->register(new Silex\Provider\ValidatorServiceProvider());
+
 // JS - Enregistrement des services supplémentaires :
 $app -> register(new Silex\Provider\DoctrineServiceProvider());
 $app -> register(new Silex\Provider\SessionServiceProvider());

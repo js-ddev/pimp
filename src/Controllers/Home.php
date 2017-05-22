@@ -38,7 +38,11 @@ class Home
     }
 
     public function inscription(Application $app){
-        return $app['twig']->render('inscription.html.twig');
+        $params = array(
+        'title' => 'Inscription',
+        'membreForm' => $membreFormView
+    );
+        return $app['twig']->render('inscription.html.twig', $params);
 
     }
 
