@@ -1,6 +1,6 @@
 <?php
 
-namespace Pimpmycv\Entity;
+namespace Entity;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -36,7 +36,7 @@ class Commande
      *
      * @return self
      */
-    private function setId($id)
+    public function setId($id)
     {
         $this->id = $id;
 
@@ -50,7 +50,7 @@ class Commande
      */
     public function getIdMembre()
     {
-        return $this->id_membre;
+        return $this->idmembre;
     }
 
     /**
@@ -60,9 +60,9 @@ class Commande
      *
      * @return self
      */
-    private function setIdMembre($id_membre)
+    public function setIdMembre($id_membre)
     {
-        $this->id_membre = $id_membre;
+        $this->idmembre = $id_membre;
 
         return $this;
     }
@@ -74,7 +74,7 @@ class Commande
      */
     public function getIdCv()
     {
-        return $this->id_cv;
+        return $this->idcv;
     }
 
     /**
@@ -84,9 +84,9 @@ class Commande
      *
      * @return self
      */
-    private function setIdCv($id_cv)
+    public function setIdCv($id_cv)
     {
-        $this->id_cv = $id_cv;
+        $this->idcv = $id_cv;
 
         return $this;
     }
@@ -98,8 +98,9 @@ class Commande
      */
     public function getDateCommande()
     {
-        return $this->date_commande;
+        return $this->datecommande;
     }
+
 
     /**
      * Sets the value of date_commande.
@@ -108,9 +109,9 @@ class Commande
      *
      * @return self
      */
-    private function setDateCommande($date_commande)
+    public function setDateCommande($date_commande)
     {
-        $this->date_commande = $date_commande;
+        $this->datecommande = $date_commande;
 
         return $this;
     }
@@ -122,7 +123,7 @@ class Commande
      */
     public function getStatutCommande()
     {
-        return $this->statut_commande;
+        return $this->statutcommande;
     }
 
     /**
@@ -132,9 +133,9 @@ class Commande
      *
      * @return self
      */
-    private function setStatutCommande($statut_commande)
+    public function setStatutCommande($statut_commande)
     {
-        $this->statut_commande = $statut_commande;
+        $this->statutcommande = $statut_commande;
 
         return $this;
     }
@@ -156,7 +157,7 @@ class Commande
      *
      * @return self
      */
-    private function setPrestation($prestation)
+    public function setPrestation($prestation)
     {
         $this->prestation = $prestation;
 
@@ -180,7 +181,7 @@ class Commande
      *
      * @return self
      */
-    private function setPrix($prix)
+    public function setPrix($prix)
     {
         $this->prix = $prix;
 
@@ -204,7 +205,7 @@ class Commande
      *
      * @return self
      */
-    private function setCommentaires($commentaires)
+    public function setCommentaires($commentaires)
     {
         $this->commentaires = $commentaires;
 
