@@ -21,6 +21,26 @@ class MembreDAO extends DAO
         return $membres;
     }
 
+     /**
+    * Inscription et enregistrement d'un utilisateur en BDD
+    *
+    * @param $membre l'utilisateur à enregistrer ou à modifier
+    *
+    * @return \pimp\Entity\Membre 
+    */
+    public function save(Membre $membre){
+        $membreData = array(
+            'email' => $membre -> getEmail(),
+            'password' => $membre -> getPassword(),
+        );
+
+            $membreData['role'] = 'ROLE_USER';
+
+            $this -> getDb() -> insert('membre', $membreData);
+            $membre -> setId($this -> getDb() -> lastInsertId());
+        }
+    }
+
     protected function BuildEntityObject(array $value){
     $membre = new Membre; // JS - crée un nouvel objet produit
 
