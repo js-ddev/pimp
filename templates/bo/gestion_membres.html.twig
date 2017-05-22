@@ -4,9 +4,11 @@
 
 {% block content %}
 
+
+{{ dump(membres)}}
 <!-- DF - FIN HEAD, NAVTOP ET NAVSIDE -->
 
-        <!-- DEBUT CONTENU -->
+        <!-- DF - DEBUT CONTENU -->
 
         <div id="page-wrapper">
 
@@ -32,8 +34,7 @@
                 </div>
                 <!-- /.row -->
 
-
-                <!-- DEBUT TABLEAU DES MEMBRES -->
+                <!-- DF - DEBUT TABLEAU DES MEMBRES -->
 
                 <div class="row">
 
@@ -43,113 +44,55 @@
                             <table class="table table-bordered table-hover table-striped">
                                 <thead>
                                     <tr>
-                                        <th>id</th>
-                                        <th>email</th>
-                                        <th>Pseudo</th>
+                                        <th>ID</th>
+                                        <th>Email</th>
                                         <th>Nom</th>
                                         <th>Prénom</th>
-                                        <th>Email</th>
-                                        <th>Civilité</th>
-                                        <th>Statut</th>
-                                        <th>Date enregistrement</th>
+                                        <th>Date de naissance</th>
+                                        <th>Téléphone</th>
+                                        <th>Adresse</th>
+                                        <th>Code Postal</th>
+                                        <th>Ville</th>
+                                        <th>Pays</th>
+                                        <th>Statut membre</th>
+                                        <th>Date d'inscription</th>
+                                        <th>Rôle</th>
                                         <th colspan="3">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php for ($i=0; $i < sizeof($resultats); $i++): ?>
+                                    {% for membre in membres %}
                                     <tr>
-                                        <td><?= $resultats[$i]['id'] ?></td>
-                                        <td><?= $resultats[$i]['email']  ?></td>
-                                        <td><?= $resultats[$i]['nom']  ?></td>
-                                        <td><?= $resultats[$i]['prenom'] ?></td>
-                                        <td><?= $resultats[$i]['email'] ?></td>
-                                        <td><?= $resultats[$i]['civilite'] ?></td>
-                                        <td><?= $resultats[$i]['statut'] ?></td>
-                                        <td><?= $resultats[$i]['date_enregistrement'] ?></td>
+                                        <td>{{ membre.id }}</td>
+                                        <td>{{ membre.email }}</td>
+                                        <td>{{ membre.nom }}</td>
+                                        <td>{{ membre.prenom }}</td>
+                                        <td>{{ membre.telephone }}</td>
                                         <td><a href="#"><span class="glyphicon glyphicon-search"></span></a></td>
                                         <td><span class="glyphicon glyphicon-edit"></span></td>
                                         <td><span class="glyphicon glyphicon-trash"></span></td>
                                     </tr>
-                                <?php endfor; ?>
+                                    {% endfor %}
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
 
-                <!-- FIN TABLEAU DES membres -->
+                <!-- FIN TABLEAU DES MEMBRES -->
 
-                <!-- DEBUT FORMULAIRE -->
+                <!-- DF - DEBUT FORMULAIRE -->
 
                 <form role="form" method="POST">
 
                     <div class="row">
 
                         <div class="col-lg-6"> <!-- formulaire coté gauche -->
-
-                            <input type="hidden" name="id_salle" value="<?= $id_salle ?>" />
-
-                            <div class="form-group">
-                                <label>Titre</label>
-                                <input class="form-control" placeholder="Titre de la salle" name="titre" value="<?= $titre ?>">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Description</label>
-                                <textarea class="form-control" rows="3" placeholder="Description de la salle" name="description"><?= $description ?></textarea>
-                            </div>
-
-                            <div class="form-group" id="photo">
-                                <?php if(isset($produit_actuel)) : ?>
-                                    <input type="hidden" name="photo_actuelle" value="<?= $photo ?>">
-                                    <img src="<?= RACINE_SITE . 'photo/' . $photo ?>" width="150" /><br/><br/>
-                                <?php endif; ?>
-                                <label>Photo</label>
-                                <input type="file" name="photo">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Capacité</label>
-                                <input class="form-control" placeholder="Capacité de la salle" name="capacite" value="<?= $capacite ?>">
-                            </div>
-
-                            <div class="form-group">
-                            <label>Catégorie</label>
-                            <select class="form-control" name="categories" value="<?= $categories ?>">
-                                <option  <?= ($categorie == 'réunion') ? 'selected' : '' ?> value="réunion">Réunion</option>
-                                <option  <?= ($categorie == 'bureau') ? 'selected' : '' ?> value="bureau">Bureau</option>
-                                <option  <?= ($categorie == 'formation') ? 'selected' : '' ?> value="formation">Formation</option>
-                            </select>
-                            </div>
-
-                        </div>
-
-                        <div class="col-lg-6"> <!-- formulaire coté droit -->
-
-                            <div class="form-group">
-                                <label>Pays</label>
-                                <input class="form-control" placeholder="Pays dans laquelle se trouve la salle" name="pays" value="<?= $pays ?>">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Ville</label>
-                                <input class="form-control" placeholder="Ville dans laquelle se trouve la salle" name="ville" value="<?= $ville ?>">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Adresse</label>
-                                <textarea class="form-control" rows="3" placeholder="Adresse de la salle" name="adresse"><?= $adresse ?></textarea>
-                            </div>
-
-
-                            <div class="form-group">
-                                <label>Code Postal</label>
-                                <input class="form-control" placeholder="Code Postal de la ville dans laquelle se trouve la salle" name="cp" value="<?= $cp ?>">
-                            </div>
+                        {% for membre in membres %}
+                            <input type="hidden" name="id_salle" value="{{ membre.nom }}" />
+                        {% endfor %}
 
                             <button type="submit" class="btn btn-default">Enregistrer</button>
-
-                            <!-- <a style="display: inline-block; padding: 10px; border: 2px solid red; border-radius: 3px; text-align: center; margin: 20px 0; color: red; font-weight: bold;" href="formulaire_produit.php">Ajouter un produit</a> -->
 
                         </div>
 
@@ -159,7 +102,6 @@
 
                 <!-- FIN FORMULAIRE -->
 
-
             </div>
             <!-- /.container-fluid -->
 
@@ -168,6 +110,5 @@
 
     </div>
     <!-- /#wrapper -->
-
 
 {% endblock %}

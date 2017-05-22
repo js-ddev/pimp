@@ -6,98 +6,88 @@
             <div class="fs-hero hero-slider">
                 <div class="swiper-hero swiper-container">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" style="background-image:url(../web/images/bg-1.jpg)">
+                        <div class="swiper-slide" style="background-image:url({{ asset('images/bg-1.jpg') }})">
                             <div class="hero-caption center-left text-white">
-                                <h2 class="font-weight-light mrg-btm-20">Startup With Eastern</h2>
+                                <h2 class="font-weight-light mrg-btm-20">Débuter avec Pimp My CV !</h2>
                                 <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.</p>
                                 <div class="mrg-top-30">
-                                    <a class="btn btn-md btn-white"> Start Now</a>
+                                    <a href="{{ path('pimpit') }}" class="btn btn-md btn-white">Pimp It !</a>
                                 </div>
-                            </div>      
+                            </div>
                         </div>
-                        <div class="swiper-slide" style="background-image:url(../web/images/bg-2.jpg)">
+                        <div class="swiper-slide" style="background-image:url({{ asset('images/bg-2.jpg') }})">
                             <div class="hero-caption text-white center">
-                                <h2 class="font-weight-light">Welcome to Eastern</h2>
+                                <h2 class="font-weight-light">Décrochez plus d'entetiens d'embauche !</h2>
                                 <p class="mrg-top-20">Lorem Ipsum is simply dummy text of the printing and typesetting industry. printer took a galley of type and scrambled it to make a type.</p>
                                 <div class="mrg-top-30">
-                                    <a href="" class="btn btn-md btn-white">Start Now</a>
+                                    <a href="{{ path('pimpit') }}" class="btn btn-md btn-white">Pimp It !</a>
                                 </div>
-                            </div>      
+                            </div>
                         </div>
-                        <div class="swiper-slide" style="background-image:url(../web/images/bg-3.jpg)">
+                        <div class="swiper-slide" style="background-image:url({{ asset('images/bg-3.jpg') }})">
                             <div class="hero-caption text-white center-right">
-                                <h2 class="font-weight-light">Pixel Perfection</h2>
+                                <h2 class="font-weight-light">Conversion des entretiens à 100% !</h2>
                                 <p class="mrg-top-20">Lorem Ipsum is simply dummy text of the printing and typesetting industry. printer took a galley of type and scrambled it to make a type. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.</p>
                                 <div class="mrg-top-30">
-                                    <a href="" class="btn btn-md btn-white">Start Now</a>
+                                    <a href="{{ path('pimpit') }}" class="btn btn-md btn-white">Pimp It !</a>
                                 </div>
-                            </div>      
+                            </div>
                         </div>
                     </div>
-                    <div class="swiper-navigation navigation-2">
-                        <div class="swiper-hero-button-next"><i class="ei ei-right-chevron"></i></div>
-                        <div class="swiper-hero-button-prev"><i class="ei ei-left-chevron"></i></div>
-                    </div>
+                        <div class="swiper-navigation navigation-2">
+                            <div class="swiper-hero-button-next"><i class="ei ei-right-chevron"></i></div>
+                            <div class="swiper-hero-button-prev"><i class="ei ei-left-chevron"></i></div>
+                        </div>
                     <div class="swiper-hero-pagination swiper-bullet-1"></div>
                 </div>
             </div>
         </section>
         <!-- Hero End -->
-        
-        
+
+
         <!-- About Start -->
         <section id="about" class="section-1">
             <div class="container">
                 <div class="content-block-1 row">
                     <div class="col-md-6">
                         <div class="text-content">
-                            <h2 class="heading-1">Good to be <span class="theme-color">Creative</span></h2>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer                             took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
+                            <h2 class="heading-1">Votre CV en mode <span class="theme-color">Créatif</span></h2>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
                         </div><!-- /text-content -->
                     </div>
                     <div class="col-md-6">
                         <div class="img-style-1">
-                            <img class="img-responsive no-mobile-parallax" src="assets/images/about-bg1.jpg" alt="">
+                            <img class="img-responsive no-mobile-parallax" src="{{ asset('images/about-bg1.jpg') }}" alt="">
                         </div><!-- img-style-1 -->
                     </div>
                 </div>
-                
+
                 <div class="content-block-1 row">
                     <div class="col-md-6">
                         <div class="img-style-1 left">
-                            <img class="img-responsive no-mobile-parallax" src="assets/images/about-bg2.jpg" alt="">
+                            <img class="img-responsive no-mobile-parallax" src="{{ asset('images/about-bg2.jpg') }}" alt="">
                         </div><!-- img-style-1 -->
                     </div>
                     <div class="col-md-6">
                         <div class="text-content-right">
-                            <h2 class="heading-1 right">We Deliver <span class="theme-color">Quality</span></h2>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer                             took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
+                            <h2 class="heading-1 right">Nous produisons de la <span class="theme-color">Qualité</span></h2>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
                         </div><!-- /padding -->
                     </div>
                 </div>
             </div>
         </section>
         <!-- About End -->
-        
-        
+
+
         <!-- Features Start -->
         <section class="section-5">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
-                        <h2 class="heading-1">Advance Features</h2>
+                        <h2 class="heading-1">Nos engagements</h2>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
                         <p class="mrg-top-20">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has.</p>
-                        <div class="counter-style-1 mrg-vertical-30 row">
-                            <div class="col-md-6 col-sm-6 col-xs-6">
-                                <h2 class="counter theme-color">81,425</h2>
-                                <p>Likes</p>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-6">
-                                <h2 class="counter theme-color">52,867</h2>
-                                <p>Shares</p>
-                            </div>
-                        </div>
                     </div>
                     <div class="col-md-7 col-md-offset-1">
                         <div class="row">
@@ -131,99 +121,97 @@
             </div>
         </section>
         <!-- Features End -->
-        
-        
+
+
         <!-- Portfolio Start -->
         <section class="section-1">
             <div class="container">
                 <div class="text-center">
-                    <h2>Recent <span class="theme-color">Works</span></h2>
+                    <h2><span class="theme-color">Réalisations</span> récentes</h2>
                     <p>Lorem Ipsum is simply dummy text</p>
                 </div><!-- / text-center -->
                 <div class="row mrg-top-50">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <a href="#" class="folio-item mrg-btm-30">
                             <div class="folio-style-1">
                                 <div class="folio-image">
-                                    <img class="img-responsive" src="assets/images/portfolio/folio-1.jpg" alt="">
+                                    <img class="img-responsive" src="{{ asset('images/modele-cv1.jpg') }}" alt="">
                                 </div><!-- /folio-image -->
                                 <div class="overlay">
                                     <div class="folio-caption">
                                         <div class="folio-content">
-                                            <h3 class="folio-tittle">A Pool</h3>
-                                            <span>Web / Graphic</span>
+                                            <h3 class="folio-tittle">Classic template</h3>
+                                            <span>Lorem Ipsum</span>
                                         </div><!-- /folio-content -->
                                     </div><!-- /folio-caption -->
                                 </div><!-- /overlay -->
                             </div><!-- folio-style -->
                         </a><!-- /folio-item -->
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-3">
                         <a href="#" class="folio-item mrg-btm-30">
                             <div class="folio-style-1">
                                 <div class="folio-image">
-                                    <img class="img-responsive" src="assets/images/portfolio/folio-2.jpg" alt="">
+                                    <img class="img-responsive" src="{{ asset('images/modele-cv2.jpg') }}" alt="">
                                 </div><!-- /folio-image -->
                                 <div class="overlay">
                                     <div class="folio-caption">
                                         <div class="folio-content">
-                                            <h3 class="folio-tittle">Collapse Book</h3>
-                                            <span>Print / Graphic</span>
+                                            <h3 class="folio-tittle">Creative template</h3>
+                                            <span>Lorem ipsum</span>
                                         </div><!-- /folio-content -->
                                     </div><!-- /folio-caption -->
                                 </div><!-- /overlay -->
                             </div><!-- folio-style -->
                         </a><!-- /folio-item -->
-                        <div class="row">
-                            <div class="col-md-6">
-                                <a href="#" class="folio-item mrg-btm-30">
-                                    <div class="folio-style-1">
-                                        <div class="folio-image">
-                                            <img class="img-responsive" src="assets/images/portfolio/folio-3.jpg" alt="">
-                                        </div><!-- /folio-image -->
-                                        <div class="overlay">
-                                            <div class="folio-caption">
-                                                <div class="folio-content">
-                                                    <h3 class="folio-tittle">Drunk Cinder</h3>
-                                                    <span>Print / Graphic</span>
-                                                </div><!-- /folio-content -->
-                                            </div><!-- /folio-caption -->
-                                        </div><!-- /overlay -->
-                                    </div><!-- folio-style -->
-                                </a><!-- /folio-item -->
-                            </div>
-                             <div class="col-md-6">
-                                <a href="#" class="folio-item mrg-btm-30">
-                                    <div class="folio-style-1">
-                                        <div class="folio-image">
-                                            <img class="img-responsive" src="assets/images/portfolio/folio-4.jpg" alt="">
-                                        </div><!-- /folio-image -->
-                                        <div class="overlay">
-                                            <div class="folio-caption">
-                                                <div class="folio-content">
-                                                    <h3 class="folio-tittle">Full Meal</h3>
-                                                    <span>Print / Graphic</span>
-                                                </div><!-- /folio-content -->
-                                            </div><!-- /folio-caption -->
-                                        </div><!-- /overlay -->
-                                    </div><!-- folio-style -->
-                                </a><!-- /folio-item -->
-                            </div>
-                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="#" class="folio-item mrg-btm-30">
+                            <div class="folio-style-1">
+                                <div class="folio-image">
+                                    <img class="img-responsive" src="{{ asset('images/modele-cv3.jpg') }}" alt="">
+                                </div><!-- /folio-image -->
+                                <div class="overlay">
+                                    <div class="folio-caption">
+                                        <div class="folio-content">
+                                            <h3 class="folio-tittle">Original template</h3>
+                                            <span>Lorem ipsum</span>
+                                        </div><!-- /folio-content -->
+                                    </div><!-- /folio-caption -->
+                                </div><!-- /overlay -->
+                            </div><!-- folio-style -->
+                        </a><!-- /folio-item -->
+                    </div>
+                    <div class="col-md-3">
+                        <a href="#" class="folio-item mrg-btm-30">
+                            <div class="folio-style-1">
+                                <div class="folio-image">
+                                    <img class="img-responsive" src="{{ asset('images/modele-cv4.jpg') }}" alt="">
+                                </div><!-- /folio-image -->
+                                <div class="overlay">
+                                    <div class="folio-caption">
+                                        <div class="folio-content">
+                                            <h3 class="folio-tittle">Modern template</h3>
+                                            <span>Lorem ipsum</span>
+                                        </div><!-- /folio-content -->
+                                    </div><!-- /folio-caption -->
+                                </div><!-- /overlay -->
+                            </div><!-- folio-style -->
+                        </a><!-- /folio-item -->
                     </div>
                 </div>
             </div><!-- /contaner -->
         </section>
-        <!-- Portfolio End -->        
-        
-        
+        <!-- Portfolio End -->
+
+
         <!-- Testimonial Start -->
         <section class="section-3">
             <div class="content-block-2">
                 <div class="image-container col-md-offset-6 col-md-6">
-                    <div class="background-holder has-content" style="background-image: url(assets/images/bg-2.jpg)">
+                    <div class="background-holder has-content" style="background-image: url({{ asset('images/bg-3.jpg') }})">
                         <div class="content">
-                            <img class="img-responsive mrg-horizon-auto" src="assets/images/logo/logo-1.png" alt="">
+                            <img class="img-responsive mrg-horizon-auto" src="{{ asset('images/logo-pimp.png') }}" alt="">
                         </div><!-- content -->
                     </div><!-- /background-holder -->
                 </div><!-- /image-container -->
@@ -231,7 +219,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="text-content">
-                                <h2 class="mrg-btm-40">Clients Said</h2>
+                                <h2 class="mrg-btm-40">Témoignages de nos <span class="theme-color">Clients</span></h2>
                                 <div class="testimonial-1">
                                     <div class="swiper-single swiper-container">
                                         <div class="swiper-wrapper mrg-btm-70">
@@ -257,62 +245,9 @@
                             </div><!-- /content -->
                         </div>
                     </div>
-                </div>            
+                </div>
             </div><!-- /content-block-2 -->
         </section>
         <!-- Testimonial End -->
-        
-        
-        <!-- Blog Start -->
-        <section class="section-2">
-            <div class="container">
-                <div class="text-center">
-                    <h2>Fresh <span class="theme-color">News</span></h2>
-                    <p>Lorem Ipsum is simply dummy text </p>
-                </div><!-- /text-center -->
-                <div class="blog-default mrg-top-70">
-                    <div class="blog-item">
-                        <div class="row">
-                            <div class="col-md-7">
-                                <img class="img-responsive" src="assets/images/blog/blog-1.jpg" alt="" data-parallax='{"y": 30}'>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="blog-content">
-                                    <h3 class="blog-tittle">Lorem Ipsum is simply dummy text </h3>
-                                    <div class="blog-meta">
-                                        <span class="author">By Henry Chew</span>,
-                                        <span class="date"> May 18th 2016</span>
-                                    </div><!-- /blog-meta -->
-                                    <p class="blog-article">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries,</p>
-                                    <div class="continue-reading">
-                                        <a href="#"><i class="ei ei-right-arrow"></i></a>
-                                    </div><!-- /continue-reading -->
-                                </div><!-- /blog-content -->
-                            </div>
-                        </div>
-                    </div><!-- /blog-item  -->
-                    <div class="blog-item">
-                        <div class="row">
-                            <div class="col-md-5">
-                                <div class="blog-content left">
-                                    <h3 class="blog-tittle">Lorem Ipsum is simply dummy text </h3>
-                                    <div class="blog-meta">
-                                        <span class="author">By Henry Chew</span>,
-                                        <span class="date"> May 18th 2016</span>
-                                    </div><!-- /blog-meta -->
-                                    <p class="blog-article">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries,</p>
-                                    <div class="continue-reading">
-                                        <a href="#"><i class="ei ei-right-arrow"></i></a>
-                                    </div><!-- /continue-reading -->
-                                </div><!-- /blog-content -->
-                            </div>
-                            <div class="col-md-7">
-                                <img class="img-responsive" src="assets/images/blog/blog-2.jpg" alt="" data-parallax='{"y": -30}'>
-                            </div>
-                        </div>
-                    </div><!-- /blog-item  -->
-                </div><!-- /blog-default -->
-            </div><!-- container -->
-        </section>
-        <!-- Blog End -->
+
 {% endblock %}
