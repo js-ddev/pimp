@@ -4,6 +4,8 @@
 
 {% block content %}
 
+{{ dump(commandes) }}
+
 <!-- DF - FIN HEAD, NAVTOP ET NAVSIDE -->
 
         <!-- DF - DEBUT CONTENU -->
@@ -32,7 +34,7 @@
                 </div>
                 <!-- /.row -->
 
-                <!-- DF - DEBUT TABLEAU DES MEMBRES -->
+                <!-- DF - DEBUT TABLEAU DES COMMANDES -->
 
                 <div class="row">
 
@@ -54,18 +56,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {% for commande in commandes %}
                                     <tr>
+                                        <td>{{ commande.id }}</td>
+                                        <td>{{ commande.idMembre }}</td>
+                                        <td><a href="#">{{ commande.idCv }}</a></td>
+                                        <td>{{ commande.dateCommande }}</td>
+                                        <td>{{ commande.statutCommande }}</td>
+                                        <td>{{ commande.prestation }}</td>
+                                        <td>{{ commande.prix }}</td>
+                                        <td>{{ commande.commentaires }}</td>
                                         <td><a href="#"><span class="glyphicon glyphicon-search"></span></a></td>
                                         <td><span class="glyphicon glyphicon-edit"></span></td>
                                         <td><span class="glyphicon glyphicon-trash"></span></td>
                                     </tr>
+                                    {% endfor %}
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
 
-                <!-- FIN TABLEAU DES MEMBRES -->
+                <!-- FIN TABLEAU DES COMMANDES -->
 
                 <!-- DF - DEBUT FORMULAIRE -->
 
@@ -76,10 +88,52 @@
                 <form role="form" method="POST">
 
                     <div class="row">
-
+                        {% for commande in commandes %}
                         <div class="col-lg-6"> <!-- formulaire coté gauche -->
 
-                    
+                            <input type="hidden" name="id" value="{{ commande.id }}" />
+
+                            <div class="form-group">
+                                <label>Date de la commande</label>
+                                <input class="form-control" placeholder="Date de la commande" name="dateCommande" value="{{ commande.dateCommande }}">
+                            </div>
+
+<!--                             <div class="form-group">
+                                <label>Nom</label>
+                                <input class="form-control" placeholder="Nom" name="nom" value="{{ membre.nom }}">
+                            </div>
+
+                            <div class="form-group">
+                            <label>Statut membre</label>
+                            <select class="form-control" name="statut_membre" value="{{ membre.statut_membre }}">
+                                <option selected="" value="enregistre">Enregistré</option>
+                                <option selected="" value="paye">Payé</option>
+                            </select>
+                            </div>
+
+                            <div class="form-group">
+                            <label>Statut membre</label>
+                            <select class="form-control" name="statut_membre" value="{{ membre.statut_membre }}">
+                                <option selected="" value="enregistre">Enregistré</option>
+                                <option selected="" value="paye">Payé</option>
+                            </select>
+                            </div>                            
+
+                            <div class="form-group">
+                                <label>Téléphone</label>
+                                <input class="form-control" placeholder="Téléphone" name="telephone" value="{{ membre.telephone }}">
+                            </div> -->
+
+                        </div>
+
+                        <div class="col-lg-6"> <!-- formulaire coté droit -->
+
+<!--                             <div class="form-group">
+                                <label>Code Postal</label>
+                                <input class="form-control" placeholder="Code Postal" name="code_postal" value="{{ membre.code_postal }}">
+                            </div>
+ -->
+                        {% endfor %}
 
                             <button type="submit" class="btn btn-default">Enregistrer</button>
 
