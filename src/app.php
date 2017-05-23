@@ -6,6 +6,9 @@ use Silex\Provider\TwigServiceProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\HttpFragmentServiceProvider;
 use Silex\Provider\FormServiceProvider;
+use Silex\Provider\UrlGeneratorServiceProvider;
+use Payum\Silex\PayumProvider;
+use AppBundle\FileUploader;
 
 $app = new Application();
 $app->register(new ServiceControllerServiceProvider());
@@ -50,7 +53,17 @@ $app -> register(new Silex\Provider\SecurityServiceProvider(), array(
             'pattern' => '^/',
             'anonymous' => true,
             'logout' => true,
+            'form' => array('login_path' => '/connexion','check_path' => '/connexion_check'),
+            // 'users' => function() use($app){
+            //     return new Entity\Membre($app['db']);
+            //     }
             ),
         ),
     ));
+
+// JS - Enregistrement du service d'upload de fichiers :
+// $container->register('app.fichier_uploader', FileUploader::class)
+    // ->addArgument('%fichier_directory%');
+
+
 return $app;

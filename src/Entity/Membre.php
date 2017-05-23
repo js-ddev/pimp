@@ -3,6 +3,7 @@
 namespace Entity;
 
 use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\ORM\Mapping as ORM;
 
 class Membre
 
@@ -21,8 +22,10 @@ class Membre
     private $statut_membre;
     private $date_inscription;
     private $role;
+    private $salt;
 
-// JS - AJout de la propriété fichier de l'entité cv :
+// JS - AJout des propriétés photo et fichier de l'entité cv :
+    private $photo;
     private $fichier;
 
 
@@ -188,11 +191,47 @@ class Membre
     public function getRole() {
         return $this->role;
     }
+    //-------------------------------//
+
+    // SALT--------------------------//
+    public function setSalt($salt) {
+        return $this->salt = $salt;
+    }
+
+    public function getSalt() {
+        return $this->salt;
+    }
+    //------------------------------//
 
     // Ce get est utilisé lors de la vérification pour la connexion
     public function getRoles(){
         return array($this->getRole());
 
+    }
+
+// JS - Ajout du Fichier de l'entité Photo :
+    /**
+     * Gets the value of fichier.
+     *
+     * @return mixed
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * Sets the value of fichier.
+     *
+     * @param mixed $fichier the fichier
+     *
+     * @return self
+     */
+    public function setPhoto(Cv $photo)
+    {
+        $this-> photo = $photo;
+
+        return $this;
     }
 
 // JS - Ajout du Fichier de l'entité CV :

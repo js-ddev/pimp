@@ -13,7 +13,11 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+
+// JS - Spécifique pour l'envoi de fichier :
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -35,7 +39,7 @@ class PimpitType extends AbstractType
                     ))
                 ),
                 'required' => true,
-                'label_attr' => array(
+                'attr' => array(
                     'placeholder' => 'Votre prénom',
                     'class' => 'form-control',
                 ),
@@ -50,7 +54,7 @@ class PimpitType extends AbstractType
                     ))
                 ),
                 'required' => true,
-                'label_attr' => array(
+                'attr' => array(
                     'placeholder' => 'Votre nom',
                     'class' => 'form-control',
                 ),
@@ -61,25 +65,26 @@ class PimpitType extends AbstractType
                 'constraints' => array(
                     new Assert\Email(),
                 ),
-                'label_attr' => array(
+                'attr' => array(
                     'placeholder' => 'Votre adresse email',
                     'class' => 'form-control',
                 ),
             ))
 
             -> add('date_naissance', TextType::class, array(
-                'label_attr' => array(
+                'attr' => array(
                     'placeholder' => 'Votre date de naissance',
                     'class' => 'form-control',
                 ),
             ))
-            -> add('Fichier', FileType::class, array(
-                    'label' => 'Votre ancien CV (si vous en avez un)',
+
+            -> add('photo', FileType::class, array(
+                    'label' => 'Votre photo d\'identité',
                 )
             )
             -> add('adresse', TextType::class, array(
                 'required' => true,
-                'label_attr' => array(
+                'attr' => array(
                     'placeholder' => 'Adresse',
                     'class' => 'form-control',
                 ),
@@ -87,7 +92,7 @@ class PimpitType extends AbstractType
 
             -> add('ville', TextType::class, array(
                 'required' => true,
-                'label_attr' => array(
+                'attr' => array(
                     'placeholder' => 'Ville',
                     'class' => 'form-control',
                 ),
@@ -95,7 +100,7 @@ class PimpitType extends AbstractType
 
             -> add('code_postal', TextType::class, array(
                 'required' => true,
-                'label_attr' => array(
+                'attr' => array(
                     'placeholder' => 'Code postal',
                     'class' => 'form-control',
                 ),
@@ -103,7 +108,7 @@ class PimpitType extends AbstractType
 
             -> add('pays', TextType::class, array(
                 'required' => true,
-                'label_attr' => array(
+                'attr' => array(
                     'placeholder' => 'Pays',
                     'class' => 'form-control',
                 ),
@@ -111,11 +116,23 @@ class PimpitType extends AbstractType
 
             -> add('telephone', TextType::class, array(
                 'required' => true,
-                'label_attr' => array(
+                'attr' => array(
                     'placeholder' => 'Téléphone',
                     'class' => 'form-control',
                 ),
-            ));
+            ))
+
+            -> add('fichier', FileType::class, array(
+                    'label' => 'Votre ancien CV (si vous en avez un)',
+                )
+            );
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => Membre::class,
+        ));
     }
 
 
