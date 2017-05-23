@@ -33,19 +33,19 @@
                                     <div class="col-md-7 col-md-offset-5">
                                         <div class="text-content pdd-horizon-60">
                                             <h3 class="mrg-btm-30 mrg-top-15">Connection</h3>
-                                            <form>
+                                            <form action="{{ path('login_check') }}" method="post">
                                                 <div class="form-wrapper">
                                                     <label><b>Email</b></label>
-                                                    <input type="text" class="form-control" placeholder="Emaile">
+                                                    <input type="text" class="form-control" placeholder="Email" name="_username" value="{{ last_username }}">
                                                 </div>
                                                 <div class="form-wrapper">
                                                     <label><b>Mot de passe</b></label>
-                                                    <input type="password" class="form-control" placeholder="Mot de passe">
+                                                    <input type="password" class="form-control" placeholder="Mot de passe" name="_password">
                                                 </div>
                                                 <div>
-                                                <a href=""><i class="text-gray">Mot de passe oublié ?</i></a>
+                                                <a href="#"><i class="text-gray">Mot de passe oublié ?</i></a>
                                                 </div>
-                                                <input class="btn btn-md btn-theme mrg-vertical-20" type="submit" value="Sign in">
+                                                <input class="btn btn-md btn-theme mrg-vertical-20" type="submit" value="Connexion">
                                             </form>
                                         </div><!-- /content -->
                                     </div>
@@ -55,8 +55,8 @@
                                 <div class="background-holder theme-overlay has-content" style="background-image:url({{ asset('images/about-bg1.jpg') }})">
                                     <div class="content pdd-horizon-50">
                                         <h3 class="mrg-btm-20 text-white">Connectez-vous maintenant !</h3>
-                                        <p class="text-white font-size-14">This Modal is locked on, but you can optionaly turn this function off.</p>
-                                        <button class="btn btn-sm btn-white-inverse mrg-vertical-20">Register</button>
+                                        <p class="text-white font-size-14">Si vous n'avez pas encore de compte sur Pimp My CV, merci de vous inscrire !</p>
+                                        <button class="btn btn-sm btn-white-inverse mrg-vertical-20">S'inscrire</button>
                                     </div><!-- content -->
                                 </div><!-- /background-holder -->
                             </div><!-- /image-container -->

@@ -12,6 +12,25 @@ use Entity\Membre;
 class MembreDAO extends DAO implements UserProviderInterface
 {
 
+    /**
+    * Retourne un objet de la classe Membre.
+    *
+    * @param integer $id_membre The user id_membre.
+    *
+    * @return \Entity\Membre|throws an exception si pas de matching
+    */
+    public function find($id_membre){
+        $requete = "SELECT * FROM membre WHERE id_membre = ?";
+        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_membre));
+    
+        if($resultat){
+            return $this -> buildEntityObject($resultat);
+        }
+        else{
+            throw new \Exception("Aucun membre à l'id:" . $id_membre);
+        }
+    }
+
     public function findAll(){
         $requete = "SELECT * FROM membre";
         $resultat = $this -> getDb() -> fetchAll($requete);
@@ -35,7 +54,7 @@ class MembreDAO extends DAO implements UserProviderInterface
     */
     public function save(Membre $membre){
         $membreData = array(
-            'email' => $membre -> getEmail(),
+            'username' => $membre -> getUsername(),
             'password' => $membre -> getPassword(),
             'salt' => $membre -> getSalt(),
         );
@@ -51,7 +70,7 @@ class MembreDAO extends DAO implements UserProviderInterface
 
 // JS - attention manque encore des valeurs :
     $membre -> setId($value['id']);
-    $membre -> setEmail($value['email']);
+    $membre -> setUsername($value['username']);
     $membre -> setNom($value['nom']);
     $membre -> setPrenom($value['prenom']);
     $membre -> setDateNaissance($value['date_naissance']);
@@ -63,7 +82,7 @@ class MembreDAO extends DAO implements UserProviderInterface
     $membre -> setPays($value['pays']);
     $membre -> setStatutMembre($value['statut_membre']);
     $membre -> setDateInscription($value['date_inscription']);
-    $membre->setSalt($value['salt']);
+    $membre -> setSalt($value['salt']);
 
     return $membre;
 
@@ -92,7 +111,7 @@ class MembreDAO extends DAO implements UserProviderInterface
     *
     */
     public function supportsClass($class){
-        return 'MySilex\Entity\Membre' === $class;
+        return 'Entity\Membre' === $class;
     }
 
     /**
