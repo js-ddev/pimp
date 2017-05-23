@@ -34,12 +34,12 @@ class Home
     }
 
     public function template_options(Application $app){
-        return $app['twig']->render('template-options.html.twig');
+        return $app['twig']->render('template_options.html.twig');
 
     }
 
     public function recapitulatif_commande(Application $app){
-        return $app['twig']->render('recapitulatif-commande.html.twig');
+        return $app['twig']->render('recapitulatif_commande.html.twig');
 
     }
 
@@ -49,7 +49,12 @@ class Home
     }
 
     public function validation_commande(Application $app){
-        return $app['twig']->render('validation-commande.html.twig');
+        return $app['twig']->render('validation_commande.html.twig');
+
+    }
+
+    public function index(Application $app){
+        return $app['twig']->render('index.html.twig');
 
     }
 
@@ -88,7 +93,7 @@ class Home
     public function connexion(Request $request, Application $app){
         $params = array(
             'error' => $app['security.last_error']($request),
-            'last_email' => $app['session'] -> get('_security.last_email'),
+            'last_username' => $app['session'] -> get('_security.last_username'),
             'title' => 'Connexion'
         );
 

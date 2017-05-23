@@ -8,11 +8,11 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 // JS - pour upload de fichiers via AppBundle :
 // use Doctrine\ORM\Mapping as ORM;
 
-class Membre
+class Membre implements Userinterface
 
 {
     private $id;
-    private $email;
+    private $username;
     private $password;
     private $nom;
     private $prenom;
@@ -44,12 +44,12 @@ class Membre
     //------------------------------//
 
     // EMAIL-----------------------//
-    public function getEmail() {
-        return $this->email;
+    public function getUsername() {
+        return $this->username;
     }
 
-    public function setEmail($email) {
-        $this->email = $email;
+    public function setUsername($username) {
+        $this->username = $username;
         return $this;
     }
     //-------------------------------//
@@ -206,7 +206,7 @@ class Membre
     }
     //------------------------------//
 
-    // Ce get est utilisé lors de la vérification pour la connexion
+    // Ce get est utilisé lors de la vérification pour la connexion 
     public function getRoles(){
         return array($this->getRole());
 
@@ -261,5 +261,16 @@ class Membre
 //
 //         return $this;
 //     }
+
+
+    // Adrien - Fonction imposée par UserInterface
+     /**
+    * @inheritDoc
+    */
+    public function eraseCredentials() 
+    {
+      // Nothing to do here
+    }
+
 
 }
