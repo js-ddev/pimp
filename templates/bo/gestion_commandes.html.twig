@@ -59,8 +59,8 @@
                                     {% for commande in commandes %}
                                     <tr>
                                         <td>{{ commande.id }}</td>
-                                        <td><a href="#">{{ commande.idMembre }}</a></td>
-                                        <td><a href="#">{{ commande.idCv }}</a></td>
+                                        <td><a href="#">{{ commande.idmembre }}</a></td>
+                                        <td><a href="#">{{ commande.idcv }}</a></td>
                                         <td>{{ commande.dateCommande }}</td>
                                         <td>{{ commande.statutCommande }}</td>
                                         <td>{{ commande.prestation }}</td>
@@ -95,33 +95,29 @@
 
                             <div class="form-group">
                                 <label>Date de la commande</label>
-                                <input class="form-control" placeholder="Date de la commande" name="dateCommande" value="{{ commande.dateCommande }}">
+                                <input class="form-control" placeholder="Date de la commande" name="datecommande" value="{{ commande.datecommande }}">
                             </div>
 
                             <div class="form-group">
-                                <label>Nom</label>
-                                <input class="form-control" placeholder="Nom" name="nom" value="{{ membre.nom }}">
-                            </div>
-
-                            <div class="form-group">
-                            <label>Statut membre</label>
-                            <select class="form-control" name="statut_membre" value="{{ membre.statut_membre }}">
-                                <option selected="" value="enregistre">Enregistré</option>
-                                <option selected="" value="paye">Payé</option>
+                            <label>Statut de la commande</label>
+                            <select class="form-control" name="statutcommande" value="{{ commande.statutcommande }}">
+                                <option selected="" value="brouillon">Brouillon</option>
+                                <option selected="" value="valide">Validé</option>
+                                <option selected="" value="termine">Terminé</option>
                             </select>
                             </div>
 
                             <div class="form-group">
-                            <label>Statut membre</label>
-                            <select class="form-control" name="statut_membre" value="{{ membre.statut_membre }}">
-                                <option selected="" value="enregistre">Enregistré</option>
-                                <option selected="" value="paye">Payé</option>
+                            <label>Prestation</label>
+                            <select class="form-control" name="prestation" value="{{ commande.prestation }}">
+                                <option selected="" value="standard">Standard</option>
+                                <option selected="" value="premium">Premium</option>
                             </select>
                             </div>                            
 
                             <div class="form-group">
-                                <label>Téléphone</label>
-                                <input class="form-control" placeholder="Téléphone" name="telephone" value="{{ membre.telephone }}">
+                                <label>Prix</label>
+                                <input class="form-control" placeholder="Prix" name="prix" value="{{ commande.prix }}">
                             </div>
 
                         </div>
@@ -129,8 +125,8 @@
                         <div class="col-lg-6"> <!-- formulaire coté droit -->
 
                             <div class="form-group">
-                                <label>Code Postal</label>
-                                <input class="form-control" placeholder="Code Postal" name="code_postal" value="{{ membre.code_postal }}">
+                                <label>Commentaires</label>
+                                <input class="form-control" placeholder="Commentaires" name="commentaires" value="{{ commande.commentaires }}">
                             </div>
 
                         {% endfor %}
