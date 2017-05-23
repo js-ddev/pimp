@@ -5,6 +5,7 @@ use Silex\Provider\AssetServiceProvider;
 use Silex\Provider\TwigServiceProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\HttpFragmentServiceProvider;
+use Silex\Provider\FormServiceProvider;
 use Silex\Provider\UrlGeneratorServiceProvider;
 use Payum\Silex\PayumProvider;
 use AppBundle\FileUploader;
@@ -14,6 +15,8 @@ $app->register(new ServiceControllerServiceProvider());
 $app->register(new AssetServiceProvider());
 $app->register(new TwigServiceProvider());
 $app->register(new HttpFragmentServiceProvider());
+$app->register(new FormServiceProvider());
+
 $app['twig'] = $app->extend('twig', function ($twig, $app) {
     // add custom globals, filters, tags, ...
 
@@ -30,8 +33,7 @@ $app['dao.commande'] = function ($app) {
 };
 
 // Rudy - Enregistrement des services obligatoires pour le paiement:
-// $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
-// $app->register(new Payum\Silex\PayumProvider());
+$app->register(new Payum\PayumProvider());
 
 
 // Adrien - Enregistrement des services pour les formulaires

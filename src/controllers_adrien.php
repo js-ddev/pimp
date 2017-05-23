@@ -25,5 +25,4 @@ $app -> get('/validation-commande/','Controllers\\Home::validation_commande') ->
 $app -> match('/inscription/', 'Controllers\\Home::inscription') -> bind('inscription');
 
 // Route pour formulaire de connexion
-
 $app -> match('/connexion/', 'Controllers\\Home::connexion') -> bind('connexion');
