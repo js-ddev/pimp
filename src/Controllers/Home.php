@@ -33,6 +33,27 @@ class Home
 
     }
 
+    public function template_options(Application $app){
+        return $app['twig']->render('template-options.html.twig');
+
+    }
+
+    public function recapitulatif_commande(Application $app){
+        return $app['twig']->render('recapitulatif-commande.html.twig');
+
+    }
+
+    public function paiement(Application $app){
+        return $app['twig']->render('paiement.html.twig');
+
+    }
+
+    public function validation_commande(Application $app){
+        return $app['twig']->render('validation-commande.html.twig');
+
+    }
+
+    // Adrien - Route pour inscription utilisateur
     public function inscription(Request $request, Application $app){
         $membre = new \Entity\Membre;
         $membreForm = $app['form.factory'] -> create(\Form\Type\MembreType::class, $membre);
@@ -62,6 +83,17 @@ class Home
         return $app['twig']->render('inscription.html.twig', $params);
 
     }
+
+   // Adrien - Route pour connexion utilisateur
+    public function connexion(Request $request, Application $app){
+        $params = array(
+            'error' => $app['security.last_error']($request),
+            'last_email' => $app['session'] -> get('_security.last_email'),
+            'title' => 'Connexion'
+        );
+
+        return $app['twig'] -> render('connexion.html.twig', $params);
+        }
 
 // JS - Route pour la connexion à la première page du formulaire Pimpit :
 

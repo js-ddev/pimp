@@ -22,6 +22,7 @@ class Membre
     private $statut_membre;
     private $date_inscription;
     private $role;
+    private $salt;
 
 // JS - AJout des propriétés photo et fichier de l'entité cv :
     private $photo;
@@ -190,6 +191,17 @@ class Membre
     public function getRole() {
         return $this->role;
     }
+    //-------------------------------//
+
+    // SALT--------------------------//
+    public function setSalt($salt) {
+        return $this->salt = $salt;
+    }
+
+    public function getSalt() {
+        return $this->salt;
+    }
+    //------------------------------//
 
     // Ce get est utilisé lors de la vérification pour la connexion
     public function getRoles(){

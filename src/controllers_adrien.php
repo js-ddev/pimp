@@ -1,8 +1,5 @@
 <?php
 
-// Ancienne route vers le formulaire pimpit en html :
-// $app -> get('/pimpit/','Controllers\\Home::formulaire') -> bind('pimpit');
-
 $app -> match('/pimpit/','Controllers\\Home::formulaire') -> bind('pimpit');
 
 $app -> get('/modeles/','Controllers\\Home::modeles') -> bind('modeles');
@@ -28,4 +25,5 @@ $app -> get('/validation-commande/','Controllers\\Home::validation_commande') ->
 $app -> match('/inscription/', 'Controllers\\Home::inscription') -> bind('inscription');
 
 // Route pour formulaire de connexion
+
 $app -> match('/connexion/', 'Controllers\\Home::connexion') -> bind('connexion');
