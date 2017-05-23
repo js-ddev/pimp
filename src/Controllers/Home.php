@@ -105,10 +105,10 @@ class Home
 
         if($membreForm -> isSubmitted() && $membreForm -> isValid()){
             $file = $membre->getFichier();
-            $fileName = md5(uniqid()).'.'.$file->guessExtension();
-
+            // $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $fileName = $this->get('app.fichier_uploader')->upload($file);
             $file->move(
-                    '../../fichiers',
+                    $this->getParameter('fichier_directory'),
                 $fileName
             );
 
