@@ -3,6 +3,7 @@
 namespace Entity;
 
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class Cv
 

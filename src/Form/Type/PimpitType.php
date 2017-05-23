@@ -5,7 +5,7 @@
 namespace Form\Type;
 
 use Entity\Membre;
-use Entity\Cv;
+use Entity\Fichier;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,7 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 // JS - Spécifique pour l'envoi de fichier :
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\OptionsResolver\OptionsResolver;
+// use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -128,12 +128,13 @@ class PimpitType extends AbstractType
             );
     }
 
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults(array(
-            'data_class' => Membre::class,
-        ));
-    }
+// JS - Test de fonction pour envoi de fichier :
+    // public function configureOptions(OptionsResolver $resolver)
+    // {
+    //     $resolver->setDefaults(array(
+    //         'data_class' => Membre::class,
+    //     ));
+    // }
 
 
 }

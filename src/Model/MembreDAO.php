@@ -8,10 +8,25 @@ use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 
 use Entity\Membre;
+use Entity\Cv;
 
 class MembreDAO extends DAO implements UserProviderInterface
 {
 
+    // JS - création d' objets de CvDAO pour les fichiers :
+    // private $cvPhotoDAO;
+    //
+    // public function setCvPhotoDAO(CvPhotoDAO $cvPhotoDAO){
+    // $this -> CvPhotoDAO = $cvPhotoDAO;
+    // }
+    //
+    // private $cvFichierDAO;
+    //
+    // public function setCvFichierDAO(cvFichierDAO $cvFichierDAO){
+    // $this -> cvFichierDAO = $cvFichierDAO;
+    // }
+
+  
     /**
     * Retourne un objet de la classe Membre.
     *
@@ -30,6 +45,7 @@ class MembreDAO extends DAO implements UserProviderInterface
             throw new \Exception("Aucun membre à l'id:" . $id_membre);
         }
     }
+
 
     public function findAll(){
         $requete = "SELECT * FROM membre";
@@ -50,7 +66,7 @@ class MembreDAO extends DAO implements UserProviderInterface
     *
     * @param $membre l'utilisateur à enregistrer ou à modifier
     *
-    * @return \pimp\Entity\Membre 
+    * @return \pimp\Entity\Membre
     */
     public function save(Membre $membre){
         $membreData = array(
@@ -68,7 +84,6 @@ class MembreDAO extends DAO implements UserProviderInterface
     protected function BuildEntityObject(array $value){
     $membre = new Membre; // JS - crée un nouvel objet produit
 
-// JS - attention manque encore des valeurs :
     $membre -> setId($value['id']);
     $membre -> setUsername($value['username']);
     $membre -> setNom($value['nom']);
@@ -83,6 +98,22 @@ class MembreDAO extends DAO implements UserProviderInterface
     $membre -> setStatutMembre($value['statut_membre']);
     $membre -> setDateInscription($value['date_inscription']);
     $membre -> setSalt($value['salt']);
+
+    $membre -> setPhoto($value['photo']);
+    $membre -> setFichier($value['fichier']);
+
+// JS : Objets de CV pour l'envoi de fichiers :
+    // if(array_key_exists('photo', $value)){
+    //     $membre = $value['photo'];
+    //     $photo = $this -> cvPhotoDAO -> find($photo);
+    //     $membre -> setPhoto($photo);
+    // }
+    // if(array_key_exists('fichier', $value)){
+    //     $membre = $value['fichier'];
+    //     $fichier = $this -> cvFichierDAO -> find($fichier);
+    //     $membre -> setFichier($fichier);
+    // }
+
 
     return $membre;
 
@@ -99,7 +130,7 @@ class MembreDAO extends DAO implements UserProviderInterface
 
         if($resultat){
             return $this -> buildEntityObject($resultat);
-        } 
+        }
         else {
             throw new UsernameNotFoundException("L'utilisateur n'existe pas : " . $username);
         }
@@ -127,5 +158,3 @@ class MembreDAO extends DAO implements UserProviderInterface
         return $this -> loadUserByUsername($membre -> getUsername());
     }
 }
-
- ?>

@@ -7,8 +7,15 @@ use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\HttpFragmentServiceProvider;
 use Silex\Provider\FormServiceProvider;
 use Silex\Provider\UrlGeneratorServiceProvider;
+
+// Rudy - Enregistrement de Payum :
 use Payum\Silex\PayumProvider;
-use AppBundle\FileUploader;
+
+// JS - pour upload de fichiers via AppBundle :
+// use AppBundle\FileUploader;
+
+// JS - Enregistrement pour l'envoi de fichier :
+use Silex\Provider\ValidatorServiceProvider;
 
 $app = new Application();
 $app->register(new ServiceControllerServiceProvider());
@@ -70,9 +77,12 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
 ));
 
 
-// JS - Enregistrement du service d'upload de fichiers :
-// $container->register('app.fichier_uploader', FileUploader::class)
-    // ->addArgument('%fi0chier_directory%');
+
+// JS - Enregistrement du service d'upload de fichiers via AppBundle:
+// $app -> register(new AppBundle\FileUploader());
+// $app->register('app.fichier_uploader', FileUploader::class)
+//     ->addArgument('%fichier_directory%');
+//
 
 
 return $app;
