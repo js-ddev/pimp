@@ -47,23 +47,32 @@ $app -> register(new Silex\Provider\TranslationServiceProvider(), array(
 // JS - Enregistrement des services supplémentaires :
 $app -> register(new Silex\Provider\DoctrineServiceProvider());
 $app -> register(new Silex\Provider\SessionServiceProvider());
-$app -> register(new Silex\Provider\SecurityServiceProvider(), array(
+
+// Adrien - Gestion de la sécurité en connexion
+$app->register(new Silex\Provider\SecurityServiceProvider(), array(
     'security.firewalls' => array(
-        'secured' => array(
+        'user' => array(
             'pattern' => '^/',
+            'http' => true,
             'anonymous' => true,
             'logout' => true,
-            'form' => array('login_path' => '/connexion','check_path' => '/connexion_check'),
-            // 'users' => function() use($app){
-            //     return new Entity\Membre($app['db']);
-            //     }
+            'form' => array(
+                'login' => '/connexion/', 
+                'check_path' => '/login_check',
+                'default_target_path' => '/login/redirect',
+                'always_use_default_target_path' => true
             ),
-        ),
-    ));
+            'users' => function() use($app) {
+                return new Model\MembreDAO($app['db']);
+            }
+        )
+    )
+));
+
 
 // JS - Enregistrement du service d'upload de fichiers :
 // $container->register('app.fichier_uploader', FileUploader::class)
-    // ->addArgument('%fichier_directory%');
+    // ->addArgument('%fi0chier_directory%');
 
 
 return $app;
