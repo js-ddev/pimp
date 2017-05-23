@@ -3,7 +3,6 @@
 
 namespace Form\Type;
 
-use Entity\Membre;
 use Entity\Cv;
 
 use Symfony\Component\Form\AbstractType;
@@ -67,8 +66,9 @@ class OptionType extends AbstractType
             -> add('activite', ChoiceType::class, array(
                 'choices' => array(
                     'texte' => 'Texte',
-                    'icone' => 'Icone',
+                    'icone' => 'Icone'
                 ))
-            )
+            );
 
+    }
 }

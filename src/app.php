@@ -39,6 +39,11 @@ $app['dao.commande'] = function ($app) {
     return new Model\CommandeDAO($app['db']);
 };
 
+$app['dao.cv'] = function ($app) {
+    return new Model\CvDAO($app['db']);
+};
+
+
 // Rudy - Enregistrement des services obligatoires pour le paiement:
 $app->register(new Payum\PayumProvider());
 
