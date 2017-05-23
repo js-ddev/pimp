@@ -56,7 +56,8 @@
 							<div class="form-group">
 								<label><b>Photo</b></label>
 
-<!-- Manque le code pour l'envoi du fichier Photo -->
+								{{ form_errors(membreForm.photo) }}
+								{{ form_row(membreForm.photo) }}
 							</div>
 
 						</fieldset>
@@ -98,7 +99,8 @@
 						<h3>Si vous avez déjà un CV, vous pouvez nous l'envoyer :</h3>
 
 						<div class="form-group">
-<!-- Manque le code pour l'envoi du fichier CV -->
+							{{ form_errors(membreForm.fichier) }}
+							{{ form_row(membreForm.fichier) }}
 						</div>
 
 						<div class="form-group">
