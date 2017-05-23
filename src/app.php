@@ -69,10 +69,8 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
             'anonymous' => true,
             'logout' => true,
             'form' => array(
-                'login' => '/connexion/', 
-                'check_path' => '/login_check',
-                'default_target_path' => '/login/redirect',
-                'always_use_default_target_path' => true
+                'login_path' => '/connexion/', 
+                'check_path' => '/login_check'
             ),
             'users' => function() use($app) {
                 return new Model\MembreDAO($app['db']);

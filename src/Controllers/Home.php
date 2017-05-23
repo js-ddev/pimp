@@ -65,12 +65,24 @@ class Home
 
         $membreForm -> handleRequest($request);
 
+
+
         if($membreForm -> isSubmitted() && $membreForm -> isValid()){
             $salt = substr(md5(time()), 0, 23);
             $membre -> setSalt($salt);
 
-            $mdp = $membre -> getPassword();
-            $password_encode = $app['security.encoder.bcrypt'] -> encodePassword($mdp, $membre -> getSalt());
+
+            $password = $membre -> getPassword();
+
+            /*
+            // find the encoder for a UserInterface instance
+            $encoder = $app['security.encoder_factory']->getEncoder($membre);
+
+            // compute the encoded password for foo
+            $password_encode = $encoder->encodePassword($mdp, $membre->getSalt());
+            */
+            $password_encode = $app["security.encoder.bcrypt"]->encodePassword($password, $membre->getSalt());
+            
 
             $membre -> setPassword($password_encode);
 

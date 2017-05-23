@@ -86,6 +86,7 @@ class MembreDAO extends DAO implements UserProviderInterface
 
     $membre -> setId($value['id']);
     $membre -> setUsername($value['username']);
+    $membre -> setPassword($value['password']);
     $membre -> setNom($value['nom']);
     $membre -> setPrenom($value['prenom']);
     $membre -> setDateNaissance($value['date_naissance']);
@@ -99,8 +100,6 @@ class MembreDAO extends DAO implements UserProviderInterface
     $membre -> setDateInscription($value['date_inscription']);
     $membre -> setSalt($value['salt']);
 
-/*    $membre -> setPhoto($value['photo']);
-    $membre -> setFichier($value['fichier']);*/
 
 // JS : Objets de CV pour l'envoi de fichiers :
     // if(array_key_exists('photo', $value)){
