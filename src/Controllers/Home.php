@@ -82,7 +82,7 @@ class Home
             $password_encode = $encoder->encodePassword($mdp, $membre->getSalt());
             */
             $password_encode = $app["security.encoder.bcrypt"]->encodePassword($password, $membre->getSalt());
-            
+
 
             $membre -> setPassword($password_encode);
 
@@ -115,7 +115,7 @@ class Home
 // JS - Route pour la connexion à la première page du formulaire Pimpit :
 
     public function pimpit(Request $request, Application $app){
-        $membre = new \Entity\Membre;
+
         $fichier = new \Entity\Fichier;
 
         $membreForm = $app['form.factory']
@@ -126,26 +126,42 @@ class Home
         $membreForm -> handleRequest($request);
 
         if($membreForm -> isSubmitted() && $membreForm -> isValid()){
-            $path = __DIR__.'/../../fichiers/';
-            // $file = $fichier -> setPhoto();
-            $files = $request-> files ->get($membreForm->getName());
-            $photo = $files['photo'];
-            // $fileName = md5(uniqid()).'.'.$file->guessExtension();
-            $filename = $photo -> getClientOriginalName();
-            $photo -> move($path,$filename);
 
-            // $fichier->setPhoto($photo);
+// JS - Si l'utilisateur est connecté :
+            if(!(is_null($app['session'] -> getUsername()))){
 
-            $fichier -> setPhoto($filename);
+                $path = __DIR__.'/../../fichiers/';
+                // $file = $fichier -> setPhoto();
+                $files = $request-> files ->get($membreForm->getName());
 
-            $app['dao.membre'] -> save($membre);
-            $app['session'] -> getFlashBag() -> add('success', 'Votre inscription a bien été prise en compte !');
+                $photo = $files['photo'];
+                $cv = $files['fichier'];
+
+                // $fileName = md5(uniqid()).'.'.$file->guessExtension();
+                $filenamePhoto = $photo -> getClientOriginalName();
+                $filenameCv = $cv -> getClientOriginalName();
+
+                $photo -> move($path,$filenamePhoto);
+                $cv -> move($path,$filenameCv);
+
+                // $fichier->setPhoto($photo);
+
+                $fichier -> setPhoto($filenamePhoto);
+                $fichier -> setFichier($filenameCv);
+
+                $app['dao.membre'] -> save($membre);
+            }
+
+// Si l'utilisateur n'est pas connecté le renvoyer vers l'inscription/login :
+            else{
+                $app['session'] -> getFlashBag() -> add('info', 'Merci de vous inscrire ou de vous connecter');
+            }
         }
 
         $membreFormView = $membreForm -> createView();
 
         $params = array(
-            'title' => 'Pimpit',
+            'title' => 'Pimpez votre CV !',
             'membreForm' => $membreFormView
         );
 
