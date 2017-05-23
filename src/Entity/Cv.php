@@ -25,6 +25,14 @@ class Cv
     private $skype;
     private $site_perso;
     private $url_autre;
+    private $nombre_page;
+    private $modele;
+    private $couleur;
+    private $puce;
+    private $fond;
+    private $indicateur_performance;
+    private $actitivite;
+
 
 
 
@@ -47,7 +55,7 @@ class Cv
      *
      * @return self
      */
-    private function setId($id)
+    public function setId($id)
     {
         $this->id = $id;
 
@@ -71,7 +79,7 @@ class Cv
      *
      * @return self
      */
-    private function setIdMembre($id_membre)
+    public function setIdMembre($id_membre)
     {
         $this->id_membre = $id_membre;
 
@@ -95,7 +103,7 @@ class Cv
      *
      * @return self
      */
-    private function setTemplate($template)
+    public function setTemplate($template)
     {
         $this->template = $template;
 
@@ -119,7 +127,7 @@ class Cv
      *
      * @return self
      */
-    private function setNombreSections($nombre_sections)
+    public function setNombreSections($nombre_sections)
     {
         $this->nombre_sections = $nombre_sections;
 
@@ -143,7 +151,7 @@ class Cv
      *
      * @return self
      */
-    private function setPhoto($photo)
+    public function setPhoto($photo)
     {
         $this->photo = $photo;
 
@@ -167,7 +175,7 @@ class Cv
      *
      * @return self
      */
-    private function setFichier($fichier)
+    public function setFichier($fichier)
     {
         $this->fichier = $fichier;
 
@@ -191,7 +199,7 @@ class Cv
      *
      * @return self
      */
-    private function setLangueMaternelle($langue_maternelle)
+    public function setLangueMaternelle($langue_maternelle)
     {
         $this->langue_maternelle = $langue_maternelle;
 
@@ -215,7 +223,7 @@ class Cv
      *
      * @return self
      */
-    private function setEmailCv($email_cv)
+    public function setEmailCv($email_cv)
     {
         $this->email_cv = $email_cv;
 
@@ -239,7 +247,7 @@ class Cv
      *
      * @return self
      */
-    private function setFamille($famille)
+    public function setFamille($famille)
     {
         $this->famille = $famille;
 
@@ -263,7 +271,7 @@ class Cv
      *
      * @return self
      */
-    private function setNationalite($nationalite)
+    public function setNationalite($nationalite)
     {
         $this->nationalite = $nationalite;
 
@@ -287,7 +295,7 @@ class Cv
      *
      * @return self
      */
-    private function setPermisConduire($permis_conduire)
+    public function setPermisConduire($permis_conduire)
     {
         $this->permis_conduire = $permis_conduire;
 
@@ -311,7 +319,7 @@ class Cv
      *
      * @return self
      */
-    private function setPermisTravail($permis_travail)
+    public function setPermisTravail($permis_travail)
     {
         $this->permis_travail = $permis_travail;
 
@@ -335,7 +343,7 @@ class Cv
      *
      * @return self
      */
-    private function setTwitter($twitter)
+    public function setTwitter($twitter)
     {
         $this->twitter = $twitter;
 
@@ -359,7 +367,7 @@ class Cv
      *
      * @return self
      */
-    private function setLinkedin($linkedin)
+    public function setLinkedin($linkedin)
     {
         $this->linkedin = $linkedin;
 
@@ -383,7 +391,7 @@ class Cv
      *
      * @return self
      */
-    private function setSkype($skype)
+    public function setSkype($skype)
     {
         $this->skype = $skype;
 
@@ -407,7 +415,7 @@ class Cv
      *
      * @return self
      */
-    private function setSitePerso($site_perso)
+    public function setSitePerso($site_perso)
     {
         $this->site_perso = $site_perso;
 
@@ -431,12 +439,197 @@ class Cv
      *
      * @return self
      */
-    private function setUrlAutre($url_autre)
+    public function setUrlAutre($url_autre)
     {
         $this->url_autre = $url_autre;
 
         return $this;
     }
+
+     /**
+     * Gets the value of nombre_page.
+     *
+     * @return mixed
+     */
+    public function getNombrePage()
+    {
+        return $this->nombre_page;
+    }
+
+    /**
+     * Sets the value of nombre_page.
+     *
+     * @param mixed $nombre_page the nombre_page
+     *
+     * @return self
+     */
+    public function setNombrePage($nombre_page)
+    {
+        $this->nombre_page = $nombre_page;
+
+        return $this;
+    }
+
+
+     /**
+     * Gets the value of modele.
+     *
+     * @return mixed
+     */
+    public function getModele()
+    {
+        return $this->modele;
+    }
+
+    /**
+     * Sets the value of modele.
+     *
+     * @param mixed $modele the umodele
+     *
+     * @return self
+     */
+    public function setModele($modele)
+    {
+        $this->modele = $modele;
+
+        return $this;
+    }
+
+     /**
+     * Gets the value of couleur.
+     *
+     * @return mixed
+     */
+    public function getCouleur()
+    {
+        return $this->couleur;
+    }
+
+    /**
+     * Sets the value of couleur.
+     *
+     * @param mixed $couleur the couleur
+     *
+     * @return self
+     */
+    public function setCouleur($couleur)
+    {
+        $this->couleur = $couleur;
+
+        return $this;
+    }
+
+      /**
+     * Gets the value of puce.
+     *
+     * @return mixed
+     */
+    public function getPuce()
+    {
+        return $this->puce;
+    }
+
+    /**
+     * Sets the value of puce.
+     *
+     * @param mixed $puce the puce
+     *
+     * @return self
+     */
+    public function setPuce($puce)
+    {
+        $this->puce = $puce;
+
+        return $this;
+    }
+
+        /**
+     * Gets the value of fond.
+     *
+     * @return mixed
+     */
+    public function getFond()
+    {
+        return $this->fond;
+    }
+
+    /**
+     * Sets the value of fond.
+     *
+     * @param mixed $fond the fond
+     *
+     * @return self
+     */
+    public function setFond($fond)
+    {
+        $this->fond = $fond;
+
+        return $this;
+    }
+
+        /**
+     * Gets the value of indicateur_performance.
+     *
+     * @return mixed
+     */
+    public function getIndicateurPerformance()
+    {
+        return $this->indicateur_performance;
+    }
+
+    /**
+     * Sets the value of indicateur_performance.
+     *
+     * @param mixed $indicateur_performance the indicateur_performance
+     *
+     * @return self
+     */
+    public function setIndicateurPerformance($indicateur_performance)
+    {
+        $this->indicateur_performance = $indicateur_performance;
+
+        return $this;
+    }
+
+        /**
+     * Gets the value of activite.
+     *
+     * @return mixed
+     */
+    public function getActivite()
+    {
+        return $this->activite;
+    }
+
+    /**
+     * Sets the value of activite.
+     *
+     * @param mixed $activite the activite
+     *
+     * @return self
+     */
+    public function setIndicateurPerformance($activite)
+    {
+        $this->activite = $activite;
+
+        return $this;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 ?>
