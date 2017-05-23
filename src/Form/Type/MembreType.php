@@ -20,42 +20,39 @@ class MembreType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options){
 		$builder
 		-> add('email', EmailType::class, array(
-				'constraints' => array(
-					new Assert\NotBlank(),
-					new Assert\Length(array(
-						'min' => 3,
-						'max' => 20
-					))
-				),
-				'label_attr' => array(
-					'placeholder' => 'Email',
-					'class' => 'form-control',
-				),
-				'required' => true,
-			))
-			-> add('password', RepeatedType::class, array(
-				'constraints' => array(
-					new Assert\NotBlank(),
-					new Assert\Length(array(
-						'min' => 3,
-						'max' => 20
-					))
-				),
-				'invalid_message' => 'Les mots de passe doivent correspondre.',
-    			'options' => array('attr' => array('class' => 'password-field')),
-   				'required' => true,
-    			'first_options'  => array(
-    				'label_attr' => array(
-						'placeholder' => 'Mot de passe',
-						'class' => 'form-control',
-    				)
-    			),
-    			'second_options' => array(
-    				'label_attr' => array(
-						'placeholder' => 'Confirmation du mot de passre',
-						'class' => 'form-control',
-    				)
-				)	
-			));
+			'constraints' => array(
+				new Assert\NotBlank(),
+				new Assert\Length(array(
+					'min' => 3,
+					'max' => 30
+				))
+			),
+			'attr' => array(
+				'placeholder' => 'Email',
+				'class' => 'form-control',
+			),
+			'required' => true,
+		))
+		-> add('password', RepeatedType::class, array(
+			'constraints' => array(
+				new Assert\NotBlank(),
+				new Assert\Length(array(
+					'min' => 3,
+					'max' => 30
+				))
+			),
+			'type' => PasswordType::class,
+			'required' => true,
+			'first_options'  => array('attr' => array(
+				'placeholder' => 'Mot de passe',
+				'class' => 'form-control',
+				)
+			),
+			'second_options' => array('attr' => array(
+				'placeholder' => 'Confirmation du mot de passe',
+				'class' => 'form-control',
+				)
+			)	
+		));
 	}
 }
