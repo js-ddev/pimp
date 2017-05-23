@@ -34,7 +34,7 @@ class Home
     }
 
     public function template_options(Application $app){
-        return $app['twig']->render('template-options.html.twig');
+        return $app['twig']->render('template_options.html.twig');
 
     }
 

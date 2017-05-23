@@ -29,7 +29,7 @@ class AutreInfo
      *
      * @return self
      */
-    private function setId($id)
+    public function setId($id)
     {
         $this->id = $id;
 
@@ -53,7 +53,7 @@ class AutreInfo
      *
      * @return self
      */
-    private function setIdCv($id_cv)
+    public function setIdCv($id_cv)
     {
         $this->id_cv = $id_cv;
 
@@ -77,7 +77,7 @@ class AutreInfo
      *
      * @return self
      */
-    private function setType($type)
+    public function setType($type)
     {
         $this->type = $type;
 
@@ -101,7 +101,7 @@ class AutreInfo
      *
      * @return self
      */
-    private function setDescription($description)
+    public function setDescription($description)
     {
         $this->description = $description;
 
