@@ -23,6 +23,7 @@
 				<div class="row">
 					<h2 class="mrg-btm-30">Formulaire CV</h2>
 					<form class="form" action="POST">
+					</form>
 						<h2>Informations obligatoires :</h2>
 
 						<fieldset>
@@ -57,7 +58,7 @@
 								<label><b>Photo</b></label>
 
 								{{ form_errors(membreForm.photo) }}
-								{{ form_row(membreForm.photo) }}
+								{{ form_widget(membreForm.photo) }}
 							</div>
 
 						</fieldset>
@@ -100,7 +101,7 @@
 
 						<div class="form-group">
 							{{ form_errors(membreForm.fichier) }}
-							{{ form_row(membreForm.fichier) }}
+							{{ form_widget(membreForm.fichier) }}
 						</div>
 
 						<div class="form-group">
