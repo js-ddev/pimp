@@ -31,7 +31,7 @@ class Cv
     private $puce;
     private $fond;
     private $indicateur_performance;
-    private $actitivite;
+    private $activite;
 
 
 
@@ -608,25 +608,12 @@ class Cv
      *
      * @return self
      */
-    public function setIndicateurPerformance($activite)
+    public function setActivite($activite)
     {
         $this->activite = $activite;
 
         return $this;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
