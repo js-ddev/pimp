@@ -45,7 +45,7 @@
 37. Blog Default
 38. Blog Grid
 39. Blog Card
-40. Blog List 
+40. Blog List
 41. Blog Classic
 42. Blog Single Post
 
@@ -5733,7 +5733,8 @@ section {
 input.form-control {
   min-height: 40px;
   border-radius: 0;
-  padding: 15px;
+/* JS - Modif du padding des formulaires pour le placeholder */
+  padding: 5px;
   border: 1px solid #ececec;
   font-size: 15px;
   color: #333743;
@@ -7273,7 +7274,7 @@ h5.heading-1.second-line:after {
     	background-color: $default-light-gray;
     	@include positioning($top: 50%, $left: 10px);
     }
-    
+
     &:after {
     	content: "";
     	position: absolute;

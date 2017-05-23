@@ -272,5 +272,4 @@ class Membre implements Userinterface
       // Nothing to do here
     }
 
-
 }
