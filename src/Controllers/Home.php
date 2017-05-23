@@ -137,4 +137,28 @@ class Home
 
     }
 
+// Rudy - Route pour la génération du formulaire options
+    public function option(Request $request, Application $app){
+        $cv = new \Entity\Cv;
+        $optionForm = $app['form.factory'] -> create(\Form\Type\OptionType::class, $cv);
+
+        $optionForm -> handleRequest($request);
+
+        if($optionForm -> isSubmitted() && $optionForm -> isValid()){
+
+          /*  $app['dao.cv'] -> save($cv);*/
+            $app['session'] -> getFlashBag() -> add('success', 'vos options sont prises en compte !');
+        }
+
+        $optionFormView = $optionForm -> createView();
+
+        $params = array(
+            'title' => 'Options',
+            'optionForm' => $optionFormView
+        );
+
+        return $app['twig']->render('template_options.html.twig', $params);
+
+    }
+
 }
