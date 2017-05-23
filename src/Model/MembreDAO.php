@@ -26,7 +26,7 @@ class MembreDAO extends DAO implements UserProviderInterface
     // $this -> cvFichierDAO = $cvFichierDAO;
     // }
 
-  
+
     /**
     * Retourne un objet de la classe Membre.
     *
@@ -37,7 +37,7 @@ class MembreDAO extends DAO implements UserProviderInterface
     public function find($id_membre){
         $requete = "SELECT * FROM membre WHERE id_membre = ?";
         $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_membre));
-    
+
         if($resultat){
             return $this -> buildEntityObject($resultat);
         }
@@ -98,9 +98,9 @@ class MembreDAO extends DAO implements UserProviderInterface
     $membre -> setStatutMembre($value['statut_membre']);
     $membre -> setDateInscription($value['date_inscription']);
     $membre -> setSalt($value['salt']);
-
-    $membre -> setPhoto($value['photo']);
-    $membre -> setFichier($value['fichier']);
+    
+    // $membre -> setPhoto($value['photo']);
+    // $membre -> setFichier($value['fichier']);
 
 // JS : Objets de CV pour l'envoi de fichiers :
     // if(array_key_exists('photo', $value)){
