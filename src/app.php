@@ -11,9 +11,6 @@ use Silex\Provider\UrlGeneratorServiceProvider;
 // Rudy - Enregistrement de Payum :
 use Payum\Silex\PayumProvider;
 
-// JS - pour upload de fichiers via AppBundle :
-// use AppBundle\FileUploader;
-
 // JS - Enregistrement pour l'envoi de fichier :
 use Silex\Provider\ValidatorServiceProvider;
 
@@ -64,7 +61,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
             'anonymous' => true,
             'logout' => true,
             'form' => array(
-                'login' => '/connexion/', 
+                'login' => '/connexion/',
                 'check_path' => '/login_check',
                 'default_target_path' => '/login/redirect',
                 'always_use_default_target_path' => true
@@ -75,14 +72,6 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
         )
     )
 ));
-
-
-
-// JS - Enregistrement du service d'upload de fichiers via AppBundle:
-// $app -> register(new AppBundle\FileUploader());
-// $app->register('app.fichier_uploader', FileUploader::class)
-//     ->addArgument('%fichier_directory%');
-//
 
 
 return $app;

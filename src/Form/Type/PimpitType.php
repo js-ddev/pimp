@@ -129,27 +129,4 @@ class PimpitType extends AbstractType
             );
     }
 
-// // JS - Test de fonction pour envoi de fichier :
-    // public function configureOptions(OptionsResolver $resolver)
-    // {
-    //     $resolver->setDefaults(array(
-    //         // 'data_class' => 'Entity\Fichier',
-    //         // 'data_class' => 'Entity\Membre',
-    //         // 'data_class' => Fichier::class,
-    //         // 'data_class' => Membre::class,
-    //         'data_class' => NULL,
-    //     ));
-    // }
-
-    // public function setDefaultOptions(OptionsResolverInterface $resolver)
-    // {
-    //     $resolver->setDefaults(array(
-    //         'data_class' => 'Entity\Fichier',
-    //         // 'data_class' => Membre::class,
-    //         // 'data_class' => Fichier::class
-    //     ));
-    // }
-
-
-
 }

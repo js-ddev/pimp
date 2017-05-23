@@ -13,7 +13,7 @@ use Entity\Cv;
 class MembreDAO extends DAO implements UserProviderInterface
 {
 
-    // JS - création d' objets de CvDAO pour les fichiers :
+// JS - création d' objets de CvDAO pour les fichiers :
     // private $cvPhotoDAO;
     //
     // public function setCvPhotoDAO(CvPhotoDAO $cvPhotoDAO){
@@ -98,11 +98,11 @@ class MembreDAO extends DAO implements UserProviderInterface
     $membre -> setStatutMembre($value['statut_membre']);
     $membre -> setDateInscription($value['date_inscription']);
     $membre -> setSalt($value['salt']);
-    
+
+// JS : Test d'objets de CV pour l'envoi de fichiers :
     // $membre -> setPhoto($value['photo']);
     // $membre -> setFichier($value['fichier']);
 
-// JS : Objets de CV pour l'envoi de fichiers :
     // if(array_key_exists('photo', $value)){
     //     $membre = $value['photo'];
     //     $photo = $this -> cvPhotoDAO -> find($photo);

@@ -608,7 +608,7 @@ class Cv
      *
      * @return self
      */
-    public function setIndicateurPerformance($activite)
+    public function setActivite($activite)
     {
         $this->activite = $activite;
 

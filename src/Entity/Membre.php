@@ -3,9 +3,9 @@
 namespace Entity;
 
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 // JS - pour upload de fichiers via AppBundle :
+// use Symfony\Component\HttpFoundation\File\UploadedFile;
 // use Doctrine\ORM\Mapping as ORM;
 
 class Membre implements Userinterface
@@ -206,7 +206,7 @@ class Membre implements Userinterface
     }
     //------------------------------//
 
-    // Ce get est utilisé lors de la vérification pour la connexion 
+    // Ce get est utilisé lors de la vérification pour la connexion
     public function getRoles(){
         return array($this->getRole());
 
@@ -267,7 +267,7 @@ class Membre implements Userinterface
      /**
     * @inheritDoc
     */
-    public function eraseCredentials() 
+    public function eraseCredentials()
     {
       // Nothing to do here
     }

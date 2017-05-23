@@ -103,7 +103,7 @@ class Home
 // JS - Route pour la connexion à la première page du formulaire Pimpit :
 
     public function pimpit(Request $request, Application $app){
-        $membre = getUser();
+        $membre = new \Entity\Membre;
         $fichier = new \Entity\Fichier;
 
         $membreForm = $app['form.factory']
@@ -114,7 +114,7 @@ class Home
         $membreForm -> handleRequest($request);
 
         if($membreForm -> isSubmitted() && $membreForm -> isValid()){
-            $path = __DIR__.'/../fichiers/';
+            $path = __DIR__.'/../../fichiers/';
             // $file = $fichier -> setPhoto();
             $files = $request-> files ->get($membreForm->getName());
             $photo = $files['photo'];
