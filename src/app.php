@@ -36,6 +36,11 @@ $app['dao.commande'] = function ($app) {
     return new Model\CommandeDAO($app['db']);
 };
 
+$app['dao.cv'] = function ($app) {
+    return new Model\CvDAO($app['db']);
+};
+
+
 // Rudy - Enregistrement des services obligatoires pour le paiement:
 $app->register(new Payum\PayumProvider());
 
@@ -61,10 +66,8 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
             'anonymous' => true,
             'logout' => true,
             'form' => array(
-                'login' => '/connexion/',
-                'check_path' => '/login_check',
-                'default_target_path' => '/login/redirect',
-                'always_use_default_target_path' => true
+                'login_path' => '/connexion/', 
+                'check_path' => '/login_check'
             ),
             'users' => function() use($app) {
                 return new Model\MembreDAO($app['db']);

@@ -31,7 +31,7 @@ class Cv
     private $puce;
     private $fond;
     private $indicateur_performance;
-    private $actitivite;
+    private $activite;
 
 
 
@@ -614,19 +614,6 @@ class Cv
 
         return $this;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

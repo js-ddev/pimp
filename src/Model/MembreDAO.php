@@ -86,6 +86,7 @@ class MembreDAO extends DAO implements UserProviderInterface
 
     $membre -> setId($value['id']);
     $membre -> setUsername($value['username']);
+    $membre -> setPassword($value['password']);
     $membre -> setNom($value['nom']);
     $membre -> setPrenom($value['prenom']);
     $membre -> setDateNaissance($value['date_naissance']);
