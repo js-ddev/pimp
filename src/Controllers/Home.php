@@ -97,24 +97,25 @@ class Home
 
 // JS - Route pour la connexion à la première page du formulaire Pimpit :
 
-    public function formulaire(Request $request, Application $app){
+    public function pimpit(Request $request, Application $app){
         $membre = new \Entity\Membre;
-        $membreForm = $app['form.factory'] -> create(\Form\Type\PimpitType::class, $membre);
+        $fichier = new \Entity\Fichier;
 
+        $membreForm = $app['form.factory']
+            -> create(\Form\Type\PimpitType::class, $arrayName = array(
+                'membre' => $membre,
+                'fichier' => $fichier
+            ));
         $membreForm -> handleRequest($request);
 
         if($membreForm -> isSubmitted() && $membreForm -> isValid()){
-            $file = $membre->getFichier();
+            $path = __DIR__.'/../fichiers/';
+            $file = $fichier->getPhoto();
             // $fileName = md5(uniqid()).'.'.$file->guessExtension();
-            $fileName = $this->get('app.fichier_uploader')->upload($file);
-            $file->move(
-                    $this->getParameter('fichier_directory'),
-                $fileName
-            );
+            $fileName = $files -> getClientOriginalName();
+            $file -> move($path,$filename);
 
-            $membre -> setFichier($fileName);
-
-            return $this-> redirect($this -> generateUrl('app_fichier_test'));
+            $fichier -> setPhoto($fileName);
 
             $app['dao.membre'] -> save($membre);
             $app['session'] -> getFlashBag() -> add('success', 'Votre inscription a bien été prise en compte !');

@@ -3,7 +3,10 @@
 namespace Entity;
 
 use Symfony\Component\Security\Core\User\UserInterface;
-use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
+// JS - pour upload de fichiers via AppBundle :
+// use Doctrine\ORM\Mapping as ORM;
 
 class Membre
 
@@ -25,8 +28,8 @@ class Membre
     private $salt;
 
 // JS - AJout des propriétés photo et fichier de l'entité cv :
-    private $photo;
-    private $fichier;
+    // private $photo;
+    // private $fichier;
 
 
     // ID----------------------------//
@@ -210,53 +213,53 @@ class Membre
     }
 
 // JS - Ajout du Fichier de l'entité Photo :
-    /**
-     * Gets the value of fichier.
-     *
-     * @return mixed
-     */
-    public function getPhoto()
-    {
-        return $this->photo;
-    }
-
-    /**
-     * Sets the value of fichier.
-     *
-     * @param mixed $fichier the fichier
-     *
-     * @return self
-     */
-    public function setPhoto(Cv $photo)
-    {
-        $this-> photo = $photo;
-
-        return $this;
-    }
-
-// JS - Ajout du Fichier de l'entité CV :
-    /**
-     * Gets the value of fichier.
-     *
-     * @return mixed
-     */
-    public function getFichier()
-    {
-        return $this->fichier;
-    }
-
-    /**
-     * Sets the value of fichier.
-     *
-     * @param mixed $fichier the fichier
-     *
-     * @return self
-     */
-    public function setFichier(Cv $fichier)
-    {
-        $this-> fichier = $fichier;
-
-        return $this;
-    }
+//     /**
+//      * Gets the value of fichier.
+//      *
+//      * @return mixed
+//      */
+//     public function getPhoto()
+//     {
+//         return $this->photo;
+//     }
+//
+//     /**
+//      * Sets the value of fichier.
+//      *
+//      * @param mixed $fichier the fichier
+//      *
+//      * @return self
+//      */
+//     public function setPhoto(Cv $photo)
+//     {
+//         $this-> photo = $photo;
+//
+//         return $this;
+//     }
+//
+// // JS - Ajout du Fichier de l'entité CV :
+//     /**
+//      * Gets the value of fichier.
+//      *
+//      * @return mixed
+//      */
+//     public function getFichier()
+//     {
+//         return $this->fichier;
+//     }
+//
+//     /**
+//      * Sets the value of fichier.
+//      *
+//      * @param mixed $fichier the fichier
+//      *
+//      * @return self
+//      */
+//     public function setFichier(Cv $fichier)
+//     {
+//         $this-> fichier = $fichier;
+//
+//         return $this;
+//     }
 
 }

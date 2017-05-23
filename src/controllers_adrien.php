@@ -1,6 +1,6 @@
 <?php
 
-$app -> match('/pimpit/','Controllers\\Home::formulaire') -> bind('pimpit');
+$app -> match('/pimpit/','Controllers\\Home::pimpit') -> bind('pimpit');
 
 $app -> get('/modeles/','Controllers\\Home::modeles') -> bind('modeles');
 
