@@ -2,9 +2,14 @@
 
 namespace Model;
 
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\UserProviderInterface;
+use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
+use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
+
 use Entity\Membre;
 
-class MembreDAO extends DAO
+class MembreDAO extends DAO implements UserProviderInterface
 {
 
     public function findAll(){
@@ -32,6 +37,7 @@ class MembreDAO extends DAO
         $membreData = array(
             'email' => $membre -> getEmail(),
             'password' => $membre -> getPassword(),
+            'salt' => $membre -> getSalt(),
         );
 
             $membreData['role'] = 'ROLE_USER';
@@ -57,9 +63,49 @@ class MembreDAO extends DAO
     $membre -> setPays($value['pays']);
     $membre -> setStatutMembre($value['statut_membre']);
     $membre -> setDateInscription($value['date_inscription']);
+    $membre->setSalt($value['salt']);
 
     return $membre;
 
+    }
+
+      /**
+    *
+    * @inheritDoc
+    *
+    */
+    public function loadUserByUsername($username){
+        $requete = "SELECT * FROM membre WHERE username = ?";
+        $resultat = $this -> getDb() -> fetchAssoc($requete, array($username));
+
+        if($resultat){
+            return $this -> buildEntityObject($resultat);
+        } 
+        else {
+            throw new UsernameNotFoundException("L'utilisateur n'existe pas : " . $username);
+        }
+    }
+
+    /**
+    *
+    * @inheritDoc
+    *
+    */
+    public function supportsClass($class){
+        return 'MySilex\Entity\Membre' === $class;
+    }
+
+    /**
+    *
+    * @inheritDoc
+    *
+    */
+    public function refreshUser(UserInterface $membre){
+        $class = get_class($membre);
+        if(!$this -> supportsClass($class)){
+            throw new UnsupportedUserException("La classe instanciée n'est pas supportée : " . $class);
+        }
+        return $this -> loadUserByUsername($membre -> getUsername());
     }
 }
 
