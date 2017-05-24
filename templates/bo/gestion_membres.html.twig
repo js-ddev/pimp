@@ -6,7 +6,7 @@
 
 
 {{ dump(membres)}}
-<!-- DF - FIN HEAD, NAVTOP ET NAVSIDE -->
+    <!-- DF - FIN HEAD, NAVTOP ET NAVSIDE -->
 
         <!-- DF - DEBUT CONTENU -->
 
@@ -42,9 +42,9 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Email (user name)</th>
-                                        <th>Nom</th>
+                                        <th>Identifiant</th>
                                         <th>Prénom</th>
+                                        <th>Nom</th>
                                         <th>Date de naissance</th>
                                         <th>Téléphone</th>
                                         <th>Adresse</th>
@@ -62,8 +62,8 @@
                                     <tr>
                                         <td>{{ membre.id }}</td>
                                         <td>{{ membre.username }}</td>
-                                        <td>{{ membre.nom }}</td>
                                         <td>{{ membre.prenom }}</td>
+                                        <td>{{ membre.nom }}</td>
                                         <td>{{ membre.dateNaissance }}</td>
                                         <td>{{ membre.telephone }}</td>
                                         <td>{{ membre.adresse }}</td>
@@ -94,11 +94,18 @@
                         {{ form_start(membreFormBo) }}
                         <div class="col-lg-6"> <!-- formulaire coté gauche -->
 
-                            <input type="hidden" name="id" value="{{ membre.id }}" />
+                            <input type="hidden" name="id" value="" />
 
                             <div class="form-group">
-                                <label>Email</label>
-                                <input class="form-control" placeholder="Email (username)" name="username" value="{{ membre.username }}">
+                                <label>Identifiant</label>
+                                {{ form_errors(membreFormBo.username) }}
+                                {{ form_widget(membreFormBo.username)  }}
+                            </div>
+
+                            <div class="form-group">
+                                <label>Prénom</label>
+                                {{ form_errors(membreFormBo.prenom) }}
+                                {{ form_widget(membreFormBo.prenom) }}
                             </div>
 
                             <div class="form-group">
@@ -108,23 +115,21 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Prénom</label>
-                                <input class="form-control" placeholder="Prenom" name="prenom" value="{{ membre.prenom }}">
-                            </div>
-
-                            <div class="form-group">
                                 <label>Date de naissance</label>
-                                <input class="form-control" placeholder="Date de naissance" name="datenaissance" value="{{ membre.datenaissance }}">
+                                {{ form_errors(membreFormBo.date_naissance) }}
+                                {{ form_widget(membreFormBo.date_naissance) }}
                             </div>
 
                             <div class="form-group">
                                 <label>Téléphone</label>
-                                <input class="form-control" placeholder="Téléphone" name="telephone" value="{{ membre.telephone }}">
+                                {{ form_errors(membreFormBo.telephone) }}
+                                {{ form_widget(membreFormBo.telephone) }}
                             </div>
 
                             <div class="form-group">
                                 <label>Adresse</label>
-                                <input class="form-control" placeholder="Adresse" name="adresse" value="{{ membre.adresse }}">
+                                {{ form_errors(membreFormBo.adresse) }}
+                                {{ form_widget(membreFormBo.adresse) }}
                             </div>
 
                         </div>
@@ -133,38 +138,41 @@
 
                             <div class="form-group">
                                 <label>Code Postal</label>
-                                <input class="form-control" placeholder="Code Postal" name="codepostal" value="{{ membre.codepostal }}">
+                                {{ form_errors(membreFormBo.code_postal) }}
+                                {{ form_widget(membreFormBo.code_postal) }}
                             </div>
 
                             <div class="form-group">
                                 <label>Ville</label>
-                                <input class="form-control" placeholder="Ville" name="ville" value="{{ membre.ville }}">
+                                {{ form_errors(membreFormBo.ville) }}
+                                {{ form_widget(membreFormBo.ville) }}
                             </div>
 
                             <div class="form-group">
                                 <label>Pays</label>
-                                <input class="form-control" placeholder="Pays" name="pays" value="{{ membre.pays }}">
+                                {{ form_errors(membreFormBo.pays) }}
+                                {{ form_widget(membreFormBo.pays) }}
                             </div>
 
                             <div class="form-group">
-                            <label>Statut membre</label>
-                            <select class="form-control" name="statutmembre" value="{{ membre.statutmembre }}">
-                                <option selected="" value="enregistre">Enregistré</option>
-                                <option selected="" value="paye">Payé</option>
-                            </select>
+                                <label>Statut membre</label>
+                                {{ form_errors(membreFormBo.statut_membre) }}
+                                {{ form_widget(membreFormBo.statut_membre) }}
                             </div>
 
                             <div class="form-group">
                                 <label>Date d'inscription</label>
-                                <input class="form-control" placeholder="Date d'inscription" name="dateinscription" value="{{ membre.dateinscription }}">
+                                {{ form_errors(membreFormBo.date_inscription) }}
+                                {{ form_widget(membreFormBo.date_inscription) }}
                             </div>
 
                             <div class="form-group">
                                 <label>Rôle</label>
-                                <input class="form-control" placeholder="Rôle (administrateur ou utilisateur)" name="role" value="{{ membre.role }}">
+                                {{ form_errors(membreFormBo.role) }}
+                                {{ form_widget(membreFormBo.role) }}
                             </div>                        
 
-                        {% endfor %}
+                        {% endif %}
 
                             <button type="submit" class="btn btn-default">Enregistrer</button>
 
