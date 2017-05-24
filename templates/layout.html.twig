@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}" />
 
     <link rel="stylesheet" href="{{ asset('css/colors/blue.css') }}" id="style-color"/>
+    <link rel="stylesheet" href="{{ asset('css/nouislider.css') }}" id="style-color"/>
 </head>
 
 
@@ -43,7 +44,7 @@
                         <ul class="nav navbar-nav" >
                             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                             <li class="nav-item">
-                                <a href="{{ path('user_logout') }}">Deconnexion</a> 
+                                <a href="{{ path('user_logout') }}">Deconnexion</a>
                             </li>
                             {% else %}
                             <li class="nav-item">
@@ -70,7 +71,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="dropdown-toggle" href="{{ path('payment_test') }}">Test de paiment<span class="caret"></span></a>
-                            </li> 
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -125,6 +126,8 @@
 <script type="text/javascript" src="{{ asset('js/compressed.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/email.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/main-form.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/style-switcher.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/nouislider.js') }}"></script>
 
 </html>

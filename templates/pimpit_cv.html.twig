@@ -33,7 +33,7 @@
 							{% if cvForm %}
 							{{ form_start(cvForm) }}
 							<div class="form-group">
-								<label for="situation">Situation familiale</label>
+								<label for="situation">Situation familiale :</label>
 								{{ form_errors(cvForm.famille) }}
 								{{ form_widget(cvForm.famille) }}
 							</div>
@@ -47,13 +47,13 @@
 							<div class="form-group">
 								{{ form_errors(cvForm.permis_travail) }}
 								{{ form_widget(cvForm.permis_travail) }}
-							</div>
 
-							<div class="form-group">
 								{{ form_errors(cvForm.permis_conduire) }}
 								{{ form_widget(cvForm.permis_conduire) }}
-							</div>
+
 						</fieldset>
+
+<!--  PARTIE EXPERIENCE -->
 
 						<fieldset>
 							<h3>Votre expérience :</h3>
@@ -61,7 +61,8 @@
 								<h4>Entreprise :</h4>
 
 								<div class="form-group">
-									<input type="text" name="nom" id="nom" placeholder="Nom *"/>
+									{{ form_errors(cvForm.nom) }}
+									{{ form_widget(cvForm.nom) }}
 									<label for="nom"></label>
 								</div>
 
@@ -72,8 +73,8 @@
 								</div>
 
 								<div class="form-group">
-									{{ form_errors(cvForm.produit_service) }}
-									{{ form_widget(cvForm.produit_service) }}
+									{{ form_errors(cvForm.description) }}
+									{{ form_widget(cvForm.description) }}
 									<label for="produits_services"></label>
 								</div>
 
@@ -84,102 +85,88 @@
 								</div>
 
 								<div class="form-group">
-									<label for="effectif">Effectif * :</label>
-									<select class="" name="effectif">
-										<option value="1">entre 1 et 9</option>
-										<option value="10">entre 10 et 49</option>
-										<option value="50">entre 50 et 250</option>
-										<option value="50">250 et plus</option>
-									</select>
+									<label for="effectif">Effectif :</label>
+									{{ form_errors(cvForm.effectif) }}
+									{{ form_widget(cvForm.effectif) }}
 								</div>
 
 								<div class="form-group">
-									<input type="url_entreprise" name="url_entreprise" id="url_entreprise" placeholder="Site web"/>
+									{{ form_errors(cvForm.url_entreprise) }}
+									{{ form_widget(cvForm.url_entreprise) }}
 									<label for="url_entreprise"></label>
 								</div>
 								<br/>
 
 								<div class="form-group">
-									<input type="text" name="poste" id="poste" placeholder="Intitulé du poste *"/>
+									{{ form_errors(cvForm.poste) }}
+									{{ form_widget(cvForm.poste) }}
 									<label for="poste"></label>
 								</div>
 
 								<div class="form-group">
-									<textarea name="role" rows="4" cols="40" id="role" placeholder="Rôle dans l'entreprise *"></textarea>
+									{{ form_errors(cvForm.role) }}
+									{{ form_widget(cvForm.role) }}
 									<label for="role"></label>
 								</div>
 								<div class="form-group">
-									<input type="text" name="lieu_entreprise" id="lieu_entreprise" placeholder="Localisation du poste"/>
+									{{ form_errors(cvForm.lieu_entreprise) }}
+									{{ form_widget(cvForm.lieu_entreprise) }}
 									<label for="lieu_entreprise"></label>
 								</div>
 
 								<div class="form-group">
 									<label for="Duree">Durée du poste * : </label>
 									<span>de </span>
+									{{ form_errors(cvForm.mois_debut) }}
+									{{ form_widget(cvForm.mois_debut) }}
 
-									<select class="" name="mois-debut">
-										<option value="janvier">janvier</option>
-										<option value="fevrier">février</option>
-										<option value="mars">Mars</option>
-										<option value="avril">Avril</option>
-										<option value="mai">Mai</option>
-										<option value="juin">Juin</option>
-										<option value="juillet">Juillet</option>
-										<option value="aout">Août</option>
-										<option value="septembre">Septembre</option>
-										<option value="octobre">Octobre</option>
-										<option value="novembre">Novembre</option>
-										<option value="decembre">Décembre</option>
-										<option value="non_precise"="">Ne pas sélectionner de mois</option>
-									</select>
-									<select class="" name="annee-debut">
-										<?php for ($i=date(Y); $i >= 1950; $i--) : ?>
-											# code...
-											<?= '<option value="'.$i.'">'.$i.'</option>' ?>
-										<?php endfor; ?>
+
+									<select class="" name="annee_debut">
+										{% for annee_debut in range("now"|date("Y"),1950) %}
+											<option value="{{ annee_debut }}"> {{ annee_debut }}</option>
+										{% endfor %}
 									</select>
 
 									<span>à </span>
 
-									<select class="" name="mois-debut">
-										<option value="janvier">janvier</option>
-										<option value="fevrier">février</option>
-										<option value="mars">Mars</option>
-										<option value="avril">Avril</option>
-										<option value="mai">Mai</option>
-										<option value="juin">Juin</option>
-										<option value="juillet">Juillet</option>
-										<option value="aout">Août</option>
-										<option value="septembre">Septembre</option>
-										<option value="octobre">Octobre</option>
-										<option value="novembre">Novembre</option>
-										<option value="decembre">Décembre</option>
-										<option value="non_precise"="">Ne pas sélectionner de mois</option>
+										{{ form_errors(cvForm.mois_fin) }}
+										{{ form_widget(cvForm.mois_fin) }}
+
+									<select class="" name="annee_fin">
+										{% for annee_fin in range("now"|date("Y"),1950) %}
+											<option value="{{ annee_fin }}"> {{ annee_fin }}</option>
+										{% endfor %}
 									</select>
-									<select class="" name="annee-debut">
-										<?php for ($i=date(Y); $i >= 1950; $i--) : ?>
-											# code...
-											<?= '<option value="'.$i.'">'.$i.'</option>' ?>
-										<?php endfor; ?>
-									</select>
+
 								</div>
 
 								<div class="form-group">
 									<label for="responsabilite">Responsabilités :</label><br />
-									<input type="text" name="responsabilite1" id="responsabilite1" placeholder="1"/><br />
-									<input type="text" name="responsabilite2" id="responsabilite2" placeholder="2"/><br />
-									<input type="text" name="responsabilite3" id="responsabilite3" placeholder="3"/><br />
-									<input type="text" name="responsabilite4" id="responsabilite4" placeholder="4"/><br />
-									<input type="text" name="responsabilite5" id="responsabilite5" placeholder="5"/>
+									{{ form_errors(cvForm.reponsabilite1) }}
+									{{ form_widget(cvForm.reponsabilite1) }}
+									{{ form_errors(cvForm.reponsabilite2) }}
+									{{ form_widget(cvForm.reponsabilite2) }}
+									{{ form_errors(cvForm.reponsabilite3) }}
+									{{ form_widget(cvForm.reponsabilite3) }}
+									{{ form_errors(cvForm.reponsabilite4) }}
+									{{ form_widget(cvForm.reponsabilite4) }}
+									{{ form_errors(cvForm.reponsabilite5) }}
+									{{ form_widget(cvForm.reponsabilite5) }}
 								</div>
 
 								<div class="form-group">
-									<label for="responsabilite">Réussites / accomplissements :</label><br />
-									<input type="text" name="reussite1" id="reussite1" placeholder="1"/><br />
-									<input type="text" name="reussite2" id="reussite2" placeholder="2"/><br />
-									<input type="text" name="reussite3" id="reussite3" placeholder="3"/><br />
-									<input type="text" name="reussite4" id="reussite4" placeholder="4"/><br />
-									<input type="text" name="reussite5" id="reussite5" placeholder="5"/>
+									<label for="reussite">Réussites / accomplissements :</label><br />
+									{{ form_errors(cvForm.reussite1) }}
+									{{ form_widget(cvForm.reussite1) }}
+									{{ form_errors(cvForm.reussite2) }}
+									{{ form_widget(cvForm.reussite2) }}
+									{{ form_errors(cvForm.reussite3) }}
+									{{ form_widget(cvForm.reussite3) }}
+									{{ form_errors(cvForm.reussite4) }}
+									{{ form_widget(cvForm.reussite4) }}
+									{{ form_errors(cvForm.reussite5) }}
+									{{ form_widget(cvForm.reussite5) }}
+
 								</div>
 
 
@@ -189,37 +176,42 @@
 							<h3>Formation :</h3>
 
 							<div class="form-group">
-								<input type="text" name="diplome" id="diplome" placeholder="Diplome *"/>
+								{{ form_errors(cvForm.diplome) }}
+								{{ form_widget(cvForm.diplome) }}
 								<label for="diplome"></label>
 							</div>
 
 							<div class="form-group">
-								<input type="text" name="etablissement_formation" id="etablissement_formation" placeholder="Etablissement *"/>
+								{{ form_errors(cvForm.etablissement_formation) }}
+								{{ form_widget(cvForm.etablissement_formation) }}
 								<label for="etablissement_formation"></label>
 							</div>
 
 							<div class="form-group">
-								<input type="text" name="specialite_formation" id="specialite_formation" placeholder="Spécialité"/>
+								{{ form_errors(cvForm.specialite_formation) }}
+								{{ form_widget(cvForm.specialite_formation) }}
 								<label for="specialite_formation"></label>
 							</div>
 
 							<div class="form-group">
-								<input type="text" name="lieu_formation" id="lieu_formation" placeholder="Lieu"/>
+								{{ form_errors(cvForm.lieu_formation) }}
+								{{ form_widget(cvForm.lieu_formation) }}
 								<label for="lieu_formation"></label>
 							</div>
 
-							<p>
+							<div class="form-group">
 								<label for="date_diplome">Année d'obtention du diplome * : </label>
-								<select class="" name="annee-debut">
-									<?php for ($i=date(Y); $i >= 1950; $i--) : ?>
-										# code...
-										<?= '<option value="'.$i.'">'.$i.'</option>' ?>
-									<?php endfor; ?>
+								<select class="" name="annee_diplome">
+									{% for annee_diplome in range("now"|date("Y"),1950) %}
+										<option value="{{ annee_diplome }}"> {{ annee_diplome }}</option>
+									{% endfor %}
 								</select>
 							</div>
 
+
 							<div class="form-group">
-								<input type="url_formation" name="url_formation" id="url_formation" placeholder="Site web"/>
+								{{ form_errors(cvForm.url_formation) }}
+								{{ form_widget(cvForm.url_formation) }}
 								<label for="url_formation"></label>
 							</div>
 
@@ -229,37 +221,47 @@
 							<h3>Certification :</h3>
 
 							<div class="form-group">
-								<input type="text" name="certification" id="certification" placeholder="Diplome *"/>
+								{{ form_errors(cvForm.certification) }}
+								{{ form_widget(cvForm.certification) }}
 								<label for="certification"></label>
 							</div>
 
 							<div class="form-group">
-								<input type="text" name="etablissement_certification" id="etablissement_certification" placeholder="Etablissement *"/>
+								{{ form_errors(cvForm.etablissement_certification) }}
+								{{ form_widget(cvForm.etablissement_certification) }}
 								<label for="etablissement_certification"></label>
 							</div>
 
 							<div class="form-group">
-								<input type="text" name="specialite_certification" id="specialite_certification" placeholder="Spécialité"/>
+								{{ form_errors(cvForm.specialite_certification) }}
+								{{ form_widget(cvForm.specialite_certification) }}
 								<label for="specialite_certification"></label>
 							</div>
 
 							<div class="form-group">
-								<input type="text" name="lieu_certification" id="lieu_certification" placeholder="Lieu"/>
+								{{ form_errors(cvForm.lieu_certification) }}
+								{{ form_widget(cvForm.lieu_certification) }}
 								<label for="lieu_certification"></label>
 							</div>
 
-							<p>
-								<label for="date_certification">Année d'obtention du diplome * : </label>
-								<select class="" name="annee-debut">
-									<?php for ($i=date(Y); $i >= 1950; $i--) : ?>
-										# code...
-										<?= '<option value="'.$i.'">'.$i.'</option>' ?>
-									<?php endfor; ?>
+							<div class="form-group">
+								<label for="date_certification">Année d'obtention de la certification * : </label>
+								<select class="" name="annee_certification">
+									{% for annee_certification in range("now"|date("Y"),1950) %}
+										<option value="{{ annee_certification }}"> {{ annee_certification }}</option>
+									{% endfor %}
 								</select>
 							</div>
 
 							<div class="form-group">
-								<input type="url_certification" name="url_certification" id="url_certification" placeholder="Site web"/>
+								{{ form_errors(cvForm.diplome) }}
+								{{ form_widget(cvForm.diplome) }}
+								<label for="url_certification"></label>
+							</div>
+
+							<div class="form-group">
+								{{ form_errors(cvForm.url_certification) }}
+								{{ form_widget(cvForm.url_certification) }}
 								<label for="url_certification"></label>
 							</div>
 
@@ -268,174 +270,168 @@
 						<fieldset>
 							<h3>Langues :</h3>
 
-								<div class="form-group">
-									<input type="text" name="langue_maternelle" id="langue_maternelle" placeholder="Langue maternelle"/>
-									<label for="langue_maternelle"></label>
-								</div>
+							<div class="form-group">
+								{{ form_errors(cvForm.langue_maternelle) }}
+								{{ form_widget(cvForm.langue_maternelle) }}
+								<label for="langue_maternelle"></label>
+							</div>
 
-								<br />
+							<br />
 
-								<div class="form-group">
-									<input type="text" name="langue_1" id="langue_1" placeholder="Deuxième langue"/>
-									<label for="langue_1"></label>
-								</div>
+							<div class="form-group">
+								{{ form_errors(cvForm.langue_1) }}
+								{{ form_widget(cvForm.langue_1) }}
+								<label for="langue_1"></label>
+							</div>
 
-								<p>
-									<label for="langue_1_niveau">Votre niveau de 1 à 100 :</label>
-									<!-- <input type="text" id="langue_1_niveau"> -->
-									<span id="slider1value"></span><span> %</span>
-									<div style="max-width:250px" id="slider1"></div>
+							<div class="form-group">
+								<label for="langue_1_niveau">Votre niveau de 1 à 100 : *</label>
+								<!-- <input type="text" id="langue_1_niveau"> -->
+								<span id="slider1value"></span><span> %</span>
+								<div style="max-width:250px" id="slider1"></div>
 
-								</div>
+							</div>
 
-								<div class="form-group">
-									<input type="text" name="langue_score_toeic" id="langue_score_toeic" placeholder="Score TOEIC"/>
-									<label for="langue_score_toeic"></label>
-									<input type="text" name="langue_score_toefl" id="langue_score_toefl" placeholder="Score TOEFL"/>
-									<label for="langue_score_toefl"></label>
-									<input type="text" name="langue_score_ielts" id="langue_score_ielts" placeholder="Score IELTS"/>
-									<label for="langue_score_ielts"></label>
-								</div>
-
-
+							<div class="form-group">
+								{{ form_errors(cvForm.langue_score_toeic) }}
+								{{ form_widget(cvForm.langue_score_toeic) }}
+								<label for="langue_score_toeic"></label>
+								{{ form_errors(cvForm.langue_score_toefl) }}
+								{{ form_widget(cvForm.langue_score_toefl) }}
+								<label for="langue_score_toefl"></label>
+								{{ form_errors(cvForm.langue_score_ielts) }}
+								{{ form_widget(cvForm.langue_score_ielts) }}
+								<label for="langue_score_ielts"></label>
+							</div>
 
 						</fieldset>
 						<fieldset>
-										<h4>Bénévolat</h4>
+							<h4>Bénévolat</h4>
 
-										<div class="form-group">
-											<input type="text" name="nom" id="nom" placeholder="Nom *"/>
-											<label for="nom"></label>
-										</div>
-
-
-										<div class="form-group">
-											<input type="text" name="secteur" id="secteur" placeholder="Secteur"/>
-											<label for="secteur"></label>
-										</div>
+							<div class="form-group">
+								{{ form_errors(cvForm.nom_benevolat) }}
+								{{ form_widget(cvForm.nom_benevolat) }}
+								<label for="nom_benevolat"></label>
+							</div>
 
 
-										<div class="form-group">
-											<label for="benevoles">Nombre de bénévoles * :</label>
-											<select class="" name="benevoles">
-												<option value="1">entre 1 et 9</option>
-												<option value="10">entre 10 et 49</option>
-												<option value="50">entre 50 et 250</option>
-												<option value="50">250 et plus</option>
-											</select>
-										</div>
+							<div class="form-group">
+								{{ form_errors(cvForm.secteur_benevolat) }}
+								{{ form_widget(cvForm.secteur_benevolat) }}
+								<label for="secteur_benevolat"></label>
+							</div>
 
-										<div class="form-group">
-											<input type="url_entreprise" name="url_entreprise" id="url_entreprise" placeholder="Site web"/>
-											<label for="url_entreprise"></label>
-										</div>
-										<br/>
 
-										<div class="form-group">
-											<input type="text" name="poste" id="poste" placeholder="Intitulé du poste"/>
-											<label for="poste"></label>
-										</div>
+							<div class="form-group">
+								<label for="effectif_benevolat">Effectif :</label>
+								{{ form_errors(cvForm.effectif_benevolat) }}
+								{{ form_widget(cvForm.effectif_benevolat) }}
+							</div>
 
-										<div class="form-group">
-											<input type="text" name="lieu_entreprise" id="lieu_entreprise" placeholder="Localisation du poste"/>
-											<label for="lieu_entreprise"></label>
-										</div>
-										<div class="form-group">
-											<textarea name="role" rows="4" cols="40" id="role" placeholder="Rôle dans l'entreprise"></textarea>
-											<label for="role"></label>
-										</div>
+							<div class="form-group">
+								{{ form_errors(cvForm.url_benevolat) }}
+								{{ form_widget(cvForm.url_benevolat) }}
+								<label for="url_benevolat"></label>
+							</div>
+							<br/>
 
-										<div class="form-group">
-											<label for="Duree">Durée du poste * : </label>
-											<span>de </span>
+							<div class="form-group">
+								{{ form_errors(cvForm.poste_benevolat) }}
+								{{ form_widget(cvForm.poste_benevolat) }}
+								<label for="poste"></label>
+							</div>
 
-											<select class="" name="mois-debut">
-												<option value="janvier">janvier</option>
-												<option value="fevrier">février</option>
-												<option value="mars">Mars</option>
-												<option value="avril">Avril</option>
-												<option value="mai">Mai</option>
-												<option value="juin">Juin</option>
-												<option value="juillet">Juillet</option>
-												<option value="aout">Août</option>
-												<option value="septembre">Septembre</option>
-												<option value="octobre">Octobre</option>
-												<option value="novembre">Novembre</option>
-												<option value="decembre">Décembre</option>
-												<option value="non_precise"="">Ne pas sélectionner de mois</option>
-											</select>
-											<select class="" name="annee-debut">
-												<?php for ($i=date(Y); $i >= 1950; $i--) : ?>
-													# code...
-													<?= '<option value="'.$i.'">'.$i.'</option>' ?>
-												<?php endfor; ?>
-											</select>
+							<div class="form-group">
+								{{ form_errors(cvForm.role_benevolat) }}
+								{{ form_widget(cvForm.role_benevolat) }}
+								<label for="role"></label>
+							</div>
+							<div class="form-group">
+								{{ form_errors(cvForm.lieu_benevolat) }}
+								{{ form_widget(cvForm.lieu_benevolat) }}
+								<label for="lieu_benevolat"></label>
+							</div>
 
-											<span>à </span>
+							<div class="form-group">
+								<label for="Duree">Durée du poste * : </label>
+								<span>de </span>
+								{{ form_errors(cvForm.mois_debut) }}
+								{{ form_widget(cvForm.mois_debut) }}
 
-											<select class="" name="mois-debut">
-												<option value="janvier">janvier</option>
-												<option value="fevrier">février</option>
-												<option value="mars">Mars</option>
-												<option value="avril">Avril</option>
-												<option value="mai">Mai</option>
-												<option value="juin">Juin</option>
-												<option value="juillet">Juillet</option>
-												<option value="aout">Août</option>
-												<option value="septembre">Septembre</option>
-												<option value="octobre">Octobre</option>
-												<option value="novembre">Novembre</option>
-												<option value="decembre">Décembre</option>
-												<option value="non_precise"="">Ne pas sélectionner de mois</option>
-											</select>
-											<select class="" name="annee-debut">
-												<?php for ($i=date(Y); $i >= 1950; $i--) : ?>
-													# code...
-													<?= '<option value="'.$i.'">'.$i.'</option>' ?>
-												<?php endfor; ?>
-											</select>
-										</div>
 
-										<div class="form-group">
-											<label for="responsabilite">Responsabilités :</label><br />
-											<input type="text" name="responsabilite1" id="responsabilite1" placeholder="1"/><br />
-											<input type="text" name="responsabilite2" id="responsabilite2" placeholder="2"/><br />
-											<input type="text" name="responsabilite3" id="responsabilite3" placeholder="3"/><br />
-											<input type="text" name="responsabilite4" id="responsabilite4" placeholder="4"/><br />
-											<input type="text" name="responsabilite5" id="responsabilite5" placeholder="5"/>
-										</div>
+								<select class="" name="annee_debut">
+									{% for annee_debut in range("now"|date("Y"),1950) %}
+										<option value="{{ annee_debut }}"> {{ annee_debut }}</option>
+									{% endfor %}
+								</select>
 
-										<div class="form-group">
-											<label for="responsabilite">Réussites / accomplissements :</label><br />
-											<input type="text" name="reussite1" id="reussite1" placeholder="1"/><br />
-											<input type="text" name="reussite2" id="reussite2" placeholder="2"/><br />
-											<input type="text" name="reussite3" id="reussite3" placeholder="3"/><br />
-											<input type="text" name="reussite4" id="reussite4" placeholder="4"/><br />
-											<input type="text" name="reussite5" id="reussite5" placeholder="5"/>
-										</div>
-						</fieldset>
+								<span>à </span>
+
+									{{ form_errors(cvForm.mois_fin) }}
+									{{ form_widget(cvForm.mois_fin) }}
+
+								<select class="" name="annee_fin">
+									{% for annee_fin in range("now"|date("Y"),1950) %}
+										<option value="{{ annee_fin }}"> {{ annee_fin }}</option>
+									{% endfor %}
+								</select>
+
+							</div>
+
+							<div class="form-group">
+								<label for="responsabilite">Responsabilités :</label><br />
+								{{ form_errors(cvForm.reponsabilite_benevolat1) }}
+								{{ form_widget(cvForm.reponsabilite_benevolat1) }}
+								{{ form_errors(cvForm.reponsabilite_benevolat2) }}
+								{{ form_widget(cvForm.reponsabilite_benevolat2) }}
+								{{ form_errors(cvForm.reponsabilite_benevolat3) }}
+								{{ form_widget(cvForm.reponsabilite_benevolat3) }}
+								{{ form_errors(cvForm.reponsabilite_benevolat4) }}
+								{{ form_widget(cvForm.reponsabilite_benevolat4) }}
+								{{ form_errors(cvForm.reponsabilite_benevolat5) }}
+								{{ form_widget(cvForm.reponsabilite_benevolat5) }}
+							</div>
+
+							<div class="form-group">
+								<label for="reussite">Réussites / accomplissements :</label><br />
+								{{ form_errors(cvForm.reussite_benevolat1) }}
+								{{ form_widget(cvForm.reussite_benevolat1) }}
+								{{ form_errors(cvForm.reussite_benevolat2) }}
+								{{ form_widget(cvForm.reussite_benevolat2) }}
+								{{ form_errors(cvForm.reussite_benevolat3) }}
+								{{ form_widget(cvForm.reussite_benevolat3) }}
+								{{ form_errors(cvForm.reussite_benevolat4) }}
+								{{ form_widget(cvForm.reussite_benevolat4) }}
+								{{ form_errors(cvForm.reussite_benevolat5) }}
+								{{ form_widget(cvForm.reussite_benevolat5) }}
+
+							</div>
+
 						<fieldset>
 							<h3>Informations personnelles</h3>
 
-							<textarea name="description" id="description" rows="8" cols="80" placeholder="Décrivez vous en quelques mots ! Et essayez de répondre à la question épineuse de pourquoi voudriez vous travailler avec vous même ?"></textarea>
+							{{ form_errors(cvForm.description_personnelle) }}
+							{{ form_widget(cvForm.description_personnelle) }}
 							<label for="description"></label>
 
 							<br />
 							<h4>Centres d'intérêt</h4>
 
 							<div class="form-group">
-								<input type="text" name="passion_1" id="passion_1" placeholder="Centres d'intérêt"/>
+								{{ form_errors(cvForm.passion) }}
+								{{ form_widget(cvForm.passion) }}
 								<label for="passion_1"></label>
-							</div>
-							<p>
-								<label for="passion_1">Niveau de pratique</label>
+
+								<label for="passion">Votre niveau de pratique</label>
 								<span id="slider2value"></span><span> %</span>
 								<div style="max-width:250px" id="slider2"></div>
 							</div>
+
 							<h4>Voyages</h4>
 
-							<p>
-								<textarea name="voyages" id="voyages" rows="8" cols="80" placeholder="Si vous avez voyagé, indiquez nous vos dernières destinations"></textarea>
+							<div class="form-group">
+								{{ form_errors(cvForm.voyage) }}
+								{{ form_widget(cvForm.voyage) }}
 								<label for="voyages"></label>
 							</div>
 
@@ -443,31 +439,37 @@
 							<h4>Réseaux sociaux</h4>
 
 							<div class="form-group">
-								<input type="url" name="url_linkdein" id="url_linkdein" placeholder="Compte Linkedin"/>
+								{{ form_errors(cvForm.url_linkdein) }}
+								{{ form_widget(cvForm.url_linkdein) }}
 								<label for="url_linkdein"></label>
 							</div>
 							<div class="form-group">
-								<input type="url" name="url_twitter" id="url_twitter" placeholder="Compte Twitter"/>
+								{{ form_errors(cvForm.url_twitter) }}
+								{{ form_widget(cvForm.url_twitter) }}
 								<label for="url_twitter"></label>
 							</div>
 							<div class="form-group">
-								<input type="url" name="url_skype" id="url_skype" placeholder="Compte Skype"/>
+								{{ form_errors(cvForm.url_skype) }}
+								{{ form_widget(cvForm.url_skype) }}
 								<label for="url_skype"></label>
 							</div>
 							<div class="form-group">
-								<input type="url" name="url_perso" id="url_perso" placeholder="Site perso"/>
+								{{ form_errors(cvForm.url_perso) }}
+								{{ form_widget(cvForm.url_perso) }}
 								<label for="url_perso"></label>
 							</div>
 							<div class="form-group">
-								<input type="url" name="url_autre" id="url_autre" placeholder="Autre compte"/>
+								{{ form_errors(cvForm.url_autre) }}
+								{{ form_widget(cvForm.url_autre) }}
 								<label for="url_autre"></label>
 							</div>
 
 							<h4>Informations diverses</h4>
 
 							<div class="form-group">
-								<textarea name="divers" rows="4" cols="40" id="role" placeholder="Informations diverses que vous souhaitez nous communiquer par rapport à votre CV"></textarea>
-								<label for="divers"></label>
+								{{ form_errors(cvForm.infos_diverses) }}
+								{{ form_widget(cvForm.infos_diverses) }}
+								<label for="infos_diverses"></label>
 							</div>
 
 						</fieldset>
