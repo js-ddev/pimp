@@ -43,7 +43,7 @@ class Membre implements Userinterface
     }
     //------------------------------//
 
-    // EMAIL-----------------------//
+    // USERNAME-----------------------//
     public function getUsername() {
         return $this->username;
     }

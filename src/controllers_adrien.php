@@ -28,4 +28,5 @@ $app -> match('/inscription/', 'Controllers\\Home::inscription') -> bind('inscri
 // Route pour formulaire de connexion
 $app -> match('/connexion/', 'Controllers\\Home::connexion') -> bind('connexion') ;
 
+// Route pour redirection suite à la connexion utilisateur
 $app -> match('/login/redirect/', 'Controllers\\Home::index') -> bind('index');
