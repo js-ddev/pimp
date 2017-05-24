@@ -24,10 +24,7 @@
                         </h1>
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
-                            </li>
-                            <li class="active">
-                                <i class="fa fa-file"></i> Blank Page
+                                <i class="fa fa-dashboard"></i> <a href="{{ path('accueil') }}">Dashboard</a>
                             </li>
                         </ol>
                     </div>
@@ -45,7 +42,7 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Email</th>
+                                        <th>Email (user name)</th>
                                         <th>Nom</th>
                                         <th>Prénom</th>
                                         <th>Date de naissance</th>
@@ -64,7 +61,7 @@
                                     {% for membre in membres %}
                                     <tr>
                                         <td>{{ membre.id }}</td>
-                                        <td>{{ membre.email }}</td>
+                                        <td>{{ membre.username }}</td>
                                         <td>{{ membre.nom }}</td>
                                         <td>{{ membre.prenom }}</td>
                                         <td>{{ membre.dateNaissance }}</td>
@@ -101,7 +98,7 @@
 
                             <div class="form-group">
                                 <label>Email</label>
-                                <input class="form-control" placeholder="email" name="email" value="{{ membre.email }}">
+                                <input class="form-control" placeholder="Email (username)" name="username" value="{{ membre.username }}">
                             </div>
 
                             <div class="form-group">
