@@ -1,4 +1,4 @@
-<?php
+?php
 namespace Payum;
 
 use Payum\Core\Request\Authorize;

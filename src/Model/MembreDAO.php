@@ -125,9 +125,9 @@ class MembreDAO extends DAO implements UserProviderInterface
     * @inheritDoc
     *
     */
-    public function loadUserByUsername($email){
+    public function loadUserByUsername($username){
         $requete = "SELECT * FROM membre WHERE username = ?";
-        $resultat = $this -> getDb() -> fetchAssoc($requete, array($email));
+        $resultat = $this -> getDb() -> fetchAssoc($requete, array($username));
 
         if($resultat){
             return $this -> buildEntityObject($resultat);
