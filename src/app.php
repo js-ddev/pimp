@@ -64,7 +64,8 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
             'pattern' => '^/',
             'http' => true,
             'anonymous' => true,
-            'logout' => true,
+            'logout' => array(
+                'logout_path' => '/user/logout', 'invalidate_session' => true),
             'form' => array(
                 'login_path' => '/connexion/', 
                 'check_path' => '/login_check'

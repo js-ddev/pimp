@@ -19,7 +19,7 @@ class MembreType extends AbstractType
 {
 	public function buildForm(FormBuilderInterface $builder, array $options){
 		$builder
-		-> add('username', TextType::class, array(
+		-> add('username', EmailType::class, array(
 			'constraints' => array(
 				new Assert\NotBlank(),
 				new Assert\Length(array(
