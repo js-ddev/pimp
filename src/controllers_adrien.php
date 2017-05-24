@@ -13,7 +13,7 @@ $app -> get('/faq/','Controllers\\Home::faq') -> bind('faq');
 $app -> get('/about/','Controllers\\Home::about') -> bind('about');
 
 
-$app -> get('/template_options/','Controllers\\Home::template_options') -> bind('template_options');
+$app -> get('/template_options/','Controllers\\Home::option') -> bind('template_options');
 
 $app -> get('/recapitulatif_commande/','Controllers\\Home::recapitulatif_commande') -> bind('recapitulatif-commande');
 
@@ -26,6 +26,7 @@ $app -> get('/validation_commande/','Controllers\\Home::validation_commande') ->
 $app -> match('/inscription/', 'Controllers\\Home::inscription') -> bind('inscription');
 
 // Route pour formulaire de connexion
-$app -> match('/connexion/', 'Controllers\\Home::connexion')->bind('connexion') ;
+$app -> match('/connexion/', 'Controllers\\Home::connexion') -> bind('connexion') ;
 
+// Route pour redirection suite à la connexion utilisateur
 $app -> match('/login/redirect/', 'Controllers\\Home::index') -> bind('index');

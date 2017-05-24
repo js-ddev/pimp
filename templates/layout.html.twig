@@ -43,7 +43,7 @@
                         <ul class="nav navbar-nav" >
                             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                             <li class="nav-item">
-                                <a href="{{ path('deconnexion') }}">Deconnexion</a>
+                                <a href="{{ path('user_logout') }}">Deconnexion</a> 
                             </li>
                             {% else %}
                             <li class="nav-item">
@@ -68,9 +68,9 @@
                             <li class="nav-item">
                                 <a class="dropdown-toggle" href="{{ path('contact') }}">Contact<span class="caret"></span></a>
                             </li>
-                            <!-- <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="dropdown-toggle" href="{{ path('payment_test') }}">Test de paiment<span class="caret"></span></a>
-                            </li> -->
+                            </li> 
                         </ul>
                     </div>
                 </div>
@@ -114,7 +114,7 @@
         </div>
         <div class="footer-bottom">
             <div class="container">
-                <span class="copyright">{{ "now"|date("Y") }} - PimpMyCV - Tous droits reservés.
+                <span class="copyright">{{ "now"|date("Y") }} - PimpMyCV &copy - Tous droits reservés.
             </div>
         </div>
     </section>

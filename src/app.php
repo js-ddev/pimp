@@ -11,9 +11,6 @@ use Silex\Provider\UrlGeneratorServiceProvider;
 // Rudy - Enregistrement de Payum :
 use Payum\Silex\PayumProvider;
 
-// JS - pour upload de fichiers via AppBundle :
-// use AppBundle\FileUploader;
-
 // JS - Enregistrement pour l'envoi de fichier :
 use Silex\Provider\ValidatorServiceProvider;
 
@@ -39,6 +36,11 @@ $app['dao.commande'] = function ($app) {
     return new Model\CommandeDAO($app['db']);
 };
 
+$app['dao.cv'] = function ($app) {
+    return new Model\CvDAO($app['db']);
+};
+
+
 // Rudy - Enregistrement des services obligatoires pour le paiement:
 $app->register(new Payum\PayumProvider());
 
@@ -62,12 +64,11 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
             'pattern' => '^/',
             'http' => true,
             'anonymous' => true,
-            'logout' => true,
+            'logout' => array(
+                'logout_path' => '/user/logout', 'invalidate_session' => true),
             'form' => array(
-                'login' => '/connexion/', 
-                'check_path' => '/login_check',
-                'default_target_path' => '/login/redirect',
-                'always_use_default_target_path' => true
+                'login_path' => '/connexion/', 
+                'check_path' => '/login_check'
             ),
             'users' => function() use($app) {
                 return new Model\MembreDAO($app['db']);
@@ -75,14 +76,6 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
         )
     )
 ));
-
-
-
-// JS - Enregistrement du service d'upload de fichiers via AppBundle:
-// $app -> register(new AppBundle\FileUploader());
-// $app->register('app.fichier_uploader', FileUploader::class)
-//     ->addArgument('%fichier_directory%');
-//
 
 
 return $app;

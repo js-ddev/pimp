@@ -4,6 +4,7 @@ namespace Entity;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\File;
 
 class Fichier
 
@@ -30,7 +31,7 @@ class Fichier
      *
      * @return self
      */
-    private function setPhoto($photo)
+    public function setPhoto($photo)
     {
         $this->photo = $photo;
 
@@ -54,7 +55,7 @@ class Fichier
      *
      * @return self
      */
-    private function setFichier($fichier)
+    public function setFichier($fichier)
     {
         $this->fichier = $fichier;
 
