@@ -36,12 +36,14 @@
                                             <form action="{{ path('login_check') }}" method="post">
                                                 <div class="form-wrapper">
                                                     <label><b>Email</b></label>
-                                                    {{ error }}
                                                     <input type="text" class="form-control" placeholder="Email" name="_username" value="{{ last_username }}">
                                                 </div>
                                                 <div class="form-wrapper">
                                                     <label><b>Mot de passe</b></label>
                                                     <input type="password" class="form-control" placeholder="Mot de passe" name="_password">
+                                                </div>
+                                                <div>
+                                                    {{ error | trans }}
                                                 </div>
                                                 <div>
                                                 <a href="#"><i class="text-gray">Mot de passe oublié ?</i></a>
