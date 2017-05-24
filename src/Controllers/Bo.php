@@ -56,7 +56,7 @@ class Bo
 
 
         $membre = new \Entity\Membre;
-        $membreForm = $app['form.factory'] -> create(\Form\Type\MembreTypeBo::class, $membre);
+        $membreFormBo = $app['form.factory'] -> create(\Form\Type\MembreTypeBo::class, $membre);
 
         $membreFormBo -> handleRequest($request);
 
