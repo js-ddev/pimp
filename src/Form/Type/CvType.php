@@ -5,6 +5,10 @@
 namespace Form\Type;
 
 use Entity\Cv;
+use Entity\Experience;
+use Entity\Formation;
+use Entity\Aptitude;
+use Entity\AutreInfo;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -54,22 +58,59 @@ class CvType extends AbstractType
                 ),
                 'expanded' => true,
                 'multiple' => false,
+                'attr' => array(
+                    'class' => 'form-control'
+                ),
             ))
 
             -> add('permis_conduire', ChoiceType::class, array(
                 'choices' => array(
-                    'permis_a' => 'Permis A',
-                    'permis_b' => 'Permis B',
-                    'permis_c' => 'Permis C',
-                    'permis_d' => 'Permis D',
-                    'validation' => 'En cours de validation',
+                    'Permis A' => 'permis_a',
+                    'Permis B' => 'permis_b',
+                    'Permis C' => 'permis_c',
+                    'Permis D' => 'permis_d',
+                    'En cours de validation' => 'validation',
                 ),
                 'expanded' => true,
                 'multiple' => true
+            ))
+
+//////// JS - MANQUE DES VALEURS !!
+
+            -> add('secteur', ChoiceType::class, array(
+                'choices' => array(
+                    'Agroalimentaire' => 'agroalimentaire',
+                    'Banque / Assurance' => 'banque',
+
+                )
+            ))
+
+            -> add('produit_service', TextType::class, array(
+                'constraints' => array(
+                    new Assert\NotBlank(),
+                    new Assert\Length(array(
+                        'min' => 3,
+                        'max' => 20,
+                    ))
+                ),
+                'attr' => array(
+                    'placeholder' => 'Produits ou services',
+                    'class' => 'form-control',
+                ),
+            ))
+
+            -> add('ca', TextType::class, array(
+                'constraints' => array(
+                    new Assert\NotBlank(),
+                ),
+                'attr' => array(
+                    'placeholder' => 'Chiffre d\'affaire',
+                    'class' => 'form-control',
+                ),
             ));
 
     }
- }   
+ }
 
 
 /*            -> add('nom', TextType::class, array(
@@ -106,10 +147,6 @@ class CvType extends AbstractType
             -> add('adresse', TextType::class);
     }
 
-
-    public function getName(){
-        return 'commentaire';
-    }
 
 
 
