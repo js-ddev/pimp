@@ -8,7 +8,6 @@
 namespace Form\Type;
 
 use Entity\Membre;
-use Entity\Cv;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,16 +16,12 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
-// JS - Spécifique pour l'envoi de fichier :
-/*use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\Email;*/
+use Symfony\Component\Validator\Constraints\Email;
 
-class PimpitType extends AbstractType
+class MembreTypeBo extends AbstractType
 {
 
     public function buildForm(FormBuilderInterface $builder, array $options){
@@ -81,10 +76,7 @@ class PimpitType extends AbstractType
                 ),
             ))
 
-            -> add('photo', FileType::class, array(
-                    'label' => 'Votre photo d\'identité',
-                )
-            )
+        
             -> add('adresse', TextType::class, array(
                 'required' => true,
                 'attr' => array(
@@ -123,20 +115,15 @@ class PimpitType extends AbstractType
                     'placeholder' => 'Téléphone',
                     'class' => 'form-control',
                 ),
-            ))
-
-/*            -> add('fichier', FileType::class, array(
-                    'label' => 'Votre ancien CV (si vous en avez un)',
-                )
-            )*/;
+            ));
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+/*    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'data_class' => Membre::class,
         ));
-    }
+    }*/
 
 
 }
