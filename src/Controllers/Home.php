@@ -128,7 +128,7 @@ class Home
         if($membreForm -> isSubmitted() && $membreForm -> isValid()){
 
 // JS - Si l'utilisateur est connecté :
-            if(!(is_null($app['session'] -> getUsername()))){
+            if(!(is_null($app['user'] -> getUsername()))){
 
                 $path = __DIR__.'/../../fichiers/';
                 // $file = $fichier -> setPhoto();
