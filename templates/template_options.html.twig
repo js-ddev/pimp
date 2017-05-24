@@ -6,18 +6,146 @@
             <img class="parallax-img no-mobile-parallax" src="assets/images/bg-18.jpg" alt="" data-parallax='{"y": 150}'>
             <div class="container">
                 <div class="page-tittle-head">
-                    <h2>Pricing Table</h2>
-                    <p>Subtittle Goes Here</p>
+                    <h2>Options</h2>
+                    <p>Choisissez vos options</p>
                 </div>
-                <ol class="breadcrumb pull-right mrg-top-30">
-                  <li class="breadcrumb-item"><a href="#">Elements</a></li>
-                  <li class="breadcrumb-item active">Pricing Table</li>
-                </ol>
             </div>
         </section>
         <!-- Page Tittle End -->
-        
-        
+
+
+
+            {% if optionForm %}
+            {{ form_start(optionForm) }}
+       
+            
+            <section class="section-6 bg-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="pricing-1">
+                            <div class="pricing-status">
+                                <i class="ei ei-airplane-side"></i>
+                                <span>Nombre de page</span>
+                                {{ form_errors(optionForm.nombre_page) }}
+                                {{ form_widget(optionForm.nombre_page) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </section>
+
+               <section class="section-6 bg-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="pricing-1">
+                            <div class="pricing-status">
+                                <i class="ei ei-airplane-side"></i>
+                                <span>Modèle</span>
+                                {{ form_errors(optionForm.modele) }}
+                                {{ form_widget(optionForm.modele) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </section>
+
+            <section class="section-6 bg-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="pricing-1">
+                            <div class="pricing-status">
+                                <i class="ei ei-rocket"></i>
+                                <span>Couleur</span>
+                                {{ form_errors(optionForm.couleur) }}
+                                {{ form_widget(optionForm.couleur) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </section>
+
+
+            <section class="section-6 bg-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="pricing-1">
+                            <div class="pricing-status">
+                                <i class="ei ei-rocket"></i>
+                                <span>Puces</span>
+                                {{ form_errors(optionForm.puce) }}
+                                {{ form_widget(optionForm.puce) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </section>
+
+            <section class="section-6 bg-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="pricing-1">
+                            <div class="pricing-status">
+                                <i class="ei ei-rocket"></i>
+                                <span>Fond</span>
+                                {{ form_errors(optionForm.fond) }}
+                                {{ form_widget(optionForm.fond) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </section>
+
+               <section class="section-6 bg-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="pricing-1">
+                            <div class="pricing-status">
+                                <i class="ei ei-rocket"></i>
+                                <span>Indicateur de performance</span>
+                                {{ form_errors(optionForm.indicateur_performance) }}
+                                {{ form_widget(optionForm.indicateur_performance) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </section>
+
+               <section class="section-6 bg-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="pricing-1">
+                            <div class="pricing-status">
+                                <i class="ei ei-rocket"></i>
+                                {{ form_errors(optionForm.activite) }}
+                                {{ form_widget(optionForm.activite) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </section>
+
+            {{ form_end(optionForm) }}
+            {% endif %}
+
+
+
+
+
+
         <!-- Pricing Table 1 Start -->
         <section class="section-1 bg-gray">
             <div class="container">
@@ -26,14 +154,12 @@
                         <div class="pricing-1">
                             <div class="pricing-status">
                                 <i class="ei ei-cart"></i>
+
+
                                 <h2 class="plan"><b>Basic</b></h2>
                             </div>
                             <ul class="pricing-content">
                                 <li class="mrg-btm-15"><span class="theme-color font-size-25">$</span><span class="theme-color price">18</span>/Month</li>
-                                <li>1 GB of Space</li>
-                                <li>1 GB traffice</li>
-                                <li>Forum access</li>
-                                <li>Support at 3 hour</li>
                             </ul>
                             <a class="btn btn-md btn-theme mrg-top-30">Sign up now</a>
                         </div>
@@ -46,10 +172,6 @@
                             </div>
                             <ul class="pricing-content">
                                 <li class="mrg-btm-15"><span class="theme-color font-size-25">$</span><span class="theme-color price">28</span>/Month</li>
-                                <li>2 GB of Space</li>
-                                <li>2 GB traffice</li>
-                                <li>Forum access</li>
-                                <li>Support at 7 hour</li>
                             </ul>
                             <a class="btn btn-md btn-theme mrg-top-30">Sign up now</a>
                         </div>
@@ -62,10 +184,6 @@
                             </div>
                             <ul class="pricing-content">
                                 <li class="mrg-btm-15"><span class="theme-color font-size-25">$</span><span class="theme-color price">38</span>/Month</li>
-                                <li>Unlimited of Space</li>
-                                <li>Unlimited traffice</li>
-                                <li>Forum access</li>
-                                <li>Support at 24 hour</li>
                             </ul>
                             <a class="btn btn-md btn-theme mrg-top-30">Sign up now</a>
                         </div>

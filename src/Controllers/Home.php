@@ -65,12 +65,24 @@ class Home
 
         $membreForm -> handleRequest($request);
 
+
+
         if($membreForm -> isSubmitted() && $membreForm -> isValid()){
             $salt = substr(md5(time()), 0, 23);
             $membre -> setSalt($salt);
 
-            $mdp = $membre -> getPassword();
-            $password_encode = $app['security.encoder.bcrypt'] -> encodePassword($mdp, $membre -> getSalt());
+
+            $password = $membre -> getPassword();
+
+            /*
+            // find the encoder for a UserInterface instance
+            $encoder = $app['security.encoder_factory']->getEncoder($membre);
+
+            // compute the encoded password for foo
+            $password_encode = $encoder->encodePassword($mdp, $membre->getSalt());
+            */
+            $password_encode = $app["security.encoder.bcrypt"]->encodePassword($password, $membre->getSalt());
+
 
             $membre -> setPassword($password_encode);
 
@@ -103,37 +115,81 @@ class Home
 // JS - Route pour la connexion à la première page du formulaire Pimpit :
 
     public function pimpit(Request $request, Application $app){
-        $membre = new \Entity\Membre;
+
         $fichier = new \Entity\Fichier;
 
         $membreForm = $app['form.factory']
-            -> create(\Form\Type\PimpitType::class, $arrayName = array(
-                'membre' => $membre,
-                'fichier' => $fichier
+            -> create(\Form\Type\PimpitType::class, array(
+                'class' => 'Membre',
+                'class' => 'Fichier'
             ));
         $membreForm -> handleRequest($request);
 
         if($membreForm -> isSubmitted() && $membreForm -> isValid()){
-            $path = __DIR__.'/../fichiers/';
-            $file = $fichier->getPhoto();
-            // $fileName = md5(uniqid()).'.'.$file->guessExtension();
-            $fileName = $files -> getClientOriginalName();
-            $file -> move($path,$filename);
 
-            $fichier -> setPhoto($fileName);
+// JS - Si l'utilisateur est connecté :
+            if(!(is_null($app['session'] -> getUsername()))){
 
-            $app['dao.membre'] -> save($membre);
-            $app['session'] -> getFlashBag() -> add('success', 'Votre inscription a bien été prise en compte !');
+                $path = __DIR__.'/../../fichiers/';
+                // $file = $fichier -> setPhoto();
+                $files = $request-> files ->get($membreForm->getName());
+
+                $photo = $files['photo'];
+                $cv = $files['fichier'];
+
+                // $fileName = md5(uniqid()).'.'.$file->guessExtension();
+                $filenamePhoto = $photo -> getClientOriginalName();
+                $filenameCv = $cv -> getClientOriginalName();
+
+                $photo -> move($path,$filenamePhoto);
+                $cv -> move($path,$filenameCv);
+
+                // $fichier->setPhoto($photo);
+
+                $fichier -> setPhoto($filenamePhoto);
+                $fichier -> setFichier($filenameCv);
+
+                $app['dao.membre'] -> save($membre);
+            }
+
+// Si l'utilisateur n'est pas connecté le renvoyer vers l'inscription/login :
+            else{
+                $app['session'] -> getFlashBag() -> add('info', 'Merci de vous inscrire ou de vous connecter');
+            }
         }
 
         $membreFormView = $membreForm -> createView();
 
         $params = array(
-            'title' => 'Pimpit',
+            'title' => 'Pimpez votre CV !',
             'membreForm' => $membreFormView
         );
 
         return $app['twig']->render('pimpit.html.twig', $params);
+
+    }
+
+// Rudy - Route pour la génération du formulaire options
+    public function option(Request $request, Application $app){
+        $cv = new \Entity\Cv;
+        $optionForm = $app['form.factory'] -> create(\Form\Type\OptionType::class, $cv);
+
+        $optionForm -> handleRequest($request);
+
+        if($optionForm -> isSubmitted() && $optionForm -> isValid()){
+
+          /*  $app['dao.cv'] -> save($cv);*/
+            $app['session'] -> getFlashBag() -> add('success', 'vos options sont prises en compte !');
+        }
+
+        $optionFormView = $optionForm -> createView();
+
+        $params = array(
+            'title' => 'Options',
+            'optionForm' => $optionFormView
+        );
+
+        return $app['twig']->render('template_options.html.twig', $params);
 
     }
 
