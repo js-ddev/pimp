@@ -19,7 +19,6 @@
 			<!-- DF - DEBUT FORMULAIRE -->
 
 			<form class="col-lg-12 form-horizontal" role="form" action="{{ path('bo_login_check') }}" method="post">
-			{{ error }}
 				<div class="col-lg-12 form-group">
 					<label class="col-lg-0 control-label">Email : </label>
 					<input class="col-lg-12 form-control" type="text" placeholder="Email" name="_username" />
@@ -29,11 +28,12 @@
 					<label class="col-lg-0 control-label">Mot de passe : </label>
 					<input class="col-lg-12 form-control" type="password" placeholder="Mot de passe" name="_password" />
 				</div>
-
+				<div class="col-lg-12 form-group">
+					<p class="col-lg-12 bg-danger">{{ error | trans }}</p>
+				</div>
 				<div class="col-lg-12 form-group">
 					<input class="btn btn-default" type="submit" value="Connexion" />
 				</div>
-
 			</form>
 
 			<!-- DF - FIN FORMULAIRE -->

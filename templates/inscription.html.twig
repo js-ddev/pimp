@@ -42,7 +42,6 @@
 																<label><b>Email</b></label><br>
 																{{ form_errors(membreForm.username) }}
     															{{ form_widget(membreForm.username) }}
-															
 															</div>
 														</div>
 													</div>
@@ -51,8 +50,7 @@
 															<div class="form-wrapper">
 																<label><b>Mot de passe</b></label><br>
 																{{ form_errors(membreForm.password.first) }}
-    															{{ form_widget(membreForm.password.first) }}
-																
+    															{{ form_widget(membreForm.password.first) }}	
 															</div>
 														</div>
 													</div>
@@ -61,15 +59,14 @@
 															<div class="form-wrapper">
 																<label><b>Confirmation du mot de passe</b></label><br>
 																{{ form_errors(membreForm.password.second) }}
-    															{{ form_widget(membreForm.password.second) }}
-																
+    															{{ form_widget(membreForm.password.second) }}	
 															</div>
 														</div>
 													</div>
 													<div class="row mrg-top-10">
 														<div class="col-md-12 pdd-horizon-5">
 															<div class="form-wrapper">
-																<input class="btn btn-md btn-dark" type="submit" value="Inscription">
+																<input class="btn btn-md btn-dark" type="submit" value="Inscription"><br>
 																{{ form_end(membreForm) }}  
 																{% endif %}  
 																<span class="mrg-top-10 text-gray">Vous avez déjà un compte ? <a class="theme-color" href="{{ path('connexion') }}">Se connecter</a></span>

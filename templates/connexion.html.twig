@@ -3,7 +3,7 @@
 {% block content %}
 	 <!-- Hero Start -->
         <section id="hero">
-            <div class="fs-hero hero-img" style="background-image:url(({{ asset('images/about-bg1.jpg') }})">
+            <div class="fs-hero hero-img" style="background-image:url({{ asset('images/about-bg1.jpg') }})">
                 <div class="hero-caption text-white center-left">
                     <h3 class="font-weight-light">Pimp It</h3>
                     <h1 class="ls-2">Relookez votre CV !</h1>
@@ -43,9 +43,6 @@
                                                     <input type="password" class="form-control" placeholder="Mot de passe" name="_password">
                                                 </div>
                                                 <div>
-                                                    {{ error | trans }}
-                                                </div>
-                                                <div>
                                                 <a href="#"><i class="text-gray">Mot de passe oublié ?</i></a>
                                                 </div>
                                                 <input class="btn btn-md btn-theme mrg-vertical-20" type="submit" value="Connexion">
@@ -59,7 +56,7 @@
                                     <div class="content pdd-horizon-50">
                                         <h3 class="mrg-btm-20 text-white">Connectez-vous maintenant !</h3>
                                         <p class="text-white font-size-14">Si vous n'avez pas encore de compte sur Pimp My CV, merci de vous inscrire !</p>
-                                        <button class="btn btn-sm btn-white-inverse mrg-vertical-20">S'inscrire</button>
+                                        <a href="{{ path('inscription') }}" class="btn btn-sm btn-white-inverse mrg-vertical-20">S'inscrire</a>
                                     </div><!-- content -->
                                 </div><!-- /background-holder -->
                             </div><!-- /image-container -->
