@@ -74,7 +74,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
             'form' => array(
                 'login_path' => '/login_bo', 
                 'check_path' => '/bo/login_check',
-                'default_target_path' => '/bo/login/redirect',
+                'default_target_path' => '/bo',
                 'always_use_default_target_path' => true,
             ),
 

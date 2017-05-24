@@ -10,12 +10,12 @@
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
 
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('plugins/magnific-popup/css/magnific-popup.css') }}" />
     <link rel="stylesheet" href="{{ asset('plugins/swiper/css/swiper.css') }}" />
 
     <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/ei-icon.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}" />
 
     <link rel="stylesheet" href="{{ asset('css/colors/blue.css') }}" id="style-color"/>
@@ -23,9 +23,10 @@
 
 
 <body>
-
+   
     <div class="wrapper">
-        <header id="menu" class="header">
+        <!-- Header Start -->
+        <header id="menu" class="header header-transparent header-sticky">
             <nav class="navbar">
                 <div class="container">
 					<div class="menu-header">
@@ -36,12 +37,13 @@
 						   <span class="sr-only">Toggle Dropdown</span>
 						</button>
     					<div class="nav-logo">
+                            <a class="logo" href="{{ path('homepage') }}"><img class="logo-light" src="{{ asset('images/logo-pimp.png') }}" alt="PimpMyCV"></a>
                             <a class="logo" href="{{ path('homepage') }}"><img class="logo-dark" src="{{ asset('images/logo-pimp.png') }}" alt="PimpMyCV"></a>
                         </div>
                     </div>
 					<div class="collapse navbar-collapse nav-collapse">
-                        <ul class="nav navbar-nav" >
-                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <ul class="nav navbar-nav">
+                             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                             <li class="nav-item">
                                 <a href="{{ path('user_logout') }}">Deconnexion</a> 
                             </li>
@@ -51,26 +53,25 @@
                             </li>
                             {% endif %}
                             <li class="nav-item">
-                                <a class="dropdown-toggle" href="{{ path('inscription') }}">Inscription<span class="caret"></span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="dropdown-toggle" href="{{ path('pimpit') }}">Pimp It !<span class="caret"></span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="dropdown-toggle" href="{{ path('modeles') }}">Modèles<span class="caret"></span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="dropdown-toggle" href="{{ path('faq') }}">FAQ<span class="caret"></span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="dropdown-toggle" href="{{ path('about') }}">À propos<span class="caret"></span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="dropdown-toggle" href="{{ path('contact') }}">Contact<span class="caret"></span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="dropdown-toggle" href="{{ path('payment_test') }}">Test de paiment<span class="caret"></span></a>
+                                <a class="dropdown-toggle" href="{{ path('payment_test') }}">Test de paiment</a>
                             </li> 
+                        </ul>
+                        <ul class="nav navbar-nav" >
+                            <li class="nav-item">
+                                <a class="dropdown-toggle" href="{{ path('inscription') }}">Inscription</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="dropdown-toggle" href="{{ path('pimpit') }}">Pimp It !</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="dropdown-toggle" href="{{ path('modeles') }}">Modèles</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="dropdown-toggle" href="{{ path('about') }}">À propos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="dropdown-toggle" href="{{ path('contact') }}">Contact</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -83,7 +84,7 @@
         {% block content %}
         {% endblock %}
     </main>
-
+ 
     <!-- Footer Start -->
     <section class="footer-default">
         <div class="container">
@@ -95,7 +96,7 @@
                     </div>
                     <!-- /widget-about -->
                 </div>
-                <div class="col-md-4 col-md-offset-1">
+                <div class="col-md-4 col-md-offset-2">
                     <div class="widget widget-link">
                         <h3 class="widget-tittle">Liens utiles</h3>
                         <div class="row mrg-btm-30">
@@ -104,6 +105,12 @@
                                     <li><a href="{{ path('homepage') }}">Home</a></li>
                                     <li><a href="{{ path('modeles') }}">Modèles</a></li>
                                     <li><a href="{{ path('about') }}">À propos</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="link">
+                                    <li><a href="{{ path('faq') }}">FAQ</a></li>
+                                    <li><a href="{{ path('mentions-legales') }}">Mentions légales</a></li>
                                     <li><a href="{{ path('contact') }}">Contact</a></li>
                                 </ul>
                             </div>
