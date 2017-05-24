@@ -81,6 +81,7 @@ class MembreDAO extends DAO implements UserProviderInterface
             $membre -> setId($this -> getDb() -> lastInsertId());
     }
 
+
     protected function BuildEntityObject(array $value){
     $membre = new Membre; // JS - crée un nouvel objet produit
 

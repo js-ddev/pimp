@@ -30,34 +30,28 @@
 
 						<fieldset>
 							<h3>Informations diverses :</h3>
-
+							{% if cvForm %}
+							{{ form_start(cvForm) }}
 							<div class="form-group">
 								<label for="situation">Situation familiale</label>
-								<select class="" name="situation">
-									<option value="célibataire">célibataire</option>
-									<option value="concubinage">concubinage</option>
-									<option value="marié">marié</option>
-								</select>
+								{{ form_errors(cvForm.famille) }}
+								{{ form_widget(cvForm.famille) }}
 							</div>
 
 							<div class="form-group">
-								<input type="text" name="nationalite" id="nationalite" placeholder="Nationalité *"/>
+								{{ form_errors(cvForm.nationalite) }}
+								{{ form_widget(cvForm.nationalite) }}
 								<label for="nationalite"></label>
 							</div>
 
 							<div class="form-group">
-								<label for="permis_sejour">Permis de travail / séjour :</label><br />
-								<input type="checkbox" name="travail" /><label for="travail">Permis de travail</label><br />
-								<input type="checkbox" name="sejour" /><label for="sejour">Permis de séjour</label><br />
+								{{ form_errors(cvForm.permis_travail) }}
+								{{ form_widget(cvForm.permis_travail) }}
 							</div>
 
 							<div class="form-group">
-								<label for="permis_conduire">Permis de conduire :</label><br />
-								<input type="checkbox" name="permis_a" /><label for="permis_a">Permis A</label><br />
-								<input type="checkbox" name="permis_b" /><label for="permis_b">Permis B</label><br />
-								<input type="checkbox" name="permis_c" /><label for="permis_c">Permis C</label><br />
-								<input type="checkbox" name="permis_d" /><label for="permis_d">Permis D</label><br />
-								<input type="checkbox" name="validation" /><label for="validation">En cours de validation</label><br />
+								{{ form_errors(cvForm.permis_conduire) }}
+								{{ form_widget(cvForm.permis_conduire) }}
 							</div>
 						</fieldset>
 
@@ -72,35 +66,20 @@
 								</div>
 
 								<div class="form-group">
-									<label for="secteur">Secteur : *</label>
-									<select class="secteur" name="">
-										<option value="agroalimentaire">Agroalimentaire</option>
-										<option value="banque">Banque / Assurance</option>
-										<option value="bois">Bois / Papier / Carton / Imprimerie</option>
-										<option value="btp">BTP / Matériaux de construction</option>
-										<option value="chimie">Chimie / Parachimie</option>
-										<option value="commerce">Commerce / Négoce / Distribution</option>
-										<option value="communication">Édition / Communication / Multimédia</option>
-										<option value="electronique">Électronique / Électricité</option>
-										<option value="conseil">Études et conseils</option>
-										<option value="pharmaceutique">Industrie pharmaceutique</option>
-										<option value="informatique">Informatique / Télécoms</option>
-										<option value="machine">Machines et équipements / Automobile</option>
-										<option value="metallurgie">Métallurgie / Travail du métal</option>
-										<option value="plastique">Plastique / Caoutchouc</option>
-										<option value="service">Services aux entreprises</option>
-										<option value="textile">Textile / Habillement / Chaussure</option>
-										<option value="transports">Transports / Logistique</option>
-									</select>
+									<label>Secteur : *</label>
+									{{ form_errors(cvForm.secteur) }}
+									{{ form_widget(cvForm.secteur) }}
 								</div>
 
 								<div class="form-group">
-									<input type="text" name="produits_services" id="produits_services" placeholder="Produits / Services"/>
+									{{ form_errors(cvForm.produit_service) }}
+									{{ form_widget(cvForm.produit_service) }}
 									<label for="produits_services"></label>
 								</div>
 
 								<div class="form-group">
-									<input type="text" name="ca" id="ca" placeholder="Chiffre d'affaire"/>
+									{{ form_errors(cvForm.ca) }}
+									{{ form_widget(cvForm.ca) }}
 									<label for="ca"></label>
 								</div>
 
@@ -497,6 +476,8 @@
 							<input type="submit" name"cv" value="Envoyer"/>
 						</div>
 					</form>
+					{{ form_end(cvForm) }}
+					{% endif %}
 				</div>
 			</div>
 		</section>
