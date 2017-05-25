@@ -86,11 +86,12 @@ class PimpitType extends AbstractType
                 ),
             ))
 
-            // -> add('photo', FileType::class, array(
-            //         'label' => 'Votre photo d\'identité',
-            //         'required' => false,
-            //     )
-            // )
+            -> add('photo', FileType::class, array(
+                    'label' => 'Votre photo d\'identité',
+                    'required' => false,
+                )
+            )
+
             -> add('adresse', TextType::class, array(
                 'required' => true,
                 'attr' => array(
@@ -131,12 +132,11 @@ class PimpitType extends AbstractType
                 ),
             ))
 
-            // -> add('fichier', FileType::class, array(
-            //         'label' => 'Votre ancien CV (si vous en avez un)',
-            //         'required' => false,
-            //         )
-            // )
-            ;
+            -> add('fichier', FileType::class, array(
+                    'label' => 'Votre ancien CV (si vous en avez un)',
+                    'required' => false,
+                    )
+            );
     }
 
 

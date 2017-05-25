@@ -66,21 +66,23 @@ class Fichier
         return $this;
     }
 
-    public static function loadValidatorMetadata(ClassMetadata $metadata){
+// JS - Test de validations sur les fichiers :
 
-        $metadata->addPropertyConstraint('photo', new Assert\File(array(
-            'maxSize' => '3M',
-            'mimeTypes' => array(
-                'application/pdf',
-                'application/x-pdf',
-                'image/tiff',
-                'image/jpeg',
-                // 'image/png',
-                'image/bmp',
-            ),
-            'mimeTypesMessage' => 'Merci de nous envoyer une photo au format jpg, png, pdf, bmp ou tiff',
-        )));
-        }
+    // public static function loadValidatorMetadata(ClassMetadata $metadata){
+    //
+    //     $metadata->addPropertyConstraint('photo', new Assert\File(array(
+    //         'maxSize' => '3M',
+    //         'mimeTypes' => array(
+    //             'application/pdf',
+    //             'application/x-pdf',
+    //             'image/tiff',
+    //             'image/jpeg',
+    //             // 'image/png',
+    //             'image/bmp',
+    //         ),
+    //         'mimeTypesMessage' => 'Merci de nous envoyer une photo au format jpg, png, pdf, bmp ou tiff',
+    //     )));
+    //     }
 
         // 'attr' => array(
         //     'maxSize' => '5M',

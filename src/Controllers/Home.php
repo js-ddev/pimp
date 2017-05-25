@@ -109,54 +109,57 @@ class Home
 // JS - Route pour la connexion à la première page du formulaire Pimpit :
 
     public function pimpit(Request $request, Application $app){
-        $membre = $app['dao.membre'] -> find($app['user'] -> getId());
-        // $membre = new \Entity\Membre;
-        $fichier = new \Entity\Fichier;
+        // JS - Si l'utilisateur est connecté :
+        if($app['security.authorization_checker'] -> isGranted('IS_AUTHENTICATED_FULLY')){
 
-        $pimpitForm = $app['form.factory']
-            -> create(\Form\Type\PimpitType::class, array(
-                'class' => 'Membre',
-                'class' => 'Fichier'
-            ));
+            $membre = $app['dao.membre'] -> find($app['user'] -> getId());
+            // $membre = new \Entity\Membre;
+            $fichier = new \Entity\Fichier;
+
+            $pimpitForm = $app['form.factory']
+                -> create(\Form\Type\PimpitType::class, array(
+                    'class' => 'Membre',
+                    'class' => 'Fichier'
+                ));
 
         $pimpitForm -> handleRequest($request);
 
 
-        // JS - Si l'utilisateur est connecté :
-        if($app['security.authorization_checker'] -> isGranted('IS_AUTHENTICATED_FULLY')){
-
             if($pimpitForm -> isSubmitted() && $pimpitForm -> isValid()){
 
-                // if($pimpitForm -> photo -> isSubmitted() && $pimpitForm -> fichier -> isSubmitted()){
-                //
-                //     $path = __DIR__.'/../../fichiers/';
-                //     // $file = $fichier -> setPhoto();
-                //     $files = $request-> files ->get($pimpitForm->getName());
-                //
-                //     $photo = $files['photo'];
-                //     $cv = $files['fichier'];
-                //
-                //     $filenamePhoto = md5(uniqid()).'.'.$photo->guessExtension();
-                //     $filenameCv = md5(uniqid()).'.'.$cv->guessExtension();
-                //
-                //     // $filenamePhoto = $photo -> getClientOriginalName();
-                //     // $filenameCv = $cv -> getClientOriginalName();
-                //
-                //     $photo -> move($path,$filenamePhoto);
-                //     $cv -> move($path,$filenameCv);
-                //
-                //     // $fichier->setPhoto($photo);
-                //
-                //     $fichier -> setPhoto($filenamePhoto);
-                //     $fichier -> setFichier($filenameCv);
-                //
-                // }
-                // else{
+
+                if(!empty($_POST['pimpit']["photo"]) && !empty($_POST['pimpit']["fichier"])){
+
+                    $path = __DIR__.'/../../fichiers/';
+                    // $file = $fichier -> setPhoto();
+                    $files = $request-> files ->get($pimpitForm->getName());
+
+                    $photo = $files['photo'];
+                    $cv = $files['fichier'];
+
+                    print_r('passage dans le if de présence des fichiers ');
+                    print_r($fichier);
+
+                    $filenamePhoto = md5(uniqid()).'.'.$photo->guessExtension();
+                    $filenameCv = md5(uniqid()).'.'.$cv->guessExtension();
+
+                    // $filenamePhoto = $photo -> getClientOriginalName();
+                    // $filenameCv = $cv -> getClientOriginalName();
+
+                    $photo -> move($path,$filenamePhoto);
+                    $cv -> move($path,$filenameCv);
+
+                    // $fichier->setPhoto($photo);
+
+                    $fichier -> setPhoto($filenamePhoto);
+                    $fichier -> setFichier($filenameCv);
 
 
-                    $app['dao.membre'] -> savePimpit();
-                    $app['session'] -> getFlashBag() -> add('success', 'Formulaire pris en compte !');
-                // }
+                }
+
+                $app['dao.membre'] -> savePimpit();
+                print_r($_POST);
+                $app['session'] -> getFlashBag() -> add('success', 'Formulaire pris en compte !');
             }
 
             $pimpitFormView = $pimpitForm -> createView();
@@ -171,14 +174,16 @@ class Home
         // Si l'utilisateur n'est pas connecté le renvoyer vers l'inscription/login :
         else{
 
-// JS - A prevoir une page d'inscription avec message :
-            header("Location: /web/index_dev.php/inscription");
+// JS - A prevoir une meilleure redirection et une page d'inscription avec message :
+            header("Location: ". __DIR__."../../../../../../../web/index_dev.php/inscription");
             exit();
         }
 
 
 
     }
+
+
 
 // Rudy - Route pour la génération du formulaire options
     public function option(Request $request, Application $app){
