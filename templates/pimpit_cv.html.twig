@@ -4,34 +4,28 @@
 
 	 <!-- Page Tittle Start -->
 		<section class="page-tittle page-tittle-lg parallax-bg dark-overlay">
-			<img class="parallax-img no-mobile-parallax" src="assets/images/bg-18.jpg" alt="" data-parallax='{"y": 150}'>
+			<img class="parallax-img no-mobile-parallax" src="{{ asset('images/about-bg1.jpg') }}" alt="" data-parallax='{"y": 150}'>
 			<div class="container">
 				<div class="page-tittle-head">
 					<h2>Pimpi It !</h2>
 					<p>Pimper votre CV !</p>
 				</div>
-			    <ol class="breadcrumb pull-right mrg-top-30">
-				  <li class="breadcrumb-item"><a href="#">Elements</a></li>
-				  <li class="breadcrumb-item active">Forms</li>
-				</ol>
 			</div>
 		</section>
         <!-- Page Tittle End -->
 
-		<!-- Test form en GET et uniquement le prénom en required : -->
+        <!-- Début formulaire -->
+        <!-- Partie informations diverses -->
 		<section class="section-1">
 			<div class="container">
 				<div class="row">
-					<h2 class="mrg-btm-30">Formulaire CV</h2>
-
-					<form class="form" method="POST">
-
-						<h2>Sinon, vous pouvez nous les donner en dessous :</h2>
-
-						<fieldset>
+					<div class="col-md-8">
+						<form class="form" method="POST">
+							<!-- Partie informations diverses -->
 							<h3>Informations diverses :</h3>
 							{% if cvForm %}
 							{{ form_start(cvForm) }}
+
 							<div class="form-group">
 								<label for="situation">Situation familiale :</label>
 								{{ form_errors(cvForm.famille) }}
@@ -39,9 +33,9 @@
 							</div>
 
 							<div class="form-group">
+								<label for="nationalite"></label>
 								{{ form_errors(cvForm.nationalite) }}
 								{{ form_widget(cvForm.nationalite) }}
-								<label for="nationalite"></label>
 							</div>
 
 							<div class="form-group">
@@ -50,129 +44,157 @@
 
 								{{ form_errors(cvForm.permis_conduire) }}
 								{{ form_widget(cvForm.permis_conduire) }}
+							</div>
 
-						</fieldset>
+							<div class="form-group col-md-12">
+								<input class="btn btn-md btn-dark" type="submit" value="Envoyer">
+							</div>
+						</form>
+					</div>
 
-<!--  PARTIE EXPERIENCE -->
+					<div class="col-md-4 folio-image">
+						<img class="img-responsive" src="{{ asset('images/modele-cv3.jpg') }}" alt="">
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Fin Partie informations diverses -->
 
-						<fieldset>
+		<!--  Partie expérience -->
+		<section class="section-2">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 folio-image">
+						<img class="img-responsive" src="{{ asset('images/modele-cv3.jpg') }}" alt="">
+						<img class="img-responsive" src="{{ asset('images/modele-cv3.jpg') }}" alt="">
+						<img class="img-responsive" src="{{ asset('images/modele-cv3.jpg') }}" alt="">
+					</div>
+
+					<div class="col-md-8">
+						<form class="form" method="POST">
 							<h3>Votre expérience :</h3>
 
-								<h4>Entreprise :</h4>
+							<h4>Entreprise :</h4>
 
-								<div class="form-group">
-									{{ form_errors(cvForm.nom) }}
-									{{ form_widget(cvForm.nom) }}
-									<label for="nom"></label>
-								</div>
+							<div class="form-group">
+								{{ form_errors(cvForm.nom) }}
+								{{ form_widget(cvForm.nom) }}
+								<label for="nom"></label>
+							</div>
 
-								<div class="form-group">
-									<label>Secteur : *</label>
-									{{ form_errors(cvForm.secteur) }}
-									{{ form_widget(cvForm.secteur) }}
-								</div>
+							<div class="form-group">
+								<label>Secteur : *</label>
+								{{ form_errors(cvForm.secteur) }}
+								{{ form_widget(cvForm.secteur) }}
+							</div>
 
-								<div class="form-group">
-									{{ form_errors(cvForm.description) }}
-									{{ form_widget(cvForm.description) }}
-									<label for="produits_services"></label>
-								</div>
+							<div class="form-group">
+								{{ form_errors(cvForm.description) }}
+								{{ form_widget(cvForm.description) }}
+								<label for="produits_services"></label>
+							</div>
 
-								<div class="form-group">
-									{{ form_errors(cvForm.ca) }}
-									{{ form_widget(cvForm.ca) }}
-									<label for="ca"></label>
-								</div>
+							<div class="form-group">
+								{{ form_errors(cvForm.ca) }}
+								{{ form_widget(cvForm.ca) }}
+								<label for="ca"></label>
+							</div>
 
-								<div class="form-group">
-									<label for="effectif">Effectif :</label>
-									{{ form_errors(cvForm.effectif) }}
-									{{ form_widget(cvForm.effectif) }}
-								</div>
+							<div class="form-group">
+								<label for="effectif">Effectif :</label>
+								{{ form_errors(cvForm.effectif) }}
+								{{ form_widget(cvForm.effectif) }}
+							</div>
 
-								<div class="form-group">
-									{{ form_errors(cvForm.url_entreprise) }}
-									{{ form_widget(cvForm.url_entreprise) }}
-									<label for="url_entreprise"></label>
-								</div>
-								<br/>
+							<div class="form-group">
+								{{ form_errors(cvForm.url_entreprise) }}
+								{{ form_widget(cvForm.url_entreprise) }}
+								<label for="url_entreprise"></label>
+							</div>
 
-								<div class="form-group">
-									{{ form_errors(cvForm.poste) }}
-									{{ form_widget(cvForm.poste) }}
-									<label for="poste"></label>
-								</div>
+							<div class="form-group">
+								{{ form_errors(cvForm.poste) }}
+								{{ form_widget(cvForm.poste) }}
+								<label for="poste"></label>
+							</div>
 
-								<div class="form-group">
-									{{ form_errors(cvForm.role) }}
-									{{ form_widget(cvForm.role) }}
-									<label for="role"></label>
-								</div>
-								<div class="form-group">
-									{{ form_errors(cvForm.lieu_entreprise) }}
-									{{ form_widget(cvForm.lieu_entreprise) }}
-									<label for="lieu_entreprise"></label>
-								</div>
+							<div class="form-group">
+								{{ form_errors(cvForm.role) }}
+								{{ form_widget(cvForm.role) }}
+								<label for="role"></label>
+							</div>
+							<div class="form-group">
+								{{ form_errors(cvForm.lieu_entreprise) }}
+								{{ form_widget(cvForm.lieu_entreprise) }}
+								<label for="lieu_entreprise"></label>
+							</div>
 
-								<div class="form-group">
-									<label for="Duree">Durée du poste * : </label>
-									<span>de </span>
-									{{ form_errors(cvForm.mois_debut) }}
-									{{ form_widget(cvForm.mois_debut) }}
+							<div class="form-group">
+								<label for="Duree">Durée du poste * : </label>
+								<span> de </span>
+								{{ form_errors(cvForm.mois_debut) }}
+								{{ form_widget(cvForm.mois_debut) }}
 
+								<select class="" name="annee_debut">
+									{% for annee_debut in range("now"|date("Y"),1950) %}
+										<option value="{{ annee_debut }}"> {{ annee_debut }}</option>
+									{% endfor %}
+								</select>
 
-									<select class="" name="annee_debut">
-										{% for annee_debut in range("now"|date("Y"),1950) %}
-											<option value="{{ annee_debut }}"> {{ annee_debut }}</option>
-										{% endfor %}
-									</select>
+								<span> à </span>
+								{{ form_errors(cvForm.mois_fin) }}
+								{{ form_widget(cvForm.mois_fin) }}
 
-									<span>à </span>
+								<select class="" name="annee_fin">
+									{% for annee_fin in range("now"|date("Y"),1950) %}
+										<option value="{{ annee_fin }}"> {{ annee_fin }}</option>
+									{% endfor %}
+								</select>
+							</div>
 
-										{{ form_errors(cvForm.mois_fin) }}
-										{{ form_widget(cvForm.mois_fin) }}
+							<div class="form-group">
+								<label for="responsabilite">Responsabilités :</label><br />
+								{{ form_errors(cvForm.reponsabilite1) }}
+								{{ form_widget(cvForm.reponsabilite1) }}
+								{{ form_errors(cvForm.reponsabilite2) }}
+								{{ form_widget(cvForm.reponsabilite2) }}
+								{{ form_errors(cvForm.reponsabilite3) }}
+								{{ form_widget(cvForm.reponsabilite3) }}
+								{{ form_errors(cvForm.reponsabilite4) }}
+								{{ form_widget(cvForm.reponsabilite4) }}
+								{{ form_errors(cvForm.reponsabilite5) }}
+								{{ form_widget(cvForm.reponsabilite5) }}
+							</div>
 
-									<select class="" name="annee_fin">
-										{% for annee_fin in range("now"|date("Y"),1950) %}
-											<option value="{{ annee_fin }}"> {{ annee_fin }}</option>
-										{% endfor %}
-									</select>
-
-								</div>
-
-								<div class="form-group">
-									<label for="responsabilite">Responsabilités :</label><br />
-									{{ form_errors(cvForm.reponsabilite1) }}
-									{{ form_widget(cvForm.reponsabilite1) }}
-									{{ form_errors(cvForm.reponsabilite2) }}
-									{{ form_widget(cvForm.reponsabilite2) }}
-									{{ form_errors(cvForm.reponsabilite3) }}
-									{{ form_widget(cvForm.reponsabilite3) }}
-									{{ form_errors(cvForm.reponsabilite4) }}
-									{{ form_widget(cvForm.reponsabilite4) }}
-									{{ form_errors(cvForm.reponsabilite5) }}
-									{{ form_widget(cvForm.reponsabilite5) }}
-								</div>
-
-								<div class="form-group">
-									<label for="reussite">Réussites / accomplissements :</label><br />
-									{{ form_errors(cvForm.reussite1) }}
-									{{ form_widget(cvForm.reussite1) }}
-									{{ form_errors(cvForm.reussite2) }}
-									{{ form_widget(cvForm.reussite2) }}
-									{{ form_errors(cvForm.reussite3) }}
-									{{ form_widget(cvForm.reussite3) }}
-									{{ form_errors(cvForm.reussite4) }}
-									{{ form_widget(cvForm.reussite4) }}
-									{{ form_errors(cvForm.reussite5) }}
-									{{ form_widget(cvForm.reussite5) }}
-
-								</div>
-
-
-						</fieldset>
-
-						<fieldset>
+							<div class="form-group">
+								<label for="reussite">Réussites / accomplissements :</label><br />
+								{{ form_errors(cvForm.reussite1) }}
+								{{ form_widget(cvForm.reussite1) }}
+								{{ form_errors(cvForm.reussite2) }}
+								{{ form_widget(cvForm.reussite2) }}
+								{{ form_errors(cvForm.reussite3) }}
+								{{ form_widget(cvForm.reussite3) }}
+								{{ form_errors(cvForm.reussite4) }}
+								{{ form_widget(cvForm.reussite4) }}
+								{{ form_errors(cvForm.reussite5) }}
+								{{ form_widget(cvForm.reussite5) }}
+							</div>
+							<div class="form-group col-md-12">
+								<input class="btn btn-md btn-dark" type="submit" value="Envoyer">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Fin Partie expérience -->
+		
+		<!-- Partie formation -->
+		<section class="section-2">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8">			
+						<form class="form" method="POST">
 							<h3>Formation :</h3>
 
 							<div class="form-group">
@@ -208,16 +230,35 @@
 								</select>
 							</div>
 
-
 							<div class="form-group">
 								{{ form_errors(cvForm.url_formation) }}
 								{{ form_widget(cvForm.url_formation) }}
 								<label for="url_formation"></label>
 							</div>
+							<div class="form-group col-md-12">
+								<input class="btn btn-md btn-dark" type="submit" value="Envoyer">
+							</div>
+						</form>
+					</div>
 
-						</fieldset>
+					<div class="col-md-4 folio-image">
+						<img class="img-responsive" src="{{ asset('images/modele-cv3.jpg') }}" alt="">
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Fin Partie formation -->
 
-						<fieldset>
+		<!-- Certification -->
+		<section class="section-2">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 folio-image">
+						<img class="img-responsive" src="{{ asset('images/modele-cv3.jpg') }}" alt="">
+					</div>
+
+					<div class="col-md-8">
+						<form class="form" method="POST">
 							<h3>Certification :</h3>
 
 							<div class="form-group">
@@ -264,10 +305,22 @@
 								{{ form_widget(cvForm.url_certification) }}
 								<label for="url_certification"></label>
 							</div>
+							<div class="form-group col-md-12">
+								<input class="btn btn-md btn-dark" type="submit" value="Envoyer">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Fin certification -->
 
-						</fieldset>
-
-						<fieldset>
+		<!-- Partie langues -->
+		<section class="section-2">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8">			
+						<form class="form" method="POST">
 							<h3>Langues :</h3>
 
 							<div class="form-group">
@@ -275,8 +328,6 @@
 								{{ form_widget(cvForm.langue_maternelle) }}
 								<label for="langue_maternelle"></label>
 							</div>
-
-							<br />
 
 							<div class="form-group">
 								{{ form_errors(cvForm.langue_1) }}
@@ -289,7 +340,6 @@
 								<!-- <input type="text" id="langue_1_niveau"> -->
 								<span id="slider1value"></span><span> %</span>
 								<div style="max-width:250px" id="slider1"></div>
-
 							</div>
 
 							<div class="form-group">
@@ -303,10 +353,33 @@
 								{{ form_widget(cvForm.langue_score_ielts) }}
 								<label for="langue_score_ielts"></label>
 							</div>
+							<div class="form-group col-md-12">
+								<input class="btn btn-md btn-dark" type="submit" value="Envoyer">
+							</div>
+						</form>
+					</div>
 
-						</fieldset>
-						<fieldset>
-							<h4>Bénévolat</h4>
+					<div class="col-md-4 folio-image">
+						<img class="img-responsive" src="{{ asset('images/modele-cv3.jpg') }}" alt="">
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Fin Partie langues -->
+						
+		<!-- Partie bénévolat -->
+		<section class="section-2">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 folio-image">
+						<img class="img-responsive" src="{{ asset('images/modele-cv3.jpg') }}" alt="">
+						<img class="img-responsive" src="{{ asset('images/modele-cv3.jpg') }}" alt="">
+						<img class="img-responsive" src="{{ asset('images/modele-cv3.jpg') }}" alt="">
+					</div>
+
+					<div class="col-md-8">
+						<form class="form" method="POST">				
+							<h3>Bénévolat</h3>
 
 							<div class="form-group">
 								{{ form_errors(cvForm.nom_benevolat) }}
@@ -314,13 +387,11 @@
 								<label for="nom_benevolat"></label>
 							</div>
 
-
 							<div class="form-group">
 								{{ form_errors(cvForm.secteur_benevolat) }}
 								{{ form_widget(cvForm.secteur_benevolat) }}
 								<label for="secteur_benevolat"></label>
 							</div>
-
 
 							<div class="form-group">
 								<label for="effectif_benevolat">Effectif :</label>
@@ -375,7 +446,6 @@
 										<option value="{{ annee_fin }}"> {{ annee_fin }}</option>
 									{% endfor %}
 								</select>
-
 							</div>
 
 							<div class="form-group">
@@ -404,85 +474,114 @@
 								{{ form_widget(cvForm.reussite_benevolat4) }}
 								{{ form_errors(cvForm.reussite_benevolat5) }}
 								{{ form_widget(cvForm.reussite_benevolat5) }}
-
 							</div>
-
-						<fieldset>
-							<h3>Informations personnelles</h3>
-
-							{{ form_errors(cvForm.description_personnelle) }}
-							{{ form_widget(cvForm.description_personnelle) }}
-							<label for="description"></label>
-
-							<br />
-							<h4>Centres d'intérêt</h4>
-
-							<div class="form-group">
-								{{ form_errors(cvForm.passion) }}
-								{{ form_widget(cvForm.passion) }}
-								<label for="passion_1"></label>
-
-								<label for="passion">Votre niveau de pratique</label>
-								<span id="slider2value"></span><span> %</span>
-								<div style="max-width:250px" id="slider2"></div>
+							<div class="form-group col-md-12">
+								<input class="btn btn-md btn-dark" type="submit" value="Envoyer">
 							</div>
-
-							<h4>Voyages</h4>
-
-							<div class="form-group">
-								{{ form_errors(cvForm.voyage) }}
-								{{ form_widget(cvForm.voyage) }}
-								<label for="voyages"></label>
-							</div>
-
-
-							<h4>Réseaux sociaux</h4>
-
-							<div class="form-group">
-								{{ form_errors(cvForm.url_linkdein) }}
-								{{ form_widget(cvForm.url_linkdein) }}
-								<label for="url_linkdein"></label>
-							</div>
-							<div class="form-group">
-								{{ form_errors(cvForm.url_twitter) }}
-								{{ form_widget(cvForm.url_twitter) }}
-								<label for="url_twitter"></label>
-							</div>
-							<div class="form-group">
-								{{ form_errors(cvForm.url_skype) }}
-								{{ form_widget(cvForm.url_skype) }}
-								<label for="url_skype"></label>
-							</div>
-							<div class="form-group">
-								{{ form_errors(cvForm.url_perso) }}
-								{{ form_widget(cvForm.url_perso) }}
-								<label for="url_perso"></label>
-							</div>
-							<div class="form-group">
-								{{ form_errors(cvForm.url_autre) }}
-								{{ form_widget(cvForm.url_autre) }}
-								<label for="url_autre"></label>
-							</div>
-
-							<h4>Informations diverses</h4>
-
-							<div class="form-group">
-								{{ form_errors(cvForm.infos_diverses) }}
-								{{ form_widget(cvForm.infos_diverses) }}
-								<label for="infos_diverses"></label>
-							</div>
-
-						</fieldset>
-
-						<p class="submit">
-							<input type="submit" name"cv" value="Envoyer"/>
-						</div>
-					</form>
-					{{ form_end(cvForm) }}
-					{% endif %}
+						</form>
+					</div>
 				</div>
 			</div>
 		</section>
-		<!-- Forms End -->
+		<!-- Fin Partie bénévolat -->
 
+		<!-- Partie informations personnelles -->
+		<section class="section-1">
+            <div class="container">
+				<div class="row mrg-top-70">
+					<div class="col-md-10 col-md-offset-1">
+						<form class="form" method="POST">
+							<div class="text-center">
+								<h3 class="mrg-btm-40">Informations personnelles</h3>
+							</div>
+							<div class="card">
+								<ul class="nav nav-tabs tab-style-4 item-5">
+									<li class="active"><a data-toggle="tab" href="#s4-option-1"><i class="display-block ei ei-tie"></i>Description</a></li>
+									<li><a data-toggle="tab" href="#s4-option-2"><i class="ei ei-pie-chart-2"></i>Centres d'intérêt</a></li>
+									<li><a data-toggle="tab" href="#s4-option-3"><i class="ei ei-import"></i>Voyages</a></li>
+									<li><a data-toggle="tab" href="#s4-option-4"><i class="ei ei-print"></i>Réseaux sociaux</a></li>
+									<li><a data-toggle="tab" href="#s4-option-5"><i class="ei ei-calendar-3"></i>Informations diverses</a></li>
+								</ul>
+								<div class="tab-content pdd-horizon-30">
+									<div id="s4-option-1" class="tab-pane fade in active">
+										<h4 class="no-mrg-top mrg-btm-20">Description</h4>
+										<label for="description"></label>
+										{{ form_errors(cvForm.description_personnelle) }}
+										{{ form_widget(cvForm.description_personnelle) }}
+									</div>
+
+									<div id="s4-option-2" class="tab-pane fade">
+										<h4 class="no-mrg-top mrg-btm-20">Centres d'intérêt</h4>
+										<div class="form-group">
+											<label for="passion_1"></label>
+											{{ form_errors(cvForm.passion) }}
+											{{ form_widget(cvForm.passion) }}
+									
+											<label for="passion">Votre niveau de pratique</label>
+											<span id="slider2value"></span><span> %</span>
+											<div style="max-width:250px" id="slider2"></div>
+										</div>
+									</div>
+
+									<div id="s4-option-3" class="tab-pane fade">
+										<h4 class="no-mrg-top mrg-btm-20">Voyages</h4>
+										<div class="form-group">
+											<label for="voyages"></label>
+											{{ form_errors(cvForm.voyage) }}
+											{{ form_widget(cvForm.voyage) }}
+										</div>
+									</div>
+
+									<div id="s4-option-4" class="tab-pane fade">
+										<h4 class="no-mrg-top mrg-btm-20">Réseaux sociaux</h4>
+										<div class="form-group">
+											<label for="url_linkdein"></label>
+											{{ form_errors(cvForm.url_linkdein) }}
+											{{ form_widget(cvForm.url_linkdein) }}
+										</div>
+										<div class="form-group">
+											<label for="url_twitter"></label>
+											{{ form_errors(cvForm.url_twitter) }}
+											{{ form_widget(cvForm.url_twitter) }}
+										</div>
+										<div class="form-group">
+											<label for="url_skype"></label>
+											{{ form_errors(cvForm.url_skype) }}
+											{{ form_widget(cvForm.url_skype) }}
+										</div>
+										<div class="form-group">
+											<label for="url_perso"></label>
+											{{ form_errors(cvForm.url_perso) }}
+											{{ form_widget(cvForm.url_perso) }}
+										</div>
+										<div class="form-group">
+											<label for="url_autre"></label>
+											{{ form_errors(cvForm.url_autre) }}
+											{{ form_widget(cvForm.url_autre) }}
+										</div>
+									</div>
+										
+									<div id="s4-option-5" class="tab-pane fade">
+										<h4 class="no-mrg-top mrg-btm-20">Informations diverses</h4>
+										<div class="form-group">
+											<label for="infos_diverses"></label>
+											{{ form_errors(cvForm.infos_diverses) }}
+											{{ form_widget(cvForm.infos_diverses) }}
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group col-md-12">
+								<input class="btn btn-md btn-dark" type="submit" value="Envoyer">
+							</div>
+						</form>
+						{{ form_end(cvForm) }}
+						{% endif %}
+					</div>
+				</div>
+            </div>
+        </section>
+        <!-- Fin Partie informations personnelles -->
+        <!-- Fin formulaire -->							
 {% endblock %}
