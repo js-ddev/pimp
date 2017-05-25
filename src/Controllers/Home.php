@@ -92,7 +92,7 @@ class Home
 
     }
 
-   // Adrien - Route pour connexion utilisateur
+// Adrien - Route pour connexion utilisateur
     public function connexion(Request $request, Application $app){
         $params = array(
             'error' => $app['security.last_error']($request),
@@ -106,59 +106,74 @@ class Home
 // JS - Route pour la connexion à la première page du formulaire Pimpit :
 
     public function pimpit(Request $request, Application $app){
-        $membre = new \Entity\Membre;
+        $membre = $app['dao.membre'] -> find($app['user'] -> getId());
+        // $membre = new \Entity\Membre;
         $fichier = new \Entity\Fichier;
 
-        $membreForm = $app['form.factory']
+        $pimpitForm = $app['form.factory']
             -> create(\Form\Type\PimpitType::class, array(
                 'class' => 'Membre',
                 'class' => 'Fichier'
             ));
-        $membreForm -> handleRequest($request);
 
-        if($membreForm -> isSubmitted() && $membreForm -> isValid()){
+        $pimpitForm -> handleRequest($request);
 
-// JS - Si l'utilisateur est connecté :
-            if(!(is_null($app['user'] -> getUsername()))){
 
-                $path = __DIR__.'/../../fichiers/';
-                // $file = $fichier -> setPhoto();
-                $files = $request-> files ->get($membreForm->getName());
+        // JS - Si l'utilisateur est connecté :
+        if($app['security.authorization_checker'] -> isGranted('IS_AUTHENTICATED_FULLY')){
 
-                $photo = $files['photo'];
-                $cv = $files['fichier'];
+            if($pimpitForm -> isSubmitted() && $pimpitForm -> isValid()){
 
-                $filenamePhoto = md5(uniqid()).'.'.$photo->guessExtension();
-                $filenameCv = md5(uniqid()).'.'.$cv->guessExtension();
+                // if($pimpitForm -> photo -> isSubmitted() && $pimpitForm -> fichier -> isSubmitted()){
+                //
+                //     $path = __DIR__.'/../../fichiers/';
+                //     // $file = $fichier -> setPhoto();
+                //     $files = $request-> files ->get($pimpitForm->getName());
+                //
+                //     $photo = $files['photo'];
+                //     $cv = $files['fichier'];
+                //
+                //     $filenamePhoto = md5(uniqid()).'.'.$photo->guessExtension();
+                //     $filenameCv = md5(uniqid()).'.'.$cv->guessExtension();
+                //
+                //     // $filenamePhoto = $photo -> getClientOriginalName();
+                //     // $filenameCv = $cv -> getClientOriginalName();
+                //
+                //     $photo -> move($path,$filenamePhoto);
+                //     $cv -> move($path,$filenameCv);
+                //
+                //     // $fichier->setPhoto($photo);
+                //
+                //     $fichier -> setPhoto($filenamePhoto);
+                //     $fichier -> setFichier($filenameCv);
+                //
+                // }
+                // else{
 
-                // $filenamePhoto = $photo -> getClientOriginalName();
-                // $filenameCv = $cv -> getClientOriginalName();
 
-                $photo -> move($path,$filenamePhoto);
-                $cv -> move($path,$filenameCv);
-
-                // $fichier->setPhoto($photo);
-
-                $fichier -> setPhoto($filenamePhoto);
-                $fichier -> setFichier($filenameCv);
-
-                $app['dao.membre'] -> save($membre);
+                    $app['dao.membre'] -> savePimpit();
+                    $app['session'] -> getFlashBag() -> add('success', 'Formulaire pris en compte !');
+                // }
             }
 
-// Si l'utilisateur n'est pas connecté le renvoyer vers l'inscription/login :
-            else{
-                $app['session'] -> getFlashBag() -> add('info', 'Merci de vous inscrire ou de vous connecter');
-            }
+            $pimpitFormView = $pimpitForm -> createView();
+
+            $params = array(
+                'title' => 'Pimpez votre CV !',
+                'pimpitForm' => $pimpitFormView
+            );
+
+            return $app['twig']->render('pimpit.html.twig', $params);
+        }
+        // Si l'utilisateur n'est pas connecté le renvoyer vers l'inscription/login :
+        else{
+
+// JS - A prevoir une page d'inscription avec message :
+            header("Location: /web/index_dev.php/inscription");
+            exit();
         }
 
-        $membreFormView = $membreForm -> createView();
 
-        $params = array(
-            'title' => 'Pimpez votre CV !',
-            'membreForm' => $membreFormView
-        );
-
-        return $app['twig']->render('pimpit.html.twig', $params);
 
     }
 

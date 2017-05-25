@@ -22,45 +22,43 @@
 			<div class="container">
 				<div class="row">
 					<h2 class="mrg-btm-30">Formulaire CV</h2>
-					{{ form_start(membreForm) }}
-
+					<form method="POST">
+					{% if pimpitForm %}
+					{{ form_start(pimpitForm) }}
 						<h2>Merci de compléter ces informations :</h2>
+
+						    {{ form_widget(pimpitForm.id,{value : app.user.id}) }}
 
 						<fieldset>
 							<h3>A votre sujet :</h3>
-								{% if membreForm %}
-								{{ form_start(membreForm) }}
-							<div class="form-group">
 
 							<div class="form-group">
 								<label><b>Prénom</b></label>
-								{{ form_errors(membreForm.prenom) }}
-								{{ form_widget(membreForm.prenom) }}
+								{{ form_errors(pimpitForm.prenom) }}
+								{{ form_widget(pimpitForm.prenom) }}
 							</div>
 
 							<div class="form-group">
 								<label><b>Nom</b></label>
-								{{ form_errors(membreForm.nom) }}
-								{{ form_widget(membreForm.nom) }}
+								{{ form_errors(pimpitForm.nom) }}
+								{{ form_widget(pimpitForm.nom) }}
 							</div>
 
 							<div class="form-group">
 								<label><b>Email</b></label>
-								{{ form_errors(membreForm.username) }}
-								{{ form_widget(membreForm.username, {value : app.user.username}) }}
+								{{ form_errors(pimpitForm.username) }}
+								{{ form_widget(pimpitForm.username, {value : app.user.username}) }}
 							</div>
 
 							<div class="form-group">
 								<label><b>Date de naissance</b></label>
-								{{ form_errors(membreForm.date_naissance) }}
-								{{ form_widget(membreForm.date_naissance) }}
+								{{ form_errors(pimpitForm.date_naissance) }}
+								{{ form_widget(pimpitForm.date_naissance) }}
 							</div>
 
 							<div class="form-group">
 								<label><b>Photo</b></label>
 
-								{{ form_errors(membreForm.photo) }}
-								{{ form_widget(membreForm.photo) }}
 							</div>
 
 						</fieldset>
@@ -70,48 +68,47 @@
 
 							<div class="form-group">
 								<label><b>Adresse</b></label>
-									{{ form_errors(membreForm.adresse) }}
-									{{ form_widget(membreForm.adresse) }}
+									{{ form_errors(pimpitForm.adresse) }}
+									{{ form_widget(pimpitForm.adresse) }}
 							</div>
 
 							<div class="form-group">
 								<label><b>Ville</b></label>
-									{{ form_errors(membreForm.ville) }}
-									{{ form_widget(membreForm.ville) }}
+									{{ form_errors(pimpitForm.ville) }}
+									{{ form_widget(pimpitForm.ville) }}
 							</div>
 
 							<div class="form-group">
 								<label><b>Code Postal</b></label>
-									{{ form_errors(membreForm.code_postal) }}
-									{{ form_widget(membreForm.code_postal) }}
+									{{ form_errors(pimpitForm.code_postal) }}
+									{{ form_widget(pimpitForm.code_postal) }}
 							</div>
 
 							<div class="form-group">
 								<label><b>Pays</b></label>
-									{{ form_errors(membreForm.pays) }}
-									{{ form_widget(membreForm.pays) }}
+									{{ form_errors(pimpitForm.pays) }}
+									{{ form_widget(pimpitForm.pays) }}
 							</div>
 
 							<div class="form-group">
 								<label><b>Téléphone</b></label>
-									{{ form_errors(membreForm.telephone) }}
-									{{ form_widget(membreForm.telephone) }}
+									{{ form_errors(pimpitForm.telephone) }}
+									{{ form_widget(pimpitForm.telephone) }}
 							</div>
 
 						</fieldset>
 						<h3>Si vous avez déjà un CV, vous pouvez nous l'envoyer :</h3>
 
 						<div class="form-group">
-							{{ form_errors(membreForm.fichier) }}
-							{{ form_widget(membreForm.fichier) }}
-						</div>
 
-						<div class="form-group">
-							<input type="submit" name="infos" value="Envoyer"/>
 						</div>
-						{{ form_end(membreForm) }}
-						{% endif %}
+						<div class="form-group">
+							{{ form_end(pimpitForm) }}
+							{% endif %}
+							<button type="submit" value="Envoyer"/>Enregistrer</button>
+						</div>
 					</form>
+
 
 				</div>
 			</div>
