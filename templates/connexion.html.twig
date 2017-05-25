@@ -3,7 +3,7 @@
 {% block content %}
 	 <!-- Hero Start -->
         <section id="hero">
-            <div class="fs-hero hero-img" style="background-image:url(({{ asset('images/about-bg1.jpg') }})">
+            <div class="fs-hero hero-img" style="background-image:url({{ asset('images/about-bg1.jpg') }})">
                 <div class="hero-caption text-white center-left">
                     <h3 class="font-weight-light">Pimp It</h3>
                     <h1 class="ls-2">Relookez votre CV !</h1>
@@ -36,7 +36,6 @@
                                             <form action="{{ path('login_check') }}" method="post">
                                                 <div class="form-wrapper">
                                                     <label><b>Email</b></label>
-                                                    {{ error }}
                                                     <input type="text" class="form-control" placeholder="Email" name="_username" value="{{ last_username }}">
                                                 </div>
                                                 <div class="form-wrapper">
@@ -57,7 +56,7 @@
                                     <div class="content pdd-horizon-50">
                                         <h3 class="mrg-btm-20 text-white">Connectez-vous maintenant !</h3>
                                         <p class="text-white font-size-14">Si vous n'avez pas encore de compte sur Pimp My CV, merci de vous inscrire !</p>
-                                        <button class="btn btn-sm btn-white-inverse mrg-vertical-20">S'inscrire</button>
+                                        <a href="{{ path('inscription') }}" class="btn btn-sm btn-white-inverse mrg-vertical-20">S'inscrire</a>
                                     </div><!-- content -->
                                 </div><!-- /background-holder -->
                             </div><!-- /image-container -->

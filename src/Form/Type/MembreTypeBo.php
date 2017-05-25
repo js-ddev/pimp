@@ -58,16 +58,56 @@ class MembreTypeBo extends AbstractType
                 ),
             ))
 
-
-            -> add('email', EmailType::class, array(
+/*            -> add('username', UsernameType::class, array(
                 'constraints' => array(
-                    new Assert\Email(),
+                    new Assert\Username(),
                 ),
                 'attr' => array(
-                    'placeholder' => 'Votre adresse email',
+                    'placeholder' => 'Email',
                     'class' => 'form-control',
                 ),
-            ))
+            ))*/
+
+        -> add('username', EmailType::class, array(
+            'constraints' => array(
+                new Assert\NotBlank(),
+                new Assert\Length(array(
+                    'min' => 3,
+                    'max' => 30
+                ))
+            ),
+            'attr' => array(
+                'placeholder' => 'Email',
+                'class' => 'form-control',
+            ),
+/*            'required' => true,
+*/        ))
+
+
+/*        -> add('password', RepeatedType::class, array(
+            'constraints' => array(
+                new Assert\NotBlank(),
+                new Assert\Length(array(
+                    'min' => 3,
+                    'max' => 30
+                ))
+            ),
+            'type' => PasswordType::class,
+            'required' => true,
+            'first_options'  => array('attr' => array(
+                'placeholder' => 'Mot de passe',
+                'class' => 'form-control',
+                )
+            ),
+            'second_options' => array('attr' => array(
+                'placeholder' => 'Confirmation du mot de passe',
+                'class' => 'form-control',
+                )
+            )   
+        ))
+
+*/
+
 
             -> add('date_naissance', TextType::class, array(
                 'attr' => array(
@@ -76,6 +116,13 @@ class MembreTypeBo extends AbstractType
                 ),
             ))
 
+            -> add('telephone', TextType::class, array(
+                'required' => true,
+                'attr' => array(
+                    'placeholder' => 'Téléphone',
+                    'class' => 'form-control',
+                ),
+            ))
         
             -> add('adresse', TextType::class, array(
                 'required' => true,
@@ -109,10 +156,26 @@ class MembreTypeBo extends AbstractType
                 ),
             ))
 
-            -> add('telephone', TextType::class, array(
+            -> add('statut_membre', TextType::class, array(
                 'required' => true,
                 'attr' => array(
-                    'placeholder' => 'Téléphone',
+                    'placeholder' => 'Statut membre',
+                    'class' => 'form-control',
+                ),
+            ))
+
+            -> add('date_inscription', TextType::class, array(
+                'required' => true,
+                'attr' => array(
+                    'placeholder' => 'Date d\'inscription',
+                    'class' => 'form-control',
+                ),
+            ))
+
+            -> add('role', TextType::class, array(
+                'required' => true,
+                'attr' => array(
+                    'placeholder' => 'Rôle',
                     'class' => 'form-control',
                 ),
             ));

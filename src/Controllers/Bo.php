@@ -9,10 +9,15 @@ use Symfony\Component\HttpFoundation\Request;
 
 class Bo
 {
+    // Adrien - Route pour accès au formulaire de connexion admin
+    public function index(Application $app, Request $request){
+         $params = array(
+            'error' => $app['security.last_error']($request),
+            'last_username' => $app['session'] -> get('_security.last_username'),
+            'title' => 'Connexion BO'
+        );
 
-    public function index(Application $app){
-        return $app['twig']->render('/bo/index.html.twig');
-
+        return $app['twig'] -> render('/bo/index.html.twig', $params);
     }
 
     /* DF - namespace de connexion */
@@ -51,7 +56,7 @@ class Bo
 
 
         $membre = new \Entity\Membre;
-        $membreForm = $app['form.factory'] -> create(\Form\Type\MembreTypeBo::class, $membre);
+        $membreFormBo = $app['form.factory'] -> create(\Form\Type\MembreTypeBo::class, $membre);
 
         $membreFormBo -> handleRequest($request);
 
@@ -78,7 +83,4 @@ class Bo
 
         return $app['twig']->render('/bo/gestion_membres.html.twig', $params);
         }   
-
-
-
 }

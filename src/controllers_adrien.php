@@ -29,4 +29,10 @@ $app -> match('/inscription/', 'Controllers\\Home::inscription') -> bind('inscri
 $app -> match('/connexion/', 'Controllers\\Home::connexion') -> bind('connexion') ;
 
 // Route pour redirection suite à la connexion utilisateur
-$app -> match('/login/redirect/', 'Controllers\\Home::index') -> bind('index');
+$app -> get('/login/redirect/', 'Controllers\\Home::index') -> bind('index');
+
+// Route pour accès au formulaire de connexion admin
+$app -> get('/login_bo','Controllers\\Bo::index') -> bind('login_bo');
+
+// Route pour redirection suite à la connexion admin
+$bo -> get('/', 'Controllers\\Bo::accueil') -> bind('accueil');

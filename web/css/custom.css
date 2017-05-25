@@ -3,3 +3,13 @@
   
   Your CSS goes here
 ----------------------------------------------------------------------------*/
+
+/* Adrien - Réglage bug lisibité placeholder et saisies dans inputs */
+input.form-control {
+	padding: 5px;
+}
+
+/* Adrien - Règlage bug visibilité header en mode transparent */
+.wrapper {
+	z-index: 1000;
+}

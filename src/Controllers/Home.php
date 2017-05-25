@@ -65,8 +65,6 @@ class Home
 
         $membreForm -> handleRequest($request);
 
-
-
         if($membreForm -> isSubmitted() && $membreForm -> isValid()){
             $salt = substr(md5(time()), 0, 23);
             $membre -> setSalt($salt);
@@ -74,13 +72,6 @@ class Home
 
             $password = $membre -> getPassword();
 
-            /*
-            // find the encoder for a UserInterface instance
-            $encoder = $app['security.encoder_factory']->getEncoder($membre);
-
-            // compute the encoded password for foo
-            $password_encode = $encoder->encodePassword($mdp, $membre->getSalt());
-            */
             $password_encode = $app["security.encoder.bcrypt"]->encodePassword($password, $membre->getSalt());
 
 
@@ -115,7 +106,7 @@ class Home
 // JS - Route pour la connexion à la première page du formulaire Pimpit :
 
     public function pimpit(Request $request, Application $app){
-
+        $membre = new \Entity\Membre;
         $fichier = new \Entity\Fichier;
 
         $membreForm = $app['form.factory']
@@ -137,9 +128,11 @@ class Home
                 $photo = $files['photo'];
                 $cv = $files['fichier'];
 
-                // $fileName = md5(uniqid()).'.'.$file->guessExtension();
-                $filenamePhoto = $photo -> getClientOriginalName();
-                $filenameCv = $cv -> getClientOriginalName();
+                $filenamePhoto = md5(uniqid()).'.'.$photo->guessExtension();
+                $filenameCv = md5(uniqid()).'.'.$cv->guessExtension();
+
+                // $filenamePhoto = $photo -> getClientOriginalName();
+                // $filenameCv = $cv -> getClientOriginalName();
 
                 $photo -> move($path,$filenamePhoto);
                 $cv -> move($path,$filenameCv);
@@ -190,6 +183,42 @@ class Home
         );
 
         return $app['twig']->render('template_options.html.twig', $params);
+
+    }
+
+// JS - Fonction pour générer le formulaire de création du CV :
+
+    public function cv(Request $request, Application $app){
+        $cv = new \Entity\Cv;
+        $experience = new \Entity\Experience;
+        $experience = new \Entity\Formation;
+        $experience = new \Entity\Aptitude;
+        $experience = new \Entity\AutreInfo;
+
+        $cvForm = $app['form.factory'] -> create(\Form\Type\CvType::class, array(
+            'class' => 'Cv',
+            'class' => 'Experience',
+            'class' => 'Formation',
+            'class' => 'Aptitude',
+            'class' => 'AutreInfo',
+        ));
+
+        $cvForm -> handleRequest($request);
+
+        if($cvForm -> isSubmitted() && $cvForm -> isValid()){
+
+          /*  $app['dao.cv'] -> save($cv);*/
+            $app['session'] -> getFlashBag() -> add('success', 'vos options sont prises en compte !');
+        }
+
+        $cvFormView = $cvForm -> createView();
+
+        $params = array(
+            'title' => 'Options',
+            'cvForm' => $cvFormView
+        );
+
+        return $app['twig']->render('pimpit_cv.html.twig', $params);
 
     }
 

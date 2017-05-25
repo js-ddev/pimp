@@ -62,7 +62,7 @@ class PimpitType extends AbstractType
             ))
 
 
-            -> add('email', EmailType::class, array(
+            -> add('username', EmailType::class, array(
                 'constraints' => array(
                     new Assert\Email(),
                 ),
@@ -125,8 +125,9 @@ class PimpitType extends AbstractType
 
             -> add('fichier', FileType::class, array(
                     'label' => 'Votre ancien CV (si vous en avez un)',
-                )
+                    )
             );
     }
+
 
 }
