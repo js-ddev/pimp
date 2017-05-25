@@ -147,4 +147,34 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
 ));
 
 
+
+// Didier - Supprimer un membre dans la BDD
+$app->get('/gestion_membres/membre/{id}/delete', function($id) use ($app) {
+// IL FAUDRA AUSSI supprimmer toutes les infos associés au membre (tables du CV). Attention : il est intéressant de conserver les infos de la table commande
+    $app['dao.membre']->delete($id);
+    $app['session']->getFlashBag()->add('success', 'Le membre à été supprimé de la BDD');
+    // Redirect to admin home page
+    return $app->redirect($app['url_generator']->generate('gestion_membres'));
+})->bind('supprimer_membre');
+
+
+/////////////////   MODEL POUR CODE CI-DESSUS    //////////////////////
+//// A utiliser pour supprimer les infos associés au membre
+
+// Remove an article
+/*$app->get('/admin/article/{id}/delete', function($id, Request $request) use ($app) {
+    // Delete all associated comments
+    $app['dao.comment']->deleteAllByArticle($id);
+    // Delete the article
+    $app['dao.article']->delete($id);
+    $app['session']->getFlashBag()->add('success', 'The article was successfully removed.');
+    // Redirect to admin home page
+    return $app->redirect($app['url_generator']->generate('admin'));
+})->bind('admin_article_delete');*/
+
+/////////////////   FIN - MODEL CI-DESSUS    //////////////////////
+ 
+
+
+
 return $app;

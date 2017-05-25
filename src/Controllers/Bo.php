@@ -20,17 +20,17 @@ class Bo
         return $app['twig'] -> render('/bo/index.html.twig', $params);
     }
 
-    /* DF - namespace de connexion */
+    /* Didier - namespace de connexion */
     public function connexion(Application $app) {
     	return $app['twig']->render('/bo/connexion.html.twig');
     }
 
-    /* DF - namespace de backoffice content */
+    /* Didier - namespace de backoffice content */
     public function accueil(Application $app) {
     	return $app['twig']->render('/bo/accueil.html.twig');
     }
 
-    /* DF - namespace de gestion_membres */
+    /* Didier - namespace de gestion_membres */
 /*    public function gestion_membres(Application $app) {
          $membres = $app['dao.membre'] -> findAll();
          $params = array(
@@ -39,7 +39,7 @@ class Bo
     	return $app['twig']->render('/bo/gestion_membres.html.twig', $params);
     }*/
 
-    /* DF - namespace de backoffice content */
+    /* Didier - namespace de backoffice content */
     public function gestion_commandes(Application $app) {
         $commandes = $app['dao.commande'] -> findAll();
         $params = array(
@@ -47,7 +47,7 @@ class Bo
 
     	return $app['twig']->render('/bo/gestion_commandes.html.twig', $params);
      }
-
+ 
 
 // Didier - Route pour inscription utilisateur
     public function gestion_membres(Request $request, Application $app){
@@ -86,8 +86,6 @@ class Bo
 
         return $app['twig']->render('/bo/gestion_membres.html.twig', $params);
     }   
-
-
 
 
      
