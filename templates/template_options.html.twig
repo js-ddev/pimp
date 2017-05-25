@@ -3,7 +3,7 @@
 {% block content %}
 	<!-- Page Tittle Start -->
         <section class="page-tittle page-tittle-lg parallax-bg dark-overlay">
-            <img class="parallax-img no-mobile-parallax" src="assets/images/bg-18.jpg" alt="" data-parallax='{"y": 150}'>
+            <img class="parallax-img no-mobile-parallax" src="../../../web/images/bg-2.jpg" alt="" data-parallax='{"y": 150}'>
             <div class="container">
                 <div class="page-tittle-head">
                     <h2>Options</h2>
@@ -19,305 +19,122 @@
             {{ form_start(optionForm) }}
        
             
-            <section class="section-6 bg-gray">
+            <section class="section-2 bg-gray">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4">
+                    
+                    <div class="col-lg-3">
                         <div class="pricing-1">
                             <div class="pricing-status">
-                                <i class="ei ei-airplane-side"></i>
-                                <span>Nombre de page</span>
-                                {{ form_errors(optionForm.nombre_page) }}
-                                {{ form_widget(optionForm.nombre_page) }}
+                                <i class="glyphicon glyphicon-list-alt"></i>
+                                <h2 class="plan"><b>Nombre de page(s)</b></h2>
+                                 <ul class="pricing-content">
+                                <li>{{ form_errors(optionForm.nombre_page) }}</li>
+                                <li>{{ form_widget(optionForm.nombre_page) }}</li>
+                                </ul>
+
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            </section>
 
-               <section class="section-6 bg-gray">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-lg-3">
                         <div class="pricing-1">
                             <div class="pricing-status">
-                                <i class="ei ei-airplane-side"></i>
-                                <span>Modèle</span>
-                                {{ form_errors(optionForm.modele) }}
-                                {{ form_widget(optionForm.modele) }}
+                                <i class="glyphicon glyphicon-heart-empty"></i>
+                                <h2 class="plan"><b>Choix du modèle</b></h2>
+                                 <ul class="pricing-content">
+                                <li>{{ form_errors(optionForm.modele) }}</li>
+                                <li>{{ form_widget(optionForm.modele) }}</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            </section>
 
-            <section class="section-6 bg-gray">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
+
+                    <div class="col-lg-3">
                         <div class="pricing-1">
                             <div class="pricing-status">
-                                <i class="ei ei-rocket"></i>
-                                <span>Couleur</span>
-                                {{ form_errors(optionForm.couleur) }}
-                                {{ form_widget(optionForm.couleur) }}
+                                <i class="glyphicon glyphicon-tint"></i>
+                                <h2 class="plan"><b>Couleur du modèle</b></h2>
+                                 <ul class="pricing-content">
+                                <li>{{ form_errors(optionForm.couleur) }}</li>
+                                <li>{{ form_widget(optionForm.couleur) }}</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            </section>
 
 
-            <section class="section-6 bg-gray">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-lg-3">
                         <div class="pricing-1">
                             <div class="pricing-status">
-                                <i class="ei ei-rocket"></i>
-                                <span>Puces</span>
-                                {{ form_errors(optionForm.puce) }}
-                                {{ form_widget(optionForm.puce) }}
+                                <i class="glyphicon glyphicon-option-vertical"></i>
+                                <h2 class="plan"><b>Puce du modèle</b></h2>
+                                 <ul class="pricing-content">
+                                <li>{{ form_errors(optionForm.puce) }}</li>
+                                <li>{{ form_widget(optionForm.puce) }}</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            </section>
 
-            <section class="section-6 bg-gray">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
+                     <div class="col-lg-3">
                         <div class="pricing-1">
                             <div class="pricing-status">
-                                <i class="ei ei-rocket"></i>
-                                <span>Fond</span>
-                                {{ form_errors(optionForm.fond) }}
-                                {{ form_widget(optionForm.fond) }}
+                                <i class="glyphicon glyphicon-adjust"></i>
+                                <h2 class="plan"><b>Arrière plan du modèle</b></h2>
+                                 <ul class="pricing-content">
+                                <li>{{ form_errors(optionForm.fond) }}</li>
+                                <li>{{ form_widget(optionForm.fond) }}</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            </section>
-
-               <section class="section-6 bg-gray">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
+                    
+                    <div class="col-lg-3">
                         <div class="pricing-1">
                             <div class="pricing-status">
-                                <i class="ei ei-rocket"></i>
-                                <span>Indicateur de performance</span>
-                                {{ form_errors(optionForm.indicateur_performance) }}
-                                {{ form_widget(optionForm.indicateur_performance) }}
+                                <i class="glyphicon glyphicon-signal"></i>
+                                <h2 class="plan"><b>Indicateur de performance</b></h2>
+                                 <ul class="pricing-content">
+                                <li>{{ form_errors(optionForm.indicateur_performance) }}</li>
+                                <li>{{ form_widget(optionForm.indicateur_performance) }}</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            </section>
 
-               <section class="section-6 bg-gray">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-lg-3">
                         <div class="pricing-1">
                             <div class="pricing-status">
-                                <i class="ei ei-rocket"></i>
-                                {{ form_errors(optionForm.activite) }}
-                                {{ form_widget(optionForm.activite) }}
+                                <i class="glyphicon glyphicon-sunglasses"></i>
+                                <h2 class="plan"><b>Présentation des activités</b></h2>
+                                 <ul class="pricing-content">
+                                <li>{{ form_errors(optionForm.activite) }}</li>
+                                <li>{{ form_widget(optionForm.activite) }}</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                
+                    <div class="col-lg-3">
+                        <div class="pricing-1">
+                            <div class="pricing-status">
+                                <i class="glyphicon glyphicon-thumbs-up"></i>
+                                  <form action="/action_page.php" method="get" id="options">
+                                    <h2 class="plan"><b>Transforme moi mon CV!</b></h2>
+                                    <button type="submit" value="Valider" class="btn btn-sm btn-theme">Go</button>       
+                                 </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <!-- row -->
+            </div> <!-- container -->
+    
             </section>
 
             {{ form_end(optionForm) }}
             {% endif %}
 
-
-
-
-
-
-        <!-- Pricing Table 1 Start -->
-        <section class="section-1 bg-gray">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="pricing-1">
-                            <div class="pricing-status">
-                                <i class="ei ei-cart"></i>
-
-
-                                <h2 class="plan"><b>Basic</b></h2>
-                            </div>
-                            <ul class="pricing-content">
-                                <li class="mrg-btm-15"><span class="theme-color font-size-25">$</span><span class="theme-color price">18</span>/Month</li>
-                            </ul>
-                            <a class="btn btn-md btn-theme mrg-top-30">Sign up now</a>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="pricing-1 recommended">
-                            <div class="pricing-status">
-                                <i class="ei ei-airplane-side"></i>
-                                <h2 class="plan"><b>Standard</b></h2>
-                            </div>
-                            <ul class="pricing-content">
-                                <li class="mrg-btm-15"><span class="theme-color font-size-25">$</span><span class="theme-color price">28</span>/Month</li>
-                            </ul>
-                            <a class="btn btn-md btn-theme mrg-top-30">Sign up now</a>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="pricing-1">
-                            <div class="pricing-status">
-                                <i class="ei ei-rocket"></i>
-                                <h2 class="plan"><b>Premium</b></h2>
-                            </div>
-                            <ul class="pricing-content">
-                                <li class="mrg-btm-15"><span class="theme-color font-size-25">$</span><span class="theme-color price">38</span>/Month</li>
-                            </ul>
-                            <a class="btn btn-md btn-theme mrg-top-30">Sign up now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Pricing Table 1 End -->
-        
-        
-        <!-- Pricing Table 2 Start -->
-        <section class="section-1">
-            <div class="container">
-                <div class="pricing-2 column-3">
-                    <div class="pricing-table">
-                        <div class="pricing-info">
-                            <div class="pricing-status">
-                                <i class="ei ei-cart"></i>
-                                <div class="plan border bottom">
-                                    <h2 class="mrg-btm-20">Basic</h2>
-                                    <span class="mrg-btm-10"><span class="font-size-25 theme-color price"><b>$18</b></span> / Month</span>
-                                    <p class="width-80 mrg-horizon-auto">Lorem Ipsum has been the industry's standard dummy text ever.</p>
-                                </div>
-                            </div>
-                            <ul class="pricing-content">
-                                <li>1 GB of Space</li>
-                                <li>1 GB traffice</li>
-                                <li>Forum access</li>
-                                <li>Support at 3 hour</li>
-                            </ul>
-                        </div>
-                        <div class="pricing-footer">
-                            <button class="btn btn-block btn-dark no-mrg-btm">Sign Up</button>
-                        </div>
-                    </div>
-                    <div class="pricing-table recommended">
-                        <div class="pricing-info">
-                            <div class="pricing-status">
-                                <i class="ei ei-airplane-side"></i>
-                                <div class="plan border bottom">
-                                    <h2 class="mrg-btm-20">Standard</h2>
-                                    <span class="mrg-btm-10"><span class="font-size-25 theme-color price"><b>$18</b></span> / Month</span>
-                                    <p class="width-80 mrg-horizon-auto">Lorem Ipsum has been the industry's standard dummy text ever.</p>
-                                </div>
-                            </div>
-                            <ul class="pricing-content">
-                                <li>2 GB of Space</li>
-                                <li>2 GB traffice</li>
-                                <li>Forum access</li>
-                                <li>Support at 7 hour</li>
-                            </ul>
-                        </div>
-                        <div class="pricing-footer">
-                            <button class="btn btn-block btn-dark no-mrg-btm">Sign Up</button>
-                        </div>
-                    </div>
-                    <div class="pricing-table">
-                        <div class="pricing-info">
-                            <div class="pricing-status">
-                                <i class="ei ei-rocket"></i>
-                                <div class="plan border bottom">
-                                    <h2 class="mrg-btm-20">Premium</h2>
-                                    <span class="mrg-btm-10"><span class="font-size-25 theme-color price"><b>$18</b></span> / Month</span>
-                                    <p class="width-80 mrg-horizon-auto">Lorem Ipsum has been the industry's standard dummy text ever.</p>
-                                </div>
-                            </div>
-                            <ul class="pricing-content">
-                                <li>Unlimited of Space</li>
-                                <li>Unlimited traffice</li>
-                                <li>Forum access</li>
-                                <li>Support at 24 hour</li>
-                            </ul>
-                        </div>
-                        <div class="pricing-footer">
-                            <button class="btn btn-block btn-dark no-mrg-btm">Sign Up</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Pricing Table 2 End -->
-        
-        
-        <!-- Pricing Table 3 Start -->
-        <section class="section-1">
-            <div class="container">
-                <div class="pricing-2 column-3">
-                    <div class="pricing-table">
-                        <div class="pricing-info no-pdd-btm">
-                            <div class="pricing-status">
-                                <i class="ei ei-cart"></i>
-                                <div class="plan no-mrg-btm">
-                                    <h2 class="mrg-btm-20">Basic</h2>
-                                    <span class="mrg-btm-10"><span class="font-size-25 theme-color price"><b>$18</b></span> / Month</span>
-                                    <p class="width-80 mrg-horizon-auto">Lorem Ipsum has been the industry's standard dummy text ever.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pricing-footer">
-                            <button class="btn btn-block btn-dark no-mrg-btm">Sign Up</button>
-                        </div>
-                    </div>
-                    <div class="pricing-table recommended">
-                        <div class="pricing-info no-pdd-btm">
-                            <div class="pricing-status">
-                                <i class="ei ei-airplane-side"></i>
-                                <div class="plan no-mrg-btm">
-                                    <h2 class="mrg-btm-20">Standard</h2>
-                                    <span class="mrg-btm-10"><span class="font-size-25 theme-color price"><b>$18</b></span> / Month</span>
-                                    <p class="width-80 mrg-horizon-auto">Lorem Ipsum has been the industry's standard dummy text ever.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pricing-footer">
-                            <button class="btn btn-block btn-dark no-mrg-btm">Sign Up</button>
-                        </div>
-                    </div>
-                    <div class="pricing-table">
-                        <div class="pricing-info no-pdd-btm">
-                            <div class="pricing-status">
-                                <i class="ei ei-rocket"></i>
-                                <div class="plan no-mrg-btm">
-                                    <h2 class="mrg-btm-20">Premium</h2>
-                                    <span class="mrg-btm-10"><span class="font-size-25 theme-color price"><b>$18</b></span> / Month</span>
-                                    <p class="width-80 mrg-horizon-auto">Lorem Ipsum has been the industry's standard dummy text ever.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pricing-footer">
-                            <button class="btn btn-block btn-dark no-mrg-btm    ">Sign Up</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Pricing Table 3 End -->
 {% endblock %}

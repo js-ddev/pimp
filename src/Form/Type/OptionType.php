@@ -19,54 +19,54 @@ class OptionType extends AbstractType
         $builder
             -> add('nombre_page', ChoiceType::class, array(
                 'choices' => array(
-                    'une_page' => 'Une page',
-                    'deux_pages' => 'Deux pages',
-                    'trois_pages' => 'Trois pages',
+                    'Une page' => 'une_page',
+                    'Deux pages' => 'deux_pages',
+                    'Trois pages' => 'trois_pages',
                 ))
             )
             -> add('modele', ChoiceType::class, array(
                 'choices' => array(
-                    'modele_un' => 'Modele 1',
-                    'modele_deux' => 'Modele 2',
-                    'modele_trois' => 'Modele 3',
-                    'modele_quatre' => 'Modele 4',
+                    'Modèle 1' => 'modele1',
+                    'Modèle 2' => 'modele2',
+                    'Modèle 3' => 'modele3',
+                    'Modèle 4' => 'modele4',
                 ))
             )
             -> add('couleur', ChoiceType::class, array(
                 'choices' => array(
-                    'rouge' => 'Rouge',
-                    'vert' => 'Vert',
-                    'bleu' => 'Bleu',
-                    'gris' => 'Gris',
-                    'marron' => 'Marron',
+                    'Rouge' => 'rouge',
+                    'Vert' => 'vert',
+                    'Bleu' => 'bleu',
+                    'Gris' => 'gris',
+                    'Marron' => 'marron',
                 ))
             )
             -> add('puce', ChoiceType::class, array(
                 'choices' => array(
-                    'type_un' => 'Type 1',
-                    'type_deux' => 'Type 2',
-                    'type_trois' => 'Type 3',
-                    'type_quatre' => 'Type 4',
-                    'type_cinq' => 'Type 5',
+                    'Type 1' => 'type_un',
+                    'Type 2' => 'type_deux',
+                    'Type 3' => 'type_trois',
+                    'Type 4' => 'type_quatre',
+                    'Type 5' => 'type_cinq',
                 ))
             )
             -> add('fond', ChoiceType::class, array(
                 'choices' => array(
-                    'fond_blanc' => 'Fond blanc',
-                    'fond_filigrane' => 'Fond filigrane',
+                    'Fond blanc' => 'fond_blanc',
+                    'Fond filigrane' => 'fond_filigrane',
                 ))
             )
             -> add('indicateur_performance', ChoiceType::class, array(
                 'choices' => array(
-                    'texte' => 'Texte',
-                    'barre' => 'Barre de progression',
-                    'rond' => 'Rond',
+                    'Texte' => 'texte',
+                    'Barre' => 'barre',
+                    'Rond' => 'rond',
                 ))
             )
             -> add('activite', ChoiceType::class, array(
                 'choices' => array(
-                    'texte' => 'Texte',
-                    'icone' => 'Icone'
+                    'Texte' => 'texte',
+                    'Icone' => 'icone'
                 ))
             );
 
