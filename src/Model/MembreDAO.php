@@ -89,10 +89,12 @@ class MembreDAO extends DAO implements UserProviderInterface
 
         // Didier - Modifier les données d'un membre ou créer un membe
         $membreData['role'] = 'ROLE_USER';
-        if($membre->getId()) { //
+
+        if($membre->getId()) { // Modifier un membre
             $this->getDb()->update('membre', $membreData, array('id'=>$membre->getId()));
-            print_r('ok');
-        } else {
+
+        } else { // Créer un membre
+
             $this -> getDb() -> insert('membre', $membreData);
         }
         $membre -> setId($this -> getDb() -> lastInsertId());
@@ -181,8 +183,17 @@ class MembreDAO extends DAO implements UserProviderInterface
     }
 
 
+
+    // Didier - Supprimer un membre dans la BDD
+    public function delete($id) {
+        // Supprimer un membre
+        $this->getDb()->delete('membre', array('id' => $id));
+    }
+
+
+
     protected function BuildEntityObject(array $value){
-    $membre = new Membre; // JS - crée un nouvel objet produit
+    $membre = new Membre; // JS - crée un nouvel objet membre
 
     $membre -> setId($value['id']);
     $membre -> setUsername($value['username']);

@@ -1,9 +1,6 @@
 <?php
-///////  COMMENTAIRE A SUPPRIMER  /////////////
-// JS - Formulaire de la page Pimpit: remplissage de l'objet membre et upload du cv (objet Cv)
-//////////////////////////////////////////////
 
-// DF (base JS PimpitType.php) - Formulaire de la page membre du back office (bo) : modification de l'objet membre
+// Didier - (base JS PimpitType.php) - Formulaire de la page membre du back office (bo) : modification de l'objet membre
 
 namespace Form\Type;
 
