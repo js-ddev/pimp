@@ -133,7 +133,7 @@ class Membre implements Userinterface
     }
 
     public function setCodepostal($code_postal) {
-        $this->codepostal = $code_postal;
+        $this->code_postal = $code_postal;
         return $this;
     }
     //-------------------------------//
