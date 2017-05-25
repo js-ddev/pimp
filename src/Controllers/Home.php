@@ -61,11 +61,11 @@ class Home
     // Adrien - Route pour inscription utilisateur
     public function inscription(Request $request, Application $app){
         $membre = new \Entity\Membre;
-        $membreForm = $app['form.factory'] -> create(\Form\Type\MembreType::class, $membre);
+        $inscriptionForm = $app['form.factory'] -> create(\Form\Type\InscriptionType::class, $membre);
 
-        $membreForm -> handleRequest($request);
+        $inscriptionForm -> handleRequest($request);
 
-        if($membreForm -> isSubmitted() && $membreForm -> isValid()){
+        if($inscriptionForm -> isSubmitted() && $inscriptionForm -> isValid()){
             $salt = substr(md5(time()), 0, 23);
             $membre -> setSalt($salt);
 
@@ -79,13 +79,16 @@ class Home
 
             $app['dao.membre'] -> save($membre);
             $app['session'] -> getFlashBag() -> add('success', 'Votre inscription a bien été prise en compte !');
+
+            // Adrien - Redirection suite à l'inscription
+            return $app->redirect('/pimpmycv/pimp/web/index_dev.php');
         }
 
-        $membreFormView = $membreForm -> createView();
+        $inscriptionFormView = $inscriptionForm -> createView();
 
         $params = array(
             'title' => 'Inscription',
-            'membreForm' => $membreFormView
+            'inscriptionForm' => $inscriptionFormView
         );
 
         return $app['twig']->render('inscription.html.twig', $params);
