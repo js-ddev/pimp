@@ -4,8 +4,6 @@
 
 {% block content %}
 
-
-{{ dump(membres)}}
     <!-- DF - FIN HEAD, NAVTOP ET NAVSIDE -->
 
         <!-- DF - DEBUT CONTENU -->
@@ -54,7 +52,7 @@
                                         <th>Statut membre</th>
                                         <th>Date d'inscription</th>
                                         <th>Rôle</th>
-                                        <th colspan="2">Actions</th>
+                                        <th colspan="3">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -73,6 +71,12 @@
                                         <td>{{ membre.statutMembre }}</td>
                                         <td>{{ membre.dateInscription }}</td>
                                         <td>{{ membre.role }}</td>
+
+                                        <td><a href="{{ path('gestion_membres', {'id' : membre.id }) }}">TEST</a></td>
+
+
+
+
                                         <td><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
                                         <td><a href="#"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                     </tr>
@@ -94,7 +98,7 @@
                         {{ form_start(membreFormBo) }}
                         <div class="col-lg-6"> <!-- formulaire coté gauche -->
 
-                            <input type="hidden" name="id" value="" />
+                            {{ form_widget(membreFormBo.id)  }}
 
                             <div class="form-group">
                                 <label>Identifiant</label>

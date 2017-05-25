@@ -15,6 +15,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 
 use Symfony\Component\Validator\Constraints as Assert;
@@ -178,7 +179,12 @@ class MembreTypeBo extends AbstractType
                     'placeholder' => 'Rôle',
                     'class' => 'form-control',
                 ),
-            ));
+            ))
+            ->add('id', HiddenType::class, array(
+                    'attr'=> array(
+                        'editable' => false
+                    )
+                ));
     }
 
 /*    public function configureOptions(OptionsResolver $resolver)
