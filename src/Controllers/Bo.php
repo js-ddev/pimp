@@ -52,10 +52,11 @@ class Bo
 // Didier - Route pour inscription utilisateur
     public function gestion_membres(Request $request, Application $app){
 
-        $membres = $app['dao.membre'] -> findAll();
-
-
-        $membre = new \Entity\Membre;
+        if( ! empty($request->query->get('id'))) {
+            $membre = $app['dao.membre'] -> find($request->query->get('id'));
+        } else {
+            $membre = new \Entity\Membre;
+        }
         $membreFormBo = $app['form.factory'] -> create(\Form\Type\MembreTypeBo::class, $membre);
 
         $membreFormBo -> handleRequest($request);
@@ -75,6 +76,8 @@ class Bo
 
         $membreFormView = $membreFormBo -> createView();
 
+        $membres = $app['dao.membre'] -> findAll();
+
         $params = array(
             'membres' => $membres,
             'title' => 'Inscription',
@@ -82,5 +85,10 @@ class Bo
         );
 
         return $app['twig']->render('/bo/gestion_membres.html.twig', $params);
-        }   
+    }   
+
+
+
+
+     
 }

@@ -35,7 +35,7 @@ class MembreDAO extends DAO implements UserProviderInterface
     * @return \Entity\Membre|throws an exception si pas de matching
     */
     public function find($id_membre){
-        $requete = "SELECT * FROM membre WHERE id_membre = ?";
+        $requete = "SELECT * FROM membre WHERE id = ?";
         $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_membre));
 
         if($resultat){
@@ -70,15 +70,33 @@ class MembreDAO extends DAO implements UserProviderInterface
     */
     public function save(Membre $membre){
         $membreData = array(
+            'id' => $membre -> getId(),
+            'nom' => $membre -> getNom(),
             'username' => $membre -> getUsername(),
             'password' => $membre -> getPassword(),
+            'prenom' => $membre -> getPrenom(),
+            'date_naissance' => $membre -> getDateNaissance(),
+            'telephone' => $membre -> getTelephone(),
+            'adresse' => $membre -> getAdresse(),
+            'code_postal' => $membre -> getCodePostal(),
+            'ville' => $membre -> getVille(),
+            'role' => $membre -> getRole(), 
+            'pays' => $membre -> getPays(),
+            'statut_membre' => $membre -> getStatutMembre(),
+            'date_inscription' => $membre -> getDateInscription(),
+            'username' => $membre -> getUsername(),
+            'username' => $membre -> getUsername(),
             'salt' => $membre -> getSalt(),
         );
 
-            $membreData['role'] = 'ROLE_USER';
-
+        // Didier - Modifier les données d'un membre ou créer un membe
+        $membreData['role'] = 'ROLE_USER';
+        if($membre->getId()) { // 
+            $this->getDb()->update('membre', $membreData, array('id'=>$membre->getId()));
+        } else {
             $this -> getDb() -> insert('membre', $membreData);
-            $membre -> setId($this -> getDb() -> lastInsertId());
+        }
+        $membre -> setId($this -> getDb() -> lastInsertId());
     }
 
 
@@ -159,4 +177,6 @@ class MembreDAO extends DAO implements UserProviderInterface
         }
         return $this -> loadUserByUsername($membre -> getUsername());
     }
+
+
 }
