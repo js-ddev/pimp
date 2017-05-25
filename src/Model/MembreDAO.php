@@ -80,7 +80,7 @@ class MembreDAO extends DAO implements UserProviderInterface
             'adresse' => $membre -> getAdresse(),
             'code_postal' => $membre -> getCodePostal(),
             'ville' => $membre -> getVille(),
-            'role' => $membre -> getRole(), 
+            'role' => $membre -> getRole(),
             'pays' => $membre -> getPays(),
             'statut_membre' => $membre -> getStatutMembre(),
             'date_inscription' => $membre -> getDateInscription(),
@@ -94,9 +94,92 @@ class MembreDAO extends DAO implements UserProviderInterface
             $this->getDb()->update('membre', $membreData, array('id'=>$membre->getId()));
 
         } else { // Créer un membre
+
             $this -> getDb() -> insert('membre', $membreData);
         }
         $membre -> setId($this -> getDb() -> lastInsertId());
+    }
+
+    public function save2(Membre $membre){
+        $membreData = array(
+            'nom' => $membre -> getNom(),
+            'username' => $membre -> getUsername(),
+            'prenom' => $membre -> getPrenom(),
+            'date_naissance' => $membre -> getDateNaissance(),
+            'telephone' => $membre -> getTelephone(),
+            'adresse' => $membre -> getAdresse(),
+            'code_postal' => $membre -> getCodePostal(),
+            'ville' => $membre -> getVille(),
+            'role' => $membre -> getRole(),
+            'pays' => $membre -> getPays(),
+            'date_inscription' => $membre -> getDateInscription(),
+        );
+
+            $this->getDb()->update('membre', $membreData, array('username'=>$membre->getUsername()));
+                        print_r('ok passage dans la fonction save2');
+    }
+
+        public function save3(Membre $membre){
+       $resultat = $this -> getDb() -> prepare("UPDATE INTO membre (username,prenom,nom,date_naissance,telephone,adresse,code_postal,ville,pays,date_inscription) VALUES (:username, :prenom, :nom, :date_naissance, :telephone, :adresse, :code_postal, :ville, :pays, :date_inscription)");
+
+       $resultat -> bindParam(':username', $_POST['pimpit']['username']);
+       $resultat  -> bindParam(':prenom', $_POST['pimpit']['prenom']);
+       $resultat  -> bindParam(':nom', $_POST['pimpit']['nom']);
+       $resultat  -> bindParam(':date_naissance', $_POST['pimpit']['date_naissance']);
+       $resultat  -> bindParam(':telephone', $_POST['pimpit']['telephone']);
+       $resultat  -> bindParam(':adresse', $_POST['pimpit']['adresse']);
+       $resultat  -> bindParam(':code_postal', $_POST['pimpit']['code_postal']);
+       $resultat  -> bindParam(':ville', $_POST['pimpit']['ville']);
+       $resultat  -> bindParam(':pays', $_POST['pimpit']['pays']);
+       $resultat  -> bindParam(':date_inscription', $_POST['pimpit']['date_inscription']);
+
+       $resultat -> execute();
+
+        $membre = $this -> getDb() -> exec($requete);
+        return $this -> getDb() -> lastInsertId();
+    }
+
+    public function save4(Membre $membre){
+        $membreData = array(
+            'id' => $membre -> getId(),
+            'nom' => $membre -> getNom(),
+            'username' => $membre -> getUsername(),
+            'password' => $membre -> getPassword(),
+            'prenom' => $membre -> getPrenom(),
+            'date_naissance' => $membre -> getDateNaissance(),
+            'telephone' => $membre -> getTelephone(),
+            'adresse' => $membre -> getAdresse(),
+            'code_postal' => $membre -> getCodePostal(),
+            'ville' => $membre -> getVille(),
+            'role' => $membre -> getRole(),
+            'pays' => $membre -> getPays(),
+            'statut_membre' => $membre -> getStatutMembre(),
+            'date_inscription' => $membre -> getDateInscription(),
+            'salt' => $membre -> getSalt(),
+        );
+
+
+			$this -> getDb() -> update('membre', $membreData, array('id' => $membre-> getId()));
+            print_r('ok');
+			// UPDATE commentaire SET champs1 = valeur1, champs2 = valeur2 etc... WHERE id_commentaire = id_de_mon_objet_commentaire
+
+		}
+
+    public function savePimpit(){
+        $id = $_POST['pimpit']["id"];
+        $prenom = $_POST['pimpit']["prenom"];
+        $nom = $_POST['pimpit']["nom"];
+        $username = $_POST['pimpit']["username"];
+        $date_naissance = $_POST['pimpit']["date_naissance"];
+        $adresse = $_POST['pimpit']["adresse"];
+        $ville = $_POST['pimpit']["ville"];
+        $code_postal = $_POST['pimpit']["code_postal"];
+        $pays= $_POST['pimpit']["pays"];
+        $telephone = $_POST['pimpit']["telephone"];
+
+        $requete = ("UPDATE membre SET prenom = ? , nom = ?, username = ?, date_naissance = ?, telephone = ?, adresse = ?, code_postal = ?, ville = ?, pays = ? WHERE id = ?");
+
+        $this->getDb()->executeUpdate($requete, array($prenom, $nom, $username, $date_naissance, $adresse, $ville, $code_postal, $pays, $telephone , $id));
     }
 
 

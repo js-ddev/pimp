@@ -13,6 +13,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 // JS - Spécifique pour l'envoi de fichier :
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -30,6 +31,12 @@ class PimpitType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options){
         // builder permet de construire les champs un par un :
         $builder
+
+            ->add('id', HiddenType::class, array(
+                    'attr'=> array(
+                        'editable' => false
+                    )
+                ))
 
             -> add('prenom', TextType::class, array(
                 'constraints' => array(
@@ -62,10 +69,10 @@ class PimpitType extends AbstractType
             ))
 
 
-            -> add('username', EmailType::class, array(
-                'constraints' => array(
-                    new Assert\Email(),
-                ),
+            -> add('username', TextType::class, array(
+                // 'constraints' => array(
+                //     new Assert\Email(),
+                // ),
                 'attr' => array(
                     'placeholder' => 'Votre adresse email',
                     'class' => 'form-control',
@@ -79,10 +86,11 @@ class PimpitType extends AbstractType
                 ),
             ))
 
-            -> add('photo', FileType::class, array(
-                    'label' => 'Votre photo d\'identité',
-                )
-            )
+            // -> add('photo', FileType::class, array(
+            //         'label' => 'Votre photo d\'identité',
+            //         'required' => false,
+            //     )
+            // )
             -> add('adresse', TextType::class, array(
                 'required' => true,
                 'attr' => array(
@@ -123,10 +131,12 @@ class PimpitType extends AbstractType
                 ),
             ))
 
-            -> add('fichier', FileType::class, array(
-                    'label' => 'Votre ancien CV (si vous en avez un)',
-                    )
-            );
+            // -> add('fichier', FileType::class, array(
+            //         'label' => 'Votre ancien CV (si vous en avez un)',
+            //         'required' => false,
+            //         )
+            // )
+            ;
     }
 
 

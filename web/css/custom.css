@@ -13,3 +13,9 @@ input.form-control {
 .wrapper {
 	z-index: 1000;
 }
+
+/* Rudy - hover de bg sur la page template_options */
+i:hover {
+	color: #2e71f0;
+	transition: 0.3s;
+}

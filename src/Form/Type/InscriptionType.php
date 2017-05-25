@@ -15,7 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\NotBlanck;
 
 
-class MembreType extends AbstractType
+class InscriptionType extends AbstractType
 {
 	public function buildForm(FormBuilderInterface $builder, array $options){
 		$builder
