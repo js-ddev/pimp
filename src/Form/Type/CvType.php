@@ -49,7 +49,7 @@ class CvType extends AbstractType
                     ))
                 ),
                 'attr' => array(
-                    'placeholder' => 'Nationalité *',
+                    'placeholder' => 'Nationalité*',
                     'class' => 'form-control',
                 ),
             ))
@@ -61,8 +61,8 @@ class CvType extends AbstractType
                 ),
                 'expanded' => true,
                 'multiple' => false,
-                'attr' => array(
-                    'class' => 'form-control'
+                'choice_attr' => array(
+                    'class' => 'radio'
                 ),
             ))
 
@@ -75,7 +75,10 @@ class CvType extends AbstractType
                     'En cours de validation' => 'validation',
                 ),
                 'expanded' => true,
-                'multiple' => true
+                'multiple' => true,
+                 'choice_attr' => array(
+                    'class' => 'checkbox'
+                ),
             ))
 
 
@@ -86,7 +89,7 @@ class CvType extends AbstractType
                     new Assert\NotBlank(),
                 ),
                 'attr' => array(
-                    'placeholder' => 'Nom de l\'entreprise *',
+                    'placeholder' => 'Nom de l\'entreprise*',
                     'class' => 'form-control',
                 ),
             ))
@@ -110,7 +113,7 @@ class CvType extends AbstractType
                     ))
                 ),
                 'attr' => array(
-                    'placeholder' => 'Description',
+                    'placeholder' => 'Produits / Services',
                     'class' => 'form-control',
                 ),
             ))
@@ -135,7 +138,7 @@ class CvType extends AbstractType
 
             -> add('url_entreprise', TextType::class, array(
                 'attr' => array(
-                    'placeholder' => 'URL de l\'entreprise',
+                    'placeholder' => 'Site web de l\'entreprise',
                     'class' => 'form-control',
                 ),
             ))
@@ -145,7 +148,7 @@ class CvType extends AbstractType
                     new Assert\NotBlank(),
                 ),
                 'attr' => array(
-                    'placeholder' => 'Intitulé du poste *',
+                    'placeholder' => 'Intitulé du poste*',
                     'class' => 'form-control',
                 ),
             ))
@@ -155,7 +158,7 @@ class CvType extends AbstractType
                     new Assert\NotBlank(),
                 ),
                 'attr' => array(
-                    'placeholder' => 'Rôle dans l\'entreprise *',
+                    'placeholder' => 'Rôle dans l\'entreprise*',
                     'class' => 'form-control',
                 ),
             ))
@@ -165,7 +168,7 @@ class CvType extends AbstractType
                     new Assert\NotBlank(),
                 ),
                 'attr' => array(
-                    'placeholder' => 'Localisation du poste *',
+                    'placeholder' => 'Localisation du poste*',
                     'class' => 'form-control',
                 ),
             ))
@@ -317,7 +320,7 @@ class CvType extends AbstractType
                     new Assert\NotBlank(),
                 ),
                 'attr' => array(
-                    'placeholder' => 'Nom du diplome *',
+                    'placeholder' => 'Diplome *',
                     'class' => 'form-control',
                 ),
             ))
@@ -327,7 +330,7 @@ class CvType extends AbstractType
                     new Assert\NotBlank(),
                 ),
                 'attr' => array(
-                    'placeholder' => 'Nom de l\'établissement *',
+                    'placeholder' => 'Etablissement*',
                     'class' => 'form-control',
                 ),
             ))
@@ -341,7 +344,7 @@ class CvType extends AbstractType
 
             -> add('lieu_formation', TextType::class, array(
                 'attr' => array(
-                    'placeholder' => 'Lieu de la formation',
+                    'placeholder' => 'Localisation',
                     'class' => 'form-control',
                 ),
             ))
@@ -360,7 +363,7 @@ class CvType extends AbstractType
                     new Assert\NotBlank(),
                 ),
                 'attr' => array(
-                    'placeholder' => 'Nom de la certification *',
+                    'placeholder' => 'Intitulé de la certification*',
                     'class' => 'form-control',
                 ),
             ))
@@ -370,7 +373,7 @@ class CvType extends AbstractType
                     new Assert\NotBlank(),
                 ),
                 'attr' => array(
-                    'placeholder' => 'Nom de l\'établissement *',
+                    'placeholder' => 'Etablissement*',
                     'class' => 'form-control',
                 ),
             ))
@@ -403,7 +406,7 @@ class CvType extends AbstractType
                     new Assert\NotBlank(),
                 ),
                 'attr' => array(
-                    'placeholder' => 'Langue maternelle *',
+                    'placeholder' => 'Langue maternelle*',
                     'class' => 'form-control',
                 ),
             ))
@@ -443,7 +446,7 @@ class CvType extends AbstractType
                     new Assert\NotBlank(),
                 ),
                 'attr' => array(
-                    'placeholder' => 'Nom de l\'benevolat *',
+                    'placeholder' => 'Nom de la structure*',
                     'class' => 'form-control',
                 ),
             ))
@@ -453,7 +456,7 @@ class CvType extends AbstractType
                     new Assert\NotBlank(),
                 ),
                 'attr' => array(
-                    'placeholder' => 'Secteur *',
+                    'placeholder' => 'Secteur*',
                     'class' => 'form-control',
                 ),
             ))
@@ -471,7 +474,7 @@ class CvType extends AbstractType
 
             -> add('url_benevolat', TextType::class, array(
                 'attr' => array(
-                    'placeholder' => 'URL de l\'benevolat',
+                    'placeholder' => 'URL de la structure',
                     'class' => 'form-control',
                 ),
             ))
@@ -481,7 +484,7 @@ class CvType extends AbstractType
                     new Assert\NotBlank(),
                 ),
                 'attr' => array(
-                    'placeholder' => 'Intitulé du poste *',
+                    'placeholder' => 'Intitulé du poste*',
                     'class' => 'form-control',
                 ),
             ))
@@ -491,7 +494,7 @@ class CvType extends AbstractType
                     new Assert\NotBlank(),
                 ),
                 'attr' => array(
-                    'placeholder' => 'Rôle dans l\'benevolat *',
+                    'placeholder' => 'Rôle dans la structure*',
                     'class' => 'form-control',
                 ),
             ))
@@ -708,48 +711,4 @@ class CvType extends AbstractType
     ;
 
     }
-
-
-
-
- }
-
-
-/*            -> add('nom', TextType::class, array(
-                'constraints' => array(
-                    new Assert\NotBlank(),
-                    new Assert\Length(array(
-                        'min' => 1,
-                        'max' => 20,
-                    ))
-                ),
-            ))
-            -> add('prenom', TextType::class, array(
-                'constraints' => array(
-                    new Assert\NotBlank(),
-                    new Assert\Length(array(
-                        'min' => 3,
-                        'max' => 20,
-                    ))
-                ),
-            ))
-            -> add('email', EmailType::class, array(
-                'constraints' => array(
-                    new Assert\Email(),
-                ),
-            ))
-            -> add('civilite', ChoiceType::class, array(
-                'choices' => array(
-                    'Homme' => 'm',
-                    'Femme' => 'f'
-                ),
-            ))
-            -> add('ville', TextType::class)
-            -> add('code_postal', TextType::class)
-            -> add('adresse', TextType::class);
-    }
-
-
-
-
-}*/
+}
