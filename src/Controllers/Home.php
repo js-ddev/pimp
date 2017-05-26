@@ -127,32 +127,38 @@ class Home
 
             if($pimpitForm -> isSubmitted() && $pimpitForm -> isValid()){
 
-
-                if(!empty($_POST['pimpit']["photo"]) && !empty($_POST['pimpit']["fichier"])){
+// JS - Test d'envoi de fichier, non fonctionnel pour le moment. Je vérifie que la photo : 
+                if(!empty($_POST['pimpit']["photo"])){
+                // if(!empty($_POST['pimpit']["photo"]) && !empty($_POST['pimpit']["fichier"])){
 
                     $path = __DIR__.'/../../fichiers/';
                     // $file = $fichier -> setPhoto();
                     $files = $request-> files ->get($pimpitForm->getName());
 
                     $photo = $files['photo'];
-                    $cv = $files['fichier'];
+                    // $cv = $files['fichier'];
 
-                    print_r('passage dans le if de présence des fichiers ');
+                    print_r('passage dans le if de présence du fichier photo OK.</br> print_r($fichier) : ');
                     print_r($fichier);
+                    print_r('</br>Print_r($membre) : ');
+                    print_r($membre);
+                    print_r('</br>Print_r($_POST) : ');
+                    print_r($_POST);
+
 
                     $filenamePhoto = md5(uniqid()).'.'.$photo->guessExtension();
-                    $filenameCv = md5(uniqid()).'.'.$cv->guessExtension();
+                    // $filenameCv = md5(uniqid()).'.'.$cv->guessExtension();
 
                     // $filenamePhoto = $photo -> getClientOriginalName();
                     // $filenameCv = $cv -> getClientOriginalName();
 
                     $photo -> move($path,$filenamePhoto);
-                    $cv -> move($path,$filenameCv);
+                    // $cv -> move($path,$filenameCv);
 
                     // $fichier->setPhoto($photo);
 
                     $fichier -> setPhoto($filenamePhoto);
-                    $fichier -> setFichier($filenameCv);
+                    // $fichier -> setFichier($filenameCv);
 
 
                 }
