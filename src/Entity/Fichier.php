@@ -7,8 +7,8 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\File\File;
 
 // JS - Pour les vérifications sur les fichiers :
-use Symfony\Component\Validator\Mapping\ClassMetadata;
-use Symfony\Component\Validator\Constraints as Assert;
+// use Symfony\Component\Validator\Mapping\ClassMetadata;
+// use Symfony\Component\Validator\Constraints as Assert;
 
 class Fichier
 
