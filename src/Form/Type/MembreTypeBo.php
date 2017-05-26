@@ -36,7 +36,7 @@ class MembreTypeBo extends AbstractType
                 ),
                 'required' => true,
                 'attr' => array(
-                    'placeholder' => 'Votre prénom',
+                    'placeholder' => 'Prénom',
                     'class' => 'form-control',
                 ),
             ))
@@ -51,7 +51,7 @@ class MembreTypeBo extends AbstractType
                 ),
                 'required' => true,
                 'attr' => array(
-                    'placeholder' => 'Votre nom',
+                    'placeholder' => 'Nom',
                     'class' => 'form-control',
                 ),
             ))
@@ -109,7 +109,7 @@ class MembreTypeBo extends AbstractType
 
             -> add('date_naissance', TextType::class, array(
                 'attr' => array(
-                    'placeholder' => 'Votre date de naissance',
+                    'placeholder' => 'Date de naissance au format AAAA-MM-JJ (exemple : 1981-12-31)',
                     'class' => 'form-control',
                 ),
             ))
@@ -154,22 +154,44 @@ class MembreTypeBo extends AbstractType
                 ),
             ))
 
+            // code qui fonctionne mais pas de liste de choix !!!
+            /*
             -> add('statut_membre', TextType::class, array(
                 'required' => true,
                 'attr' => array(
                     'placeholder' => 'Statut membre',
                     'class' => 'form-control',
                 ),
+            ))*/
+
+            ->add('statut_membre', ChoiceType::class, array(
+                'choices' => array(
+                    'Enregistré' => 'enregistre',
+                    'Payé' => 'paye'
+                ),
+                'preferred_choices' => array('enregistre')
             ))
 
+            // Date d'inscription :
+            // code qui fonctionne mais le champ est modifiable alors qu'il est génénré automatiquement dans la BDD !!!
+            /*
             -> add('date_inscription', TextType::class, array(
                 'required' => true,
                 'attr' => array(
                     'placeholder' => 'Date d\'inscription',
                     'class' => 'form-control',
                 ),
+            ))*/
+
+            -> add('date_inscription', HiddenType::class, array(
+                'attr' => array(
+                    'editable' => false,
+                ),
             ))
 
+            // Rôle :
+            // code qui fonctionne mais pas de liste de choix !!!
+            
             -> add('role', TextType::class, array(
                 'required' => true,
                 'attr' => array(
@@ -177,6 +199,15 @@ class MembreTypeBo extends AbstractType
                     'class' => 'form-control',
                 ),
             ))
+
+/*            ->add('role', ChoiceType::class, array(
+                'choices' => array(
+                    'Utilisateur' => 'ROLE_USER',
+                    'Administrateur' => 'ROLE_ADMIN'
+                ),
+                'preferred_choices' => array('ROLE_USER')
+            ))*/
+
             ->add('id', HiddenType::class, array(
                     'attr'=> array(
                         'editable' => false

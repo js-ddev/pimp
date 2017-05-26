@@ -148,18 +148,18 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
 
 
 
-// Didier - Supprimer un membre dans la BDD
+// Didier - Back Office - Supprimer un membre dans la BDD
 $app->get('/gestion_membres/membre/{id}/delete', function($id) use ($app) {
 // IL FAUDRA AUSSI supprimmer toutes les infos associés au membre (tables du CV). Attention : il est intéressant de conserver les infos de la table commande
     $app['dao.membre']->delete($id);
     $app['session']->getFlashBag()->add('success', 'Le membre à été supprimé de la BDD');
-    // Redirect to admin home page
+    // Redirect to admin gestion membres page
     return $app->redirect($app['url_generator']->generate('gestion_membres'));
 })->bind('supprimer_membre');
 
 
-/////////////////   MODEL POUR CODE CI-DESSUS    //////////////////////
-//// A utiliser pour supprimer les infos associés au membre
+/////////////////   MODEL POUR CODE CI-DESSUS ET CI-DESSOUS    //////////////////////
+//// A utiliser pour supprimer les infos associés au membre ou à une commande
 
 // Remove an article
 /*$app->get('/admin/article/{id}/delete', function($id, Request $request) use ($app) {
@@ -172,9 +172,17 @@ $app->get('/gestion_membres/membre/{id}/delete', function($id) use ($app) {
     return $app->redirect($app['url_generator']->generate('admin'));
 })->bind('admin_article_delete');*/
 
-/////////////////   FIN - MODEL CI-DESSUS    //////////////////////
+/////////////////   FIN - MODEL CI-DESSUS ET CI-DESSOUS   //////////////////////
  
 
+// Didier - Back Office - Supprimer une commande dans la BDD
+$app->get('/gestion_commandes/commande/{id}/deleteBo', function($id) use ($app) {
+// IL FAUDRA AUSSI supprimmer toutes les infos associés à la commande ??!!
+    $app['dao.commande']->delete($id);
+    $app['session']->getFlashBag()->add('success', 'La commande à été supprimée de la BDD');
+    // Redirect to admin gestion commande page
+    return $app->redirect($app['url_generator']->generate('gestion_commandes'));
+})->bind('supprimer_commande');
 
 
 return $app;
