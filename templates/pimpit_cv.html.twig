@@ -62,10 +62,10 @@
                 <div class="tab-content">
                     <div class="tab-pane active" role="tabpanel" id="step2">
                         <h3>Contenu de votre CV</h3>
-                        
+
                         <div class="container">
 							<div class="row">
-								<div class="col-md-12">							
+								<div class="col-md-12">
 									<div class="panel-group">
 										<!-- Partie informations diverses -->
 										<div class="panel panel-default">
@@ -116,6 +116,7 @@
 													</div>
 
 													<div class="form-group col-md-12">
+
 														<input class="btn btn-md btn-dark" type="submit" value="Valider">
 													</div>												
 												</div>
@@ -132,13 +133,13 @@
 												</span>
 											</div>
 											<div id="collapse2" class="panel-collapse collapse">
-												<div class="panel-body">										
+												<div class="panel-body">
 													<h4>Entreprise :</h4>
 
 													<div class="form-group">
 														<label for="nom">Nom de l'entreprise*</label>
 														{{ form_errors(cvForm.nom) }}
-														{{ form_widget(cvForm.nom) }}				
+														{{ form_widget(cvForm.nom) }}
 													</div>
 
 													<div class="form-group">
@@ -255,7 +256,7 @@
 												</span>
 											</div>
 											<div id="collapse3" class="panel-collapse collapse">
-												<div class="panel-body">												
+												<div class="panel-body">
 													<div class="form-group">
 														<label for="diplome">Diplome*</label>
 														{{ form_errors(cvForm.diplome) }}
@@ -295,8 +296,10 @@
 														{{ form_widget(cvForm.url_formation) }}
 													</div>
 													<div class="form-group col-md-12">
+
 														<input class="btn btn-md btn-dark" type="submit" value="Valider">
 													</div>												
+
 												</div>
 											</div>
 										</div>
@@ -351,8 +354,10 @@
 														{{ form_widget(cvForm.url_certification) }}
 													</div>
 													<div class="form-group col-md-12">
-														<input class="btn btn-md btn-dark" type="submit" value="Validerr">
+
+														<input class="btn btn-md btn-dark" type="submit" value="Valider">
 													</div>								
+
 												</div>
 											</div>
 										</div>
@@ -367,7 +372,7 @@
 												</span>
 											</div>
 											<div id="collapse5" class="panel-collapse collapse">
-												<div class="panel-body">											
+												<div class="panel-body">
 													<div class="form-group">
 														<label for="langue_1">Langue</label>
 														{{ form_errors(cvForm.langue_1) }}
@@ -385,18 +390,20 @@
 														<label for="langue_score_toeic">Score TOEIC</label>
 														{{ form_errors(cvForm.langue_score_toeic) }}
 														{{ form_widget(cvForm.langue_score_toeic) }}
-														
+
 														<label for="langue_score_toefl">Score TOEFL</label>
 														{{ form_errors(cvForm.langue_score_toefl) }}
 														{{ form_widget(cvForm.langue_score_toefl) }}
-														
+
 														<label for="langue_score_ielts">Score IELTS</label>
 														{{ form_errors(cvForm.langue_score_ielts) }}
 														{{ form_widget(cvForm.langue_score_ielts) }}
 													</div>
 													<div class="form-group col-md-12">
+
 														<input class="btn btn-md btn-dark" type="submit" value="Valider">
 													</div>													
+
 												</div>
 											</div>
 										</div>
@@ -411,7 +418,7 @@
 												</span>
 											</div>
 											<div id="collapse6" class="panel-collapse collapse">
-												<div class="panel-body">												
+												<div class="panel-body">
 													<div class="form-group">
 														<label for="nom_benevolat">Nom de la structure*</label>
 														{{ form_errors(cvForm.nom_benevolat) }}
@@ -507,8 +514,10 @@
 														{{ form_widget(cvForm.reussite_benevolat5) }}
 													</div>
 													<div class="form-group col-md-12">
+
 														<input class="btn btn-md btn-dark" type="submit" value="Valider">
 													</div>												
+
 												</div>
 											</div>
 										</div>
@@ -525,7 +534,7 @@
 											<div id="collapse7" class="panel-collapse collapse">
 												<div class="panel-body">
 													<div class="row mrg-top-70">
-														<div class="col-md-10 col-md-offset-1">															
+														<div class="col-md-10 col-md-offset-1">
 														<div class="text-center">
 															<h3 class="mrg-btm-40">Informations personnelles</h3>
 														</div>
@@ -551,7 +560,7 @@
 																		<label for="passion_1"></label>
 																		{{ form_errors(cvForm.passion) }}
 																		{{ form_widget(cvForm.passion) }}
-																
+
 																		<label for="passion">Votre niveau de pratique</label>
 																		<span id="slider2value"></span><span> %</span>
 																		<div style="max-width:250px" id="slider2"></div>
@@ -600,7 +609,7 @@
 																		{{ form_widget(cvForm.url_autre) }}
 																	</div>
 																</div>
-																	
+
 																<div id="s4-option-5" class="tab-pane fade">
 																	<h4 class="no-mrg-top mrg-btm-20">Informations diverses</h4>
 																	<div class="form-group">
@@ -609,10 +618,12 @@
 																		{{ form_widget(cvForm.infos_diverses) }}
 																	</div>
 																	<div class="form-group col-md-12">
+
 																		<input class="btn btn-md btn-dark" type="submit" value="Valider">
 																	</div>	
+
 																</div>
-															</div>														
+															</div>
 														</div>
 													</div>
 												</div>
@@ -631,9 +642,9 @@
 							</div>
 						</div>
 					</div>
-				</div>	
+				</div>
 			{{ form_end(cvForm) }}
-			<!-- Fin formulaire -->	                      											      
+			<!-- Fin formulaire -->
         </div>
     </section>
    </div>

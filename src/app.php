@@ -40,6 +40,10 @@ $app['dao.cv'] = function ($app) {
     return new Model\CvDAO($app['db']);
 };
 
+$app['dao.fichier'] = function ($app) {
+    return new Model\FichierDAO($app['db']);
+};
+
 
 // Rudy - Enregistrement des services obligatoires pour le paiement:
 $app->register(new Payum\PayumProvider());
