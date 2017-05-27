@@ -34,3 +34,141 @@ i:hover {
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 1em;
 }
+
+select {
+  min-height: 40px;
+  border-radius: 0;
+  padding: 15px;
+  border: 1px solid #ececec;
+  font-size: 15px;
+  color: #cecece;
+  letter-spacing: 0.5px;
+  padding: 0px 12px;
+  box-shadow: none; }
+
+  .checkbox {
+  position: relative;
+  background: none;
+  margin-bottom: 30px; }
+  .checkbox:before {
+    display: table;
+    content: " "; }
+  .checkbox:after {
+    display: table;
+    content: " ";
+    clear: both; }
+  .checkbox lable {
+    font-size: 15px; }
+  .checkbox input[type="checkbox"] {
+    opacity: 0 !important;
+    position: static; }
+    .checkbox input[type="checkbox"] + label {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      padding-left: 30px; }
+      .checkbox input[type="checkbox"] + label:before {
+        transition: box-shadow 0.4s ease-in-out;
+        -webkit-transition: box-shadow 0.4s ease-in-out;
+        -moz-transition: box-shadow 0.4s ease-in-out;
+        -o-transition: box-shadow 0.4s ease-in-out;
+        -ms-transition: box-shadow 0.4s ease-in-out;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        content: '';
+        width: 20px;
+        height: 20px;
+        background-color: #fff;
+        border: 2px solid #cecece;
+        border-radius: 50%; }
+      .checkbox input[type="checkbox"] + label:after {
+        transition: transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
+        -webkit-transition: transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
+        -moz-transition: transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
+        -o-transition: transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
+        -ms-transition: transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
+        transform: scale(0, 0);
+        -webkit-transform: scale(0, 0);
+        -moz-transform: scale(0, 0);
+        -o-transform: scale(0, 0);
+        -ms-transform: scale(0, 0);
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 20px;
+        height: 20px;
+        content: "\e18f";
+        font-family: "exclusive-icon";
+        text-align: center;
+        color: #fff;
+        font-size: 12px;
+        line-height: 1.8;
+        border-radius: 50%; }
+    .checkbox input[type="checkbox"]:checked + label:after {
+      transform: scale(1, 1);
+      -webkit-transform: scale(1, 1);
+      -moz-transform: scale(1, 1);
+      -o-transform: scale(1, 1);
+      -ms-transform: scale(1, 1);
+      background: #333743; }
+
+.radio {
+  position: relative;
+  background: none;
+  margin-bottom: 30px; }
+  .radio lable {
+    font-size: 15px; }
+  .radio input[type="radio"] {
+    opacity: 0 !important;
+    position: static; }
+    .radio input[type="radio"] + label {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      padding-left: 2em; }
+      .radio input[type="radio"] + label:before {
+        transition: box-shadow 0.4s ease;
+        -webkit-transition: box-shadow 0.4s ease;
+        -moz-transition: box-shadow 0.4s ease;
+        -o-transition: box-shadow 0.4s ease;
+        -ms-transition: box-shadow 0.4s ease;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        content: '';
+        width: 20px;
+        height: 20px;
+        background-color: none;
+        border: 2px solid #333743;
+        border-radius: 50px;
+        z-index: 5; }
+      .radio input[type="radio"] + label:after {
+        transition: transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
+        -webkit-transition: transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
+        -moz-transition: transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
+        -o-transition: transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
+        -ms-transition: transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
+        transform: scale(0, 0);
+        -webkit-transform: scale(0, 0);
+        -moz-transform: scale(0, 0);
+        -o-transform: scale(0, 0);
+        -ms-transform: scale(0, 0);
+        position: absolute;
+        top: 1.5px;
+        left: 2px;
+        content: '';
+        width: 16px;
+        height: 16px;
+        background-color: #333743;
+        box-shadow: 0 0 0px 2px #fff inset;
+        border-radius: 50px; }
+    .radio input[type="radio"]:checked + label:before {
+      border: 2px solid #333743;
+      box-shadow: 0 0 0px 2px #fff inset; }
+    .radio input[type="radio"]:checked + label::after {
+      transform: scale(1, 1);
+      -webkit-transform: scale(1, 1);
+      -moz-transform: scale(1, 1);
+      -o-transform: scale(1, 1);
+      -ms-transform: scale(1, 1); }
