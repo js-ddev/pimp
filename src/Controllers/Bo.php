@@ -40,13 +40,13 @@ class Bo
     }*/
 
     /* Didier - namespace de backoffice content */
-    public function gestion_commandes(Application $app) {
+/*    public function gestion_commandes(Application $app) {
         $commandes = $app['dao.commande'] -> findAll();
         $params = array(
           'commandes' => $commandes);
 
     	return $app['twig']->render('/bo/gestion_commandes.html.twig', $params);
-     }
+     }*/
  
 
 // Didier - Route pour inscription utilisateur
@@ -86,6 +86,49 @@ class Bo
 
         return $app['twig']->render('/bo/gestion_membres.html.twig', $params);
     }   
+
+
+/////////////////////////////////////////////////////////////////////////     
+/////////////////   Probablement à retravailler   ///////////////////////
+/////////////////////////////////////////////////////////////////////////    
+// Didier - Route pour inscription commande
+    public function gestion_commandes(Request $request, Application $app){
+
+        if( ! empty($request->query->get('id'))) {
+            $commande = $app['dao.commande'] -> find($request->query->get('id'));
+        } else {
+            $commande = new \Entity\Commande;
+        }
+        $commandeFormBo = $app['form.factory'] -> create(\Form\Type\CommandeTypeBo::class, $commande);
+
+        $commandeFormBo -> handleRequest($request);
+
+/*        if($commandeFormBo -> isSubmitted() && $commandeFormBo -> isValid()){
+            $salt = substr(md5(time()), 0, 23);
+            $commande -> setSalt($salt);
+
+            $mdp = $commande -> getPassword();
+            $password_encode = $app['security.encoder.bcrypt'] -> encodePassword($mdp, $commande -> getSalt());
+
+            $membre -> setPassword($password_encode);
+
+            $app['dao.membre'] -> save($membre);
+            $app['session'] -> getFlashBag() -> add('success', 'Votre inscription a bien été prise en compte !');
+        }
+*/
+        $commandeFormView = $commandeFormBo -> createView();
+
+        $commandes = $app['dao.membre'] -> findAll();
+
+        $params = array(
+            'commandes' => $commandes,
+            'title' => 'Inscription',
+            'commandeFormBo' => $commandeFormView
+        );
+
+        return $app['twig']->render('/bo/gestion_commandes.html.twig', $params);
+    }   
+/////////////////////////////////////////////////////////////////////////     
 
 
      
