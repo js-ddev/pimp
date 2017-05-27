@@ -123,7 +123,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
              */
 
             'form' => array(
-                'login_path' => '/connexion/',
+                'login_path' => '/connexion',
                 'check_path' => '/login_check',
                 'default_target_path' => '/login/redirect',
                 'always_use_default_target_path' => true,
