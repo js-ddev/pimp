@@ -71,7 +71,7 @@ class Home
             $app['session'] -> getFlashBag() -> add('success', 'Votre inscription a bien été prise en compte !');
 
             // Adrien - Redirection suite à l'inscription
-            return $app->redirect('/pimpmycv/pimp/web/index_dev.php');
+            return $app->redirect('/');
         }
 
         $inscriptionFormView = $inscriptionForm -> createView();
@@ -127,14 +127,14 @@ class Home
             $id = $membre -> getId();
 
                 if(!empty($photo)){
-                    $path = __DIR__.'/../../fichiers/';
+                    $path = '../fichiers/';
                     $filenamePhoto = $id.'-photo-'.   md5(uniqid()).'.'.$photo->guessExtension();
                     $photo -> move($path,$filenamePhoto);
                     $fichier -> setPhoto($filenamePhoto);
                 }
 
                 if(!empty($cv)){
-                    $path2 = __DIR__.'/../../fichiers/';
+                    $path2 = '../fichiers/';
                     $filenameCv = $id.'-cv-'.md5(uniqid()).'.'.$cv->guessExtension();
                     $cv -> move($path2,$filenameCv);
                     $fichier -> setFichier($filenameCv);
@@ -145,7 +145,7 @@ class Home
                 $app['session'] -> getFlashBag() -> add('success', 'Formulaire pris en compte !');
 
                 // Adrien - Redirection suite à la sousmission Pimp It pour step2 form wizard
-                // return $app->redirect('/pimpmycv/pimp/web/index_dev.php/pimpit/cv');
+                return $app->redirect('/pimpit/cv');
             }
 
             $pimpitFormView = $pimpitForm -> createView();
@@ -161,7 +161,7 @@ class Home
         else{
 
         // JS - A prevoir une meilleure redirection et une page d'inscription avec message :
-            header("Location: ". __DIR__."../../../../../../../web/index_dev.php/inscription");
+            header("Location:/inscription");
             exit();
         }
     }
@@ -229,7 +229,7 @@ class Home
                 $app['session'] -> getFlashBag() -> add('success', 'vos options sont prises en compte !');
 
                 // Adrien - Redirection suite à la sousmission Pimp It CV pour step3 form wizard
-                return $app->redirect('/pimpmycv/pimp/web/index_dev.php/template_options');
+                return $app->redirect('/template_options');
             }
 
             $cvFormView = $cvForm -> createView();
@@ -245,7 +245,7 @@ class Home
         else{
 
         // JS - A prevoir une meilleure redirection et une page d'inscription avec message :
-            header("Location: ". __DIR__."../../../../../../../web/index_dev.php/inscription");
+            header("Location:/inscription");
             exit();
         }
     }
