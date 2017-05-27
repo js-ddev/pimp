@@ -5,6 +5,8 @@
 namespace Model;
 
 use Entity\Cv;
+use Entity\Membre;
+
 
 class CvDAO extends DAO
 {
@@ -42,4 +44,43 @@ class CvDAO extends DAO
     //            'form' => $form->createView(),
     //        ));
     //    }
+
+
+    /**
+    * Retourne un objet de la classe Membre.
+    *
+    * @param integer $id_membre The user id_membre.
+    *
+    * @return \Entity\Membre|throws an exception si pas de matching
+    */
+    public function find($id_cv){
+        $requete = "SELECT * FROM cv WHERE id = ?";
+        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_cv));
+
+        if($resultat){
+            return $this -> buildEntityObject($resultat);
+        }
+        else{
+            throw new \Exception("Aucun CV à l'id:" . $id_cv);
+        }
+    }
+
+
+    public function findAll(){
+        $requete = "SELECT * FROM cv";
+        $resultat = $this -> getDb() -> fetchAll($requete);
+
+        $cvs = array();
+        foreach($resultat as $value){
+            $id = $value['id'];
+
+            $cvs[$id] = $this -> BuildEntityObject($value);
+
+        }
+        return $cvs;
+    }
+
+
+
+
    }

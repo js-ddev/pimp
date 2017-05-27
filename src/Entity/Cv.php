@@ -26,7 +26,6 @@ class Cv
     private $site_perso;
     private $url_autre;
     private $nombre_page;
-    private $modele;
     private $couleur;
     private $puce;
     private $fond;
@@ -466,31 +465,6 @@ class Cv
     public function setNombrePage($nombre_page)
     {
         $this->nombre_page = $nombre_page;
-
-        return $this;
-    }
-
-
-     /**
-     * Gets the value of modele.
-     *
-     * @return mixed
-     */
-    public function getModele()
-    {
-        return $this->modele;
-    }
-
-    /**
-     * Sets the value of modele.
-     *
-     * @param mixed $modele the umodele
-     *
-     * @return self
-     */
-    public function setModele($modele)
-    {
-        $this->modele = $modele;
 
         return $this;
     }

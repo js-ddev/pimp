@@ -28,174 +28,153 @@
                 </div>
                 <!-- /.row -->
 
-                <!-- Didier - DEBUT TABLEAU DES MEMBRES -->
+                <!-- Didier - DEBUT TABLEAUX DU CV -->
 
                 <div class="row">
 
                     <div class="col-lg-12">
-                        <h2>Tableau des membres</h2>
+                        <h2>Tableaux du CV</h2>
 
                         <div class="row">
                             <div class="col-lg-2">
                                 <ol class="breadcrumb">
                                     <li>
 
-                                        <!-- Didier - Bouton ajouter un membre -->
+                                        <!-- Didier - Bouton ajouter un CV -->
 
-                                        <i class="btn btn-primary fa fa-pencil-square-o" aria-hidden="true"></i> <a href="{{ path('gestion_membres') }}#formulaire">Ajouter un membre</a>
+                                        <a href="#"></i> Ajouter un membre</a>
                                     </li>
                                 </ol>
                             </div>
                         </div>
 
+                        <!-- Didier - TABLEAU 1 : ID, Fichier CV, Stucture CV, Design CV, Identité, Coordonnées, Infos perso, Réseaux sociaux et web -->
+
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover table-striped">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Identifiant</th>
+
+                                        <!-- Didier - Partie ID -->
+                                        <th>ID CV</th>
+                                        <th>ID Membre</th>
+
+                                        <!-- Didier - Partie Fichier CV téléchargé -->
+                                        <th>Fichier CV</th>
+
+                                        <!-- Didier - Partie Structure du CV -->
+                                        <th>Nombre de section(s)</th>
+                                        <th>Nombre de page(s)</th>
+
+                                        <!-- Didier - Partie Design du CV -->
+                                        <th>Template</th>
+                                        <th>Couleur</th>
+                                        <th>Puce</th>
+                                        <th>Fond</th>
+                                        <th>Indicateur de performance</th>
+                                        <th>Activité(s)</th>
+
+                                        <!-- Didier - Partie Identité -->
+                                        <th>Photo</th>
                                         <th>Prénom</th>
                                         <th>Nom</th>
                                         <th>Date de naissance</th>
+                                        <th>Nationalité</th>
+
+                                        <!-- Didier - Partie Coordonnées -->
+                                        <th>Email du CV</th>
                                         <th>Téléphone</th>
                                         <th>Adresse</th>
                                         <th>Code Postal</th>
                                         <th>Ville</th>
                                         <th>Pays</th>
-                                        <th>Statut membre</th>
-                                        <th>Date d'inscription</th>
-                                        <th>Rôle</th>
+
+                                        <!-- Didier - Partie Informations personnelles -->
+                                        <th>Famille</th>
+                                        <th>Langue maternelle</th>
+                                        <th>Permis de conduire</th>
+                                        <th>Permis de travail</th>
+
+                                        <!-- Didier - Partie Réseaux sociaux et web -->
+                                        <th>Twitter</th>
+                                        <th>LinkedIn</th>
+                                        <th>Skype</th>
+                                        <th>Site perso</th>
+                                        <th>URL autre</th>
+
                                         <th colspan="2">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {% for membre in membres %}
+
                                     <tr>
-                                        <td>{{ membre.id }}</td>
-                                        <td>{{ membre.username }}</td>
+
+                                        <!-- Didier - Partie ID -->
+                                        <td>{{ cv.id }}</td>
+                                        <td>{{ cv.id_membre }}</td>
+
+                                        <!-- Didier - Partie Fichier CV téléchargé -->
+                                        <td>{{ cv.fichier_cv }}</td>
+
+                                        <!-- Didier - Partie Structure du CV -->
+                                        <td>{{ cv.nombre_sections }}</td>
+                                        <td>{{ cv.nombre_page }}</td>
+
+                                        <!-- Didier - Partie Design du CV -->
+                                        <td>{{ cv.template }}</td>
+                                        <td>{{ cv.couleur }}</td>
+                                        <td>{{ cv.puce }}</td>
+                                        <td>{{ cv.fond }}</td>
+                                        <td>{{ cv.indicateur_performance }}</td>
+                                        <td>{{ cv.activite }}</td>
+
+                                        <!-- Didier - Partie Identité -->
+                                        <td>{{ cv.photo }}</td>
                                         <td>{{ membre.prenom }}</td>
                                         <td>{{ membre.nom }}</td>
-                                        <td>{{ membre.dateNaissance }}</td>
+                                        <td>{{ membre.date_naissance }}</td>
+                                        <td>{{ cv.nationnalite }}</td>
+
+                                        <!-- Didier - Partie Coordonnées -->
+                                        <td>{{ cv.email_cv }}</td>
                                         <td>{{ membre.telephone }}</td>
                                         <td>{{ membre.adresse }}</td>
-                                        <td>{{ membre.codePostal }}</td>
+                                        <td>{{ membre.code_postal }}</td>
                                         <td>{{ membre.ville }}</td>
                                         <td>{{ membre.pays }}</td>
-                                        <td>{{ membre.statutMembre }}</td>
-                                        <td>{{ membre.dateInscription }}</td>
-                                        <td>{{ membre.role }}</td>
 
-                                        <!-- Didier - Bouton modifier un membre -->
+                                        <!-- Didier - Partie Informations personnelles -->
+                                        <td>{{ cv.famille }}</td>
+                                        <td>{{ cv.langue_maternelle }}</td>
+                                        <td>{{ cv.permis_conduire }}</td>
+                                        <td>{{ cv.permis_travail }}</td>
 
-                                        <td><a href="{{ path('gestion_membres', {'id' : membre.id }) }}#formulaire" title="Modifier une(des) info(s) du membre"><i class="btn btn-info fa fa-pencil-square-o"></i></a></td>
+                                        <!-- Didier - Partie Réseaux sociaux -->
+                                        <td>{{ cv.twitter }}</td>
+                                        <td>{{ cv.linkedin }}</td>
+                                        <td>{{ cv.skype }}</td>
+                                        <td>{{ cv.site_perso }}</td>
+                                        <td>{{ cv.url_autre }}</td>
 
-                                        <!-- Didier - Bouton supprimer un membre -->
 
-                                        <td><a href="{{ path('supprimer_membre', { 'id': membre.id }) }}" title="Supprimer un membre" class="btn btn-danger fa fa-trash"></a></td>
+                                        <!-- Didier - Bouton modifier l'identité, les infos perso... -->
+
+                                        <td><a href="#"></i></a></td>
+
+                                        <!-- Didier - Bouton supprimer l'identité, les infos perso... -->
+
+                                        <td><a href="#"></a></td>
 
                                     </tr>
-                                    {% endfor %}
+
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-                </div>
+                        <!-- Didier - FIN TABLEAU 1 -->
 
-                <!-- FIN TABLEAU DES MEMBRES -->
 
-                <!-- Didier - DEBUT FORMULAIRE -->
 
-                <form id="formulaire" role="form" method="POST">
 
-                    <div class="row">
-                    {% if membreFormBo %}
-                        {{ form_start(membreFormBo) }}
-                        <div class="col-lg-6"> <!-- formulaire coté gauche -->
-
-                            {{ form_widget(membreFormBo.id)  }}
-                            {{ form_widget(membreFormBo.date_inscription) }}
-
-                            <div class="form-group">
-                                <label>Identifiant</label>
-                                {{ form_errors(membreFormBo.username) }}
-                                {{ form_widget(membreFormBo.username)  }}
-                            </div>
-
-                            <div class="form-group">
-                                <label>Prénom</label>
-                                {{ form_errors(membreFormBo.prenom) }}
-                                {{ form_widget(membreFormBo.prenom) }}
-                            </div>
-
-                            <div class="form-group">
-                                <label>Nom</label>
-                                {{ form_errors(membreFormBo.nom) }}
-                                {{ form_widget(membreFormBo.nom) }}
-                            </div>
-
-                            <div class="form-group">
-                                <label>Date de naissance</label>
-                                {{ form_errors(membreFormBo.date_naissance) }}
-                                {{ form_widget(membreFormBo.date_naissance) }}
-                            </div>
-
-                            <div class="form-group">
-                                <label>Téléphone</label>
-                                {{ form_errors(membreFormBo.telephone) }}
-                                {{ form_widget(membreFormBo.telephone) }}
-                            </div>
-
-                            <div class="form-group">
-                                <label>Adresse</label>
-                                {{ form_errors(membreFormBo.adresse) }}
-                                {{ form_widget(membreFormBo.adresse) }}
-                            </div>
-
-                        </div>
-
-                        <div class="col-lg-6"> <!-- formulaire coté droit -->
-
-                            <div class="form-group">
-                                <label>Code Postal</label>
-                                {{ form_errors(membreFormBo.code_postal) }}
-                                {{ form_widget(membreFormBo.code_postal) }}
-                            </div>
-
-                            <div class="form-group">
-                                <label>Ville</label>
-                                {{ form_errors(membreFormBo.ville) }}
-                                {{ form_widget(membreFormBo.ville) }}
-                            </div>
-
-                            <div class="form-group">
-                                <label>Pays</label>
-                                {{ form_errors(membreFormBo.pays) }}
-                                {{ form_widget(membreFormBo.pays) }}
-                            </div>
-
-                            <div class="form-group">
-                                <label>Statut membre</label>
-                                {{ form_errors(membreFormBo.statut_membre) }}
-                                {{ form_widget(membreFormBo.statut_membre) }}
-                            </div>
-
-                            <div class="form-group">
-                                <label>Rôle</label>
-                                {{ form_errors(membreFormBo.role) }}
-                                {{ form_widget(membreFormBo.role) }}
-                            </div>                        
-
-                        {% endif %}
-
-                            <button type="submit" class="btn btn-warning">Enregistrer</button>
-
-                        </div>
-
-                    </div>
-
-                </form>
-
-                <!-- FIN FORMULAIRE -->
 
             </div>
             <!-- /.container-fluid -->
