@@ -55,15 +55,15 @@ class CvDAO extends DAO
     *
     * @return \Entity\Membre|throws an exception si pas de matching
     */
-    public function find($id_cv){
-        $requete = "SELECT * FROM cv WHERE id = ?";
-        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_cv));
-
-
-        else{
-            throw new \Exception("Aucun CV à l'id:" . $id_cv);
-        }
-    }
+    // public function find($id_cv){
+    //     $requete = "SELECT * FROM cv WHERE id = ?";
+    //     $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_cv));
+    //
+    //
+    //     else{
+    //         throw new \Exception("Aucun CV à l'id:" . $id_cv);
+    //     }
+    // }
 
 
     public function findAll(){
@@ -83,7 +83,7 @@ class CvDAO extends DAO
 
 
 
-   }
+
 
        /**
     * Retourne un objet de la classe Cv.
@@ -148,16 +148,16 @@ class CvDAO extends DAO
             $this -> getDb() -> insert('cv', $cvData);
         }
         $cv -> setId($this -> getDb() -> lastInsertId());
-    } 
+    }
 
     // Adrien - Methode obligatoirement déclarée dans le fichier
     protected function BuildEntityObject(array $value){
         // Adrien - Création d'un nouveau CV
-        $cv = new cv; 
+        $cv = new cv;
 
         $cv -> setId($value['id']);
         $cv -> setIdMembre($value['id_membre']);
-        $cv -> setIdTemplate($value['template']);
+        $cv -> setTemplate($value['template']);
         $cv -> setNombreSections($value['nombre_sections']);
         $cv -> setPhoto($value['photo']);
         $cv -> setFichierCv($value['fichier_cv']);
@@ -173,13 +173,12 @@ class CvDAO extends DAO
         $cv -> setSitePerso($value['site_perso']);
         $cv -> setUrlAutre($value['url_autre']);
         $cv -> setNombrePage($value['nombre_page']);
-        $cv -> setModele($value['modele']);
         $cv -> setCouleur($value['couleur']);
         $cv -> setPuce($value['puce']);
         $cv -> setFond($value['fond']);
         $cv -> setIndicateurPerformance($value['indicateur_performance']);
         $cv -> setActivite($value['activite']);
-   
+
         return $cv;
-    }  
+    }
 }
