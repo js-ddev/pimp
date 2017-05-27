@@ -138,7 +138,7 @@ class Home
                 $app['session'] -> getFlashBag() -> add('success', 'Formulaire pris en compte !');
 
                 // Adrien - Redirection suite à la sousmission Pimp It pour step2 form wizard
-                // return $app->redirect('/pimpit/cv');
+                return $app->redirect('/pimpit/cv');
             }
 
             $pimpitFormView = $pimpitForm -> createView();
@@ -197,13 +197,13 @@ class Home
             $membre = $app['dao.membre'] -> find($app['user'] -> getId());
 
             $cv = $app['dao.cv'] -> find($app['user'] -> getId());
-            
+
             // Adrien - Si l'utilisateur n'a pas déjà un CV de crée
             if(is_null($cv)){
                 $cv = new \Entity\Cv;
                 print_r($cv);
             }
-           
+
             $cvForm = $app['form.factory'] -> create(\Form\Type\CvType::class, array(
                 'class' => 'Cv',
                 /*
@@ -220,7 +220,7 @@ class Home
             if($cvForm -> isSubmitted() && $cvForm -> isValid()){
                 $app['dao.cv'] -> saveCv($cv);
                 print_r($_POST);
-               
+
                 $app['session'] -> getFlashBag() -> add('success', 'vos options sont prises en compte !');
 
                 // Adrien - Redirection suite à la sousmission Pimp It CV pour step3 form wizard
