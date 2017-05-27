@@ -13,249 +13,162 @@
         </section>
         <!-- Page Tittle End -->
 
-
-
-            {% if optionForm %}
-            {{ form_start(optionForm) }}
-       
-            
             <section class="section-5 bg-gray">
+            
             <div class="container">
                 <div class="row">
+                <form id="formulaire" action="" method="post">
                     
-                    <div class="col-lg-6">
-
+                    <div class="col-lg-3 col-md-6">
                         <div class="pricing-1" style="padding:15px; margin-top: 15px;">
                             <div class="pricing-status">
                                <i class="glyphicon glyphicon-list-alt" style="font-size:2em;"></i>
                                 <h3 class="plan"><b>Nombre de page(s)</b></h3>
                                  <ul class="pricing-content">
-                                <li>{{ form_errors(optionForm.nombre_page) }}</li>
-                                <li>{{ form_widget(optionForm.nombre_page) }}</li>
+                                    <select class="form-control" id="page">
+                                            <option><li>Choisissez</li></option>
+                                            <option>Une page</option>
+                                            <option>Deux pages</option>
+                                            <option>Trois pages</option>
+                                    </select>
                                 </ul>
-
                             </div>
                         </div>
+                    </div>
                  
-
+                    <div class="col-lg-3 col-md-6">
+                    
                         <div class="pricing-1" style="padding:15px; margin-top: 15px;">
                             <div class="pricing-status">
                                 <i class="glyphicon glyphicon-heart-empty" style="font-size:2em;"></i>
                                 <h3 class="plan"><b>Choix du modèle</b></h3>
-                                 <ul class="pricing-content">
-                                <li>{{ form_errors(optionForm.modele) }}</li>
-                                <li>{{ form_widget(optionForm.modele) }}</li>
+                                 <ul class="pricing-content" >
+                                     <select class="form-control" id="modele">
+                                            <option><li>Choisissez</li></option>
+                                            <option><li>Modèle 1</li></option>
+                                            <option><li>Modèle 2</li></option>
+                                            <option><li>Modèle 3</li></option>
+                                            <option><li>Modèle 4</li></option>
+                                    </select>
                                 </ul>
                             </div>
                         </div>
+                    </div>
                
 
 
-                   
+                    <div class="col-lg-3 col-md-6">
                         <div class="pricing-1 couleur" style="padding:15px; margin-top: 15px;">
                             <div class="pricing-status">
                                 <i class="glyphicon glyphicon-tint" style="font-size:2em;"></i>
                                 <h3 class="plan"><b>Couleur du modèle</b></h3>
-                                 <ul class="pricing-content">
-                                <li>{{ form_errors(optionForm.couleur)}}</li>
-                                <li>{{form_widget(optionForm.couleur)}}</li></option></select>
+                                 <ul class="pricing-content" >
+                                  <select class="form-control" id="couleur">
+                                            <option><li>Choisissez</li></option>
+                                            <option><li>Rouge</li></option>
+                                            <option><li>Vert</li></option>
+                                            <option><li>Bleu</li></option>
+                                            <option><li>Gris</li></option>
+                                            <option><li>Marron</li></option>
+                                    </select>
                                 </ul>
                             </div>
                         </div>
-                 
+                    </div>
 
 
-            
+                     <div class="col-lg-3 col-md-6">
                         <div class="pricing-1" style="padding:15px; margin-top: 15px;">
                             <div class="pricing-status">
                                 <i class="glyphicon glyphicon-option-vertical" style="font-size:2em;"></i>
                                 <h3 class="plan"><b>Puce du modèle</b></h3>
-                                 <ul class="pricing-content">
-                                <li>{{ form_errors(optionForm.puce) }}</li>
-                                <li>{{ form_widget(optionForm.puce) }}</li>
+                                 <ul class="pricing-content" >
+                                    <select class="form-control" id="puce">
+                                            <option><li>Choisissez</li></option>
+                                            <option><li>Puce 1</li></option>
+                                            <option><li>Puce 2</li></option>
+                                            <option><li>Puce 3</li></option>
+                                            <option><li>Puce 4</li></option>
+                                            <option><li>Puce 5</li></option>
+                                    </select>
                                 </ul>
                             </div>
                         </div>
+                    </div>
               
 
-                  
+                    <div class="col-lg-3 col-md-6">
                         <div class="pricing-1" style="padding:15px; margin-top: 15px;">
                             <div class="pricing-status">
                                 <i class="glyphicon glyphicon-adjust" style="font-size:2em;"></i>
                                 <h3 class="plan"><b>Arrière plan du modèle</b></h3>
-                                 <ul class="pricing-content">
-                                <li>{{ form_errors(optionForm.fond) }}</li>
-                                <li>{{ form_widget(optionForm.fond) }}</li>
+                                 <ul class="pricing-content" >
+                                    <select class="form-control" id="plan">
+                                            <option><li>Choisissez</li></option>
+                                            <option><li>Fond blanc</li></option>
+                                            <option><li>Filigrane</li></option>
+                                    </select>
                                 </ul>
                             </div>
                         </div>
+                    </div>
             
                     
-            
+                    <div class="col-lg-3 col-md-6">
                         <div class="pricing-1" style="padding:15px; margin-top: 15px;">
                             <div class="pricing-status">
                                 <i class="glyphicon glyphicon-signal" style="font-size:2em;"></i>
-                                <h3 class="plan"><b>Indicateur de performance</b></h3>
-                                 <ul class="pricing-content">
-                                <li>{{ form_errors(optionForm.indicateur_performance) }}</li>
-                                <li>{{ form_widget(optionForm.indicateur_performance) }}</li>
+                                <h3 class="plan"><b>Performance</b></h3>
+                                 <ul class="pricing-content" >
+                                 <select class="form-control" id="performance">
+                                            <option><li>Choisissez</li></option>
+                                            <option><li>Texte</li></option>
+                                            <option><li>Barre</li></option>
+                                            <option><li>Rond</li></option>
+                                </select>
                                 </ul>
                             </div>
                         </div>
-              
+                      </div>
 
+
+                    <div class="col-lg-3 col-md-6">
                         <div class="pricing-1" style="padding:15px; margin-top: 15px;">
                             <div class="pricing-status">
                                 <i class="glyphicon glyphicon-sunglasses" style="font-size:2em;"></i>
-                                <h3 class="plan"><b>Présentation des activités</b></h3>
-                                 <ul class="pricing-content">
-                                <li>{{ form_errors(optionForm.activite) }}</li>
-                                <li>{{ form_widget(optionForm.activite) }}</li>
+                                <h3 class="plan"><b>Activités</b></h3>
+                                 <ul class="pricing-content" id="activite">
+                                 <select class="form-control" id="activite">
+                                            <option><li>Choisissez</li></option>
+                                            <option><li>Texte</li></option>
+                                            <option><li>Icone</li></option>
+                                </select>
                                 </ul>
                             </div>
                         </div>
+                    </div>
                 
-                
-
-
-
-
-                
-                        <div class="pricing-1" style="padding:15px; margin-top: 15px;">
-                            <div class="pricing-status">
+                   
+                    <div class="col-lg-3 col-md-6">
+                        <div class="pricing-1" style="padding:12px; margin-top: 16px;">
+                           
                                 <i class="glyphicon glyphicon-thumbs-up" style="font-size:2em;"></i>
-                                  <form action="/action_page.php" method="get" id="options">
-                                    <h3 class="plan"><b>Transforme moi mon CV!</b></h3>
-                                    <button type="submit" value="Valider" class="btn btn-sm btn-theme">Go</button>       
-                                 </form>
-                            </div>
+                                    <h3 class="plan"><b>Pimp mon CV!</b></h3>
+                                    <button type="submit" id="envoyez" value="Valider" class="btn btn-sm btn-theme">Go</button> 
                         </div>
+                    </div> 
 
+             </form>
+        </div> <!-- fin de row -->         
+     </div> <!-- fin de container -->
 
-                </div> <!-- fin de col-lg6 -->
-            
-                        
-
-                        
-                    <div class="col-lg-6">
-                        
-                        <div class="pricing-1" style="padding:55px; margin-top: 15px">
-                            <div class="pricing-status">
-                                <h3 class="plan"><b>Résultat</b></h3></h3>
-                            </div>
-                        </div>
-
-                         <div class="pricing-1" style="padding:55px; margin-top: 15px;">
-                            <div class="pricing-status">
-                                <h3 class="plan"><b>Résultat</b></h3></h3>
-                            </div>
-                        </div>
-                        
-                         <div class="pricing-1" id="option_couleur_vue" style="padding:55px; margin-top: 15px;">
-                            <div class="pricing-status">
-                                <h3 class="plan"><b>Résultat</b></h3></h3>
-                            </div>
-                        </div>
-                        
-                         <div class="pricing-1" style="padding:55px; margin-top: 15px;">
-                            <div class="pricing-status">
-                                <h3 class="plan"><b>Résultat</b></h3></h3>
-                            </div>
-                        </div>
-                        
-                         <div class="pricing-1" style="padding:55px; margin-top: 15px;">
-                            <div class="pricing-status">
-                                <h3 class="plan"><b>Résultat</b></h3></h3>
-                            </div>
-                        </div>
-                 
-                         <div class="pricing-1" style="padding:55px; margin-top: 15px;">
-                            <div class="pricing-status">
-                                <h3 class="plan"><b>Résultat</b></h3></h3>
-                            </div>
-                        </div>
-                        
-                         <div class="pricing-1" style="padding:55px; margin-top: 15px;">
-                            <div class="pricing-status">
-                                <h3 class="plan"><b>Résultat</b></h3></h3>
-                            </div>
-                        </div>
-            </div> 
-        </div>
-    
-        </section>
-
-            {{ form_end(optionForm) }}
-            {% endif %}
-
-
-<style type="text/css">.box {
-      padding: 20px;
-      display: none;
-      margin-top: 20px;
-      border: 1px solid #000;
-    }
-    .red {
-      background: #ff0000;
-    }
-    .green {
-      background: #00ff00;
-    }
-    .blue {
-      background: #0000ff;
-    }</style>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-<div>
-  <select>
-    <option value="rouge">Option 1</option>
-    <option value="bleu">Option 2</option>
-    <option value="vert">Option 3</option>
-  </select>
-</div>
-<div class="red box"><strong>red option</strong> so i am here
-
-</div>
-<div class="green box">You have selected <strong>green option</strong> so i am here
-
-</div>
-<div class="blue box">You have selected <strong>blue option</strong> so i am here
-
-</div>
-
-
-  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-
-<script>
-$(document).ready(function() {
-  $("select").change(function() {
-    $("select option:selected").each(function() {
-        var  choix = $(this).attr("value");
-        var id = $(this).attr("id")+"_vue";
-
-        $(id).addClass("class:choix");
-      
-       if ($(this).attr("value") == "rouge") {
-        $(".box").hide();
-        $(".red").show();
-      }
-      if ($(this).attr("value") == "bleu") {
-        $(".box").hide();
-        $(".green").show();
-      }
-      if ($(this).attr("value") == "vert") {
-        $(".box").hide();
-        $(".blue").show();
-      }
-    });
-  }).change();
-});
-</script>
+</section>
 
 
 
 
 
+     
 
 {% endblock %}
 
