@@ -78,6 +78,12 @@
 											<div id="collapse1" class="panel-collapse collapse">
 												<div class="panel-body">
 													<div class="form-group">
+														<label for="email_cv">Email*</label>
+														{{ form_errors(cvForm.email_cv) }}
+														{{ form_widget(cvForm.email_cv) }}
+													</div>
+
+													<div class="form-group">
 														<label for="situation">Situation familiale :</label>
 														{{ form_errors(cvForm.famille) }}
 														{{ form_widget(cvForm.famille) }}
@@ -90,22 +96,29 @@
 													</div>
 
 													<div class="form-group">
+														<label for="langue_maternelle">Langue maternelle*</label>
+														{{ form_errors(cvForm.langue_maternelle) }}
+														{{ form_widget(cvForm.langue_maternelle) }}
+													</div>
+
+													<div class="form-group">
 														<label>Permis de travail / séjour</label>
 														{% for child in cvForm.permis_travail %}
 														{{ form_errors(cvForm.permis_travail) }}
-														{{ form_widget(cvForm.permis_travail, {'attr': {'class': 'radio'}}) }}
+														{{ form_widget(cvForm.permis_travail) }}
 														{% endfor %}
 													</div>
 
 													<div class="form-group">
 														<label>Permis de conduire</label>
 														{{ form_errors(cvForm.permis_conduire) }}
-														{{ form_widget(cvForm.permis_conduire, {'attr': {'class': 'checkbox'}}) }}
+														{{ form_widget(cvForm.permis_conduire) }}
 													</div>
 
 													<div class="form-group col-md-12">
-														<input class="btn btn-md btn-dark" type="submit" value="Envoyer">
-													</div>
+
+														<input class="btn btn-md btn-dark" type="submit" value="Valider">
+													</div>												
 												</div>
 											</div>
 										</div>
@@ -227,8 +240,8 @@
 														{{ form_widget(cvForm.reussite5) }}
 													</div>
 													<div class="form-group col-md-12">
-														<input class="btn btn-md btn-dark" type="submit" value="Envoyer">
-													</div>
+														<input class="btn btn-md btn-dark" type="submit" value="Valider">
+													</div>													
 												</div>
 											</div>
 										</div>
@@ -283,8 +296,10 @@
 														{{ form_widget(cvForm.url_formation) }}
 													</div>
 													<div class="form-group col-md-12">
-														<input class="btn btn-md btn-dark" type="submit" value="Envoyer">
-													</div>
+
+														<input class="btn btn-md btn-dark" type="submit" value="Valider">
+													</div>												
+
 												</div>
 											</div>
 										</div>
@@ -339,8 +354,10 @@
 														{{ form_widget(cvForm.url_certification) }}
 													</div>
 													<div class="form-group col-md-12">
-														<input class="btn btn-md btn-dark" type="submit" value="Envoyer">
-													</div>
+
+														<input class="btn btn-md btn-dark" type="submit" value="Valider">
+													</div>								
+
 												</div>
 											</div>
 										</div>
@@ -351,19 +368,13 @@
 											<div class="panel-heading">
 												<span class="panel-title">
 												<a data-toggle="collapse" class="collapsed" href="#collapse5">
-												<i class="ei ei-microphone"></i> Langues</a>
+												<i class="ei ei-microphone"></i> Langues étrangères</a>
 												</span>
 											</div>
 											<div id="collapse5" class="panel-collapse collapse">
 												<div class="panel-body">
 													<div class="form-group">
-														<label for="langue_maternelle">Langue maternelle*</label>
-														{{ form_errors(cvForm.langue_maternelle) }}
-														{{ form_widget(cvForm.langue_maternelle) }}
-													</div>
-
-													<div class="form-group">
-														<label for="langue_1">Deuxième langue</label>
+														<label for="langue_1">Langue</label>
 														{{ form_errors(cvForm.langue_1) }}
 														{{ form_widget(cvForm.langue_1) }}
 													</div>
@@ -389,8 +400,10 @@
 														{{ form_widget(cvForm.langue_score_ielts) }}
 													</div>
 													<div class="form-group col-md-12">
-														<input class="btn btn-md btn-dark" type="submit" value="Envoyer">
-													</div>
+
+														<input class="btn btn-md btn-dark" type="submit" value="Valider">
+													</div>													
+
 												</div>
 											</div>
 										</div>
@@ -501,8 +514,10 @@
 														{{ form_widget(cvForm.reussite_benevolat5) }}
 													</div>
 													<div class="form-group col-md-12">
-														<input class="btn btn-md btn-dark" type="submit" value="Envoyer">
-													</div>
+
+														<input class="btn btn-md btn-dark" type="submit" value="Valider">
+													</div>												
+
 												</div>
 											</div>
 										</div>
@@ -603,8 +618,10 @@
 																		{{ form_widget(cvForm.infos_diverses) }}
 																	</div>
 																	<div class="form-group col-md-12">
-																		<input class="btn btn-md btn-dark" type="submit" value="Envoyer">
-																	</div>
+
+																		<input class="btn btn-md btn-dark" type="submit" value="Valider">
+																	</div>	
+
 																</div>
 															</div>
 														</div>

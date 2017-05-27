@@ -61,7 +61,7 @@ class MembreDAO extends DAO implements UserProviderInterface
         return $membres;
     }
 
-     /**
+    /**
     * Inscription et enregistrement d'un utilisateur en BDD
     *
     * @param $membre l'utilisateur à enregistrer ou à modifier

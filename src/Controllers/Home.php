@@ -187,7 +187,7 @@ class Home
 
 
 
-// JS - Fonction pour générer le formulaire de création du CV :
+// Adrien - Fonction pour générer le formulaire de création du CV :
 
     public function cv(Request $request, Application $app){
 
@@ -196,29 +196,31 @@ class Home
 
             $membre = $app['dao.membre'] -> find($app['user'] -> getId());
 
-            $cv = new \Entity\Cv;
-            $experience = new \Entity\Experience;
-            $experience = new \Entity\Formation;
-            $experience = new \Entity\Aptitude;
-            $experience = new \Entity\AutreInfo;
-
+            $cv = $app['dao.cv'] -> find($app['user'] -> getId());
+            
+            // Adrien - Si l'utilisateur n'a pas déjà un CV de crée
+            if(is_null($cv)){
+                $cv = new \Entity\Cv;
+                print_r($cv);
+            }
+           
             $cvForm = $app['form.factory'] -> create(\Form\Type\CvType::class, array(
                 'class' => 'Cv',
+                /*
                 'class' => 'Experience',
                 'class' => 'Formation',
                 'class' => 'Aptitude',
                 'class' => 'AutreInfo',
+                */
             ));
 
             $cvForm -> handleRequest($request);
 
-            if($cvForm -> isSubmitted() && $cvForm -> isValid()){
-                /* Adrien - Méthode à créer !!!
-                $app['dao.membre'] -> saveCv();
-                print_r($_POST);
-                */
 
-                /*  $app['dao.cv'] -> save($cv);*/
+            if($cvForm -> isSubmitted() && $cvForm -> isValid()){
+                $app['dao.cv'] -> saveCv($cv);
+                print_r($_POST);
+               
                 $app['session'] -> getFlashBag() -> add('success', 'vos options sont prises en compte !');
 
                 // Adrien - Redirection suite à la sousmission Pimp It CV pour step3 form wizard
@@ -228,14 +230,14 @@ class Home
             $cvFormView = $cvForm -> createView();
 
             $params = array(
-                'title' => 'Options',
+                'title' => 'Contenu de votre CV',
                 'cvForm' => $cvFormView
             );
 
             return $app['twig']->render('pimpit_cv.html.twig', $params);
         }
         // Si l'utilisateur n'est pas connecté le renvoyer vers l'inscription/login :
-        else{
+        else {
 
         // JS - A prevoir une meilleure redirection et une page d'inscription avec message :
             header("Location:/inscription");
