@@ -68,11 +68,11 @@ class Gertrude
                 return new RedirectResponse($captureToken->getTargetUrl());
         }
 
-        public function capture() {
+        public function capture(Application $app, Request $request) {
                 $payum = $app['payum'];
 
                 // TODO remplacer $_REQUEST par un objet $request
-                $token = $payum->getHttpRequestVerifier()->verify($_REQUEST);
+                $token = $payum->getHttpRequestVerifier()->verify($request);
                 $gateway = $payum->getGateway($token->getGatewayName());
 
                 if ($reply = $gateway->execute(new Capture($token), true)) {
@@ -86,8 +86,8 @@ class Gertrude
                 /** @var \Payum\Core\Payum $payum */
                 $payum->getHttpRequestVerifier()->invalidate($token);
 
-                return new RedirectResponse($token->getTargetUrl());
-                
+                return new RedirectResponse($token->getAfterUrl());
+
         }
 
         public function paymentDone(Application $app, Request $request)
@@ -99,7 +99,7 @@ class Gertrude
                 // you can invalidate the token. The url could not be requested any more.
                 // $payum->getHttpRequestVerifier()->invalidate($token);
 
-                // Once you have token you can get the model from the storage directly. 
+                // Once you have token you can get the model from the storage directly.
                 //$identity = $token->getDetails();
                 //$payment = $payum->getStorage($identity->getClass())->find($identity);
 
@@ -110,9 +110,38 @@ class Gertrude
 
                 $payment = $status->getFirstModel();
 
+
                 return new JsonResponse(array(
                     'status' => $status->getValue(),
-                    'details' => $payment->getDetails(), 
+                    'details' => $payment->getDetails(),
+					'total_amount' => $payment->getTotalAmount(),
+					'currency_code' => $payment->getCurrencyCode(),
                 ));
         }
+}
+
+class PaymentController
+{
+    protected $app;
+
+    public function __constructor(Application $app)
+    {
+        $this->app = $app;
+    }
+
+    public function done(Request $request)
+    {
+        $token = $this->app['payum.security.http_request_verifier']->verify($request);
+
+        $gateway = $this->app['payum']->getGateway($token->getGatewayName());
+
+        $gateway->execute($status = new GetHumanStatus($token));
+
+        $payment = $status->getFirstModel();
+
+        return new JsonResponse(array(
+            'status' => $status->getValue(),
+            'details' => $payment->getDetails(),
+        ));
+    }
 }

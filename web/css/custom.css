@@ -19,3 +19,18 @@ i:hover {
 	color: #2e71f0;
 	transition: 0.3s;
 }
+
+/* Adrien - Réglage conflit width li entre form-wizard & tab-style-4 eastern template */
+.tab-style-4.item-5 li {
+    width: 20%;
+}
+
+/* Adrien - Réglage visibilité header transparent et captions */
+.header.header-transparent {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.hero-caption {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 1em;
+}

@@ -19,15 +19,16 @@
             {{ form_start(optionForm) }}
        
             
-            <section class="section-2 bg-gray">
+            <section class="section-5 bg-gray">
             <div class="container">
                 <div class="row">
                     
-                    <div class="col-lg-3">
-                        <div class="pricing-1">
+                    <div class="col-lg-6">
+
+                        <div class="pricing-1" style="padding:15px; margin-top: 15px;">
                             <div class="pricing-status">
-                                <i class="glyphicon glyphicon-list-alt"></i>
-                                <h2 class="plan"><b>Nombre de page(s)</b></h2>
+                               <i class="glyphicon glyphicon-list-alt" style="font-size:2em;"></i>
+                                <h3 class="plan"><b>Nombre de page(s)</b></h3>
                                  <ul class="pricing-content">
                                 <li>{{ form_errors(optionForm.nombre_page) }}</li>
                                 <li>{{ form_widget(optionForm.nombre_page) }}</li>
@@ -35,106 +36,227 @@
 
                             </div>
                         </div>
-                    </div>
+                 
 
-                    <div class="col-lg-3">
-                        <div class="pricing-1">
+                        <div class="pricing-1" style="padding:15px; margin-top: 15px;">
                             <div class="pricing-status">
-                                <i class="glyphicon glyphicon-heart-empty"></i>
-                                <h2 class="plan"><b>Choix du modèle</b></h2>
+                                <i class="glyphicon glyphicon-heart-empty" style="font-size:2em;"></i>
+                                <h3 class="plan"><b>Choix du modèle</b></h3>
                                  <ul class="pricing-content">
                                 <li>{{ form_errors(optionForm.modele) }}</li>
                                 <li>{{ form_widget(optionForm.modele) }}</li>
                                 </ul>
                             </div>
                         </div>
-                    </div>
+               
 
 
-                    <div class="col-lg-3">
-                        <div class="pricing-1">
+                   
+                        <div class="pricing-1 couleur" style="padding:15px; margin-top: 15px;">
                             <div class="pricing-status">
-                                <i class="glyphicon glyphicon-tint"></i>
-                                <h2 class="plan"><b>Couleur du modèle</b></h2>
+                                <i class="glyphicon glyphicon-tint" style="font-size:2em;"></i>
+                                <h3 class="plan"><b>Couleur du modèle</b></h3>
                                  <ul class="pricing-content">
-                                <li>{{ form_errors(optionForm.couleur) }}</li>
-                                <li>{{ form_widget(optionForm.couleur) }}</li>
+                                <li>{{ form_errors(optionForm.couleur)}}</li>
+                                <li>{{form_widget(optionForm.couleur)}}</li></option></select>
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                 
 
 
-                    <div class="col-lg-3">
-                        <div class="pricing-1">
+            
+                        <div class="pricing-1" style="padding:15px; margin-top: 15px;">
                             <div class="pricing-status">
-                                <i class="glyphicon glyphicon-option-vertical"></i>
-                                <h2 class="plan"><b>Puce du modèle</b></h2>
+                                <i class="glyphicon glyphicon-option-vertical" style="font-size:2em;"></i>
+                                <h3 class="plan"><b>Puce du modèle</b></h3>
                                  <ul class="pricing-content">
                                 <li>{{ form_errors(optionForm.puce) }}</li>
                                 <li>{{ form_widget(optionForm.puce) }}</li>
                                 </ul>
                             </div>
                         </div>
-                    </div>
+              
 
-                     <div class="col-lg-3">
-                        <div class="pricing-1">
+                  
+                        <div class="pricing-1" style="padding:15px; margin-top: 15px;">
                             <div class="pricing-status">
-                                <i class="glyphicon glyphicon-adjust"></i>
-                                <h2 class="plan"><b>Arrière plan du modèle</b></h2>
+                                <i class="glyphicon glyphicon-adjust" style="font-size:2em;"></i>
+                                <h3 class="plan"><b>Arrière plan du modèle</b></h3>
                                  <ul class="pricing-content">
                                 <li>{{ form_errors(optionForm.fond) }}</li>
                                 <li>{{ form_widget(optionForm.fond) }}</li>
                                 </ul>
                             </div>
                         </div>
-                    </div>
+            
                     
-                    <div class="col-lg-3">
-                        <div class="pricing-1">
+            
+                        <div class="pricing-1" style="padding:15px; margin-top: 15px;">
                             <div class="pricing-status">
-                                <i class="glyphicon glyphicon-signal"></i>
-                                <h2 class="plan"><b>Indicateur de performance</b></h2>
+                                <i class="glyphicon glyphicon-signal" style="font-size:2em;"></i>
+                                <h3 class="plan"><b>Indicateur de performance</b></h3>
                                  <ul class="pricing-content">
                                 <li>{{ form_errors(optionForm.indicateur_performance) }}</li>
                                 <li>{{ form_widget(optionForm.indicateur_performance) }}</li>
                                 </ul>
                             </div>
                         </div>
-                    </div>
+              
 
-                    <div class="col-lg-3">
-                        <div class="pricing-1">
+                        <div class="pricing-1" style="padding:15px; margin-top: 15px;">
                             <div class="pricing-status">
-                                <i class="glyphicon glyphicon-sunglasses"></i>
-                                <h2 class="plan"><b>Présentation des activités</b></h2>
+                                <i class="glyphicon glyphicon-sunglasses" style="font-size:2em;"></i>
+                                <h3 class="plan"><b>Présentation des activités</b></h3>
                                  <ul class="pricing-content">
                                 <li>{{ form_errors(optionForm.activite) }}</li>
                                 <li>{{ form_widget(optionForm.activite) }}</li>
                                 </ul>
                             </div>
                         </div>
-                    </div>
                 
-                    <div class="col-lg-3">
-                        <div class="pricing-1">
+                
+
+
+
+
+                
+                        <div class="pricing-1" style="padding:15px; margin-top: 15px;">
                             <div class="pricing-status">
-                                <i class="glyphicon glyphicon-thumbs-up"></i>
+                                <i class="glyphicon glyphicon-thumbs-up" style="font-size:2em;"></i>
                                   <form action="/action_page.php" method="get" id="options">
-                                    <h2 class="plan"><b>Transforme moi mon CV!</b></h2>
+                                    <h3 class="plan"><b>Transforme moi mon CV!</b></h3>
                                     <button type="submit" value="Valider" class="btn btn-sm btn-theme">Go</button>       
                                  </form>
                             </div>
                         </div>
-                    </div>
 
-                </div> <!-- row -->
-            </div> <!-- container -->
+
+                </div> <!-- fin de col-lg6 -->
+            
+                        
+
+                        
+                    <div class="col-lg-6">
+                        
+                        <div class="pricing-1" style="padding:55px; margin-top: 15px">
+                            <div class="pricing-status">
+                                <h3 class="plan"><b>Résultat</b></h3></h3>
+                            </div>
+                        </div>
+
+                         <div class="pricing-1" style="padding:55px; margin-top: 15px;">
+                            <div class="pricing-status">
+                                <h3 class="plan"><b>Résultat</b></h3></h3>
+                            </div>
+                        </div>
+                        
+                         <div class="pricing-1" id="option_couleur_vue" style="padding:55px; margin-top: 15px;">
+                            <div class="pricing-status">
+                                <h3 class="plan"><b>Résultat</b></h3></h3>
+                            </div>
+                        </div>
+                        
+                         <div class="pricing-1" style="padding:55px; margin-top: 15px;">
+                            <div class="pricing-status">
+                                <h3 class="plan"><b>Résultat</b></h3></h3>
+                            </div>
+                        </div>
+                        
+                         <div class="pricing-1" style="padding:55px; margin-top: 15px;">
+                            <div class="pricing-status">
+                                <h3 class="plan"><b>Résultat</b></h3></h3>
+                            </div>
+                        </div>
+                 
+                         <div class="pricing-1" style="padding:55px; margin-top: 15px;">
+                            <div class="pricing-status">
+                                <h3 class="plan"><b>Résultat</b></h3></h3>
+                            </div>
+                        </div>
+                        
+                         <div class="pricing-1" style="padding:55px; margin-top: 15px;">
+                            <div class="pricing-status">
+                                <h3 class="plan"><b>Résultat</b></h3></h3>
+                            </div>
+                        </div>
+            </div> 
+        </div>
     
-            </section>
+        </section>
 
             {{ form_end(optionForm) }}
             {% endif %}
 
+
+<style type="text/css">.box {
+      padding: 20px;
+      display: none;
+      margin-top: 20px;
+      border: 1px solid #000;
+    }
+    .red {
+      background: #ff0000;
+    }
+    .green {
+      background: #00ff00;
+    }
+    .blue {
+      background: #0000ff;
+    }</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<div>
+  <select>
+    <option value="rouge">Option 1</option>
+    <option value="bleu">Option 2</option>
+    <option value="vert">Option 3</option>
+  </select>
+</div>
+<div class="red box"><strong>red option</strong> so i am here
+
+</div>
+<div class="green box">You have selected <strong>green option</strong> so i am here
+
+</div>
+<div class="blue box">You have selected <strong>blue option</strong> so i am here
+
+</div>
+
+
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+<script>
+$(document).ready(function() {
+  $("select").change(function() {
+    $("select option:selected").each(function() {
+        var  choix = $(this).attr("value");
+        var id = $(this).attr("id")+"_vue";
+
+        $(id).addClass("class:choix");
+      
+       if ($(this).attr("value") == "rouge") {
+        $(".box").hide();
+        $(".red").show();
+      }
+      if ($(this).attr("value") == "bleu") {
+        $(".box").hide();
+        $(".green").show();
+      }
+      if ($(this).attr("value") == "vert") {
+        $(".box").hide();
+        $(".blue").show();
+      }
+    });
+  }).change();
+});
+</script>
+
+
+
+
+
+
 {% endblock %}
+
+

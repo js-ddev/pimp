@@ -10,55 +10,47 @@ class Home
 
     public function modeles(Application $app){
         return $app['twig']->render('modeles.html.twig');
-
     }
 
     public function mentions_legales(Application $app){
         return $app['twig']->render('mentions_legales.html.twig');
-
     }
 
     public function contact(Application $app){
         return $app['twig']->render('contact.html.twig');
-
     }
 
     public function faq(Application $app){
         return $app['twig']->render('faq.html.twig');
-
     }
 
     public function about(Application $app){
         return $app['twig']->render('about.html.twig');
-
     }
 
     public function template_options(Application $app){
         return $app['twig']->render('template_options.html.twig');
-
     }
 
     public function recapitulatif_commande(Application $app){
         return $app['twig']->render('recapitulatif_commande.html.twig');
-
     }
 
     public function paiement(Application $app){
         return $app['twig']->render('paiement.html.twig');
-
     }
 
     public function validation_commande(Application $app){
         return $app['twig']->render('validation_commande.html.twig');
-
     }
 
     public function index(Application $app){
         return $app['twig']->render('index.html.twig');
-
     }
 
-    // Adrien - Route pour inscription utilisateur
+
+// Adrien - Route pour inscription utilisateur :
+
     public function inscription(Request $request, Application $app){
         $membre = new \Entity\Membre;
         $inscriptionForm = $app['form.factory'] -> create(\Form\Type\InscriptionType::class, $membre);
@@ -69,11 +61,9 @@ class Home
             $salt = substr(md5(time()), 0, 23);
             $membre -> setSalt($salt);
 
-
             $password = $membre -> getPassword();
 
             $password_encode = $app["security.encoder.bcrypt"]->encodePassword($password, $membre->getSalt());
-
 
             $membre -> setPassword($password_encode);
 
@@ -95,6 +85,7 @@ class Home
 
     }
 
+
 // Adrien - Route pour connexion utilisateur
     public function connexion(Request $request, Application $app){
         $params = array(
@@ -106,14 +97,15 @@ class Home
         return $app['twig'] -> render('connexion.html.twig', $params);
         }
 
+
 // JS - Route pour la connexion à la première page du formulaire Pimpit :
 
     public function pimpit(Request $request, Application $app){
-        // JS - Si l'utilisateur est connecté :
+
+        // JS - Vérif si l'utilisateur est connecté :
         if($app['security.authorization_checker'] -> isGranted('IS_AUTHENTICATED_FULLY')){
 
             $membre = $app['dao.membre'] -> find($app['user'] -> getId());
-            // $membre = new \Entity\Membre;
             $fichier = new \Entity\Fichier;
 
             $pimpitForm = $app['form.factory']
@@ -124,42 +116,36 @@ class Home
 
         $pimpitForm -> handleRequest($request);
 
-
             if($pimpitForm -> isSubmitted() && $pimpitForm -> isValid()){
 
+            $files = $request-> files ->get($pimpitForm->getName());
 
-                if(!empty($_POST['pimpit']["photo"]) && !empty($_POST['pimpit']["fichier"])){
+            // JS - Gestion de l'upload des fichiers photo et cv, fichiers de type id-type-md5.extension
 
+            $photo = $files['photo'];
+            $cv = $files['fichier'];
+            $id = $membre -> getId();
+
+                if(!empty($photo)){
                     $path = __DIR__.'/../../fichiers/';
-                    // $file = $fichier -> setPhoto();
-                    $files = $request-> files ->get($pimpitForm->getName());
-
-                    $photo = $files['photo'];
-                    $cv = $files['fichier'];
-
-                    print_r('passage dans le if de présence des fichiers ');
-                    print_r($fichier);
-
-                    $filenamePhoto = md5(uniqid()).'.'.$photo->guessExtension();
-                    $filenameCv = md5(uniqid()).'.'.$cv->guessExtension();
-
-                    // $filenamePhoto = $photo -> getClientOriginalName();
-                    // $filenameCv = $cv -> getClientOriginalName();
-
+                    $filenamePhoto = $id.'-photo-'.   md5(uniqid()).'.'.$photo->guessExtension();
                     $photo -> move($path,$filenamePhoto);
-                    $cv -> move($path,$filenameCv);
-
-                    // $fichier->setPhoto($photo);
-
                     $fichier -> setPhoto($filenamePhoto);
+                }
+
+                if(!empty($cv)){
+                    $path2 = __DIR__.'/../../fichiers/';
+                    $filenameCv = $id.'-cv-'.md5(uniqid()).'.'.$cv->guessExtension();
+                    $cv -> move($path2,$filenameCv);
                     $fichier -> setFichier($filenameCv);
-
-
                 }
 
                 $app['dao.membre'] -> savePimpit();
-                print_r($_POST);
+
                 $app['session'] -> getFlashBag() -> add('success', 'Formulaire pris en compte !');
+
+                // Adrien - Redirection suite à la sousmission Pimp It pour step2 form wizard
+                // return $app->redirect('/pimpmycv/pimp/web/index_dev.php/pimpit/cv');
             }
 
             $pimpitFormView = $pimpitForm -> createView();
@@ -174,18 +160,15 @@ class Home
         // Si l'utilisateur n'est pas connecté le renvoyer vers l'inscription/login :
         else{
 
-// JS - A prevoir une meilleure redirection et une page d'inscription avec message :
+        // JS - A prevoir une meilleure redirection et une page d'inscription avec message :
             header("Location: ". __DIR__."../../../../../../../web/index_dev.php/inscription");
             exit();
         }
-
-
-
     }
 
 
+// Rudy - Route pour la génération du formulaire options :
 
-// Rudy - Route pour la génération du formulaire options
     public function option(Request $request, Application $app){
         $cv = new \Entity\Cv;
         $optionForm = $app['form.factory'] -> create(\Form\Type\OptionType::class, $cv);
@@ -194,7 +177,7 @@ class Home
 
         if($optionForm -> isSubmitted() && $optionForm -> isValid()){
 
-          /*  $app['dao.cv'] -> save($cv);*/
+            /*  $app['dao.cv'] -> save($cv);*/
             $app['session'] -> getFlashBag() -> add('success', 'vos options sont prises en compte !');
         }
 
@@ -209,40 +192,61 @@ class Home
 
     }
 
+
+
 // JS - Fonction pour générer le formulaire de création du CV :
 
     public function cv(Request $request, Application $app){
-        $cv = new \Entity\Cv;
-        $experience = new \Entity\Experience;
-        $experience = new \Entity\Formation;
-        $experience = new \Entity\Aptitude;
-        $experience = new \Entity\AutreInfo;
 
-        $cvForm = $app['form.factory'] -> create(\Form\Type\CvType::class, array(
-            'class' => 'Cv',
-            'class' => 'Experience',
-            'class' => 'Formation',
-            'class' => 'Aptitude',
-            'class' => 'AutreInfo',
-        ));
+        // JS - Si l'utilisateur est connecté :
+        if($app['security.authorization_checker'] -> isGranted('IS_AUTHENTICATED_FULLY')){
 
-        $cvForm -> handleRequest($request);
+            $membre = $app['dao.membre'] -> find($app['user'] -> getId());
 
-        if($cvForm -> isSubmitted() && $cvForm -> isValid()){
+            $cv = new \Entity\Cv;
+            $experience = new \Entity\Experience;
+            $experience = new \Entity\Formation;
+            $experience = new \Entity\Aptitude;
+            $experience = new \Entity\AutreInfo;
 
-          /*  $app['dao.cv'] -> save($cv);*/
-            $app['session'] -> getFlashBag() -> add('success', 'vos options sont prises en compte !');
+            $cvForm = $app['form.factory'] -> create(\Form\Type\CvType::class, array(
+                'class' => 'Cv',
+                'class' => 'Experience',
+                'class' => 'Formation',
+                'class' => 'Aptitude',
+                'class' => 'AutreInfo',
+            ));
+
+            $cvForm -> handleRequest($request);
+
+            if($cvForm -> isSubmitted() && $cvForm -> isValid()){
+                /* Adrien - Méthode à créer !!!
+                $app['dao.membre'] -> saveCv();
+                print_r($_POST);
+                */
+
+                /*  $app['dao.cv'] -> save($cv);*/
+                $app['session'] -> getFlashBag() -> add('success', 'vos options sont prises en compte !');
+
+                // Adrien - Redirection suite à la sousmission Pimp It CV pour step3 form wizard
+                return $app->redirect('/pimpmycv/pimp/web/index_dev.php/template_options');
+            }
+
+            $cvFormView = $cvForm -> createView();
+
+            $params = array(
+                'title' => 'Options',
+                'cvForm' => $cvFormView
+            );
+
+            return $app['twig']->render('pimpit_cv.html.twig', $params);
         }
+        // Si l'utilisateur n'est pas connecté le renvoyer vers l'inscription/login :
+        else{
 
-        $cvFormView = $cvForm -> createView();
-
-        $params = array(
-            'title' => 'Options',
-            'cvForm' => $cvFormView
-        );
-
-        return $app['twig']->render('pimpit_cv.html.twig', $params);
-
+        // JS - A prevoir une meilleure redirection et une page d'inscription avec message :
+            header("Location: ". __DIR__."../../../../../../../web/index_dev.php/inscription");
+            exit();
+        }
     }
-
 }
