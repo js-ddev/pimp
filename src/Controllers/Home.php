@@ -127,14 +127,14 @@ class Home
             $id = $membre -> getId();
 
                 if(!empty($photo)){
-                    $path = __DIR__.'/../../fichiers/';
+                    $path = '../fichiers/';
                     $filenamePhoto = $id.'-photo-'.   md5(uniqid()).'.'.$photo->guessExtension();
                     $photo -> move($path,$filenamePhoto);
                     $fichier -> setPhoto($filenamePhoto);
                 }
 
                 if(!empty($cv)){
-                    $path2 = __DIR__.'/../../fichiers/';
+                    $path2 = '../fichiers/';
                     $filenameCv = $id.'-cv-'.md5(uniqid()).'.'.$cv->guessExtension();
                     $cv -> move($path2,$filenameCv);
                     $fichier -> setFichier($filenameCv);
@@ -161,7 +161,7 @@ class Home
         else{
 
         // JS - A prevoir une meilleure redirection et une page d'inscription avec message :
-            header("Location: ". __DIR__."../../../../../../../web/index_dev.php/inscription");
+            header("Location:/inscription");
             exit();
         }
     }
@@ -245,7 +245,7 @@ class Home
         else{
 
         // JS - A prevoir une meilleure redirection et une page d'inscription avec message :
-            header("Location: ". __DIR__."../../../../../../../web/index_dev.php/inscription");
+            header("Location:/inscription");
             exit();
         }
     }
