@@ -1,6 +1,6 @@
 <?php
 
-$bo -> get('/hello/{name}','Controllers\\Bo::hello');
+// $bo -> get('/hello/{name}','Controllers\\Bo::hello');
 
 $bo -> get('/gestion_commandes', 'Controllers\\Bo::gestion_commandes') ;
 
