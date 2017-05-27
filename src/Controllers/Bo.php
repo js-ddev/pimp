@@ -27,8 +27,10 @@ class Bo
 
     /* Didier - namespace de backoffice content */
     public function accueil(Application $app) {
-    	return $app['twig']->render('/bo/accueil.html.twig');
+        return $app['twig']->render('/bo/accueil.html.twig');
     }
+
+
 
     /* Didier - namespace de gestion_membres */
 /*    public function gestion_membres(Application $app) {
@@ -103,7 +105,7 @@ class Bo
 
         $commandeFormBo -> handleRequest($request);
 
-/*        if($commandeFormBo -> isSubmitted() && $commandeFormBo -> isValid()){
+        if($commandeFormBo -> isSubmitted() && $commandeFormBo -> isValid()){
             $salt = substr(md5(time()), 0, 23);
             $commande -> setSalt($salt);
 
@@ -115,7 +117,7 @@ class Bo
             $app['dao.membre'] -> save($membre);
             $app['session'] -> getFlashBag() -> add('success', 'Votre inscription a bien été prise en compte !');
         }
-*/
+
         $commandeFormView = $commandeFormBo -> createView();
 
         $commandes = $app['dao.membre'] -> findAll();
@@ -129,6 +131,26 @@ class Bo
         return $app['twig']->render('/bo/gestion_commandes.html.twig', $params);
     }   
 /////////////////////////////////////////////////////////////////////////     
+
+    public function gestion_cv(Request $request, Application $app){
+
+        if( ! empty($request->query->get('id'))) {
+            $cv = $app['dao.cv'] -> find($request->query->get('id'));
+        } else {
+            $cv = new \Entity\Cv;
+        }
+
+        $cv = $app['dao.cv'] -> findAll();
+
+        $params = array(
+            'cv' => $cvs,
+            'title' => 'Inscription',
+            'cvFormBo' => $cvFormView
+        );
+
+        return $app['twig']->render('/bo/gestion_cv.html.twig', $params);
+    }   
+
 
 
      

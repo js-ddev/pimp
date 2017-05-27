@@ -1,0 +1,564 @@
+{% extends 'bo/layout_back.html.twig' %}
+
+{% block title 'Pimp My CV' %}
+
+{% block content %}
+
+    <!-- Didier - FIN HEAD, NAVTOP ET NAVSIDE -->
+
+        <!-- Didier - DEBUT CONTENU -->
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Gestion des membres
+                            <small>Consulter | Ajouter | Modifier | Supprimer</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard" aria-hidden="true"></i> <a href="{{ path('accueil') }}">Dashboard</a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+                <!-- Didier - DEBUT TABLEAUX DU CV -->
+
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <h2>Tableaux du CV</h2>
+
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <ol class="breadcrumb">
+                                    <li>
+
+                                        <!-- Didier - Bouton ajouter un CV -->
+
+                                        <a href="{{ path('gestion_cv') }}#formulaire"><i class="btn btn-primary fa fa-pencil-square-o" aria-hidden="true"></i> Ajouter un membre</a>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <!-- Didier - TABLEAU 1 : ID, Fichier CV, Stucture CV, Design CV, Identité, Coordonnées, Infos perso, Réseaux sociaux et web -->
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
+
+                                        <!-- Didier - Partie ID -->
+                                        <th>ID CV</th>
+                                        <th>ID Membre</th>
+
+                                        <!-- Didier - Partie Fichier CV téléchargé -->
+                                        <th>Fichier CV</th>
+
+                                        <!-- Didier - Partie Structure du CV -->
+                                        <th>Nombre de section(s)</th>
+                                        <th>Nombre de page(s)</th>
+
+                                        <!-- Didier - Partie Design du CV -->
+                                        <th>Template</th>
+                                        <th>Couleur</th>
+                                        <th>Puce</th>
+                                        <th>Fond</th>
+                                        <th>Indicateur de performance</th>
+                                        <th>Activité(s)</th>
+
+                                        <!-- Didier - Partie Identité -->
+                                        <th>Photo</th>
+                                        <th>Prénom</th>
+                                        <th>Nom</th>
+                                        <th>Date de naissance</th>
+                                        <th>Nationalité</th>
+
+                                        <!-- Didier - Partie Coordonnées -->
+                                        <th>Email du CV</th>
+                                        <th>Téléphone</th>
+                                        <th>Adresse</th>
+                                        <th>Code Postal</th>
+                                        <th>Ville</th>
+                                        <th>Pays</th>
+
+                                        <!-- Didier - Partie Informations personnelles -->
+                                        <th>Famille</th>
+                                        <th>Langue maternelle</th>
+                                        <th>Permis de conduire</th>
+                                        <th>Permis de travail</th>
+
+                                        <!-- Didier - Partie Réseaux sociaux et web -->
+                                        <th>Twitter</th>
+                                        <th>LinkedIn</th>
+                                        <th>Skype</th>
+                                        <th>Site perso</th>
+                                        <th>URL autre</th>
+
+                                        <th colspan="2">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+<!--                                     {% for membre in membres %}
+ -->                                    <tr>
+
+                                        <!-- Didier - Partie ID -->
+                                        <td>{{ cv.id }}</td>
+                                        <td>{{ cv.id_membre }}</td>
+
+                                        <!-- Didier - Partie Fichier CV téléchargé -->
+                                        <td>{{ cv.fichier_cv }}</td>
+
+                                        <!-- Didier - Partie Structure du CV -->
+                                        <td>{{ cv.nombre_sections }}</td>
+                                        <td>{{ cv.nombre_page }}</td>
+
+                                        <!-- Didier - Partie Design du CV -->
+                                        <td>{{ cv.template }}</td>
+                                        <td>{{ cv.couleur }}</td>
+                                        <td>{{ cv.puce }}</td>
+                                        <td>{{ cv.fond }}</td>
+                                        <td>{{ cv.indicateur_performance }}</td>
+                                        <td>{{ cv.activite }}</td>
+
+                                        <!-- Didier - Partie Identité -->
+                                        <td>{{ cv.photo }}</td>
+                                        <td>{{ membre.prenom }}</td>
+                                        <td>{{ membre.nom }}</td>
+                                        <td>{{ membre.date_naissance }}</td>
+                                        <td>{{ cv.nationnalite }}</td>
+
+                                        <!-- Didier - Partie Coordonnées -->
+                                        <td>{{ cv.email_cv }}</td>
+                                        <td>{{ membre.telephone }}</td>
+                                        <td>{{ membre.adresse }}</td>
+                                        <td>{{ membre.code_postal }}</td>
+                                        <td>{{ membre.ville }}</td>
+                                        <td>{{ membre.pays }}</td>
+
+                                        <!-- Didier - Partie Informations personnelles -->
+                                        <td>{{ cv.famille }}</td>
+                                        <td>{{ cv.langue_maternelle }}</td>
+                                        <td>{{ cv.permis_conduire }}</td>
+                                        <td>{{ cv.permis_travail }}</td>
+
+                                        <!-- Didier - Partie Réseaux sociaux -->
+                                        <td>{{ cv.twitter }}</td>
+                                        <td>{{ cv.linkedin }}</td>
+                                        <td>{{ cv.skype }}</td>
+                                        <td>{{ cv.site_perso }}</td>
+                                        <td>{{ cv.url_autre }}</td>
+
+
+                                        <!-- Didier - Bouton modifier l'identité, les infos perso... -->
+
+                                        <td><a href="{{ path('gestion_cv', {'id' : cv.id }) }}#formulaire" title="Modifier une(des) info(s) du CV"><i class="btn btn-info fa fa-pencil-square-o"></i></a></td>
+
+                                        <!-- Didier - Bouton supprimer l'identité, les infos perso... -->
+
+                                        <td><a href="{{ path('supprimer_cv', { 'id': cv.id }) }}" title="Supprimer un CV" class="btn btn-danger fa fa-trash"></a></td>
+
+                                    </tr>
+<!--                                     {% endfor %}
+ -->                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Didier - FIN TABLEAU 1 -->
+
+                        <!-- Didier - TABLEAU 2 : Expériences -->
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
+
+                                        <!-- Didier - Partie ID -->
+                                        <th>ID Expérience</th>
+                                        <th>ID CV</th>
+
+                                        <!-- Didier - Partie Personne morale -->
+                                        <th>Nom</th>
+                                        <th>Lieu</th>
+                                        <th>Type</th>
+                                        <th>Secteur d'activité</th>
+                                        <th>Secteur bénévolat</th>
+                                        <th>Produits et services</th>
+                                        <th>Effectif</th>
+                                        <th>CA</th>
+                                        
+                                        <!-- Didier - Partie Expérience -->
+                                        <th>Poste</th>
+                                        <th>Rôle</th>
+                                        <th>Date de début</th>
+                                        <th>Date de fin</th>
+                                        <th>URL expérience</th>
+                                        <th>Responsabilité 1</th>
+                                        <th>Réalisation 1</th>
+                                        <th>Responsabilité 2</th>
+                                        <th>Réalisation 2</th>
+                                        <th>Responsabilité 3</th>
+                                        <th>Réalisation 3</th>
+                                        <th>Responsabilité 4</th>
+                                        <th>Réalisation 4</th>
+                                        <th>Responsabilité 5</th>
+                                        <th>Réalisation 5</th>
+
+
+                                        <th colspan="2">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for experience in experiences %}
+                                    <tr>
+
+                                        <!-- Didier - Partie ID -->
+                                        <td>{{ experience.id }}</td>
+                                        <td>{{ experience.id_cv }}</td>
+
+                                        <!-- Didier - Partie Personne morale -->
+                                        <td>{{ experience.nom }}</td>
+                                        <td>{{ experience.lieu }}</td>
+                                        <td>{{ experience.type }}</td>
+                                        <td>{{ experience.secteur }}</td>
+                                        <td>{{ experience.secteur_benevolat }}</td>
+                                        <td>{{ experience.produit_service }}</td>
+                                        <td>{{ experience.effectif }}</td>
+                                        <td>{{ experience.ca }}</td>
+
+                                        <!-- Didier - Partie Expérience -->
+                                        <td>{{ experience.poste }}</td>
+                                        <td>{{ experience.role }}</td>
+                                        <td>{{ experience.date_debut }}</td>
+                                        <td>{{ experience.date_fin }}</td>
+                                        <td>{{ experience.url_experience }}</td>
+                                        <td>{{ experience.responsabilite1 }}</td>
+                                        <td>{{ experience.realisation1 }}</td>
+                                        <td>{{ experience.responsabilite2 }}</td>
+                                        <td>{{ experience.realisation2 }}</td>
+                                        <td>{{ experience.responsabilite3 }}</td>
+                                        <td>{{ experience.realisation3 }}</td>
+                                        <td>{{ experience.responsabilite4 }}</td>
+                                        <td>{{ experience.realisation4 }}</td>
+                                        <td>{{ experience.responsabilite5 }}</td>
+                                        <td>{{ experience.realisation5 }}</td>
+
+
+                                        <!-- Didier - Bouton modifier une expérience -->
+
+                                        <td><a href="{{ path('gestion_membres', {'id' : membre.id }) }}#formulaire" title="Modifier une(des) info(s) du membre"><i class="btn btn-info fa fa-pencil-square-o"></i></a></td>
+
+                                        <!-- Didier - Bouton supprimer une expérience -->
+
+                                        <td><a href="{{ path('supprimer_membre', { 'id': membre.id }) }}" title="Supprimer un membre" class="btn btn-danger fa fa-trash"></a></td>
+
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Didier - FIN TABLEAU 2 -->
+
+                        <!-- Didier - TABLEAU 3 : Formations -->
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
+
+                                        <!-- Didier - Partie ID -->
+                                        <th>ID Formation</th>
+                                        <th>ID CV</th>
+
+                                        <!-- Didier - Partie Personne morale -->
+                                        <th>Nom de l'établissement</th>
+                                        <th>Lieu</th>
+                                        
+                                        <!-- Didier - Partie Formation -->
+                                        <th>Diplôme</th>
+                                        <th>Spécialité</th>
+                                        <th>Type (certification/formation) </th>
+                                        <th>Date d'obtention</th>
+                                        <th>URL formation</th>
+
+                                        <th colspan="2">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for formation in formations %}
+                                    <tr>
+
+                                        <!-- Didier - Partie ID -->
+                                        <td>{{ experience.id }}</td>
+                                        <td>{{ experience.id_cv }}</td>
+
+                                        <!-- Didier - Partie Personne morale -->
+                                        <td>{{ experience.nom }}</td>
+                                        <td>{{ experience.lieu }}</td>
+                                        <td>{{ experience.type }}</td>
+                                        <td>{{ experience.secteur }}</td>
+                                        <td>{{ experience.secteur_benevolat }}</td>
+                                        <td>{{ experience.produit_service }}</td>
+                                        <td>{{ experience.effectif }}</td>
+                                        <td>{{ experience.ca }}</td>
+
+                                        <!-- Didier - Partie Formation -->
+                                        <td>{{ experience.poste }}</td>
+                                        <td>{{ experience.role }}</td>
+                                        <td>{{ experience.date_debut }}</td>
+                                        <td>{{ experience.date_fin }}</td>
+                                        <td>{{ experience.url_experience }}</td>
+                                        <td>{{ experience.responsabilite1 }}</td>
+                                        <td>{{ experience.realisation1 }}</td>
+                                        <td>{{ experience.responsabilite2 }}</td>
+                                        <td>{{ experience.realisation2 }}</td>
+                                        <td>{{ experience.responsabilite3 }}</td>
+                                        <td>{{ experience.realisation3 }}</td>
+                                        <td>{{ experience.responsabilite4 }}</td>
+                                        <td>{{ experience.realisation4 }}</td>
+                                        <td>{{ experience.responsabilite5 }}</td>
+                                        <td>{{ experience.realisation5 }}</td>
+
+
+                                        <!-- Didier - Bouton modifier une formation -->
+
+                                        <td><a href="{{ path('gestion_membres', {'id' : membre.id }) }}#formulaire" title="Modifier une(des) info(s) du membre"><i class="btn btn-info fa fa-pencil-square-o"></i></a></td>
+
+                                        <!-- Didier - Bouton supprimer une formation -->
+
+                                        <td><a href="{{ path('supprimer_membre', { 'id': membre.id }) }}" title="Supprimer un membre" class="btn btn-danger fa fa-trash"></a></td>
+
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Didier - FIN TABLEAU 3 -->
+
+                        <!-- Didier - TABLEAU 4 : Aptitudes -->
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
+
+                                        <!-- Didier - Partie ID -->
+                                        <th>ID Aptitude</th>
+                                        <th>ID CV</th>
+
+                                        <!-- Didier - Partie Aptitude  -->
+                                        <th>Type d'aptitude</th>
+                                        <th>Nom</th>
+                                        <th>Niveau</th>
+                                        <th>Niveau TOEIC</th>
+                                        <th>Niveau TOEFL</th>
+                                        <th>Niveau IELTS</th>
+
+                                        <th colspan="2">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for aptitude in aptitudes %}
+                                    <tr>
+
+                                        <!-- Didier - Partie ID -->
+                                        <td>{{ aptitude.id }}</td>
+                                        <td>{{ aptitude.id_cv }}</td>
+
+                                        <!-- Didier - Partie Aptitude -->
+                                        <td>{{ aptitude.type }}</td>
+                                        <td>{{ aptitude.nom }}</td>
+                                        <td>{{ aptitude.niveau }}</td>
+                                        <td>{{ aptitude.TOEIC }}</td>
+                                        <td>{{ aptitude.TOEFL }}</td>
+                                        <td>{{ aptitude.IELTS }}</td>
+
+
+                                        <!-- Didier - Bouton modifier une aptitude -->
+
+                                        <td><a href="{{ path('gestion_membres', {'id' : membre.id }) }}#formulaire" title="Modifier une(des) info(s) du membre"><i class="btn btn-info fa fa-pencil-square-o"></i></a></td>
+
+                                        <!-- Didier - Bouton supprimer une aptitude -->
+
+                                        <td><a href="{{ path('supprimer_membre', { 'id': membre.id }) }}" title="Supprimer un membre" class="btn btn-danger fa fa-trash"></a></td>
+
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Didier - FIN TABLEAU 4 -->
+
+                        <!-- Didier - TABLEAU 5 : Autres infos -->
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
+
+                                        <!-- Didier - Partie ID -->
+                                        <th>ID Autres infos</th>
+                                        <th>ID CV</th>
+
+                                        <!-- Didier - Partie Autres infos  -->
+                                        <th>Type d'infos (info/voyage/divers)</th>
+                                        <th>Description</th>
+
+                                        <th colspan="2">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for autre_info in autre_infos %}
+                                    <tr>
+
+                                        <!-- Didier - Partie ID -->
+                                        <td>{{ autre_info.id }}</td>
+                                        <td>{{ autre_info.id_cv }}</td>
+
+                                        <!-- Didier - Partie Aptitude -->
+                                        <td>{{ autre_info.type }}</td>
+                                        <td>{{ autre_info.description }}</td>
+ 
+
+                                        <!-- Didier - Bouton modifier une "Autre info" -->
+
+                                        <td><a href="{{ path('gestion_membres', {'id' : membre.id }) }}#formulaire" title="Modifier une(des) info(s) du membre"><i class="btn btn-info fa fa-pencil-square-o"></i></a></td>
+
+                                        <!-- Didier - Bouton supprimer une "Autre info" -->
+
+                                        <td><a href="{{ path('supprimer_membre', { 'id': membre.id }) }}" title="Supprimer un membre" class="btn btn-danger fa fa-trash"></a></td>
+
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Didier - FIN TABLEAU 5 -->
+
+                    </div>
+                </div>
+
+                <!-- FIN TABLEAUX DU CV -->
+
+                <!-- Didier - DEBUT FORMULAIRE -->
+
+                <!-- 
+                ///////////////////////////////////////////////
+                Récup de formulaire de membre : 
+                - à adapter 
+                - ou supprimer si on ne souhaite pas faire de modif via le back office
+                ///////////////////////////////////////////////
+                -->
+
+                <form id="formulaire" role="form" method="POST">
+
+                    <div class="row">
+                    {% if membreFormBo %}
+                        {{ form_start(membreFormBo) }}
+                        <div class="col-lg-6"> <!-- formulaire coté gauche -->
+
+                            {{ form_widget(membreFormBo.id)  }}
+                            {{ form_widget(membreFormBo.date_inscription) }}
+
+                            <div class="form-group">
+                                <label>Identifiant</label>
+                                {{ form_errors(membreFormBo.username) }}
+                                {{ form_widget(membreFormBo.username)  }}
+                            </div>
+
+                            <div class="form-group">
+                                <label>Prénom</label>
+                                {{ form_errors(membreFormBo.prenom) }}
+                                {{ form_widget(membreFormBo.prenom) }}
+                            </div>
+
+                            <div class="form-group">
+                                <label>Nom</label>
+                                {{ form_errors(membreFormBo.nom) }}
+                                {{ form_widget(membreFormBo.nom) }}
+                            </div>
+
+                            <div class="form-group">
+                                <label>Date de naissance</label>
+                                {{ form_errors(membreFormBo.date_naissance) }}
+                                {{ form_widget(membreFormBo.date_naissance) }}
+                            </div>
+
+                            <div class="form-group">
+                                <label>Téléphone</label>
+                                {{ form_errors(membreFormBo.telephone) }}
+                                {{ form_widget(membreFormBo.telephone) }}
+                            </div>
+
+                            <div class="form-group">
+                                <label>Adresse</label>
+                                {{ form_errors(membreFormBo.adresse) }}
+                                {{ form_widget(membreFormBo.adresse) }}
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-6"> <!-- formulaire coté droit -->
+
+                            <div class="form-group">
+                                <label>Code Postal</label>
+                                {{ form_errors(membreFormBo.code_postal) }}
+                                {{ form_widget(membreFormBo.code_postal) }}
+                            </div>
+
+                            <div class="form-group">
+                                <label>Ville</label>
+                                {{ form_errors(membreFormBo.ville) }}
+                                {{ form_widget(membreFormBo.ville) }}
+                            </div>
+
+                            <div class="form-group">
+                                <label>Pays</label>
+                                {{ form_errors(membreFormBo.pays) }}
+                                {{ form_widget(membreFormBo.pays) }}
+                            </div>
+
+                            <div class="form-group">
+                                <label>Statut membre</label>
+                                {{ form_errors(membreFormBo.statut_membre) }}
+                                {{ form_widget(membreFormBo.statut_membre) }}
+                            </div>
+
+                            <div class="form-group">
+                                <label>Rôle</label>
+                                {{ form_errors(membreFormBo.role) }}
+                                {{ form_widget(membreFormBo.role) }}
+                            </div>                        
+
+                        {% endif %}
+
+                            <button type="submit" class="btn btn-warning">Enregistrer</button>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+                <!-- FIN FORMULAIRE -->
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+{% endblock %}
