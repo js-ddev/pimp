@@ -106,13 +106,9 @@ class Home
         if($app['security.authorization_checker'] -> isGranted('IS_AUTHENTICATED_FULLY')){
 
             $membre = $app['dao.membre'] -> find($app['user'] -> getId());
-            $fichier = new \Entity\Fichier;
 
             $pimpitForm = $app['form.factory']
-                -> create(\Form\Type\PimpitType::class, array(
-                    'class' => 'Membre',
-                    'class' => 'Fichier'
-                ));
+                -> create(\Form\Type\PimpitType::class, $membre);
 
         $pimpitForm -> handleRequest($request);
 
@@ -120,32 +116,29 @@ class Home
 
             $files = $request-> files ->get($pimpitForm->getName());
 
-            // JS - Gestion de l'upload des fichiers photo et cv, fichiers de type id-type-md5.extension
+            // JS - Gestion de l'upload des fichiers cv, fichiers de type id-type.extension, la photo
 
-            $photo = $files['photo'];
-            $cv = $files['fichier'];
+            // $photo = $files['photo'];
+            $cv = $files['cv'];
             $id = $membre -> getId();
 
-                if(!empty($photo)){
-                    $path = '../fichiers/';
-                    $filenamePhoto = $id.'-photo-'.   md5(uniqid()).'.'.$photo->guessExtension();
-                    $photo -> move($path,$filenamePhoto);
-                    $fichier -> setPhoto($filenamePhoto);
-                }
-
-                if(!empty($cv)){
+                if(!empty($files)){
                     $path2 = '../fichiers/';
-                    $filenameCv = $id.'-cv-'.md5(uniqid()).'.'.$cv->guessExtension();
+                    $filenameCv = $id.'-cv.'.$cv->guessExtension();
                     $cv -> move($path2,$filenameCv);
-                    $fichier -> setFichier($filenameCv);
+                    $membre -> setCv($filenameCv);
+                    // $fichier -> setIdMembre($membre);
+                    // $app['dao.membre'] -> saveCv($cv);
+                    // print_r("cv uniquement");
+                    // print_r($_POST);
                 }
 
-                $app['dao.membre'] -> savePimpit();
+                $app['dao.membre'] -> save($membre);
 
                 $app['session'] -> getFlashBag() -> add('success', 'Formulaire pris en compte !');
 
                 // Adrien - Redirection suite à la sousmission Pimp It pour step2 form wizard
-                return $app->redirect('/pimpit/cv');
+                // return $app->redirect('/pimpit/cv');
             }
 
             $pimpitFormView = $pimpitForm -> createView();

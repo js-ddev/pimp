@@ -3,6 +3,8 @@
 namespace Entity;
 
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\File;
 
 class Membre implements Userinterface
 
@@ -22,6 +24,7 @@ class Membre implements Userinterface
     private $date_inscription;
     private $role;
     private $salt;
+    private $cv;
 
 // JS - AJout des propriétés photo et fichier de l'entité cv :
     // private $photo;
@@ -207,6 +210,31 @@ class Membre implements Userinterface
         return array($this->getRole());
 
     }
+
+    /**
+     * Gets the value of fichier.
+     *
+     * @return mixed
+     */
+    public function getCv()
+    {
+        return $this->cv;
+    }
+
+    /**
+     * Sets the value of fichier.
+     *
+     * @param mixed $fichier the fichier
+     *
+     * @return self
+     */
+    public function setCv($cv)
+    {
+        $this->cv = $cv;
+
+        return $this;
+    }
+
 
 // JS - Ajout du Fichier de l'entité Photo :
 //     /**

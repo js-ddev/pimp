@@ -82,6 +82,7 @@ class MembreDAO extends DAO implements UserProviderInterface
             'ville' => $membre -> getVille(),
             'role' => $membre -> getRole(),
             'pays' => $membre -> getPays(),
+            'cv' => $membre -> getCv(),
             'statut_membre' => $membre -> getStatutMembre(),
             'date_inscription' => $membre -> getDateInscription(),
             'salt' => $membre -> getSalt(),
@@ -100,20 +101,21 @@ class MembreDAO extends DAO implements UserProviderInterface
     }
 
 // JS - Fonction pourupdate les infos du membre sur le formulaire Pimpit :
-    public function savePimpit(){
-           $id = $_POST['pimpit']["id"];
-           $prenom = $_POST['pimpit']["prenom"];
-           $nom = $_POST['pimpit']["nom"];
-           $username = $_POST['pimpit']["username"];
-           $date_naissance = $_POST['pimpit']["date_naissance"];
-           $adresse = $_POST['pimpit']["adresse"];
-           $ville = $_POST['pimpit']["ville"];
-           $code_postal = $_POST['pimpit']["code_postal"];
-           $pays= $_POST['pimpit']["pays"];
-           $telephone = $_POST['pimpit']["telephone"];
-           $requete = ("UPDATE membre SET prenom = ? , nom = ?, username = ?, date_naissance = ?, telephone = ?, adresse = ?, code_postal = ?, ville = ?, pays = ? WHERE id = ?");
-           $this->getDb()->executeUpdate($requete, array($prenom, $nom, $username, $date_naissance, $adresse, $ville, $code_postal, $pays, $telephone , $id));
-       }
+    // public function savePimpit(){
+    //        $id = $_POST['pimpit']["id"];
+    //        $prenom = $_POST['pimpit']["prenom"];
+    //        $nom = $_POST['pimpit']["nom"];
+    //        $username = $_POST['pimpit']["username"];
+    //        $date_naissance = $_POST['pimpit']["date_naissance"];
+    //        $adresse = $_POST['pimpit']["adresse"];
+    //        $ville = $_POST['pimpit']["ville"];
+    //        $code_postal = $_POST['pimpit']["code_postal"];
+    //        $pays= $_POST['pimpit']["pays"];
+    //        $cv= $_POST['pimpit']["cv"];
+    //        $telephone = $_POST['pimpit']["telephone"];
+    //        $requete = ("UPDATE membre SET prenom = ? , nom = ?, username = ?, date_naissance = ?, telephone = ?, adresse = ?, code_postal = ?, ville = ?, pays = ? WHERE id = ?");
+    //        $this->getDb()->executeUpdate($requete, array($prenom, $nom, $username, $date_naissance, $adresse, $ville, $code_postal, $pays, $telephone, $id));
+    //    }
 
 
     // Didier - Supprimer un membre dans la BDD
@@ -121,6 +123,30 @@ class MembreDAO extends DAO implements UserProviderInterface
         // Supprimer un membre
         $this->getDb()->delete('membre', array('id' => $id));
     }
+
+// JS - commentaire de la fonction suite au passage
+    // public function saveCv($membre){
+    //
+    //     // Fonctionne mais sans objet :
+    //     $id = $_POST['pimpit']["id"];
+    //     $cv = $membre -> getCv();
+    //
+    //     $CvData = array(
+    //         'id' => $id,
+    //         'cv' => $cv
+    //     );
+    //
+    //     // if(!empty($membre)){
+    //     //     $this -> getDB() -> update('cv', $CvData, array(
+    //     //         'id_membre' => $id
+    //     //     ));
+    //     // }
+    //     // else{
+    //     $this -> getDB() -> insert('membre', $CvData);
+    //     $this -> getDB() -> lastInsertId();
+    //
+    //     // }
+    // }
 
 
     protected function BuildEntityObject(array $value){

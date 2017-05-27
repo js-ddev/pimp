@@ -15,8 +15,8 @@ class Fichier
 {
 
     private $photo;
-    private $fichier;
-
+    private $fichiercv;
+    private $id_membre;
 
     /**
      * Gets the value of photo.
@@ -42,28 +42,36 @@ class Fichier
         return $this;
     }
 
-    /**
-     * Gets the value of fichier.
-     *
-     * @return mixed
-     */
-    public function getFichier()
-    {
-        return $this->fichier;
+    // /**
+    //  * Gets the value of fichier.
+    //  *
+    //  * @return mixed
+    //  */
+    // public function getFichierCv()
+    // {
+    //     return $this->fichier_cv;
+    // }
+    //
+    // /**
+    //  * Sets the value of fichier.
+    //  *
+    //  * @param mixed $fichier the fichier
+    //  *
+    //  * @return self
+    //  */
+    // public function setFichierCv($fichier_cv)
+    // {
+    //     $this->fichier_cv = $fichier_cv;
+    //
+    //     return $this;
+    // }
+
+    public function setIdMembre(Membre $id_membre){
+    $this -> id_membre = $id_membre;
     }
 
-    /**
-     * Sets the value of fichier.
-     *
-     * @param mixed $fichier the fichier
-     *
-     * @return self
-     */
-    public function setFichier($fichier)
-    {
-        $this->fichier = $fichier;
-
-        return $this;
+    public function getIdMembre(){
+    return $this -> id_membre;
     }
 
 // JS - Test de validations sur les fichiers :
