@@ -20,30 +20,41 @@ use Payum\PayumStorage;
 class CustomStorage implements StorageInterface
 {
 
+    private $db;
 
 
-    /**
-     * devra retourner une nouvelle entité de paiement : une instance de
-     * Entity\Command
-     * @return object
-     */
+    public function Connection ($db){
+        $this -> db = $db;
+    }
+
+    public function getDb(){
+        return $this -> db;
+    }
 
 
     //  public function getStorages($storage)
     // 	{
     // 	}
 
+    /**
+     * devra retourner une nouvelle entité de paiement : une instance de
+     * Entity\Command
+     * @return object
+     */
     public function create()
     // public function create($command)
     {
-        $command = new Commande;
-        $command->setNumber($value['12']);
-        $command->setCurrencyCode($value['EUR']);
-        $command->setTotalAmount($value['123']);
-        $command->setDescription($value['description']);
-        $command->setClientId($value['3']);
-        $command->setClientEmail($value['testpimp@payum.fr']);
-        $command->setDetails($value['details']);
+
+        return new $this->model();
+
+        // $command = new Commande;
+        // $command->setNumber($value['12']);
+        // $command->setCurrencyCode($value['EUR']);
+        // $command->setTotalAmount($value['123']);
+        // $command->setDescription($value['description']);
+        // $command->setClientId($value['3']);
+        // $command->setClientEmail($value['testpimp@payum.fr']);
+        // $command->setDetails($value['details']);
 
         // $command->setNumber($value['number']);
         // $command->setCurrencyCode($value['currency_code']);
@@ -53,8 +64,6 @@ class CustomStorage implements StorageInterface
         // $command->setClientEmail($value['client_email']);
         // $command->setDetails($value['details']);
 
-        return $storage;
-        return $command;
     }
 
 
@@ -67,7 +76,7 @@ class CustomStorage implements StorageInterface
     public function support($model)
     {
         $class = get_class($model);
-        return $class === '\Entity\Command';
+        return $class === '\Entity\Commande';
     }
 
 
@@ -81,12 +90,25 @@ class CustomStorage implements StorageInterface
 
     public function update($model)
     {
+        $modelData = array(
+            $number => $model->getNumber(),
+            $currency_code => $model->getCurrencyCode(),
+            $total_amount => $model->getTotalAmount(),
+            $description => $model->getDescription(),
+            $client_id => $model->getClientId(),
+            $client_email => $model->getClientEmail(),
+            $details => $model->getDetails(),
+            $id_cv => $model->getIdCv(),
+
+    );
         if( ! $this->support($model)){
 
             throw \Payum\Core\Exception\InvalidArgumentException;
         }
 
-        $this->getDb()->query('UPDATE commande SET commande (...) ');
+        $requete = getDb()->query("UPDATE commande SET number = ?, currency_code = '?', total_amount = ?, description = '?', client_id = ?, client_email = '?', details = '?' WHERE id_cv = ?");
+
+        $this->getDb()->executeUpdate($requete, array($number, $currency_code, $total_amount, $description, $client_id, $client_email, $details, $id_cv));
     }
 
 

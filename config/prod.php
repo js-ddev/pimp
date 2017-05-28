@@ -13,6 +13,6 @@ $app['db.options'] = array(
     'charset' => 'utf8',
     'host' => 'localhost',
     'dbname' => 'pimpmycv',
-    'user' => 'root',
-    'password' => ''
+    'user' => 'user',
+    'password' => 'pimp'
 );
