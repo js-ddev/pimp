@@ -29,6 +29,13 @@ class PayumProvider implements ServiceProviderInterface
                     'authorize' => $app['url_generator']->generate('payment_authorize'),
                     'refund' => $app['url_generator']->generate('payment_refund')*/
                 ))
+
+                // JS - Test :
+                // ->setTokenFactory(function(StorageInterface $tokenStorage, StorageRegistryInterface $storageRegistry) {
+                //     $baseUrl = 'http://pimpmycv.dev';
+                //     return new TokenFactory($tokenStorage, $storageRegistry, $baseUrl);
+                // })
+
                 /*->addGateway('stripeGateway', [
                     ref DOCUMENTATION PAYUM https://github.com/Payum/Payum/blob/master/docs/stripe/js.md
                 ])*/

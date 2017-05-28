@@ -36,8 +36,8 @@ class Gertrude
 
                 $command = new \Entity\Commande;
 
-				// var_dump($paymentClass);
 
+				var_dump($command);
 
 
                 $payum = $app['payum'];
@@ -50,14 +50,14 @@ class Gertrude
 				// Tests JS :
                 // $command = new CommandeDAO();
 
-				// var_dump('<pre>');
-				// var_dump($command);
-				// var_dump('</pre>');
 
 				$storage = $payum->getStorage($command);
 				// $storage = new FilesystemStorage('../storage/payment', $command);
 
-				$tokenstorage = $payum->getStorage('/../storage/tokens');
+				// $tokenstorage = $payum->getStorage('../torage/tokens');
+				var_dump('<pre>');
+				var_dump($payment);
+				var_dump('</pre>');
 
                 // $storage = new FilesystemStorage('../storage/payment', $command);
 
@@ -66,18 +66,19 @@ class Gertrude
 
                 $payment = $storage->create();
 
+
                 $payment->setNumber(uniqid());
                 $payment->setCurrencyCode('EUR');
                 $payment->setTotalAmount(123); // 1.23 EUR
                 $payment->setDescription('A description');
                 $payment->setClientId('anId');
                 $payment->setClientEmail('foo@example.com');
-
-                $payment->setDetails(array(
-                  // put here any fields in a gateway format.
-                  // for example if you use Paypal ExpressCheckout you can define a description of the first item:
-                  // 'L_PAYMENTREQUEST_0_DESC0' => 'A desc',
-                ));
+				//
+                // $payment->setDetails(array(
+                //   // put here any fields in a gateway format.
+                //   // for example if you use Paypal ExpressCheckout you can define a description of the first item:
+                //   // 'L_PAYMENTREQUEST_0_DESC0' => 'A desc',
+                // ));
 
 
 
@@ -85,6 +86,8 @@ class Gertrude
 
                 $captureToken = $payum->getTokenFactory()->createCaptureToken($gatewayName, $payment, $app['url_generator']->generate('payment_done'));
 
+				// JS - Test
+				// $captureToken = $app['payum.security.token_factory']->createCaptureToken($gatewayName, $payment, $app['url_generator']->generate('payment_done'));
 
                 return new RedirectResponse($captureToken->getTargetUrl());
         }

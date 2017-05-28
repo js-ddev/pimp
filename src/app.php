@@ -77,7 +77,7 @@ $app->register(new Payum\PayumProvider());
 // };
 
 $app['payum.security.token_storage'] = function($app) {
-    return new FilesystemStorage( realpath(__DIR__.'/../storage/tokens'), 'Payum\Core\Model\Token', 'hash');
+    return new FilesystemStorage( realpath(__DIR__.'../storage/tokens'), 'Payum\Core\Model\Token', 'hash');
 };
 
 
