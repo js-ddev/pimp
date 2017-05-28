@@ -8,12 +8,18 @@ use Payum\Core\PayumBuilder;
 use Payum\Core\Payum;
 use Payum\Core\Model\Payment;
 
+use Payum\Core\Storage\StorageInterface;
+
+use Model\CommandeDAO;
+use Model\CustomStorage;
+
 class PayumProvider implements ServiceProviderInterface
 {
     public function register(Container $app) {
         $app['payum'] = function () use ($app) {
             return (new PayumBuilder())
-                ->addDefaultStorages()
+                // -> addDefaultStorages()
+                -> addStorage('\Model\CustomStorage', new CustomStorage())
                 // TODO après que tout fonctionne
                 // cette ligne sert à ajouter notre storage BDD
                 // -> addStorage('\Model\CommandeDAO', new CommandeDAO())

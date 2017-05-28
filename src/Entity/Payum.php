@@ -2,7 +2,7 @@
 
 namespace Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+
 use Symfony\Component\Security\Core\User\UserInterface;
 use Payum\Core\Model\Payment as BasePayment;
 
@@ -14,5 +14,10 @@ class Payment extends BasePayment
 
 {
     private $id;
+
+
+
+
+
 
 }

@@ -10,6 +10,7 @@ use Silex\Provider\UrlGeneratorServiceProvider;
 
 // Rudy - Enregistrement de Payum :
 use Payum\Silex\PayumProvider;
+// use Payum\Core\Storage\FilesystemStorage;
 
 // JS - Enregistrement pour l'envoi de fichier :
 use Silex\Provider\ValidatorServiceProvider;
@@ -67,6 +68,13 @@ $app['dao.formulaire'] = function ($app) {
 
 // Rudy - Enregistrement des services obligatoires pour le paiement:
 $app->register(new Payum\PayumProvider());
+
+// JS - Test de storage Payum :
+// $app['payum.storages'] = function ($storages) use ($app) {
+//     $storages['Payum\Core\Model\Payment'] = new FilesystemStorage('../storage/payment', '\Model\CustomStorage');
+//
+//     return $storages;
+// };
 
 $app['payum.security.token_storage'] = function($app) {
     return new FilesystemStorage( realpath(__DIR__.'/../storage/tokens'), 'Payum\Core\Model\Token', 'hash');

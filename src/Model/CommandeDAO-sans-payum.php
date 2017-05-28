@@ -12,7 +12,7 @@ use Entity\Cv;
 use Entity\Commande;
 
 
-class CommandeDAO extends DAO
+class CommandeDAO !!sanspayum!!! extends DAO
 {
 
     public function findAll(){
@@ -76,7 +76,7 @@ class CommandeDAO extends DAO
 
 
     protected function BuildEntityObject(array $value){
-    $commande = new Commande; // JS - crée un nouvel objet produit
+    $commande = new Commande;
 
 // JS - Didier - Valeurs
     $commande -> setId($value['id']);
