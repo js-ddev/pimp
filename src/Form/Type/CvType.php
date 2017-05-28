@@ -1,7 +1,5 @@
 <?php
 
-// JS - Formulaire de la dexuième page de  Pimpit: remplissage de l'objet CV
-
 namespace Form\Type;
 
 use Entity\Cv;
@@ -17,8 +15,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-
-
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
@@ -29,19 +25,16 @@ use Symfony\Component\Validator\Constraints\Email;
 class CvType extends AbstractType
 {
 
-// JS - Partie Informations personnelles :
-
     public function buildForm(FormBuilderInterface $builder, array $options){
-        // builder permet de construire les champs un par un :
         $builder
+         
+            ->add('id_membre', HiddenType::class, array(
+                'attr'=> array(
+                    'editable' => false
+                )
+            ))
 
-                ->add('id_membre', HiddenType::class, array(
-                        'attr'=> array(
-                            'editable' => false
-                        )
-                    ))
-
-                -> add('email_cv', EmailType::class, array(
+            -> add('email_cv', EmailType::class, array(
                 'constraints' => array(
                     new Assert\Length(array(
                         'min' => 3,
@@ -54,6 +47,7 @@ class CvType extends AbstractType
                 ),
                 'required' => false,
             ))
+
             -> add('famille', ChoiceType::class, array(
                 'choices' => array(
                     'célibataire' => 'celibataire',
@@ -95,7 +89,6 @@ class CvType extends AbstractType
                     'permis A' => 'permis_a',
                     'permis B' => 'permis_b',
                     'permis C' => 'permis_c',
-
                 ),
                 'expanded' => true,
                 'multiple' => false,
@@ -104,24 +97,6 @@ class CvType extends AbstractType
                     'class' => 'radio'
                 ),
             ))
-
-            // -> add('permis_conduire', ChoiceType::class, array(
-            //     'choices' => array(
-            //         'PermisA' => 'permisa',
-            //         'PermisB' => 'permisb',
-            //         'PermisC' => 'permisc',
-            //         'PermisD' => 'permisd',
-            //         'Encoursdevalidation' => 'validation',
-            //     ),
-            //     'expanded' => false,
-            //     'multiple' => true,
-            //     'required' => false,
-            //      'choice_attr' => array(
-            //         'class' => 'checkbox'
-            //     ),
-            // ))
-
-
 
             -> add('langue_maternelle', TextType::class, array(
                 'attr' => array(
@@ -170,7 +145,5 @@ class CvType extends AbstractType
                 ),
                 'required' => false,
             ));
-
-
     }
 }

@@ -189,9 +189,8 @@ class Home
 
     }
 
-
-
-// Adrien - Fonction pour générer le formulaire de création du CV :
+/*
+// Adrien - Controller pour générer le formulaire de création du CV :
 
     public function cv(Request $request, Application $app){
 
@@ -202,6 +201,10 @@ class Home
 
             // $cv = $app['dao.cv'] -> find($app['user'] -> getId());
             $experience = new \Entity\Experience;
+            $formation = new \Entity\Formation;
+            $aptitude = new \Entity\Aptitude;
+            $autre_info = new \Entity\AutreInfo;
+
             // JS - Si l'utilisateur a déjà un CV de créé :
             if(!is_null($app['dao.cv'] -> find($app['user'] -> getId()))){
                 $cv = $app['dao.cv'] -> find($membre -> getId());
@@ -215,17 +218,23 @@ class Home
 
             $cvForm = $app['form.factory'] -> create(\Form\Type\CvType::class, $cv);
             $experienceForm = $app['form.factory'] -> create(\Form\Type\ExperienceType::class, $experience);
-
+            $formationForm = $app['form.factory'] -> create(\Form\Type\FormationType::class, $formation);
+            $aptitudeForm = $app['form.factory'] -> create(\Form\Type\AptitudeType::class, $aptitude);
+            $autre_infoForm = $app['form.factory'] -> create(\Form\Type\AutreInfoType::class, $autre_info);
 
             $cvForm -> handleRequest($request);
             $experienceForm -> handleRequest($request);
-
+            $formationForm -> handleRequest($request);
+            $aptitudeForm -> handleRequest($request);
 
             if($cvForm -> isSubmitted() && $cvForm -> isValid()){
                 $app['dao.cv'] -> saveCv($cv, $membre);
                 $app['dao.experience'] -> saveExperience($experience, $cv);
+                $app['dao.formation'] -> saveFormation($formation, $cv);
+                $app['dao.aptitude'] -> saveAptitude($aptitude, $cv);
+                $app['dao.autre_info'] -> saveAutreInfo($autre_info, $cv);
 
-                $app['session'] -> getFlashBag() -> add('success', 'vos options sont prises en compte !');
+                $app['session'] -> getFlashBag() -> add('success', 'Le contenu de votre CV a été pris en compte !');
 
                 // Adrien - Redirection suite à la sousmission Pimp It CV pour step3 form wizard
                 return $app->redirect('/template_options');
@@ -233,6 +242,9 @@ class Home
 
             $cvFormView = $cvForm -> createView();
             $experienceFormView = $experienceForm -> createView();
+            $formationFormView = $formationForm -> createView();
+            $aptitudeFormView = $aptitudeForm -> createView();
+            $autre_infoFormView = $autre_infoForm -> createView();
             // var_dump($cvForm->getErrors());
             // die();
             $params = array(
@@ -240,6 +252,66 @@ class Home
                 'id_membre' => $membre -> getId(),
                 'cvForm' => $cvFormView,
                 'experienceForm' => $experienceFormView,
+                'formationForm' => $formationFormView,
+                'aptitudeForm' => $aptitudeFormView,
+                'autre_infoForm' => $autre_infoFormView,
+            );
+            // print_r('$cv');
+            // print_r($cv);
+            return $app['twig']->render('pimpit_cv.html.twig', $params);
+        }
+        // Si l'utilisateur n'est pas connecté le renvoyer vers l'inscription/login :
+        else {
+
+        // JS - A prevoir une meilleure redirection et une page d'inscription avec message :
+            header("Location:/inscription");
+            exit();
+        }
+    }
+*/
+
+    // Adrien - Controller pour générer un Formulaire parent de la collection (NON FONCTIONNEL !)
+    public function formulaire(Request $request, Application $app){
+        // JS - Si l'utilisateur est connecté :
+        if($app['security.authorization_checker'] -> isGranted('IS_AUTHENTICATED_FULLY')){
+
+            $membre = $app['dao.membre'] -> find($app['user'] -> getId());
+
+            $formulaire = new \Enity\Formulaire;
+
+            $formulaireForm = $app['form.factory'] -> create(\Form\Type\FormulaireType::class, $formulaire);
+
+            $form->handleRequest($request);
+
+            if ($formulaireForm->isSubmitted() && $formulaireForm->isValid()) {
+                $app['dao.cv'] -> saveCv($cv, $membre);
+                $app['dao.experience'] -> saveExperience($experience, $cv);
+                $app['dao.formation'] -> saveFormation($formation, $cv);
+                $app['dao.aptitude'] -> saveAptitude($aptitude, $cv);
+                $app['dao.autre_info'] -> saveAutreInfo($autre_info, $cv);
+
+                $app['session'] -> getFlashBag() -> add('success', 'Le contenu de votre CV a été pris en compte !');
+
+                // Adrien - Redirection suite à la sousmission Pimp It CV pour step3 form wizard
+                return $app->redirect('/template_options');
+            }
+
+            $formulaireFormView = $formulaireForm -> createView();
+            $cvFormView = $cvForm -> createView();
+            $experienceFormView = $experienceForm -> createView();
+            $formationFormView = $formationForm -> createView();
+            $aptitudeFormView = $aptitudeForm -> createView();
+            $autre_infoFormView = $autre_infoForm -> createView();
+            // var_dump($cvForm->getErrors());
+            // die();
+            $params = array(
+                'title' => 'Contenu de votre CV',
+                'id_membre' => $membre -> getId(),
+                'cvForm' => $cvFormView,
+                'experienceForm' => $experienceFormView,
+                'formationForm' => $formationFormView,
+                'aptitudeForm' => $aptitudeFormView,
+                'autre_infoForm' => $autre_infoFormView,
             );
             // print_r('$cv');
             // print_r($cv);

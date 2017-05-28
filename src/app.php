@@ -48,6 +48,22 @@ $app['dao.experience'] = function ($app) {
     return new Model\ExperienceDAO($app['db']);
 };
 
+$app['dao.formation'] = function ($app) {
+    return new Model\ExperienceDAO($app['db']);
+};
+
+$app['dao.aptitude'] = function ($app) {
+    return new Model\ExperienceDAO($app['db']);
+};
+
+$app['dao.autre_info'] = function ($app) {
+    return new Model\ExperienceDAO($app['db']);
+};
+
+$app['dao.formulaire'] = function ($app) {
+    return new Model\ExperienceDAO($app['db']);
+};
+
 
 // Rudy - Enregistrement des services obligatoires pour le paiement:
 $app->register(new Payum\PayumProvider());
@@ -55,7 +71,6 @@ $app->register(new Payum\PayumProvider());
 $app['payum.security.token_storage'] = function($app) {
     return new FilesystemStorage( realpath(__DIR__.'/../storage/tokens'), 'Payum\Core\Model\Token', 'hash');
 };
-
 
 
 // Adrien - Enregistrement des services pour les formulaires
