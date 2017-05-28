@@ -3,10 +3,18 @@
 namespace Entity;
 
 use Symfony\Component\Security\Core\User\UserInterface;
+use Payum\Core\Storage\FilesystemStorage;
+use Payum\Core\Storage\StorageInterface;
 
-class Commande
+use Payum\Core\Model\Payment as BasePayment;
+
+use Payum\Core\Model\ArrayObject;
+use Payum\Core\Model\Payment;
+
+class Commande extends BasePayment
 
 {
+
     private $id;
     private $id_membre;
     private $id_cv;
@@ -15,13 +23,13 @@ class Commande
     private $prestation;
     private $prix;
     private $commentaires;
-    private $number;
-    private $currency_code;
-    private $total_amount;
-    private $description;
-    private $client_id;
-    private $client_email;
-    private $details;
+    protected $number;
+    protected $currency_code;
+    protected $total_amount;
+    protected $description;
+    protected $client_id;
+    protected $client_email;
+    protected $details;
 
 
 

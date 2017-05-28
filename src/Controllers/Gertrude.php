@@ -21,7 +21,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Payum\Core\Model\Payment;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-
+use Model\CommandeDAO;
+use Model\CustomStorage;
 
 // Ajout pour le paiement test Payum
 class Gertrude
@@ -33,18 +34,38 @@ class Gertrude
                 // $gatewayName = 'stripeGateway';
                 $gatewayName = 'myGateway';
 
-                $paymentClass = Payment::class;
+                $command = new \Entity\Commande;
+
+				// var_dump($paymentClass);
+
+
 
                 $payum = $app['payum'];
 
                 /** @var \Payum\Core\Payum $payum */
 
                 //Info notée par Thibault
-                // $command = new Command();
+				// $command = new Command();
 
-                $storage = $payum->getStorage($paymentClass);
+				// Tests JS :
+                // $command = new CommandeDAO();
+
+				// var_dump('<pre>');
+				// var_dump($command);
+				// var_dump('</pre>');
+
+				$storage = $payum->getStorage($command);
+				// $storage = new FilesystemStorage('../storage/payment', $command);
+
+				$tokenstorage = $payum->getStorage('/../storage/tokens');
+
+                // $storage = new FilesystemStorage('../storage/payment', $command);
+
+				// JS - test :
+				// $storage -> getStorages($paymentClass);
 
                 $payment = $storage->create();
+
                 $payment->setNumber(uniqid());
                 $payment->setCurrencyCode('EUR');
                 $payment->setTotalAmount(123); // 1.23 EUR
@@ -71,7 +92,7 @@ class Gertrude
         public function capture(Application $app, Request $request) {
                 $payum = $app['payum'];
 
-                // TODO remplacer $_REQUEST par un objet $request
+                // TODO - OK JS - remplacer $_REQUEST par un objet $request
                 $token = $payum->getHttpRequestVerifier()->verify($request);
                 $gateway = $payum->getGateway($token->getGatewayName());
 
