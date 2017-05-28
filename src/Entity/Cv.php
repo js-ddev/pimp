@@ -13,7 +13,6 @@ class Cv
     private $template;
     private $nombre_sections;
     private $photo;
-    private $fichier_cv;
     private $langue_maternelle;
     private $email_cv;
     private $famille;
@@ -153,30 +152,6 @@ class Cv
     public function setPhoto($photo)
     {
         $this->photo = $photo;
-
-        return $this;
-    }
-
-    /**
-     * Gets the value of fichier.
-     *
-     * @return mixed
-     */
-    public function getFichierCv()
-    {
-        return $this->fichier_cv;
-    }
-
-    /**
-     * Sets the value of fichier.
-     *
-     * @param mixed $fichier the fichier
-     *
-     * @return self
-     */
-    public function setFichierCv($fichier_cv)
-    {
-        $this->fichier = $fichier_cv;
 
         return $this;
     }

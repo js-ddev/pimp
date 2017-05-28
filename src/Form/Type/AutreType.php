@@ -1,6 +1,6 @@
 <?php
 
-// JS - Formulaire de la dexuième page de  Pimpit: remplissage de l'objet CV
+// JS - BANQUE DE FORMULAIRE POUR LA PAGE PIMPIT CV
 
 namespace Form\Type;
 
@@ -9,7 +9,6 @@ use Entity\Experience;
 use Entity\Formation;
 use Entity\Aptitude;
 use Entity\AutreInfo;
-use Entity\Membre;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -25,7 +24,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Email;
 
-class CvTypeBo extends AbstractType
+class AutreType extends AbstractType
 {
 
 // JS - Partie Informations personnelles :
@@ -34,62 +33,13 @@ class CvTypeBo extends AbstractType
         // builder permet de construire les champs un par un :
         $builder
 
-            -> add('famille', ChoiceType::class, array(
-                'choices' => array(
-                    'célibataire' => 'celibataire',
-                    'concubinage' => 'concubinage',
-                    'marié' => 'marie',
-                ))
-            )
 
-            -> add('nationalite', TextType::class, array(
-                'constraints' => array(
-                    new Assert\NotBlank(),
-                    new Assert\Length(array(
-                        'min' => 3,
-                        'max' => 20,
-                    ))
-                ),
-                'attr' => array(
-                    'placeholder' => 'Nationalité*',
-                    'class' => 'form-control',
-                ),
-            ))
-
-            -> add('permis_travail', ChoiceType::class, array(
-                'choices' => array(
-                    'travail' => 'travail',
-                    'sejour' => 'sejour',
-                ),
-                'expanded' => true,
-                'multiple' => false,
-                'choice_attr' => array(
-                    'class' => 'radio'
-                ),
-            ))
-
-            -> add('permis_conduire', ChoiceType::class, array(
-                'choices' => array(
-                    'Permis A' => 'permis_a',
-                    'Permis B' => 'permis_b',
-                    'Permis C' => 'permis_c',
-                    'Permis D' => 'permis_d',
-                    'En cours de validation' => 'validation',
-                ),
-                'expanded' => true,
-                'multiple' => true,
-                 'choice_attr' => array(
-                    'class' => 'checkbox'
-                ),
-            ))
-
-
-// JS - Partie Expérience :
+// JS - Partie Exérience :
 
             -> add('nom', TextType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
+                'required' => false,
                 'attr' => array(
                     'placeholder' => 'Nom de l\'entreprise*',
                     'class' => 'form-control',
@@ -102,18 +52,18 @@ class CvTypeBo extends AbstractType
                 'choices' => array(
                     'Agroalimentaire' => 'agroalimentaire',
                     'Banque / Assurance' => 'banque',
-
-                )
+                ),
+                'required' => false,
             ))
 
             -> add('description', TextType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                     new Assert\Length(array(
                         'min' => 3,
                         'max' => 20,
                     ))
                 ),
+                'required' => false,
                 'attr' => array(
                     'placeholder' => 'Produits / Services',
                     'class' => 'form-control',
@@ -125,6 +75,7 @@ class CvTypeBo extends AbstractType
                     'placeholder' => 'Chiffre d\'affaire',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('effectif', ChoiceType::class, array(
@@ -135,7 +86,8 @@ class CvTypeBo extends AbstractType
                     '250 personnes et plus' => '250'
                 ),
                 'expanded' => false,
-                'multiple' => false
+                'multiple' => false,
+                'required' => false,
             ))
 
             -> add('url_entreprise', TextType::class, array(
@@ -143,36 +95,37 @@ class CvTypeBo extends AbstractType
                     'placeholder' => 'Site web de l\'entreprise',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('poste', TextType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => 'Intitulé du poste*',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('role', TextareaType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => 'Rôle dans l\'entreprise*',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('lieu_entreprise', TextType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => 'Localisation du poste*',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('mois_debut', ChoiceType::class, array(
@@ -192,7 +145,8 @@ class CvTypeBo extends AbstractType
                     'Ne pas sélectionner de mois' => 'non_precise'
                 ),
                 'expanded' => false,
-                'multiple' => false
+                'multiple' => false,
+                'required' => false,
             ))
 
             -> add('mois_fin', ChoiceType::class, array(
@@ -212,129 +166,130 @@ class CvTypeBo extends AbstractType
                     'Ne pas sélectionner de mois' => 'non_precise'
                 ),
                 'expanded' => false,
-                'multiple' => false
+                'multiple' => false,
+                'required' => false,
             ))
 
             -> add('reponsabilite1', TextType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => '1 *',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('reponsabilite2', TextType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => '2 *',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('reponsabilite3', TextType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => '3 *',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('reponsabilite4', TextType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => '4',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('reponsabilite5', TextType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => '5',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('reussite1', TextType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => '1 *',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('reussite2', TextType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => '2 *',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('reussite3', TextType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => '3 *',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('reussite4', TextType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => '4',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('reussite5', TextType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => '5',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
 // JS - Partie Formation :
 
             -> add('diplome', TextType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => 'Diplome *',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('etablissement_formation', TextType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => 'Etablissement*',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('specialite_formation', TextType::class, array(
@@ -342,6 +297,7 @@ class CvTypeBo extends AbstractType
                     'placeholder' => 'Spécialité',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('lieu_formation', TextType::class, array(
@@ -349,6 +305,7 @@ class CvTypeBo extends AbstractType
                     'placeholder' => 'Localisation',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('url_formation', TextType::class, array(
@@ -356,28 +313,29 @@ class CvTypeBo extends AbstractType
                     'placeholder' => 'Site web',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
 // JS - Partie certification :
 
             -> add('certification', TextType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => 'Intitulé de la certification*',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('etablissement_certification', TextType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => 'Etablissement*',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('specialite_certification', TextType::class, array(
@@ -385,6 +343,7 @@ class CvTypeBo extends AbstractType
                     'placeholder' => 'Spécialité',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('lieu_certification', TextType::class, array(
@@ -392,6 +351,7 @@ class CvTypeBo extends AbstractType
                     'placeholder' => 'Lieu de la formation',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('url_certification', TextType::class, array(
@@ -399,18 +359,19 @@ class CvTypeBo extends AbstractType
                     'placeholder' => 'Site web',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
 // JS - Partie Langue
 
             -> add('langue_maternelle', TextType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => 'Langue maternelle*',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('langue_1', TextType::class, array(
@@ -418,6 +379,7 @@ class CvTypeBo extends AbstractType
                     'placeholder' => 'Deuxième langue',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('langue_score_toeic', TextType::class, array(
@@ -425,6 +387,7 @@ class CvTypeBo extends AbstractType
                     'placeholder' => 'Score TOEIC',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('langue_score_toefl', TextType::class, array(
@@ -432,6 +395,7 @@ class CvTypeBo extends AbstractType
                     'placeholder' => 'Score TOEFL',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('langue_score_ielts', TextType::class, array(
@@ -439,28 +403,29 @@ class CvTypeBo extends AbstractType
                     'placeholder' => 'Score IELTS',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
 // JS - Partie Bénévolat :
 
             -> add('nom_benevolat', TextType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => 'Nom de la structure*',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('secteur_benevolat', TextType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => 'Secteur*',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('effectif_benevolat', ChoiceType::class, array(
@@ -471,7 +436,8 @@ class CvTypeBo extends AbstractType
                     '250 personnes et plus' => '250'
                 ),
                 'expanded' => false,
-                'multiple' => false
+                'multiple' => false,
+                'required' => false,
             ))
 
             -> add('url_benevolat', TextType::class, array(
@@ -479,26 +445,27 @@ class CvTypeBo extends AbstractType
                     'placeholder' => 'URL de la structure',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('poste_benevolat', TextType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => 'Intitulé du poste*',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('role_benevolat', TextareaType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => 'Rôle dans la structure*',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('lieu_benevolat', TextType::class, array(
@@ -506,6 +473,7 @@ class CvTypeBo extends AbstractType
                     'placeholder' => 'Localisation du poste',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('mois_debut', ChoiceType::class, array(
@@ -525,7 +493,8 @@ class CvTypeBo extends AbstractType
                     'Ne pas sélectionner de mois' => 'non_precise'
                 ),
                 'expanded' => false,
-                'multiple' => false
+                'multiple' => false,
+                'required' => false,
             ))
 
             -> add('mois_fin', ChoiceType::class, array(
@@ -545,27 +514,28 @@ class CvTypeBo extends AbstractType
                     'Ne pas sélectionner de mois' => 'non_precise'
                 ),
                 'expanded' => false,
-                'multiple' => false
+                'multiple' => false,
+                'required' => false,
             ))
 
             -> add('reponsabilite_benevolat1', TextType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => '1 *',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('reponsabilite_benevolat2', TextType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => '2 *',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('reponsabilite_benevolat3', TextType::class, array(
@@ -573,46 +543,47 @@ class CvTypeBo extends AbstractType
                     'placeholder' => '3',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('reponsabilite_benevolat4', TextType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => '4',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('reponsabilite_benevolat5', TextType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => '5',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('reussite_benevolat1', TextType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => '1 *',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('reussite_benevolat2', TextType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => '2 *',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('reussite_benevolat3', TextType::class, array(
@@ -620,26 +591,27 @@ class CvTypeBo extends AbstractType
                     'placeholder' => '3',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('reussite_benevolat4', TextType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => '4',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('reussite_benevolat5', TextType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => '5',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
 // JS - Partie Informations Personnelles :
@@ -647,12 +619,12 @@ class CvTypeBo extends AbstractType
 
             -> add('description_personnelle', TextareaType::class, array(
                 'constraints' => array(
-                    new Assert\NotBlank(),
                 ),
                 'attr' => array(
                     'placeholder' => 'Décrivez vous en quelques mots ! Et essayez de répondre à la question épineuse de pourquoi voudriez vous travailler avec vous même ? *',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('passion', TextType::class, array(
@@ -660,6 +632,7 @@ class CvTypeBo extends AbstractType
                     'placeholder' => 'Centre d\'intérêt',
                     'class' => 'form-control',
                 ),
+                'required' => false,
             ))
 
             -> add('voyage', TextareaType::class, array(
@@ -667,41 +640,7 @@ class CvTypeBo extends AbstractType
                     'placeholder' => 'Si vous avez voyagé, indiquez nous vos dernières destinations',
                     'class' => 'form-control',
                 ),
-            ))
-
-            -> add('url_linkdein', TextType::class, array(
-                'attr' => array(
-                    'placeholder' => 'lien Linkedin',
-                    'class' => 'form-control',
-                ),
-            ))
-
-            -> add('url_twitter', TextType::class, array(
-                'attr' => array(
-                    'placeholder' => 'lien Twitter',
-                    'class' => 'form-control',
-                ),
-            ))
-
-            -> add('url_skype', TextType::class, array(
-                'attr' => array(
-                    'placeholder' => 'lien Skype',
-                    'class' => 'form-control',
-                ),
-            ))
-
-            -> add('url_perso', TextType::class, array(
-                'attr' => array(
-                    'placeholder' => 'Site perso',
-                    'class' => 'form-control',
-                ),
-            ))
-
-            -> add('url_autre', TextType::class, array(
-                'attr' => array(
-                    'placeholder' => 'Autre site à indiquer',
-                    'class' => 'form-control',
-                ),
+                'required' => false,
             ))
 
             -> add('infos_diverses', TextareaType::class, array(
@@ -709,8 +648,7 @@ class CvTypeBo extends AbstractType
                     'placeholder' => 'Informations diverses que vous souhaitez nous communiquer par rapport à votre CV',
                     'class' => 'form-control',
                 ),
-            ))
-    ;
-
+                'required' => false,
+            ));
     }
 }
