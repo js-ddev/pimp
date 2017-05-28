@@ -2,14 +2,11 @@
 
 namespace Model;
 
-use Entity\Membre;
 use Entity\Cv;
 use Entity\Experience;
 
-
 class ExperienceDAO extends DAO
 {
-
 
     public function findAll(){
         $requete = "SELECT * FROM experience";
@@ -22,23 +19,19 @@ class ExperienceDAO extends DAO
             $experiences[$id] = $this -> BuildEntityObject($value);
 
         }
-        return $$experiences;
+        return $experiences;
     }
 
 
-
-
-
-
-       /**
-    * Retourne un objet de la classe Cv.
+    /**
+    * Retourne un objet de la classe Experience.
     *
-    * @param integer $id_membre The user id_membre.
+    * @param integer $id_cv 
     *
-    * @return \Entity\Cv|throws an exception si pas de matching
+    * @return \Entity\Experince|throws an exception si pas de matching
     */
     public function find($id_cv){
-        $requete = "SELECT * FROM cv WHERE id_cv = ?";
+        $requete = "SELECT * FROM experience WHERE id_cv = ?";
         $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_cv));
 
         if($resultat){
@@ -53,11 +46,11 @@ class ExperienceDAO extends DAO
 
 
     /**
-    * Création d'un CV et enregistrement en BDD
+    * Création d'une experience et enregistrement en BDD
     *
-    * @param $cv à enregistrer ou à modifier
+    * @param $experience à enregistrer ou à modifier
     *
-    * @return \pimp\Entity\cv
+    * @return \pimp\Entity\experience
     */
     public function saveExperience(Experience $experience, Cv $cv){
         $experienceData = array(
@@ -92,11 +85,12 @@ class ExperienceDAO extends DAO
         //     $this->getDb()->update('experience', $experienceData, array('id'=>$experience->getId()));
         //
         // }
-        // else { // Créer un cv
+        // else { // Créer une experience
             $this -> getDb() -> insert('experience', $experienceData);
         // }
         $experience -> setId($this -> getDb() -> lastInsertId());
     }
+
 
     // Adrien - Methode obligatoirement déclarée dans le fichier
     protected function BuildEntityObject(array $value){

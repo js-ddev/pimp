@@ -57,18 +57,19 @@
             </div>
 
             <!-- Formulaire CV -->
-            {{ form_start(cvForm) }}
-			{{ form_errors(cvForm) }}
-			{{ form_widget(cvForm.id_membre,{value : app.user.id}) }}
                 <div class="tab-content">
                     <div class="tab-pane active" role="tabpanel" id="step2">
                         <h3>Contenu de votre CV</h3>
-
+                        
                         <div class="container">
 							<div class="row">
-								<div class="col-md-12">
+								<div class="col-md-12">							
 									<div class="panel-group">
-										<!-- Partie informations diverses -->
+
+										<!-- Partie informations personnelles (table cv) -->
+										{{ form_start(cvForm) }}
+										{{ form_errors(cvForm) }}
+										{{ form_widget(cvForm.id_membre,{value : app.user.id}) }}
 										<div class="panel panel-default">
 											<div class="panel-heading">
 												<span class="panel-title">
@@ -105,8 +106,7 @@
 													<div class="form-group">
 														<label>Permis de travail / séjour</label>
 														{{ form_errors(cvForm.permis_travail) }}
-														{{ form_widget(cvForm.permis_travail) }}
-
+														{{ form_widget(cvForm.permis_travail) }}														
 													</div>
 
 													<div class="form-group">
@@ -115,234 +115,570 @@
 														{{ form_widget(cvForm.permis_conduire) }}
 													</div>
 
-
-
-
-									</div>
-								</div>
-
-								{{ form_start(experienceForm) }}
-								{{ form_errors(experienceForm) }}
-								<!--  Partie expérience -->
-								<div class="panel panel-default">
-									<div class="panel-heading">
-										<span class="panel-title">
-										<a data-toggle="collapse" class="collapsed" href="#collapse2">
-										<i class="ei ei-tie"></i> Expériences</a>
-										</span>
-									</div>
-									<div id="collapse2" class="panel-collapse collapse">
-										<div class="panel-body">
-											<h4>Entreprise :</h4>
-											{{ form_widget(experienceForm.type,{value :'entreprise'	}) }}
-
-											<div class="form-group">
-												<label for="nom">Nom de l'entreprise*</label>
-												{{ form_errors(experienceForm.nom) }}
-												{{ form_widget(experienceForm.nom) }}
-											</div>
-
-											<div class="form-group">
-												<label>Secteur* : </label>
-												{{ form_errors(experienceForm.secteur) }}
-												{{ form_widget(experienceForm.secteur) }}
-											</div>
-
-											<div class="form-group">
-												<label for="produits_services">Produits / Services</label>
-												{{ form_errors(experienceForm.description) }}
-												{{ form_widget(experienceForm.description) }}
-											</div>
-
-											<div class="form-group">
-												<label for="ca">Chiffre d'affaire</label>
-												{{ form_errors(experienceForm.ca) }}
-												{{ form_widget(experienceForm.ca) }}
-											</div>
-
-											<div class="form-group">
-												<label for="effectif">Effectifs :</label>
-												{{ form_errors(experienceForm.effectif) }}
-												{{ form_widget(experienceForm.effectif) }}
-											</div>
-
-											<div class="form-group">
-												<label for="url_entreprise">Site web de l'entreprise</label>
-												{{ form_errors(experienceForm.url_experience) }}
-												{{ form_widget(experienceForm.url_experience) }}
-											</div>
-
-											<div class="form-group">
-												<label for="poste">Intitulé du poste*</label>
-												{{ form_errors(experienceForm.poste) }}
-												{{ form_widget(experienceForm.poste) }}
-											</div>
-
-											<div class="form-group">
-												<label for="role">Rôle dans l'entreprise*</label>
-												{{ form_errors(experienceForm.role) }}
-												{{ form_widget(experienceForm.role) }}
-											</div>
-											<div class="form-group">
-												<label for="lieu_entreprise">Localisation du poste*</label>
-												{{ form_errors(experienceForm.lieu) }}
-												{{ form_widget(experienceForm.lieu) }}
-											</div>
-
-											<div class="form-group">
-												<label for="Duree">Durée du poste* : </label>
-												<span> de </span>
-												{{ form_errors(experienceForm.date_debut) }}
-												{{ form_widget(experienceForm.date_debut) }}
-
-												<select class="" name="annee_debut">
-													{% for annee_debut in range("now"|date("Y"),1950) %}
-														<option value="{{ annee_debut }}"> {{ annee_debut }}</option>
-													{% endfor %}
-												</select>
-
-												<span> à </span>
-												{{ form_errors(experienceForm.date_fin) }}
-												{{ form_widget(experienceForm.date_fin) }}
-
-												<select class="" name="annee_fin">
-													{% for annee_fin in range("now"|date("Y"),1950) %}
-														<option value="{{ annee_fin }}"> {{ annee_fin }}</option>
-													{% endfor %}
-												</select>
-											</div>
-
-											<div class="form-group">
-												<label for="responsabilite">Responsabilités* :</label><br />
-												{{ form_errors(experienceForm.responsabilite1) }}
-												{{ form_widget(experienceForm.responsabilite1) }}
-												{{ form_errors(experienceForm.responsabilite2) }}
-												{{ form_widget(experienceForm.responsabilite2) }}
-												{{ form_errors(experienceForm.responsabilite3) }}
-												{{ form_widget(experienceForm.responsabilite3) }}
-												{{ form_errors(experienceForm.responsabilite4) }}
-												{{ form_widget(experienceForm.responsabilite4) }}
-												{{ form_errors(experienceForm.responsabilite5) }}
-												{{ form_widget(experienceForm.responsabilite5) }}
-											</div>
-
-											<div class="form-group">
-												<label for="realisation">Réussites / accomplissements* :</label><br />
-												{{ form_errors(experienceForm.realisation1) }}
-												{{ form_widget(experienceForm.realisation1) }}
-												{{ form_errors(experienceForm.realisation2) }}
-												{{ form_widget(experienceForm.realisation2) }}
-												{{ form_errors(experienceForm.realisation3) }}
-												{{ form_widget(experienceForm.realisation3) }}
-												{{ form_errors(experienceForm.realisation4) }}
-												{{ form_widget(experienceForm.realisation4) }}
-												{{ form_errors(experienceForm.realisation5) }}
-												{{ form_widget(experienceForm.realisation5) }}
-											</div>
-											<div class="form-group col-md-12">
-												<input class="btn btn-md btn-dark" type="submit" value="Valider">
+													<div class="form-group col-md-12">
+														<input class="btn btn-md btn-dark" type="submit" value="Valider">
+													</div>												
+												</div>
 											</div>
 										</div>
-									</div>
-								</div>
-								{{ form_end(cvForm) }}
-								<!-- Fin Partie expérience -->
+										{{ form_end(cvForm) }}
+										<!-- Fin Partie informations personnelles (table cv) -->
 
+										<!--  Partie expérience -->
+										{{ form_start(experienceForm) }}
+										{{ form_errors(experienceForm) }}
+										<div class="panel panel-default">
+											<div class="panel-heading">
+												<span class="panel-title">
+												<a data-toggle="collapse" class="collapsed" href="#collapse2">
+												<i class="ei ei-tie"></i> Expériences</a>
+												</span>
+											</div>
+											<div id="collapse2" class="panel-collapse collapse">
+												<div class="panel-body">										
+													<h4>Entreprise :</h4>
 
-								<!-- Partie informations personnelles -->
-								<div class="panel panel-default">
-									<div class="panel-heading">
-										<span class="panel-title">
-										<a data-toggle="collapse" class="collapsed" href="#collapse7">
-										<i class="ei ei-human-resources"></i> Informations personnelles</a>
-										</span>
-									</div>
-									<div id="collapse7" class="panel-collapse collapse">
-										<div class="panel-body">
-											<div class="row mrg-top-70">
-												<div class="col-md-10 col-md-offset-1">
-												<div class="text-center">
-													<h3 class="mrg-btm-40">Informations personnelles</h3>
+													<div class="form-group">
+														<label for="nom">Nom de l'entreprise*</label>
+														{{ form_errors(experienceForm.nom) }}
+														{{ form_widget(experienceForm.nom) }}				
+													</div>
+
+													<div class="form-group">
+														<label>Secteur* : </label>
+														{{ form_errors(experienceForm.secteur) }}
+														{{ form_widget(experienceForm.secteur) }}
+													</div>
+
+													<div class="form-group">
+														<label for="produits_services">Produits / Services</label>
+														{{ form_errors(experienceForm.description) }}
+														{{ form_widget(experienceForm.description) }}
+													</div>
+
+													<div class="form-group">
+														<label for="ca">Chiffre d'affaire</label>
+														{{ form_errors(experienceForm.ca) }}
+														{{ form_widget(experienceForm.ca) }}
+													</div>
+
+													<div class="form-group">
+														<label for="effectif">Effectifs :</label>
+														{{ form_errors(experienceForm.effectif) }}
+														{{ form_widget(experienceForm.effectif) }}
+													</div>
+
+													<div class="form-group">
+														<label for="url_entreprise">Site web de l'entreprise</label>
+														{{ form_errors(experienceForm.url_experience) }}
+														{{ form_widget(experienceForm.url_experience) }}
+													</div>
+
+													<div class="form-group">
+														<label for="poste">Intitulé du poste*</label>
+														{{ form_errors(experienceForm.poste) }}
+														{{ form_widget(experienceForm.poste) }}
+													</div>
+
+													<div class="form-group">
+														<label for="role">Rôle dans l'entreprise*</label>
+														{{ form_errors(experienceForm.role) }}
+														{{ form_widget(experienceForm.role) }}
+													</div>
+													<div class="form-group">
+														<label for="lieu_entreprise">Localisation du poste*</label>
+														{{ form_errors(experienceForm.lieu) }}
+														{{ form_widget(experienceForm.lieu) }}
+													</div>
+
+													<div class="form-group">
+														<label for="Duree">Durée du poste* : </label>
+														<span> de </span>
+														{{ form_errors(experienceForm.date_debut) }}
+														{{ form_widget(experienceForm.date_debut) }}
+
+														<select class="" name="annee_debut">
+															{% for annee_debut in range("now"|date("Y"),1950) %}
+																<option value="{{ annee_debut }}"> {{ annee_debut }}</option>
+															{% endfor %}
+														</select>
+
+														<span> à </span>
+														{{ form_errors(experienceForm.date_fin) }}
+														{{ form_widget(experienceForm.date_fin) }}
+
+														<select class="" name="annee_fin">
+															{% for annee_fin in range("now"|date("Y"),1950) %}
+																<option value="{{ annee_fin }}"> {{ annee_fin }}</option>
+															{% endfor %}
+														</select>
+													</div>
+
+													<div class="form-group">
+														<label for="responsabilite">Responsabilités* :</label><br />
+														{{ form_errors(experienceForm.responsabilite1) }}
+														{{ form_widget(experienceForm.responsabilite1) }}
+														{{ form_errors(experienceForm.responsabilite2) }}
+														{{ form_widget(experienceForm.responsabilite2) }}
+														{{ form_errors(experienceForm.responsabilite3) }}
+														{{ form_widget(experienceForm.responsabilite3) }}
+														{{ form_errors(experienceForm.responsabilite4) }}
+														{{ form_widget(experienceForm.responsabilite4) }}
+														{{ form_errors(experienceForm.responsabilite5) }}
+														{{ form_widget(experienceForm.responsabilite5) }}
+													</div>
+
+													<div class="form-group">
+														<label for="reussite">Réussites / accomplissements* :</label><br />
+														{{ form_errors(experienceForm.realisation1) }}
+														{{ form_widget(experienceForm.realisation1) }}
+														{{ form_errors(experienceForm.realisation2) }}
+														{{ form_widget(experienceForm.realisation2) }}
+														{{ form_errors(experienceForm.realisation3) }}
+														{{ form_widget(experienceForm.realisation3) }}
+														{{ form_errors(experienceForm.realisation4) }}
+														{{ form_widget(experienceForm.realisation4) }}
+														{{ form_errors(experienceForm.realisation5) }}
+														{{ form_widget(experienceForm.realisation5) }}
+													</div>
+													<div class="form-group col-md-12">
+														<input class="btn btn-md btn-dark" type="submit" value="Valider">
+													</div>													
 												</div>
-												<div class="card">
-													<ul class="nav nav-tabs tab-style-4 item-5">
-														<li class="active"><a data-toggle="tab" href="#s4-option-1"><i class="display-block ei ei-human-resources"></i>Description</a></li>
-														<li><a data-toggle="tab" href="#s4-option-2"><i class="ei ei-favorite-heart"></i>Centres d'intérêt</a></li>
-														<li><a data-toggle="tab" href="#s4-option-3"><i class="ei ei-departures"></i>Voyages</a></li>
-														<li><a data-toggle="tab" href="#s4-option-4"><i class="ei ei-sharethis"></i>Réseaux sociaux</a></li>
-														<li><a data-toggle="tab" href="#s4-option-5"><i class="ei ei-id-card-alt"></i>Informations diverses</a></li>
-													</ul>
-													<div class="tab-content pdd-horizon-30">
-														<div id="s4-option-1" class="tab-pane fade in active">
-															<h4 class="no-mrg-top mrg-btm-20">Description</h4>
-															<label for="description"></label>
+											</div>
+										</div>
+										{{ form_end(experienceForm) }}
+										<!-- Fin Partie expérience -->
 
+										<!-- Partie formation -->
+										{{ form_start(formationForm) }}
+										{{ form_errors(formationForm) }}
+										<div class="panel panel-default">
+											<div class="panel-heading">
+												<span class="panel-title">
+												<a data-toggle="collapse" class="collapsed" href="#collapse3">
+												<i class="ei ei-open-book"></i> Formations</a>
+												</span>
+											</div>
+											<div id="collapse3" class="panel-collapse collapse">
+												<div class="panel-body">												
+													<div class="form-group">
+														<label for="diplome">Diplome*</label>
+														{{ form_errors(formationForm.diplome) }}
+														{{ form_widget(formationForm.diplome) }}
+													</div>
+
+													<div class="form-group">
+														<label for="etablissement_formation">Etablissement*</label>
+														{{ form_errors(formationForm.etablissement) }}
+														{{ form_widget(formationForm.etablissement) }}
+													</div>
+
+													<div class="form-group">
+														<label for="specialite_formation">Spécialité</label>
+														{{ form_errors(formationForm.specialite) }}
+														{{ form_widget(formationForm.specialite) }}
+													</div>
+
+													<div class="form-group">
+														<label for="lieu_formation">Localisation</label>
+														{{ form_errors(formationForm.lieu) }}
+														{{ form_widget(formationForm.lieu) }}
+													</div>
+
+													<div class="form-group">
+														<label for="date_diplome">Année d'obtention du diplome* : </label>
+														<select class="" name="annee_diplome">
+															{% for annee_diplome in range("now"|date("Y"),1950) %}
+																<option value="{{ annee_diplome }}"> {{ annee_diplome }}</option>
+															{% endfor %}
+														</select>
+													</div>
+
+													<div class="form-group">
+														<label for="url_formation">Site web</label>
+														{{ form_errors(formationForm.url_formation) }}
+														{{ form_widget(formationForm.url_formation) }}
+													</div>
+													<div class="form-group col-md-12">
+														<input class="btn btn-md btn-dark" type="submit" value="Valider">
+													</div>												
+												</div>
+											</div>
+										</div>
+										{{ form_end(formationForm) }}
+										<!-- Fin Partie formation -->
+
+										<!-- Certification -->
+										{{ form_start(formationForm) }}
+										{{ form_errors(formationForm) }}
+										<div class="panel panel-default">
+											<div class="panel-heading">
+												<span class="panel-title">
+												<a data-toggle="collapse" class="collapsed" href="#collapse4">
+												<i class="ei ei-medal"></i> Certifications</a>
+												</span>
+											</div>
+											<div id="collapse4" class="panel-collapse collapse">
+												<div class="panel-body">
+													<div class="form-group">
+														<label for="diplome">Intitulé de la certification*</label>
+														{{ form_errors(formationForm.diplome) }}
+														{{ form_widget(formationForm.diplome) }}
+													</div>
+
+													<div class="form-group">
+														<label for="etablissement">Etablissement*</label>
+														{{ form_errors(formationForm.etablissement) }}
+														{{ form_widget(formationForm.etablissement) }}
+													</div>
+
+													<div class="form-group">
+														<label for="specialite">Spécialité</label>
+														{{ form_errors(formationForm.specialite) }}
+														{{ form_widget(formationForm.specialite) }}
+													</div>
+
+													<div class="form-group">
+														<label for="lieu">Localisation</label>
+														{{ form_errors(formationForm.lieu) }}
+														{{ form_widget(formationForm.lieu) }}
+													</div>
+
+													<div class="form-group">
+														<label for="date_formation">Année d'obtention de la certification* : </label>
+														<select class="" name="annee_formation">
+															{% for annee_formation in range("now"|date("Y"),1950) %}
+																<option value="{{ annee_formation }}"> {{ annee_formation }}</option>
+															{% endfor %}
+														</select>
+													</div>
+
+													<div class="form-group">
+														<label for="url_formation">Site web</label>
+														{{ form_errors(formationForm.url_formation) }}
+														{{ form_widget(formationForm.url_formation) }}
+													</div>
+													<div class="form-group col-md-12">
+														<input class="btn btn-md btn-dark" type="submit" value="Validerr">
+													</div>								
+												</div>
+											</div>
+										</div>
+										{{ form_end(formationForm) }}
+										<!-- Fin certification -->
+
+										<!-- Partie langues -->
+										{{ form_start(aptitudeForm) }}
+										{{ form_errors(aptitudeForm) }}
+										<div class="panel panel-default">
+											<div class="panel-heading">
+												<span class="panel-title">
+												<a data-toggle="collapse" class="collapsed" href="#collapse5">
+												<i class="ei ei-microphone"></i> Langues étrangères</a>
+												</span>
+											</div>
+											<div id="collapse5" class="panel-collapse collapse">
+												<div class="panel-body">											
+													<div class="form-group">
+														<label for="nom">Langue</label>
+														{{ form_errors(aptitudeForm.nom) }}
+														{{ form_widget(aptitudeForm.nom) }}
+													</div>
+
+													<div class="form-group">
+														<label for="niveau">Votre niveau de 1 à 100 : *</label>
+														<!-- <input type="text" id="langue_1_niveau"> -->
+														<span id="slider1value"></span><span> %</span>
+														<div style="max-width:250px" id="slider1"></div>
+													</div>
+
+													<div class="form-group">
+														<label for="toeic">Score TOEIC</label>
+														{{ form_errors(aptitudeForm.toeic) }}
+														{{ form_widget(aptitudeForm.toeic) }}
+														
+														<label for="langue_score_toefl">Score TOEFL</label>
+														{{ form_errors(aptitudeForm.toefl) }}
+														{{ form_widget(aptitudeForm.toefl) }}
+														
+														<label for="langue_score_ielts">Score IELTS</label>
+														{{ form_errors(aptitudeForm.ielts) }}
+														{{ form_widget(aptitudeForm.ielts) }}
+													</div>
+													<div class="form-group col-md-12">
+														<input class="btn btn-md btn-dark" type="submit" value="Valider">
+													</div>													
+												</div>
+											</div>
+										</div>
+										{{ form_end(aptitudeForm) }}
+										<!-- Fin Partie langues -->
+
+										<!-- Partie bénévolat -->
+										{{ form_start(experienceForm) }}
+										{{ form_errors(experienceForm) }}
+										<div class="panel panel-default">
+											<div class="panel-heading">
+												<span class="panel-title">
+												<a data-toggle="collapse" class="collapsed" href="#collapse6">
+												<i class="ei ei-hand"></i> Bénévolat</a>
+												</span>
+											</div>
+											<div id="collapse6" class="panel-collapse collapse">
+												<div class="panel-body">												
+													<div class="form-group">
+														<label for="nom_benevolat">Nom de la structure*</label>
+														{{ form_errors(experienceForm.nom) }}
+														{{ form_widget(experienceForm.nom) }}
+													</div>
+
+													<div class="form-group">
+														<label for="secteur_benevolat">Secteur*</label>
+														{{ form_errors(experienceForm.secteur) }}
+														{{ form_widget(experienceForm.secteur) }}
+													</div>
+
+													<div class="form-group">
+														<label for="effectif_benevolat">Effectifs :</label>
+														{{ form_errors(experienceForm.effectif) }}
+														{{ form_widget(experienceForm.effectif) }}
+													</div>
+
+													<div class="form-group">
+														<label for="url_benevolat">Site web</label>
+														{{ form_errors(experienceForm.url_experience) }}
+														{{ form_widget(experienceForm.url_experience) }}
+													</div>
+													<br/>
+
+													<div class="form-group">
+														<label for="poste">Intitulé du poste*</label>
+														{{ form_errors(experienceForm.poste) }}
+														{{ form_widget(experienceForm.poste) }}
+													</div>
+
+													<div class="form-group">
+														<label for="role">Rôle dans la structure*</label>
+														{{ form_errors(experienceForm.role) }}
+														{{ form_widget(experienceForm.role) }}
+													</div>
+													<div class="form-group">
+														<label for="lieu_benevolat">Localisation du poste</label>
+														{{ form_errors(experienceForm.lieu) }}
+														{{ form_widget(experienceForm.lieu) }}
+													</div>
+
+													<div class="form-group">
+														<label for="Duree">Durée du poste* : </label>
+														<span>de </span>
+														{{ form_errors(experienceForm.date_debut) }}
+														{{ form_widget(experienceForm.date_debut) }}
+
+
+														<select class="" name="annee_debut">
+															{% for annee_debut in range("now"|date("Y"),1950) %}
+																<option value="{{ annee_debut }}"> {{ annee_debut }}</option>
+															{% endfor %}
+														</select>
+
+														<span>à </span>
+
+															{{ form_errors(experienceForm.date_fin) }}
+															{{ form_widget(experienceForm.date_fin) }}
+
+														<select class="" name="annee_fin">
+															{% for annee_fin in range("now"|date("Y"),1950) %}
+																<option value="{{ annee_fin }}"> {{ annee_fin }}</option>
+															{% endfor %}
+														</select>
+													</div>
+
+													<div class="form-group">
+														<label for="responsabilite">Responsabilités* :</label><br />
+														{{ form_errors(experienceForm.responsabilite1) }}
+														{{ form_widget(experienceForm.responsabilite1) }}
+														{{ form_errors(experienceForm.responsabilite2) }}
+														{{ form_widget(experienceForm.responsabilite2) }}
+														{{ form_errors(experienceForm.responsabilite3) }}
+														{{ form_widget(experienceForm.responsabilite3) }}
+														{{ form_errors(experienceForm.responsabilite4) }}
+														{{ form_widget(experienceForm.responsabilite4) }}
+														{{ form_errors(experienceForm.responsabilite5) }}
+														{{ form_widget(experienceForm.responsabilite5) }}
+													</div>
+
+													<div class="form-group">
+														<label for="reussite">Réussites / accomplissements* :</label><br />
+														{{ form_errors(experienceForm.realisation1) }}
+														{{ form_widget(experienceForm.realisation1) }}
+														{{ form_errors(experienceForm.realisation2) }}
+														{{ form_widget(experienceForm.realisation2) }}
+														{{ form_errors(experienceForm.realisation3) }}
+														{{ form_widget(experienceForm.realisation3) }}
+														{{ form_errors(experienceForm.realisation4) }}
+														{{ form_widget(experienceForm.realisation4) }}
+														{{ form_errors(experienceForm.realisation5) }}
+														{{ form_widget(experienceForm.realisation5) }}
+													</div>
+													<div class="form-group col-md-12">
+														<input class="btn btn-md btn-dark" type="submit" value="Valider">
+													</div>												
+												</div>
+											</div>
+										</div>
+										{{ form_end(experienceForm) }}
+										<!-- Fin Partie bénévolat -->
+
+										<!-- Partie informations diverses -->
+										<div class="panel panel-default">
+											<div class="panel-heading">
+												<span class="panel-title">
+												<a data-toggle="collapse" class="collapsed" href="#collapse7">
+												<i class="ei ei-human-resources"></i> Informations diverses</a>
+												</span>
+											</div>
+											<div id="collapse7" class="panel-collapse collapse">
+												<div class="panel-body">
+													<div class="row mrg-top-70">
+														<div class="col-md-10 col-md-offset-1">															
+														<div class="text-center">
+															<h3 class="mrg-btm-40">Informations diverses</h3>
 														</div>
+														<div class="card">
+															<ul class="nav nav-tabs tab-style-4 item-5">
+																<li class="active"><a data-toggle="tab" href="#s4-option-1"><i class="display-block ei ei-human-resources"></i>Description</a></li>
+																<li><a data-toggle="tab" href="#s4-option-2"><i class="ei ei-favorite-heart"></i>Centres d'intérêt</a></li>
+																<li><a data-toggle="tab" href="#s4-option-3"><i class="ei ei-departures"></i>Voyages</a></li>
+																<li><a data-toggle="tab" href="#s4-option-4"><i class="ei ei-sharethis"></i>Réseaux sociaux</a></li>
+																<li><a data-toggle="tab" href="#s4-option-5"><i class="ei ei-id-card-alt"></i>Informations diverses</a></li>
+															</ul>
 
-														<div id="s4-option-2" class="tab-pane fade">
-															<h4 class="no-mrg-top mrg-btm-20">Centres d'intérêt</h4>
-															<div class="form-group">
-																<label for="passion_1"></label>
+															<div class="tab-content pdd-horizon-30">
 
+																<!-- Partie AutreInfo Sous-partie description -->
+																{{ form_start(autre_infoForm) }}
+																{{ form_errors(autre_infoForm) }}
+																<div id="s4-option-1" class="tab-pane fade in active">
+																	<h4 class="no-mrg-top mrg-btm-20">Description personnelle</h4>
+																	<div class="form-group">
+																		<label for="description">Décrivez vous en quelques mots ! Et essayez de répondre à la question épineuse de pourquoi voudriez vous travailler avec vous même ?</label>
+																		{{ form_errors(autre_infoForm.description) }}
+																		{{ form_widget(autre_infoForm.description) }}
+																	</div>
+																	<div class="form-group col-md-12">
+																		<input class="btn btn-md btn-dark" type="submit" value="Valider">
+																	</div>	
+																</div>
+																{{ form_end(autre_infoForm) }}
+																<!-- Fin sous-partie description -->
 
-																<label for="passion">Votre niveau de pratique</label>
-																<span id="slider2value"></span><span> %</span>
-																<div style="max-width:250px" id="slider2"></div>
-															</div>
-														</div>
+																<!-- Sous-partie passion -->
+																{{ form_start(aptitudeForm) }}
+																{{ form_errors(aptitudeForm) }}
+																<div id="s4-option-2" class="tab-pane fade">
+																	<h4 class="no-mrg-top mrg-btm-20">Centres d'intérêt</h4>
+																	<div class="form-group">
+																		<label for="nom"></label>
+																		{{ form_errors(aptitudeForm.nom) }}
+																		{{ form_widget(aptitudeForm.nom) }}
+																	</div>
+																	<div class="form-group">
+																		<label for="niveau">Votre niveau de pratique</label>
+																		<span id="slider2value"></span><span> %</span>
+																		<div style="max-width:250px" id="slider2"></div>	
+																	</div>
+																	<div class="form-group col-md-12">
+																		<input class="btn btn-md btn-dark" type="submit" value="Valider">
+																	</div>
+																</div>
+																{{ form_end(aptitudeForm) }}
+																<!-- Fin Sous-partie passion -->
 
-														<div id="s4-option-3" class="tab-pane fade">
-															<h4 class="no-mrg-top mrg-btm-20">Voyages</h4>
-															<div class="form-group">
-																<label for="voyages"></label>
+																<!-- Sous-partie voyages -->
+																{{ form_start(autre_infoForm) }}
+																{{ form_errors(autre_infoForm) }}
+																<div id="s4-option-3" class="tab-pane fade">
+																	<h4 class="no-mrg-top mrg-btm-20">Voyages</h4>
+																	<div class="form-group">
+																		<label for="description">Si vous avez voyagé, indiquez nous vos dernières destinations</label>
+																		{{ form_errors(autre_infoForm.description) }}
+																		{{ form_widget(autre_infoForm.description) }}
+																	</div>
+																	<div class="form-group col-md-12">
+																		<input class="btn btn-md btn-dark" type="submit" value="Valider">
+																	</div>
+																</div>
+																{{ form_end(autre_infoForm) }}
+																<!-- Fin Sous-partie voyages -->
 
-															</div>
-														</div>
-
-														<div id="s4-option-4" class="tab-pane fade">
-															<h4 class="no-mrg-top mrg-btm-20">Réseaux sociaux</h4>
-															<div class="form-group">
-																<i class="ei ei-linkedin"></i>
-																<label for="url_linkdein"> LinkedIn</label>
-																{{ form_errors(cvForm.linkedin) }}
-																{{ form_widget(cvForm.linkedin) }}
-															</div>
-															<div class="form-group">
-																<i class="ei ei-twitter"></i>
-																<label for="url_twitter"> Twitter</label>
-																{{ form_errors(cvForm.twitter) }}
-																{{ form_widget(cvForm.twitter) }}
-															</div>
-															<div class="form-group">
-																<i class="ei ei-skype"></i>
-																<label for="url_skype"> Skype</label>
-																{{ form_errors(cvForm.skype) }}
-																{{ form_widget(cvForm.skype) }}
-															</div>
-															<div class="form-group">
-																<i class="ei ei-monitor"></i>
-																<label for="url_perso"> Site personnel</label>
-																{{ form_errors(cvForm.site_perso) }}
-																{{ form_widget(cvForm.site_perso) }}
-															</div>
-															<div class="form-group">
-																<i class="ei ei-monitor"></i>
-																<label for="url_autre"> Autre site</label>
-																{{ form_errors(cvForm.url_autre) }}
-																{{ form_widget(cvForm.url_autre) }}
-															</div>
-														</div>
-
-															</div>
-
+																<!-- Sous-partie Réseaux sociaux -->
+																{{ form_start(cvForm) }}
+																{{ form_errors(cvForm) }}
+																<div id="s4-option-4" class="tab-pane fade">
+																	<h4 class="no-mrg-top mrg-btm-20">Réseaux sociaux</h4>
+																	<div class="form-group">
+																		<i class="ei ei-linkedin"></i>
+																		<label for="url_linkdein"> LinkedIn</label>
+																		{{ form_errors(cvForm.linkedin) }}
+																		{{ form_widget(cvForm.linkedin) }}
+																	</div>
+																	<div class="form-group">
+																		<i class="ei ei-twitter"></i>
+																		<label for="url_twitter"> Twitter</label>
+																		{{ form_errors(cvForm.twitter) }}
+																		{{ form_widget(cvForm.twitter) }}
+																	</div>
+																	<div class="form-group">
+																		<i class="ei ei-skype"></i>
+																		<label for="url_skype"> Skype</label>
+																		{{ form_errors(cvForm.skype) }}
+																		{{ form_widget(cvForm.skype) }}
+																	</div>
+																	<div class="form-group">
+																		<i class="ei ei-monitor"></i>
+																		<label for="url_perso"> Site personnel</label>
+																		{{ form_errors(cvForm.site_perso) }}
+																		{{ form_widget(cvForm.site_perso) }}
+																	</div>
+																	<div class="form-group">
+																		<i class="ei ei-monitor"></i>
+																		<label for="url_autre"> Autre site</label>
+																		{{ form_errors(cvForm.url_autre) }}
+																		{{ form_widget(cvForm.url_autre) }}
+																	</div>
+																	<div class="form-group col-md-12">
+																		<input class="btn btn-md btn-dark" type="submit" value="Valider">
+																	</div>	
+																</div>
+																{{ form_end(cvForm) }}
+																<!-- Fin Sous-partie Réseaux sociaux -->
+																
+																<!-- Sous-partie informations complémentaires -->
+																{{ form_start(autre_infoForm) }}
+																{{ form_errors(autre_infoForm) }}
+																<div id="s4-option-5" class="tab-pane fade">
+																	<h4 class="no-mrg-top mrg-btm-20">Informations complémentaires</h4>
+																	<div class="form-group">
+																		<label for="description">Informations diverses que vous souhaitez nous communiquer par rapport à votre CV</label>
+																		{{ form_errors(autre_infoForm.description) }}
+																		{{ form_widget(autre_infoForm.description) }}
+																	</div>
+																	<div class="form-group col-md-12">
+																		<input class="btn btn-md btn-dark" type="submit" value="Valider">
+																	</div>	
+																</div>
+																{{ form_end(autre_infoForm) }}
+																<!-- Fin Sous-partie informations complémentaires -->
+															</div>														
 														</div>
 													</div>
 												</div>
 											</div>
 										</div>
+										<!-- Fin Partie informations diverses -->
 									</div>
 								</div>
-								<!-- Fin Partie informations personnelles -->
 
 								<div class="form-group">
 									<ul class="list-inline pull-right">
@@ -353,9 +689,8 @@
 							</div>
 						</div>
 					</div>
-				</div>
-			{{ form_end(cvForm) }}
-			<!-- Fin formulaire -->
+				</div>	
+			<!-- Fin formulaire -->	                      											      
         </div>
     </section>
    </div>

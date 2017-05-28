@@ -35,13 +35,13 @@ class CvType extends AbstractType
         // builder permet de construire les champs un par un :
         $builder
 
-                ->add('id_membre', HiddenType::class, array(
-                        'attr'=> array(
-                            'editable' => false
-                        )
-                    ))
+            ->add('id_membre', HiddenType::class, array(
+                'attr'=> array(
+                    'editable' => false
+                )
+            ))
 
-                -> add('email_cv', EmailType::class, array(
+            -> add('email_cv', EmailType::class, array(
                 'constraints' => array(
                     new Assert\Length(array(
                         'min' => 3,
@@ -54,6 +54,7 @@ class CvType extends AbstractType
                 ),
                 'required' => false,
             ))
+
             -> add('famille', ChoiceType::class, array(
                 'choices' => array(
                     'célibataire' => 'celibataire',
@@ -95,7 +96,6 @@ class CvType extends AbstractType
                     'permis A' => 'permis_a',
                     'permis B' => 'permis_b',
                     'permis C' => 'permis_c',
-
                 ),
                 'expanded' => true,
                 'multiple' => false,
@@ -120,8 +120,6 @@ class CvType extends AbstractType
             //         'class' => 'checkbox'
             //     ),
             // ))
-
-
 
             -> add('langue_maternelle', TextType::class, array(
                 'attr' => array(
@@ -170,7 +168,5 @@ class CvType extends AbstractType
                 ),
                 'required' => false,
             ));
-
-
     }
 }
