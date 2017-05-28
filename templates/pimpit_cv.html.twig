@@ -57,6 +57,9 @@
             </div>
 
             <!-- Formulaire CV -->
+            <!-- Adrien - Les autres formulaires vont etre imbriqués dans le formulaireForm -->
+            {{ form_start(formulaireForm) }}
+			{{ form_errors(formulaireForm) }}
                 <div class="tab-content">
                     <div class="tab-pane active" role="tabpanel" id="step2">
                         <h3>Contenu de votre CV</h3>
@@ -690,6 +693,7 @@
 						</div>
 					</div>
 				</div>	
+			{{ form_end(cvForm) }}
 			<!-- Fin formulaire -->	                      											      
         </div>
     </section>
