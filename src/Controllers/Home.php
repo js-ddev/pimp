@@ -116,13 +116,13 @@ class Home
 
             $files = $request-> files ->get($pimpitForm->getName());
 
-            // JS - Gestion de l'upload des fichiers cv, fichiers de type id-type.extension, la photo
+            // JS - Gestion de l'upload des fichiers cv, fichiers de type id-type.extension, la photo passe dans le formulaire suivant !
 
             // $photo = $files['photo'];
             $cv = $files['cv'];
             $id = $membre -> getId();
 
-                if(!empty($files)){
+                if(!empty($cv)){
                     $path2 = '../fichiers/';
                     $filenameCv = $id.'-cv.'.$cv->guessExtension();
                     $cv -> move($path2,$filenameCv);
@@ -130,7 +130,11 @@ class Home
                     // $fichier -> setIdMembre($membre);
                     // $app['dao.membre'] -> saveCv($cv);
                     // print_r("cv uniquement");
-                    // print_r($_POST);
+                    // print_r($files);
+                }
+                else {
+                    $app['session'] -> getFlashBag() -> add('success', 'Formulaire pris en compte sans photo !');
+
                 }
 
                 $app['dao.membre'] -> save($membre);
@@ -196,30 +200,30 @@ class Home
 
             $membre = $app['dao.membre'] -> find($app['user'] -> getId());
 
-            $cv = $app['dao.cv'] -> find($app['user'] -> getId());
-
-            // Adrien - Si l'utilisateur n'a pas déjà un CV de crée
-            if(is_null($cv)){
+            // $cv = $app['dao.cv'] -> find($app['user'] -> getId());
+            $experience = new \Entity\Experience;
+            // JS - Si l'utilisateur a déjà un CV de créé :
+            if(!is_null($app['dao.cv'] -> find($app['user'] -> getId()))){
+                $cv = $app['dao.cv'] -> find($membre -> getId());
+                // var_dump('idmembre trouvé');
+            }
+            else{
                 $cv = new \Entity\Cv;
-                print_r($cv);
+                // var_dump('else, idmembre non trouvé');
+
             }
 
-            $cvForm = $app['form.factory'] -> create(\Form\Type\CvType::class, array(
-                'class' => 'Cv',
-                /*
-                'class' => 'Experience',
-                'class' => 'Formation',
-                'class' => 'Aptitude',
-                'class' => 'AutreInfo',
-                */
-            ));
+            $cvForm = $app['form.factory'] -> create(\Form\Type\CvType::class, $cv);
+            $experienceForm = $app['form.factory'] -> create(\Form\Type\ExperienceType::class, $experience);
+
 
             $cvForm -> handleRequest($request);
+            $experienceForm -> handleRequest($request);
 
 
             if($cvForm -> isSubmitted() && $cvForm -> isValid()){
-                $app['dao.cv'] -> saveCv($cv);
-                print_r($_POST);
+                $app['dao.cv'] -> saveCv($cv, $membre);
+                $app['dao.experience'] -> saveExperience($experience, $cv);
 
                 $app['session'] -> getFlashBag() -> add('success', 'vos options sont prises en compte !');
 
@@ -228,12 +232,17 @@ class Home
             }
 
             $cvFormView = $cvForm -> createView();
-
+            $experienceFormView = $experienceForm -> createView();
+            // var_dump($cvForm->getErrors());
+            // die();
             $params = array(
                 'title' => 'Contenu de votre CV',
-                'cvForm' => $cvFormView
+                'id_membre' => $membre -> getId(),
+                'cvForm' => $cvFormView,
+                'experienceForm' => $experienceFormView,
             );
-
+            // print_r('$cv');
+            // print_r($cv);
             return $app['twig']->render('pimpit_cv.html.twig', $params);
         }
         // Si l'utilisateur n'est pas connecté le renvoyer vers l'inscription/login :

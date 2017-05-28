@@ -24,14 +24,7 @@ class OptionType extends AbstractType
                     'Trois pages' => 'trois_pages',
                 ))
             )
-            -> add('modele', ChoiceType::class, array(
-                'choices' => array(
-                    'Modèle 1' => 'modele1',
-                    'Modèle 2' => 'modele2',
-                    'Modèle 3' => 'modele3',
-                    'Modèle 4' => 'modele4',
-                ))
-            )
+
             -> add('couleur', ChoiceType::class, array(
                 'choices' => array(
                     'Rouge' => 'rouge',

@@ -13,7 +13,7 @@ class Experience
     private $nom;
     private $secteur;
     private $secteur_benevolat;
-    private $produit_service;
+    private $description;
     private $ca;
     private $effectif;
     private $url_experience;
@@ -105,15 +105,15 @@ class Experience
     }
     //-------------------------------//
 
-    // PRODUIT SERVICE------------------------//
-    public function getProduitService()
+    // DESRIPTION-------------------//
+    public function getDescription()
     {
-        return $this->produit_service;
+        return $this->description;
     }
 
-    public function setProduitService($produit_service)
+    public function setDescription($description)
     {
-        $this->produit_service = $produit_service;
+        $this->description = $description;
         return $this;
     }
     //-------------------------------//

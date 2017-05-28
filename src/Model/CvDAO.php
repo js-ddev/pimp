@@ -114,31 +114,30 @@ class CvDAO extends DAO
     *
     * @return \pimp\Entity\cv
     */
-    public function saveCv(cv $cv){
+    public function saveCv(Cv $cv, Membre $membre){
         $cvData = array(
             'id' => $cv -> getId(),
-            'id_membre' => $cv -> getIdMembre(),
-            'template' => $template -> getTemplate(),
-            'nombre_sections' => $nombre_sections -> getNombreSections(),
-            'photo' => $photo -> getPhoto(),
-            'langue_maternelle' => $langue_maternelle -> getLangueMaternelle(),
-            'email_cv' => $email_cv -> getEmailCv(),
-            'famille' => $famille -> getFamille(),
-            'nationalite' => $nationalite -> getNationalite(),
-            'permis_conduire' => $permis_conduire -> getPermisConduire(),
-            'permis_travail' => $permis_travail -> getPermisTravail(),
-            'twitter' => $twitter -> getTwitter(),
-            'linkedin' => $linkedin -> getLinkedin(),
-            'skype' => $skype -> getSkype(),
-            'site_perso' => $site_perso -> getSitePerso(),
-            'url_autre' => $url_autre -> getUrlAutre(),
-            'nombre_page' => $nombre_page -> getNombrePage(),
-            'modele' => $modele -> getModele(),
-            'couleur' => $couleur -> getCouleur(),
-            'puce' => $puce -> getPuce(),
-            'fond' => $fond -> getFond(),
-            'indicateur_performance' => $indicateur_performance -> getIndicateurPerformance(),
-            'activite' => $activite -> getActivite(),
+            'id_membre' => $membre -> getId(),
+            'template' => $cv -> getTemplate(),
+            'nombre_sections' => $cv -> getNombreSections(),
+            'photo' => $cv -> getPhoto(),
+            'langue_maternelle' => $cv -> getLangueMaternelle(),
+            'email_cv' => $cv -> getEmailCv(),
+            'famille' => $cv -> getFamille(),
+            'nationalite' => $cv -> getNationalite(),
+            'permis_conduire' => $cv -> getPermisConduire(),
+            'permis_travail' => $cv -> getPermisTravail(),
+            'twitter' => $cv -> getTwitter(),
+            'linkedin' => $cv -> getLinkedin(),
+            'skype' => $cv -> getSkype(),
+            'site_perso' => $cv -> getSitePerso(),
+            'url_autre' => $cv -> getUrlAutre(),
+            'nombre_page' => $cv -> getNombrePage(),
+            'couleur' => $cv -> getCouleur(),
+            'puce' => $cv -> getPuce(),
+            'fond' => $cv -> getFond(),
+            'indicateur_performance' => $cv -> getIndicateurPerformance(),
+            'activite' => $cv -> getActivite(),
         );
 
         if($cv->getId()) { // Modifier un cv
@@ -160,7 +159,6 @@ class CvDAO extends DAO
         $cv -> setTemplate($value['template']);
         $cv -> setNombreSections($value['nombre_sections']);
         $cv -> setPhoto($value['photo']);
-        $cv -> setFichierCv($value['fichier_cv']);
         $cv -> setLangueMaternelle($value['langue_maternelle']);
         $cv -> setEmailCv($value['email_cv']);
         $cv -> setFamille($value['famille']);

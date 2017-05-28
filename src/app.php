@@ -44,6 +44,10 @@ $app['dao.fichier'] = function ($app) {
     return new Model\FichierDAO($app['db']);
 };
 
+$app['dao.experience'] = function ($app) {
+    return new Model\ExperienceDAO($app['db']);
+};
+
 
 // Rudy - Enregistrement des services obligatoires pour le paiement:
 $app->register(new Payum\PayumProvider());
