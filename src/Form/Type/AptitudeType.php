@@ -30,7 +30,7 @@ class AptitudeType extends AbstractType
             ),
             'required' => false,
         ))
-
+        /*
         -> add('toeic', TextType::class, array(
             'attr' => array(
                 'placeholder' => 'Score TOEIC',
@@ -53,6 +53,8 @@ class AptitudeType extends AbstractType
                 'class' => 'form-control',
             ),
             'required' => false,
-        ));
+        ))
+        */
+    ;
     }
 }
