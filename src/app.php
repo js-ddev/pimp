@@ -50,21 +50,24 @@ $app['dao.experience'] = function ($app) {
 };
 
 $app['dao.formation'] = function ($app) {
-    return new Model\ExperienceDAO($app['db']);
+    return new Model\FormationDAO($app['db']);
 };
 
 $app['dao.aptitude'] = function ($app) {
-    return new Model\ExperienceDAO($app['db']);
+    return new Model\AptitudeDAO($app['db']);
 };
 
 $app['dao.autre_info'] = function ($app) {
-    return new Model\ExperienceDAO($app['db']);
+    return new Model\AutreInfoDAO($app['db']);
 };
 
 $app['dao.formulaire'] = function ($app) {
-    return new Model\ExperienceDAO($app['db']);
+    return new Model\FormulaireDAO($app['db']);
 };
 
+$app['dao.options'] = function ($app) {
+    return new Model\OptionsDAO($app['db']);
+};
 
 // Rudy - Enregistrement des services obligatoires pour le paiement:
 $app->register(new Payum\PayumProvider());

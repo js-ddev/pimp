@@ -23,7 +23,14 @@ class OptionType extends AbstractType
                     'Type 2' => '2',
                     'Type 3' => '3',
                     'Type 4' => '4',
-                ))
+                ),
+               /* 'expanded' => true,
+                'multiple' => false,*/
+                'required' => true,
+                // 'choice_attr' => array(
+                //     'class' => 'radio'
+                // ),
+                )
             )
 
             -> add('couleur', ChoiceType::class, array(
