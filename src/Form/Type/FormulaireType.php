@@ -47,13 +47,19 @@ class FormulaireType extends AbstractType
                 'by_reference' => false,
             ))
 
-             ->add('autres-infos', CollectionType::class, array(
+             ->add('autres_infos', CollectionType::class, array(
                 'entry_type' => AutreInfoType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
                 'prototype' => true,
                 'by_reference' => false,
-            ))
-        ; 
+            ));
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => Formulaire::class,
+        ));
     }
 }
