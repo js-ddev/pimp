@@ -93,7 +93,7 @@ class Home
             // $username = $id -> getUsername();
 
             if(!is_null($id)){
-                print_r('if');
+                // print_r('if');
 
                 return $app['twig']->render('connexion.html.twig', array(
                     'title' => 'Connexion',
@@ -219,7 +219,7 @@ class Home
     public function option(Request $request, Application $app){
         $options = new \Entity\Options;
         $optionForm = $app['form.factory'] -> create(\Form\Type\OptionType::class, $options);
- 
+
         $optionForm -> handleRequest($request);
 
         if($optionForm -> isSubmitted() && $optionForm -> isValid()){
@@ -328,7 +328,6 @@ class Home
 
             $formulaire = new \Entity\Formulaire;
 
-            $experience = new \Entity\Experience;
             $formation = new \Entity\Formation;
             $aptitude = new \Entity\Aptitude;
             $autre_info = new \Entity\AutreInfo;
@@ -340,6 +339,14 @@ class Home
             else{
                 $cv = new \Entity\Cv;
             }
+
+
+            // if(!is_null($app['dao.experience'] -> find($app['user'] -> getId()))){
+            //     $experience = $app['dao.experience'] -> find($membre -> getId());
+            // }
+            // else{
+                $experience = new \Entity\Experience;
+            // }
 
             $formulaireForm = $app['form.factory'] -> create(\Form\Type\FormulaireType::class, $formulaire);
             $cvForm = $app['form.factory'] -> create(\Form\Type\CvType::class, $cv);
@@ -370,11 +377,23 @@ class Home
             $autre_infoForm3 = $app['form.factory'] -> create(\Form\Type\AutreInfoType::class, $autre_info);
 
             $formulaireForm->handleRequest($request);
+            $cvForm->handleRequest($request);
             $experienceForm1->handleRequest($request);
-            $experienceForm2->handleRequest($request);
+
+            // if(){
+
+                $experienceForm2->handleRequest($request);
+            // }
+            $experienceForm3->handleRequest($request);
+            $experienceForm4->handleRequest($request);
+            $experienceForm5->handleRequest($request);
 
             if ($cvForm->isSubmitted() && $cvForm->isValid()) {
-                $app['dao.cv'] -> saveCv($cv, $membre);  
+                $app['dao.cv'] -> saveCv($cv, $membre);
+
+                print_r($request);
+                // print_r($membre);
+                // // die();
             }
 
             if ($experienceForm1->isSubmitted() && $experienceForm1->isValid()) {
@@ -390,7 +409,7 @@ class Home
             }
 
             if ($autre_infoForm1->isSubmitted() && $autre_infoForm->isValid()) {
-                  $app['dao.autre_info'] -> saveAutreInfo($autre_info, $cv); 
+                  $app['dao.autre_info'] -> saveAutreInfo($autre_info, $cv);
             }
 
             if ($formulaireForm->isSubmitted() && $formulaireForm->isValid()) {
@@ -427,7 +446,7 @@ class Home
             $autre_infoForm1View = $autre_infoForm1 -> createView();
             $autre_infoForm2View = $autre_infoForm2 -> createView();
             $autre_infoForm3View = $autre_infoForm3 -> createView();
-           
+
             $params = array(
                 'title' => 'Contenu de votre CV',
                 'id_membre' => $membre -> getId(),
@@ -459,7 +478,7 @@ class Home
                 'autre_infoForm2' => $autre_infoForm2View,
                 'autre_infoForm3' => $autre_infoForm3View,
             );
-            
+
             return $app['twig']->render('pimpit_cv.html.twig', $params);
         }
         // Si l'utilisateur n'est pas connecté le renvoyer vers l'inscription/login :

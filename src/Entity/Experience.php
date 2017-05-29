@@ -203,7 +203,7 @@ class Experience
         return $this->date_debut;
     }
 
-    public function setDebut($date_debut)
+    public function setDateDebut($date_debut)
     {
         $this->date_debut= $date_debut;
         return $this;
