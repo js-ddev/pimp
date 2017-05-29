@@ -14,7 +14,7 @@ class Bo
          $params = array(
             'error' => $app['security.last_error']($request),
             'last_username' => $app['session'] -> get('_security.last_username'),
-            'title' => 'Connexion BO'
+            'title' => 'Connexion'
         );
 
         return $app['twig'] -> render('/bo/index.html.twig', $params);
@@ -22,14 +22,17 @@ class Bo
 
     /* Didier - namespace de connexion */
     public function connexion(Application $app) {
-    	return $app['twig']->render('/bo/connexion.html.twig');
+    	return $app['twig']->render('/bo/connexion.html.twig', array(
+            'title' => 'Connexion')
+        );
     }
 
     /* Didier - namespace de backoffice content */
     public function accueil(Application $app) {
-        return $app['twig']->render('/bo/accueil.html.twig');
+        return $app['twig']->render('/bo/accueil.html.twig', array(
+            'title' => 'Accueil BO Pimp My CV')
+        );
     }
-
 
 
     /* Didier - namespace de gestion_membres */
@@ -49,7 +52,7 @@ class Bo
 
     	return $app['twig']->render('/bo/gestion_commandes.html.twig', $params);
      }*/
- 
+
 
 // Didier - Route pour inscription utilisateur
     public function gestion_membres(Request $request, Application $app){
@@ -82,17 +85,17 @@ class Bo
 
         $params = array(
             'membres' => $membres,
-            'title' => 'Inscription',
+            'title' => 'Gestion des membres',
             'membreFormBo' => $membreFormView
         );
 
         return $app['twig']->render('/bo/gestion_membres.html.twig', $params);
-    }   
+    }
 
 
-/////////////////////////////////////////////////////////////////////////     
+/////////////////////////////////////////////////////////////////////////
 /////////////////   Probablement à retravailler   ///////////////////////
-/////////////////////////////////////////////////////////////////////////    
+/////////////////////////////////////////////////////////////////////////
 // Didier - Route pour inscription commande
     public function gestion_commandes(Request $request, Application $app){
 
@@ -122,16 +125,16 @@ class Bo
 
         $commandes = $app['dao.commande'] -> findAll();
 
-    
+
         $params = array(
             'commandes' => $commandes,
-            'title' => 'Inscription',
+            'title' => 'Gestion des commandes',
             'commandeFormBo' => $commandeFormView
         );
 
         return $app['twig']->render('/bo/gestion_commandes.html.twig', $params);
-    }   
-/////////////////////////////////////////////////////////////////////////     
+    }
+/////////////////////////////////////////////////////////////////////////
 
     public function gestion_cv(Request $request, Application $app){
 
@@ -145,14 +148,14 @@ class Bo
 
         $params = array(
             'cv' => $cvs,
-            'title' => 'Inscription',
+            'title' => 'Gestion des CVs',
             'cvFormBo' => $cvFormView
         );
 
         return $app['twig']->render('/bo/gestion_cv.html.twig', $params);
-    }   
+    }
 
 
 
-     
+
 }

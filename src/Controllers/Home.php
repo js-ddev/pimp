@@ -9,45 +9,70 @@ class Home
 {
 
     public function modeles(Application $app){
-        return $app['twig']->render('modeles.html.twig');
+        return $app['twig']->render('modeles.html.twig', array(
+            'title' => 'Modèles de CVs en téléchargement gratuit')
+        );
     }
 
     public function mentions_legales(Application $app){
-        return $app['twig']->render('mentions_legales.html.twig');
+        return $app['twig']->render('mentions_legales.html.twig', array(
+            'title' => 'Mentions légales')
+        );
     }
 
     public function contact(Application $app){
-        return $app['twig']->render('contact.html.twig');
+        return $app['twig']->render('contact.html.twig', array(
+            'title' => 'Nous contacter')
+        );
     }
 
     public function faq(Application $app){
-        return $app['twig']->render('faq.html.twig');
+        return $app['twig']->render('faq.html.twig', array(
+            'title' => 'Questions fréquemment posées')
+        );
     }
 
     public function about(Application $app){
-        return $app['twig']->render('about.html.twig');
+        return $app['twig']->render('about.html.twig', array(
+            'title' => 'A propos de nous')
+        );
     }
 
     public function template_options(Application $app){
-        return $app['twig']->render('template_options.html.twig');
+        return $app['twig']->render('template_options.html.twig', array(
+            'title' => 'Les options de votre nouveau CV')
+        );
     }
 
     public function recapitulatif_commande(Application $app){
-        return $app['twig']->render('recapitulatif_commande.html.twig');
+        return $app['twig']->render('recapitulatif_commande.html.twig', array(
+            'title' => 'Récapitulatif de votre commande')
+        );
     }
 
     public function paiement(Application $app){
-        return $app['twig']->render('paiement.html.twig');
+        return $app['twig']->render('paiement.html.twig', array(
+            'title' => 'Paiement')
+        );
     }
 
     public function validation_commande(Application $app){
-        return $app['twig']->render('validation_commande.html.twig');
+        return $app['twig']->render('validation_commande.html.twig', array(
+            'title' => 'Validation de votre commande')
+        );
     }
 
     public function index(Application $app){
-        return $app['twig']->render('index.html.twig');
+        return $app['twig']->render('index.html.twig', array(
+            'title' => 'Accueil')
+        );
     }
 
+    public function password(Application $app){
+        return $app['twig']->render('password.html.twig', array(
+            'title' => 'Mot de passe oublié')
+        );
+    }
 
 // Adrien - Route pour inscription utilisateur :
 
