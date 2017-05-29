@@ -13,7 +13,7 @@ $app -> get('/faq','Controllers\\Home::faq') -> bind('faq');
 $app -> get('/about','Controllers\\Home::about') -> bind('about');
 
 
-$app -> match('/template_options/','Controllers\\Home::option') -> bind('template_options');
+$app -> match('/template_options','Controllers\\Home::option') -> bind('template_options');
 
 $app -> get('/recapitulatif_commande','Controllers\\Home::recapitulatif_commande') -> bind('recapitulatif-commande');
 
