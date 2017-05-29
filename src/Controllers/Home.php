@@ -192,8 +192,8 @@ class Home
 // Rudy - Route pour la génération du formulaire options :
 
     public function option(Request $request, Application $app){
-        $cv = new \Entity\Cv;
-        $optionForm = $app['form.factory'] -> create(\Form\Type\OptionType::class, $cv);
+        $options = new \Entity\Options;
+        $optionForm = $app['form.factory'] -> create(\Form\Type\OptionType::class, $options);
 
         $optionForm -> handleRequest($request);
 
