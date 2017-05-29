@@ -58,15 +58,14 @@
 
             <!-- Formulaire CV -->
             <!-- Adrien - Les autres formulaires vont etre imbriqués dans le formulaireForm -->
-            {{ form_start(formulaireForm) }}
-			{{ form_errors(formulaireForm) }}
+            
                 <div class="tab-content">
                     <div class="tab-pane active" role="tabpanel" id="step2">
                         <h3>Contenu de votre CV</h3>
-                        
+
                         <div class="container">
 							<div class="row">
-								<div class="col-md-12">							
+								<div class="col-md-12">
 									<div class="panel-group">
 
 										<!-- Partie informations personnelles (table cv) -->
@@ -109,7 +108,7 @@
 													<div class="form-group">
 														<label>Permis de travail / séjour</label>
 														{{ form_errors(cvForm.permis_travail) }}
-														{{ form_widget(cvForm.permis_travail) }}														
+														{{ form_widget(cvForm.permis_travail) }}
 													</div>
 
 													<div class="form-group">
@@ -120,7 +119,7 @@
 
 													<div class="form-group col-md-12">
 														<input class="btn btn-md btn-dark" type="submit" value="Valider">
-													</div>												
+													</div>
 												</div>
 											</div>
 										</div>
@@ -138,13 +137,13 @@
 												</span>
 											</div>
 											<div id="collapse2" class="panel-collapse collapse">
-												<div class="panel-body">										
+												<div class="panel-body">
 													<h4>Entreprise :</h4>
 
 													<div class="form-group">
 														<label for="nom">Nom de l'entreprise*</label>
 														{{ form_errors(experienceForm.nom) }}
-														{{ form_widget(experienceForm.nom) }}				
+														{{ form_widget(experienceForm.nom) }}
 													</div>
 
 													<div class="form-group">
@@ -246,7 +245,7 @@
 													</div>
 													<div class="form-group col-md-12">
 														<input class="btn btn-md btn-dark" type="submit" value="Valider">
-													</div>													
+													</div>
 												</div>
 											</div>
 										</div>
@@ -264,7 +263,7 @@
 												</span>
 											</div>
 											<div id="collapse3" class="panel-collapse collapse">
-												<div class="panel-body">												
+												<div class="panel-body">
 													<div class="form-group">
 														<label for="diplome">Diplome*</label>
 														{{ form_errors(formationForm.diplome) }}
@@ -305,7 +304,7 @@
 													</div>
 													<div class="form-group col-md-12">
 														<input class="btn btn-md btn-dark" type="submit" value="Valider">
-													</div>												
+													</div>
 												</div>
 											</div>
 										</div>
@@ -364,7 +363,7 @@
 													</div>
 													<div class="form-group col-md-12">
 														<input class="btn btn-md btn-dark" type="submit" value="Validerr">
-													</div>								
+													</div>
 												</div>
 											</div>
 										</div>
@@ -382,7 +381,7 @@
 												</span>
 											</div>
 											<div id="collapse5" class="panel-collapse collapse">
-												<div class="panel-body">											
+												<div class="panel-body">
 													<div class="form-group">
 														<label for="nom">Langue</label>
 														{{ form_errors(aptitudeForm.nom) }}
@@ -400,18 +399,18 @@
 														<label for="toeic">Score TOEIC</label>
 														{{ form_errors(aptitudeForm.toeic) }}
 														{{ form_widget(aptitudeForm.toeic) }}
-														
+
 														<label for="langue_score_toefl">Score TOEFL</label>
 														{{ form_errors(aptitudeForm.toefl) }}
 														{{ form_widget(aptitudeForm.toefl) }}
-														
+
 														<label for="langue_score_ielts">Score IELTS</label>
 														{{ form_errors(aptitudeForm.ielts) }}
 														{{ form_widget(aptitudeForm.ielts) }}
 													</div>
 													<div class="form-group col-md-12">
 														<input class="btn btn-md btn-dark" type="submit" value="Valider">
-													</div>													
+													</div>
 												</div>
 											</div>
 										</div>
@@ -429,7 +428,7 @@
 												</span>
 											</div>
 											<div id="collapse6" class="panel-collapse collapse">
-												<div class="panel-body">												
+												<div class="panel-body">
 													<div class="form-group">
 														<label for="nom_benevolat">Nom de la structure*</label>
 														{{ form_errors(experienceForm.nom) }}
@@ -526,7 +525,7 @@
 													</div>
 													<div class="form-group col-md-12">
 														<input class="btn btn-md btn-dark" type="submit" value="Valider">
-													</div>												
+													</div>
 												</div>
 											</div>
 										</div>
@@ -544,7 +543,7 @@
 											<div id="collapse7" class="panel-collapse collapse">
 												<div class="panel-body">
 													<div class="row mrg-top-70">
-														<div class="col-md-10 col-md-offset-1">															
+														<div class="col-md-10 col-md-offset-1">
 														<div class="text-center">
 															<h3 class="mrg-btm-40">Informations diverses</h3>
 														</div>
@@ -571,7 +570,7 @@
 																	</div>
 																	<div class="form-group col-md-12">
 																		<input class="btn btn-md btn-dark" type="submit" value="Valider">
-																	</div>	
+																	</div>
 																</div>
 																{{ form_end(autre_infoForm) }}
 																<!-- Fin sous-partie description -->
@@ -589,7 +588,7 @@
 																	<div class="form-group">
 																		<label for="niveau">Votre niveau de pratique</label>
 																		<span id="slider2value"></span><span> %</span>
-																		<div style="max-width:250px" id="slider2"></div>	
+																		<div style="max-width:250px" id="slider2"></div>
 																	</div>
 																	<div class="form-group col-md-12">
 																		<input class="btn btn-md btn-dark" type="submit" value="Valider">
@@ -652,11 +651,11 @@
 																	</div>
 																	<div class="form-group col-md-12">
 																		<input class="btn btn-md btn-dark" type="submit" value="Valider">
-																	</div>	
+																	</div>
 																</div>
 																{{ form_end(cvForm) }}
 																<!-- Fin Sous-partie Réseaux sociaux -->
-																
+
 																<!-- Sous-partie informations complémentaires -->
 																{{ form_start(autre_infoForm) }}
 																{{ form_errors(autre_infoForm) }}
@@ -669,11 +668,11 @@
 																	</div>
 																	<div class="form-group col-md-12">
 																		<input class="btn btn-md btn-dark" type="submit" value="Valider">
-																	</div>	
+																	</div>
 																</div>
 																{{ form_end(autre_infoForm) }}
 																<!-- Fin Sous-partie informations complémentaires -->
-															</div>														
+															</div>
 														</div>
 													</div>
 												</div>
@@ -692,9 +691,9 @@
 							</div>
 						</div>
 					</div>
-				</div>	
+				</div>
 			{{ form_end(cvForm) }}
-			<!-- Fin formulaire -->	                      											      
+			<!-- Fin formulaire -->
         </div>
     </section>
    </div>

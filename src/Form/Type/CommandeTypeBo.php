@@ -19,7 +19,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Email;
 
-class MembreTypeBo extends AbstractType
+class CommandeTypeBo extends AbstractType
 {
 
     public function buildForm(FormBuilderInterface $builder, array $options){
@@ -43,7 +43,7 @@ class MembreTypeBo extends AbstractType
                     'class' => 'form-control',
                 ),
             ))
-        
+
             -> add('date_commande', TextType::class, array(
                 'attr' => array(
                     'class' => 'form-control',

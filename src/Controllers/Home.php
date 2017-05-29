@@ -58,6 +58,27 @@ class Home
         $inscriptionForm -> handleRequest($request);
 
         if($inscriptionForm -> isSubmitted() && $inscriptionForm -> isValid()){
+
+// JS Vérification de la présence de l'email dans la base :
+            $email = $membre -> getUsername();
+
+            // $id = $app['dao.membre'] -> find($app['user'] -> getId());
+            $id = $app['dao.membre'] -> findByUsername($email);
+            // $id = findByUsername();
+            // $username = $id -> getUsername();
+
+            if(!is_null($id)){
+                print_r('if');
+
+                return $app['twig']->render('connexion.html.twig', array(
+                    'title' => 'Connexion',
+                    'error' => $app['security.last_error']($request),
+                    'erreur' => 'Vous avez déjà un compte, vous pouvez vous connecter !',
+                    'last_username' => $email,
+                    )
+                );
+            }
+            else{
             $salt = substr(md5(time()), 0, 23);
             $membre -> setSalt($salt);
 
@@ -72,13 +93,15 @@ class Home
 
             // Adrien - Redirection suite à l'inscription
             return $app->redirect('/');
+            }
         }
 
         $inscriptionFormView = $inscriptionForm -> createView();
 
         $params = array(
             'title' => 'Inscription',
-            'inscriptionForm' => $inscriptionFormView
+            'inscriptionForm' => $inscriptionFormView,
+            'erreur' => '',
         );
 
         return $app['twig']->render('inscription.html.twig', $params);
