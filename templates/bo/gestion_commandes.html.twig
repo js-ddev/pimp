@@ -4,7 +4,6 @@
 
 {% block content %}
 
-{{ dump(commandes) }}
 
 <!-- Didier - FIN HEAD, NAVTOP ET NAVSIDE -->
 
@@ -19,7 +18,7 @@
                     <div class="col-lg-12">
                         <h1 class="page-header">
                             Gestion des commandes
-                            <small>Consulter | Créer | Modifier | Supprimer</small>
+                            <small>Consulter | Modifier | Supprimer</small>
 
                         </h1>
                         <ol class="breadcrumb">
@@ -37,19 +36,6 @@
 
                     <div class="col-lg-12">
                         <h2>Tableau des commandes</h2>
-
-                        <div class="row">
-                            <div class="col-lg-2">
-                                <ol class="breadcrumb">
-                                    <li>
-
-                                        <!-- Didier - Bouton ajouter un membre -->
-
-                                        <i class="btn btn-primary fa fa-pencil-square-o" aria-hidden="true"></i> <a href="{{ path('gestion_commandes') }}#formulaire">Ajouter une commande</a>
-                                    </li>
-                                </ol>
-                            </div>
-                        </div>
 
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover table-striped">
@@ -70,9 +56,9 @@
                                     {% for commande in commandes %}
                                     <tr>
                                         <td>{{ commande.id }}</td>
-                                        <td><a href="#">{{ commande.idmembre }}</a></td>
-                                        <td><a href="#">{{ commande.idcv }}</a></td>
-                                        <td>{{ commande.dateCommande }}</td>
+                                        <td><a href="#">{{ commande.idMembre }}</a></td>
+                                        <td><a href="#">{{ commande.idCv }}</a></td>
+                                         <td>{{ commande.dateCommande }}</td>
                                         <td>{{ commande.statutCommande }}</td>
                                         <td>{{ commande.prestation }}</td>
                                         <td>{{ commande.prix }}</td>
@@ -102,7 +88,7 @@
 
                     <div class="row">
                     {% if commandeFormBo %}
-                        {{ form_start(membreFormBo) }}
+                        {{ form_start(commandeFormBo) }}
                         <div class="col-lg-6"> <!-- formulaire coté gauche -->
 
                             {{ form_widget(commandeFormBo.id)  }}

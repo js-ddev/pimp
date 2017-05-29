@@ -120,8 +120,9 @@ class Bo
 
         $commandeFormView = $commandeFormBo -> createView();
 
-        $commandes = $app['dao.membre'] -> findAll();
+        $commandes = $app['dao.commande'] -> findAll();
 
+    
         $params = array(
             'commandes' => $commandes,
             'title' => 'Inscription',

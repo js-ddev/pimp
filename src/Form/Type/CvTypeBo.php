@@ -36,9 +36,9 @@ class CvTypeBo extends AbstractType
 
             -> add('famille', ChoiceType::class, array(
                 'choices' => array(
-                    'célibataire' => 'celibataire',
-                    'concubinage' => 'concubinage',
-                    'marié' => 'marie',
+                    'Célibataire' => 'celibataire',
+                    'Concubinage' => 'concubinage',
+                    'Marié' => 'marie',
                 ))
             )
 
@@ -58,8 +58,8 @@ class CvTypeBo extends AbstractType
 
             -> add('permis_travail', ChoiceType::class, array(
                 'choices' => array(
-                    'travail' => 'travail',
-                    'sejour' => 'sejour',
+                    'Travail' => 'travail',
+                    'Séjour' => 'sejour',
                 ),
                 'expanded' => true,
                 'multiple' => false,
@@ -322,7 +322,7 @@ class CvTypeBo extends AbstractType
                     new Assert\NotBlank(),
                 ),
                 'attr' => array(
-                    'placeholder' => 'Diplome *',
+                    'placeholder' => 'Diplôme *',
                     'class' => 'form-control',
                 ),
             ))
