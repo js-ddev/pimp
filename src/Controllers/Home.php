@@ -211,7 +211,6 @@ class Home
         return $app['twig']->render('template_options.html.twig', $params);
 
     }
-
 /*
 // Adrien - Controller pour générer le formulaire de création du CV :
 
@@ -300,11 +299,22 @@ class Home
 
             $membre = $app['dao.membre'] -> find($app['user'] -> getId());
 
-            $formulaire = new \Enity\Formulaire;
+            $formulaire = new \Entity\Formulaire;
+
+            $cv = new \Entity\Cv;
+            $experience = new \Entity\Experience;
+            $formation = new \Entity\Formation;
+            $aptitude = new \Entity\Aptitude;
+            $autre_info = new \Entity\AutreInfo;
 
             $formulaireForm = $app['form.factory'] -> create(\Form\Type\FormulaireType::class, $formulaire);
+            $cvForm = $app['form.factory'] -> create(\Form\Type\CvType::class, $cv);
+            $experienceForm = $app['form.factory'] -> create(\Form\Type\ExperienceType::class, $experience);
+            $formationForm = $app['form.factory'] -> create(\Form\Type\FormationType::class, $formation);
+            $aptitudeForm = $app['form.factory'] -> create(\Form\Type\AptitudeType::class, $aptitude);
+            $autre_infoForm = $app['form.factory'] -> create(\Form\Type\AutreInfoType::class, $autre_info);
 
-            $form->handleRequest($request);
+            $formulaireForm->handleRequest($request);
 
             if ($formulaireForm->isSubmitted() && $formulaireForm->isValid()) {
                 $app['dao.cv'] -> saveCv($cv, $membre);
@@ -320,6 +330,7 @@ class Home
             }
 
             $formulaireFormView = $formulaireForm -> createView();
+         
             $cvFormView = $cvForm -> createView();
             $experienceFormView = $experienceForm -> createView();
             $formationFormView = $formationForm -> createView();
@@ -330,6 +341,7 @@ class Home
             $params = array(
                 'title' => 'Contenu de votre CV',
                 'id_membre' => $membre -> getId(),
+                'formulaireForm' => $formulaireFormView,
                 'cvForm' => $cvFormView,
                 'experienceForm' => $experienceFormView,
                 'formationForm' => $formationFormView,

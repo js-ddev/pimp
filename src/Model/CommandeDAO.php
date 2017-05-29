@@ -8,7 +8,7 @@ use Entity\Cv;
 
 use Entity\Commande;
 
-use Payum\Core\Storage\StorageInterface;
+/*use Payum\Core\Storage\StorageInterface;
 use Payum\Core\Model\Identity;
 
 use Payum\Core\Model\Payment;
@@ -16,11 +16,32 @@ use Payum\Core\Model\Payment;
 
 use Payum\Core\Storage\FilesystemStorage;
 
-use Payum\PayumStorage;
+use Payum\PayumStorage;*/
 
 // Sur la doc Payum : class CustomStorage
-class CommandeDAO extends DAO implements StorageInterface
+class CommandeDAO extends DAO/* implements StorageInterface*/
 {
+
+    // Didier - Back office commande
+    /**
+    * Retourne un objet de la classe Membre.
+    *
+    * @param integer $id_membre The user id_membre.
+    *
+    * @return \Entity\Membre|throws an exception si pas de matching
+    */
+    public function find($id_commande){
+        $requete = "SELECT * FROM commande WHERE id = ?";
+        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_commande));
+
+        if($resultat){
+            return $this -> buildEntityObject($resultat);
+        }
+        else{
+            throw new \Exception("Aucune commande à l'id:" . $id_commande);
+        }
+    }
+
     public function findAll(){
         $requete = "SELECT * FROM commande";
         $resultat = $this -> getDb() -> fetchAll($requete);
@@ -61,8 +82,7 @@ class CommandeDAO extends DAO implements StorageInterface
         ///////////////////////////////////////////////////////////////////
         //////////    /!\  retravailler la ligne ci-dessous     ///////////
         ///////////////////////////////////////////////////////////////////
-        $commandeData['role'] = 'ROLE_USER';
-
+ 
         if($commande->getId()) { // Modifier une commande
             $this->getDb()->update('commande', $commandeData, array('id'=>$commande->getId()));
         }
