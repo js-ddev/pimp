@@ -44,7 +44,7 @@ class CommandeTypeBo extends AbstractType
                     'class' => 'form-control',
                 ),
             ))
-        
+
             -> add('date_commande', TextType::class, array(
                 'attr' => array(
                     'class' => 'form-control',

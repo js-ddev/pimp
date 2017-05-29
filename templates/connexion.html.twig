@@ -15,11 +15,11 @@
             </div>
         </section>
         <!-- Hero End -->
-            
+
     </div>
     <!-- wrapper -->
 
-    
+
     <!-- Modal Start -->
     <!-- use data-backdrop="static" & data-keyboard="false" to lock modal -->
     <div class="modal fade modal-center load-active" id="login" role="dialog" data-backdrop="static" data-keyboard="false">
@@ -36,6 +36,7 @@
                                             <form action="{{ path('login_check') }}" method="post">
                                                 <div class="form-wrapper">
                                                     <label><b>Email</b></label>
+                                                    <span>{{ erreur }}</span>
                                                     <input type="text" class="form-control" placeholder="Email" name="_username" value="{{ last_username }}">
                                                 </div>
                                                 <div class="form-wrapper">
@@ -50,7 +51,7 @@
                                         </div><!-- /content -->
                                     </div>
                                 </div>
-                            </div>  
+                            </div>
                             <div class="image-container col-md-5 hidden-xs hidden-sm">
                                 <div class="background-holder theme-overlay has-content" style="background-image:url({{ asset('images/about-bg1.jpg') }})">
                                     <div class="content pdd-horizon-50">

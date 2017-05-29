@@ -17,11 +17,12 @@ class OptionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options){
         // builder permet de construire les champs un par un :
         $builder
-            -> add('nombre_page', ChoiceType::class, array(
+            -> add('template', ChoiceType::class, array(
                 'choices' => array(
-                    'Une page' => 'une_page',
-                    'Deux pages' => 'deux_pages',
-                    'Trois pages' => 'trois_pages',
+                    'Type 1' => '1',
+                    'Type 2' => '2',
+                    'Type 3' => '3',
+                    'Type 4' => '4',
                 ))
             )
 
@@ -36,11 +37,11 @@ class OptionType extends AbstractType
             )
             -> add('puce', ChoiceType::class, array(
                 'choices' => array(
-                    'Type 1' => 'type_un',
-                    'Type 2' => 'type_deux',
-                    'Type 3' => 'type_trois',
-                    'Type 4' => 'type_quatre',
-                    'Type 5' => 'type_cinq',
+                    'Type 1' => '1',
+                    'Type 2' => '2',
+                    'Type 3' => '3',
+                    'Type 4' => '4',
+                    'Type 5' => '5',
                 ))
             )
             -> add('fond', ChoiceType::class, array(
