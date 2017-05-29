@@ -48,6 +48,10 @@ $app['payum.security.token_storage'] = function($app) {
     return new FilesystemStorage( realpath(__DIR__.'/../storage/tokens'), 'Payum\Core\Model\Token', 'hash');
 };
 
+$app['payum.security.token_storage'] = (function($app) {
+    return new FilesystemStorage(__DIR__.'/../storage/tokens', 'Payum\Core\Model\Token', 'hash');
+});
+
 
 
 // Adrien - Enregistrement des services pour les formulaires

@@ -46,6 +46,7 @@ class CommandeTypeBo extends AbstractType
             ))
         
             -> add('date_commande', HiddenType::class, array(
+
                 'attr' => array(
                     'class' => 'form-control',
                 ),
