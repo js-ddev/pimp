@@ -90,9 +90,44 @@ class Bo
     }   
 
 
-/////////////////////////////////////////////////////////////////////////     
-/////////////////   Probablement à retravailler   ///////////////////////
-/////////////////////////////////////////////////////////////////////////    
+
+// Didier - Route pour inscription utilisateur (fiche utilisateur)
+    public function gestion_membre(Request $request, Application $app){
+
+        if( ! empty($request->query->get('id'))) {
+            $membre = $app['dao.membre'] -> find($request->query->get('id'));
+        } else {
+            $membre = new \Entity\Membre;
+        }
+        $membreFormBo = $app['form.factory'] -> create(\Form\Type\MembreTypeBo::class, $membre);
+
+        $membreFormBo -> handleRequest($request);
+
+        if($membreFormBo -> isSubmitted() && $membreFormBo -> isValid()){
+            $salt = substr(md5(time()), 0, 23);
+            $membre -> setSalt($salt);
+
+            $mdp = $membre -> getPassword();
+            $password_encode = $app['security.encoder.bcrypt'] -> encodePassword($mdp, $membre -> getSalt());
+
+            $membre -> setPassword($password_encode);
+
+            $app['dao.membre'] -> save($membre);
+            $app['session'] -> getFlashBag() -> add('success', 'Votre inscription a bien été prise en compte !');
+        }
+
+        $membreFormView = $membreFormBo -> createView();
+
+        $params = array(
+            'membre' => $membre,
+            'title' => 'Inscription',
+            'membreFormBo' => $membreFormView
+        );
+
+        return $app['twig']->render('/bo/gestion_membre.html.twig', $params);
+    }   
+
+
 // Didier - Route pour inscription commande
     public function gestion_commandes(Request $request, Application $app){
 
@@ -106,15 +141,9 @@ class Bo
         $commandeFormBo -> handleRequest($request);
 
         if($commandeFormBo -> isSubmitted() && $commandeFormBo -> isValid()){
-            $salt = substr(md5(time()), 0, 23);
-            $commande -> setSalt($salt);
+  
 
-            $mdp = $commande -> getPassword();
-            $password_encode = $app['security.encoder.bcrypt'] -> encodePassword($mdp, $commande -> getSalt());
-
-            $membre -> setPassword($password_encode);
-
-            $app['dao.membre'] -> save($membre);
+            $app['dao.commande'] -> save($commande);
             $app['session'] -> getFlashBag() -> add('success', 'Votre inscription a bien été prise en compte !');
         }
 
@@ -131,9 +160,10 @@ class Bo
 
         return $app['twig']->render('/bo/gestion_commandes.html.twig', $params);
     }   
-/////////////////////////////////////////////////////////////////////////     
 
-    public function gestion_cv(Request $request, Application $app){
+
+// Didier - Route pour inscription cv
+/*    public function gestion_cv(Request $request, Application $app){
 
         if( ! empty($request->query->get('id'))) {
             $cv = $app['dao.cv'] -> find($request->query->get('id'));
@@ -144,13 +174,64 @@ class Bo
         $cv = $app['dao.cv'] -> findAll();
 
         $params = array(
-            'cv' => $cvs,
+            'cv' => $cv,
             'title' => 'Inscription',
             'cvFormBo' => $cvFormView
         );
 
         return $app['twig']->render('/bo/gestion_cv.html.twig', $params);
     }   
+*/
+
+
+
+
+
+
+
+
+
+// Didier - Route pour inscription utilisateur (fiche utilisateur)
+    public function gestion_cv(Request $request, Application $app){
+
+        if( ! empty($request->query->get('id'))) {
+            $cv = $app['dao.cv'] -> find($request->query->get('id'));
+        } else {
+            $cv = new \Entity\Cv;
+        }
+        $cvFormBo = $app['form.factory'] -> create(\Form\Type\CvTypeBo::class, $cv);
+
+        $cvFormBo -> handleRequest($request);
+
+        if($membreFormBo -> isSubmitted() && $membreFormBo -> isValid()){
+            $salt = substr(md5(time()), 0, 23);
+            $membre -> setSalt($salt);
+
+            $mdp = $membre -> getPassword();
+            $password_encode = $app['security.encoder.bcrypt'] -> encodePassword($mdp, $membre -> getSalt());
+
+            $membre -> setPassword($password_encode);
+
+            $app['dao.membre'] -> save($membre);
+            $app['session'] -> getFlashBag() -> add('success', 'Votre inscription a bien été prise en compte !');
+        }
+
+        $cvFormView = $cvFormBo -> createView();
+
+        $params = array(
+            'cv' => $cv,
+            'title' => 'Inscription',
+            'cvFormBo' => $cvFormView
+        );
+
+        return $app['twig']->render('/bo/gestion_cv.html.twig', $params);
+    }   
+
+
+
+
+
+
 
 
 

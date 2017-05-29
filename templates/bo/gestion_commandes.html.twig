@@ -56,12 +56,12 @@
                                     {% for commande in commandes %}
                                     <tr>
                                         <td>{{ commande.id }}</td>
-                                        <td><a href="#">{{ commande.idMembre }}</a></td>
+                                        <td><a href="{{ path('gestion_membre', {'id' : commande.idMembre }) }}" title="Consulter les infos du membre">{{ commande.idMembre }}</a></td>
                                         <td><a href="#">{{ commande.idCv }}</a></td>
                                          <td>{{ commande.dateCommande }}</td>
                                         <td>{{ commande.statutCommande }}</td>
                                         <td>{{ commande.prestation }}</td>
-                                        <td>{{ commande.prix }}</td>
+                                        <td>{{ commande.prix }}&nbsp;€</td>
                                         <td>{{ commande.commentaires }}</td>
 
                                         <!-- Didier - Bouton modifier un membre -->
@@ -70,7 +70,7 @@
 
                                         <!-- Didier - Bouton supprimer un membre -->
 
-                                        <td><a href="{{ path('gestion_commandes', { 'id': commande.id }) }}" title="Supprimer une commande" class="btn btn-danger fa fa-trash"></a></td>
+                                        <td><a href="{{ path('supprimer_commande', { 'id': commande.id }) }}" title="Supprimer une commande" class="btn btn-danger fa fa-trash"></a></td>
 
                                     </tr>
                                     {% endfor %}
@@ -91,9 +91,9 @@
                         {{ form_start(commandeFormBo) }}
                         <div class="col-lg-6"> <!-- formulaire coté gauche -->
 
-                            {{ form_widget(commandeFormBo.id)  }}
-                            {{ form_widget(commandeFormBo.id_membre)  }}
-                            {{ form_widget(commandeFormBo.id_cv)  }}
+                            {{ form_widget(commandeFormBo.id) }}
+                            {{ form_widget(commandeFormBo.id_membre) }}
+                            {{ form_widget(commandeFormBo.id_cv) }}
                             {{ form_widget(commandeFormBo.date_commande) }}
 
                             <div class="form-group">
