@@ -8,6 +8,7 @@ use Entity\Experience;
 use Entity\Formation;
 use Entity\Aptitude;
 use Entity\AutreInfo;
+use Entity\Options;
 
 class CvDAO extends DAO
 {
@@ -115,10 +116,12 @@ class CvDAO extends DAO
     * @return \pimp\Entity\cv
     */
     public function saveCv(Cv $cv, Membre $membre){
+        // print_r($cv);
+        // print_r($membre);
+        // die();
         $cvData = array(
             'id' => $cv -> getId(),
             'id_membre' => $membre -> getId(),
-            'template' => $cv -> getTemplate(),
             'nombre_sections' => $cv -> getNombreSections(),
             'photo' => $cv -> getPhoto(),
             'langue_maternelle' => $cv -> getLangueMaternelle(),
@@ -156,7 +159,6 @@ class CvDAO extends DAO
 
         $cv -> setId($value['id']);
         $cv -> setIdMembre($value['id_membre']);
-        $cv -> setTemplate($value['template']);
         $cv -> setNombreSections($value['nombre_sections']);
         $cv -> setPhoto($value['photo']);
         $cv -> setLangueMaternelle($value['langue_maternelle']);

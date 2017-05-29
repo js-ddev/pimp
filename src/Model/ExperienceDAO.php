@@ -26,7 +26,7 @@ class ExperienceDAO extends DAO
     /**
     * Retourne un objet de la classe Experience.
     *
-    * @param integer $id_cv 
+    * @param integer $id_cv
     *
     * @return \Entity\Experince|throws an exception si pas de matching
     */
@@ -69,16 +69,16 @@ class ExperienceDAO extends DAO
             'role' => $experience -> getRole(),
             'date_debut' => $experience -> getDateDebut(),
             'date_fin' => $experience -> getDateFin(),
-            'responsabilite1' => $experience -> getResponsabilite1(),
-            'responsabilite2' => $experience -> getResponsabilite2(),
-            'responsabilite3' => $experience -> getResponsabilite3(),
-            'responsabilite4' => $experience -> getResponsabilite4(),
+            'responsabilite1' => $experience -> setResponsabilite1(),
+            'responsabilite2' => $experience -> setResponsabilite2(),
+            'responsabilite3' => $experience -> setResponsabilite3(),
+            'responsabilite4' => $experience -> setResponsabilite4(),
             'responsabilite5' => $experience -> getResponsabilite5(),
-            'realisation1' => $experience -> getRealisation1(),
-            'realisation2' => $experience -> getRealisation2(),
-            'realisation3' => $experience -> getRealisation3(),
-            'realisation4' => $experience -> getRealisation4(),
-            'realisation5' => $experience -> getRealisation5(),
+            'realisation1' => $experience -> setRealisation1(),
+            'realisation2' => $experience -> setRealisation2(),
+            'realisation3' => $experience -> setRealisation3(),
+            'realisation4' => $experience -> setRealisation4(),
+            'realisation5' => $experience -> setRealisation5(),
         );
 
         // if($experience->getId()) { // Modifier un cv
@@ -92,34 +92,37 @@ class ExperienceDAO extends DAO
     }
 
 
-    // Adrien - Methode obligatoirement déclarée dans le fichier
+// Adrien - Methode obligatoirement déclarée dans le fichier
     protected function BuildEntityObject(array $value){
-        // Adrien - Création d'un nouveau CV
-        $cv = new cv;
 
-        $cv -> setId($value['id']);
-        $cv -> setIdMembre($value['id_membre']);
-        $cv -> setTemplate($value['template']);
-        $cv -> setNombreSections($value['nombre_sections']);
-        $cv -> setPhoto($value['photo']);
-        $cv -> setLangueMaternelle($value['langue_maternelle']);
-        $cv -> setEmailCv($value['email_cv']);
-        $cv -> setFamille($value['famille']);
-        $cv -> setNationalite($value['nationalite']);
-        $cv -> setPermisConduire($value['permis_conduire']);
-        $cv -> setPermisTravail($value['permis_travail']);
-        $cv -> setTwitter($value['twitter']);
-        $cv -> setLinkedin($value['linkedin']);
-        $cv -> setSkype($value['skype']);
-        $cv -> setSitePerso($value['site_perso']);
-        $cv -> setUrlAutre($value['url_autre']);
-        $cv -> setNombrePage($value['nombre_page']);
-        $cv -> setCouleur($value['couleur']);
-        $cv -> setPuce($value['puce']);
-        $cv -> setFond($value['fond']);
-        $cv -> setIndicateurPerformance($value['indicateur_performance']);
-        $cv -> setActivite($value['activite']);
+        $experience = new experience;
 
-        return $cv;
+        $experience -> setId($value['id']);
+        $experience -> setType($value['type']);
+        $experience -> setNom($value['nom']);
+        $experience -> setSecteur($value['secteur']);
+        $experience -> setSecteurBenevolat($value['secteur_benevolat']);
+        $experience -> setDescription($value['description']);
+        $experience -> setCa($value['ca']);
+        $experience -> setEffectif($value['effectif']);
+        $experience -> setUrlExperience($value['url_experience']);
+        $experience -> setposte($value['poste']);
+        $experience -> setLieu($value['lieu']);
+        $experience -> setRole($value['role']);
+        $experience -> setDateDebut($value['date_debut']);
+        $experience -> setDateFin($value['date_fin']);
+        $experience -> setResponsabilite1($value['responsabilite1']);
+        $experience -> setResponsabilite2($value['responsabilite2']);
+        $experience -> setResponsabilite3($value['responsabilite3']);
+        $experience -> setResponsabilite4($value['responsabilite4']);
+        $experience -> setResponsabilite5($value['responsabilite5']);
+        $experience -> setRealisation1($value['realisation1']);
+        $experience -> setRealisation2($value['realisation2']);
+        $experience -> setRealisation3($value['realisation3']);
+        $experience -> setRealisation4($value['realisation4']);
+        $experience -> setRealisation5($value['realisation5']);
+
+
+        return $experience;
     }
 }
