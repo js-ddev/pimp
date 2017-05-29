@@ -114,7 +114,9 @@ class Home
         $params = array(
             'error' => $app['security.last_error']($request),
             'last_username' => $app['session'] -> get('_security.last_username'),
-            'title' => 'Connexion'
+            'title' => 'Connexion',
+            'erreur' => '',
+
         );
 
         return $app['twig'] -> render('connexion.html.twig', $params);
@@ -330,7 +332,7 @@ class Home
             }
 
             $formulaireFormView = $formulaireForm -> createView();
-         
+
             $cvFormView = $cvForm -> createView();
             $experienceFormView = $experienceForm -> createView();
             $formationFormView = $formationForm -> createView();
