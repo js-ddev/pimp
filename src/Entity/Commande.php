@@ -6,12 +6,12 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Payum\Core\Storage\FilesystemStorage;
 use Payum\Core\Storage\StorageInterface;
 
-use Payum\Core\Model\Payment as BasePayment;
+/*use Payum\Core\Model\Payment as BasePayment;
 
 use Payum\Core\Model\ArrayObject;
-use Payum\Core\Model\Payment;
+use Payum\Core\Model\Payment;*/
 
-class Commande extends BasePayment
+class Commande /*extends BasePayment*/
 
 {
 
@@ -65,7 +65,7 @@ class Commande extends BasePayment
      */
     public function getIdMembre()
     {
-        return $this->idmembre;
+        return $this->id_membre;
     }
 
     /**
@@ -77,7 +77,7 @@ class Commande extends BasePayment
      */
     public function setIdMembre($id_membre)
     {
-        $this->idmembre = $id_membre;
+        $this->id_membre = $id_membre;
 
         return $this;
     }
@@ -89,7 +89,7 @@ class Commande extends BasePayment
      */
     public function getIdCv()
     {
-        return $this->idcv;
+        return $this->id_cv;
     }
 
     /**
@@ -101,7 +101,7 @@ class Commande extends BasePayment
      */
     public function setIdCv($id_cv)
     {
-        $this->idcv = $id_cv;
+        $this->id_cv = $id_cv;
 
         return $this;
     }
@@ -113,7 +113,7 @@ class Commande extends BasePayment
      */
     public function getDateCommande()
     {
-        return $this->datecommande;
+        return $this->date_commande;
     }
 
 
@@ -126,7 +126,7 @@ class Commande extends BasePayment
      */
     public function setDateCommande($date_commande)
     {
-        $this->datecommande = $date_commande;
+        $this->date_commande = $date_commande;
 
         return $this;
     }
@@ -138,7 +138,7 @@ class Commande extends BasePayment
      */
     public function getStatutCommande()
     {
-        return $this->statutcommande;
+        return $this->statut_commande;
     }
 
     /**
@@ -150,7 +150,7 @@ class Commande extends BasePayment
      */
     public function setStatutCommande($statut_commande)
     {
-        $this->statutcommande = $statut_commande;
+        $this->statut_commande = $statut_commande;
 
         return $this;
     }
