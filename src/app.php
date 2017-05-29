@@ -10,7 +10,6 @@ use Silex\Provider\UrlGeneratorServiceProvider;
 
 // Rudy - Enregistrement de Payum :
 use Payum\Silex\PayumProvider;
-// use Payum\Core\Storage\FilesystemStorage;
 
 // JS - Enregistrement pour l'envoi de fichier :
 use Silex\Provider\ValidatorServiceProvider;
@@ -41,40 +40,9 @@ $app['dao.cv'] = function ($app) {
     return new Model\CvDAO($app['db']);
 };
 
-$app['dao.fichier'] = function ($app) {
-    return new Model\FichierDAO($app['db']);
-};
-
-$app['dao.experience'] = function ($app) {
-    return new Model\ExperienceDAO($app['db']);
-};
-
-$app['dao.formation'] = function ($app) {
-    return new Model\ExperienceDAO($app['db']);
-};
-
-$app['dao.aptitude'] = function ($app) {
-    return new Model\ExperienceDAO($app['db']);
-};
-
-$app['dao.autre_info'] = function ($app) {
-    return new Model\ExperienceDAO($app['db']);
-};
-
-$app['dao.formulaire'] = function ($app) {
-    return new Model\ExperienceDAO($app['db']);
-};
-
 
 // Rudy - Enregistrement des services obligatoires pour le paiement:
 $app->register(new Payum\PayumProvider());
-
-// JS - Test de storage Payum :
-// $app['payum.storages'] = function ($storages) use ($app) {
-//     $storages['Payum\Core\Model\Payment'] = new FilesystemStorage('../storage/payment', '\Model\CustomStorage');
-//
-//     return $storages;
-// };
 
 $app['payum.security.token_storage'] = function($app) {
     return new FilesystemStorage( realpath(__DIR__.'/../storage/tokens'), 'Payum\Core\Model\Token', 'hash');
@@ -83,6 +51,7 @@ $app['payum.security.token_storage'] = function($app) {
 $app['payum.security.token_storage'] = (function($app) {
     return new FilesystemStorage(__DIR__.'/../storage/tokens', 'Payum\Core\Model\Token', 'hash');
 });
+
 
 
 // Adrien - Enregistrement des services pour les formulaires
@@ -213,7 +182,7 @@ $app->get('/gestion_membres/membre/{id}/delete', function($id) use ($app) {
 // Didier - Back Office - Supprimer une commande dans la BDD
 $app->get('/gestion_commandes/commande/{id}/deleteBo', function($id) use ($app) {
 // IL FAUDRA AUSSI supprimmer toutes les infos associés à la commande ??!!
-    $app['dao.commande']->delete($id);
+    $app['dao.commande']->deleteBo($id);
     $app['session']->getFlashBag()->add('success', 'La commande à été supprimée de la BDD');
     // Redirect to admin gestion commande page
     return $app->redirect($app['url_generator']->generate('gestion_commandes'));
