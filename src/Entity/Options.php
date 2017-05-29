@@ -96,9 +96,9 @@ class Options
      *
      * @return mixed
      */
-    public function getNombrePage()
+    public function getNombrePages()
     {
-        return $this->nombre_page;
+        return $this->nombre_pages;
     }
 
     /**
@@ -108,9 +108,9 @@ class Options
      *
      * @return self
      */
-    public function setNombrePage($nombre_page)
+    public function setNombrePages($nombre_pages)
     {
-        $this->nombre_page = $nombre_page;
+        $this->nombre_pages = $nombre_pages;
 
         return $this;
     }

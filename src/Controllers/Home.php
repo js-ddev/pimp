@@ -219,12 +219,12 @@ class Home
     public function option(Request $request, Application $app){
         $options = new \Entity\Options;
         $optionForm = $app['form.factory'] -> create(\Form\Type\OptionType::class, $options);
-
+ 
         $optionForm -> handleRequest($request);
 
         if($optionForm -> isSubmitted() && $optionForm -> isValid()){
 
-            /*  $app['dao.cv'] -> save($cv);*/
+            $app['dao.options'] -> saveOptions($options);
             $app['session'] -> getFlashBag() -> add('success', 'vos options sont prises en compte !');
         }
 

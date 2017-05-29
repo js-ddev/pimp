@@ -3,7 +3,7 @@
 {% block content %}
 	<!-- Page Tittle Start -->
         <section class="page-tittle page-tittle-lg parallax-bg dark-overlay">
-            <img class="parallax-img no-mobile-parallax" src="../../../web/images/bg-2.jpg" alt="" data-parallax='{"y": 150}'>
+            <img class="parallax-img no-mobile-parallax" src="{{ asset('images/bg-2.jpg') }}" alt="" data-parallax='{"y": 150}'>
             <div class="container">
                 <div class="page-tittle-head">
                     <h2>Options</h2>
@@ -20,20 +20,13 @@
                 <form id="formulaire" action="" method="post">
                     
                     <div class="col-lg-2 col-md-6">
-                    
+                     {{ form_start(optionForm) }}
                         <div class="pricing-1" style="padding:15px; margin-top: 15px;">
                             <div class="pricing-status">
                                 <i class="glyphicon glyphicon-heart-empty" style="font-size:2em;"></i>
                                 <h3 class="plan"><b>Choix du modèle</b></h3>
-                                 <ul class="pricing-content" >
-                                     <select class="form-control" id="modele">
-                                            <option><li>Choisissez:</li></option>
-                                            <option><li>Modèle 1</li></option>
-                                            <option><li>Modèle 2</li></option>
-                                            <option><li>Modèle 3</li></option>
-                                            <option><li>Modèle 4</li></option>
-                                    </select>
-                                </ul>
+                                    {{ form_errors(optionForm.template) }}
+                                    {{ form_widget(optionForm.template) }}
                             </div>
                         </div>
                     </div>
@@ -45,16 +38,9 @@
                             <div class="pricing-status">
                                 <i class="glyphicon glyphicon-tint" style="font-size:2em;"></i>
                                 <h3 class="plan"><b>Couleur du modèle</b></h3>
-                                 <ul class="pricing-content" >
-                                  <select class="form-control" id="couleur">
-                                            <option><li>Choisissez:</li></option>
-                                            <option><li>Rouge</li></option>
-                                            <option><li>Vert</li></option>
-                                            <option><li>Bleu</li></option>
-                                            <option><li>Gris</li></option>
-                                            <option><li>Marron</li></option>
-                                    </select>
-                                </ul>
+                             
+                                        {{ form_errors(optionForm.couleur) }}
+                                        {{ form_widget(optionForm.couleur) }}
                             </div>
                         </div>
                     </div>
@@ -65,16 +51,9 @@
                             <div class="pricing-status">
                                 <i class="glyphicon glyphicon-option-vertical" style="font-size:2em;"></i>
                                 <h3 class="plan"><b>Puce du modèle</b></h3>
-                                 <ul class="pricing-content" >
-                                    <select class="form-control" id="puce">
-                                            <option><li>Choisissez:</li></option>
-                                            <option><li>Puce 1</li></option>
-                                            <option><li>Puce 2</li></option>
-                                            <option><li>Puce 3</li></option>
-                                            <option><li>Puce 4</li></option>
-                                            <option><li>Puce 5</li></option>
-                                    </select>
-                                </ul>
+                                        {{ form_errors(optionForm.puce) }}
+                                        {{ form_widget(optionForm.puce) }}
+
                             </div>
                         </div>
                     </div>
@@ -85,13 +64,8 @@
                             <div class="pricing-status">
                                 <i class="glyphicon glyphicon-adjust" style="font-size:2em;"></i>
                                 <h3 class="plan"><b>Arrière plan du modèle</b></h3>
-                                 <ul class="pricing-content" >
-                                    <select class="form-control" id="plan">
-                                            <option><li>Choisissez:</li></option>
-                                            <option><li>Fond blanc</li></option>
-                                            <option><li>Filigrane</li></option>
-                                    </select>
-                                </ul>
+                                        {{ form_errors(optionForm.fond) }}
+                                        {{ form_widget(optionForm.fond) }}
                             </div>
                         </div>
                     </div>
@@ -101,15 +75,10 @@
                         <div class="pricing-1" style="padding:15px; margin-top: 15px;">
                             <div class="pricing-status">
                                 <i class="glyphicon glyphicon-signal" style="font-size:2em;"></i>
-                                <h3 class="plan"><b>Style performance</b></h3>
-                                 <ul class="pricing-content" >
-                                 <select class="form-control" id="performance">
-                                            <option><li>Choisissez:</li></option>
-                                            <option><li>Texte</li></option>
-                                            <option><li>Barre</li></option>
-                                            <option><li>Rond</li></option>
-                                </select>
-                                </ul>
+                                <h3 class="plan"><b>Indicateurs performance</b></h3>
+                                        {{ form_errors(optionForm.indicateur_performance) }}
+                                        {{ form_widget(optionForm.indicateur_performance) }}
+
                             </div>
                         </div>
                       </div>
@@ -120,19 +89,14 @@
                             <div class="pricing-status">
                                 <i class="glyphicon glyphicon-sunglasses" style="font-size:2em;"></i>
                                 <h3 class="plan"><b>Style activités</b></h3>
-                                 <ul class="pricing-content" id="activite">
-                                 <select class="form-control" id="activite">
-                                            <option><li>Choisissez:</li></option>
-                                            <option><li>Texte</li></option>
-                                            <option><li>Icone</li></option>
-                                </select>
-                                </ul>
+                                        {{ form_errors(optionForm.activite) }}
+                                        {{ form_widget(optionForm.activite) }}
                             </div>
                         </div>
                     </div>
                 
                    
-                    <div class="col-lg-2 col-md-6">
+                    <div class="col-lg-12 col-md-6">
                         <div class="pricing-1" style="padding:12px; margin-top: 16px;">
                            
                                 <i class="glyphicon glyphicon-thumbs-up" style="font-size:2em;"></i>
@@ -140,6 +104,7 @@
                                     <button type="submit" id="envoyez" value="Valider" class="btn btn-sm btn-theme">Go</button> 
                         </div>
                     </div> 
+            {{ form_end(optionForm) }}
 
              </form>
         </div> <!-- fin de row -->         
@@ -149,8 +114,6 @@
 
 
 
-<script type="text/javascript"> $("body select").msDropDown();
-</script>
 
 
 
