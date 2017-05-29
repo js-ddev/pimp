@@ -69,8 +69,8 @@
 									<div class="panel-group">
 
 										<!-- Partie informations personnelles (table cv) -->
-										{{ form_start(cvForm) }}
-										{{ form_errors(cvForm) }}
+										{% for CvType in formulaireForm.cvs %}
+
 										{{ form_widget(cvForm.id_membre,{value : app.user.id}) }}
 										<div class="panel panel-default">
 											<div class="panel-heading">
@@ -83,38 +83,40 @@
 												<div class="panel-body">
 													<div class="form-group">
 														<label for="email_cv">Email*</label>
-														{{ form_errors(cvForm.email_cv) }}
-														{{ form_widget(cvForm.email_cv) }}
+														{{ form_errors(formulaireForm.cvs.vars.prototype.email_cv)|e }}>
+														{{ form_widget(formulaireForm.cvs.vars.prototype.email_cv)|e }}>
 													</div>
 
 													<div class="form-group">
 														<label for="situation">Situation familiale :</label>
-														{{ form_errors(cvForm.famille) }}
-														{{ form_widget(cvForm.famille) }}
+														{{ form_errors(formulaireForm.famille) }}
+														{{ form_widget(formulaireForm.famille) }}
 													</div>
 
 													<div class="form-group">
 														<label for="nationalite">Nationalité*</label>
-														{{ form_errors(cvForm.nationalite) }}
-														{{ form_widget(cvForm.nationalite) }}
+														{{ form_errors(formulaireForm.nationalite) }}
+														{{ form_widget(formulaireForm.nationalite) }}
 													</div>
 
 													<div class="form-group">
 														<label for="langue_maternelle">Langue maternelle*</label>
-														{{ form_errors(cvForm.langue_maternelle) }}
-														{{ form_widget(cvForm.langue_maternelle) }}
+														{{ form_errors(formulaireForm.langue_maternelle) }}
+														{{ form_widget(formulaireForm.langue_maternelle) }}
 													</div>
 
 													<div class="form-group">
 														<label>Permis de travail / séjour</label>
-														{{ form_errors(cvForm.permis_travail) }}
-														{{ form_widget(cvForm.permis_travail) }}
+
+														{{ form_errors(formulaireForm.permis_travail) }}
+														{{ form_widget(formulaireForm.permis_travail) }}														
+
 													</div>
 
 													<div class="form-group">
 														<label>Permis de conduire</label>
-														{{ form_errors(cvForm.permis_conduire) }}
-														{{ form_widget(cvForm.permis_conduire) }}
+														{{ form_errors(formulaireForm.permis_conduire) }}
+														{{ form_widget(formulaireForm.permis_conduire) }}
 													</div>
 
 													<div class="form-group col-md-12">
@@ -123,7 +125,7 @@
 												</div>
 											</div>
 										</div>
-										{{ form_end(cvForm) }}
+										{% endfor %}
 										<!-- Fin Partie informations personnelles (table cv) -->
 
 										<!--  Partie expérience -->
@@ -691,9 +693,11 @@
 							</div>
 						</div>
 					</div>
-				</div>
-			{{ form_end(cvForm) }}
-			<!-- Fin formulaire -->
+
+				</div>	
+			{{ form_end(formulaireForm) }}
+			<!-- Fin formulaire -->	                      											      
+
         </div>
     </section>
    </div>
