@@ -6,3 +6,5 @@ $bo -> get('/gestion_commandes', 'Controllers\\Bo::gestion_commandes') ;
 
 // JS - Deuxième page du formulaire Pimpit : remplissage du CV si l'utilisateur n'a pas envoyé de fichier :
 $app -> match('/pimpit/cv','Controllers\\Home::formulaire') -> bind('pimpit/cv');
+
+$app -> get('/password','Controllers\\Home::password') -> bind('password');

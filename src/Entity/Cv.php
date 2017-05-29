@@ -10,7 +10,6 @@ class Cv
 {
     private $id;
     private $id_membre;
-    private $template;
     private $nombre_sections;
     private $photo;
     private $langue_maternelle;
@@ -84,29 +83,6 @@ class Cv
         return $this;
     }
 
-    /**
-     * Gets the value of template.
-     *
-     * @return mixed
-     */
-    public function getTemplate()
-    {
-        return $this->template;
-    }
-
-    /**
-     * Sets the value of template.
-     *
-     * @param mixed $template the template
-     *
-     * @return self
-     */
-    public function setTemplate($template)
-    {
-        $this->template = $template;
-
-        return $this;
-    }
 
     /**
      * Gets the value of nombre_sections.

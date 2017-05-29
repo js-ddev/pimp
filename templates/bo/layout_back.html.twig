@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>BACK-OFFICE - {% block title 'Admin' %}</title>
+    <title>BACK-OFFICE Pimp My CV - {% if title is defined %} {{ title }} {% endif %}</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -45,7 +45,7 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <a class="navbar-brand" href="accueil">Backoffice Pimp My CV</a>
+                <a class="navbar-brand" href="/bo">Backoffice Pimp My CV</a>
 
             </div>
             <!-- Top Menu Items -->
@@ -66,7 +66,7 @@
                 <ul class="nav navbar-nav side-nav">
                     <li class="active">
 
-                        <a href="accueil"><i class="fa fa-fw fa-dashboard"></i> Accueil</a>
+                        <a href="/bo"><i class="fa fa-fw fa-dashboard"></i> Accueil</a>
                     </li>
                     <li>
                         <a href="gestion_membres"><i class="fa fa-fw fa-table"></i>Gestion des membres</a>

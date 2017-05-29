@@ -46,6 +46,18 @@ class MembreDAO extends DAO implements UserProviderInterface
         }
     }
 
+    public function findByUsername($username){
+        $requete = "SELECT * FROM membre WHERE username = ?";
+        $resultat = $this -> getDb() -> fetchAssoc($requete, array($username));
+
+        if($resultat){
+            return $this -> buildEntityObject($resultat);
+        }
+        // else{
+        //     throw new \Exception("Aucun membre à l'username:" . $username);
+        // }
+    }
+
 
     public function findAll(){
         $requete = "SELECT * FROM membre";

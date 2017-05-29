@@ -24,7 +24,7 @@ class CommandeDAO extends DAO/* implements StorageInterface*/
 
     // Didier - Back office commande
     /**
-    * Retourne un objet de la classe Membre.
+    * Retourne un objet de la classe Commande.
     *
     * @param integer $id_membre The user id_membre.
     *
@@ -45,6 +45,7 @@ class CommandeDAO extends DAO/* implements StorageInterface*/
     public function findAll(){
         $requete = "SELECT * FROM commande";
         $resultat = $this -> getDb() -> fetchAll($requete);
+        
         $commandes = array();
         foreach($resultat as $value){
             $id = $value['id'];

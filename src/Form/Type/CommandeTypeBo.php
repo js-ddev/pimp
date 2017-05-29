@@ -4,12 +4,12 @@
 
 namespace Form\Type;
 
-/*use Entity\Membre;*/
 use Entity\Commande;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -27,25 +27,26 @@ class CommandeTypeBo extends AbstractType
         // builder permet de construire les champs un par un :
         $builder
 
-            -> add('id', TextType::class, array(
+            -> add('id', HiddenType::class, array(
                 'attr' => array(
                     'class' => 'form-control',
                 ),
             ))
 
-            -> add('id_membre', TextType::class, array(
+            -> add('id_membre', HiddenType::class, array(
                 'attr' => array(
                     'class' => 'form-control',
                 ),
             ))
 
-            -> add('id_cv', TextType::class, array(
+            -> add('id_cv', HiddenType::class, array(
                 'attr' => array(
                     'class' => 'form-control',
                 ),
             ))
         
-            -> add('date_commande', TextType::class, array(
+            -> add('date_commande', HiddenType::class, array(
+
                 'attr' => array(
                     'class' => 'form-control',
                 ),
@@ -76,7 +77,7 @@ class CommandeTypeBo extends AbstractType
                 ),
             ))
 
-            -> add('commentaires', TextType::class, array(
+            -> add('commentaires', TextareaType::class, array(
                 'required' => true,
                 'attr' => array(
                     'placeholder' => 'Commentaires pour le traitement de la commande',
@@ -86,13 +87,6 @@ class CommandeTypeBo extends AbstractType
 
 
     }
-
-/*    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults(array(
-            'data_class' => Membre::class,
-        ));
-    }*/
 
 
 }

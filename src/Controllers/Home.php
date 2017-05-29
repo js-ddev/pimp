@@ -9,45 +9,70 @@ class Home
 {
 
     public function modeles(Application $app){
-        return $app['twig']->render('modeles.html.twig');
+        return $app['twig']->render('modeles.html.twig', array(
+            'title' => 'Modèles de CVs en téléchargement gratuit')
+        );
     }
 
     public function mentions_legales(Application $app){
-        return $app['twig']->render('mentions_legales.html.twig');
+        return $app['twig']->render('mentions_legales.html.twig', array(
+            'title' => 'Mentions légales')
+        );
     }
 
     public function contact(Application $app){
-        return $app['twig']->render('contact.html.twig');
+        return $app['twig']->render('contact.html.twig', array(
+            'title' => 'Nous contacter')
+        );
     }
 
     public function faq(Application $app){
-        return $app['twig']->render('faq.html.twig');
+        return $app['twig']->render('faq.html.twig', array(
+            'title' => 'Questions fréquemment posées')
+        );
     }
 
     public function about(Application $app){
-        return $app['twig']->render('about.html.twig');
+        return $app['twig']->render('about.html.twig', array(
+            'title' => 'A propos de nous')
+        );
     }
 
     public function template_options(Application $app){
-        return $app['twig']->render('template_options.html.twig');
+        return $app['twig']->render('template_options.html.twig', array(
+            'title' => 'Les options de votre nouveau CV')
+        );
     }
 
     public function recapitulatif_commande(Application $app){
-        return $app['twig']->render('recapitulatif_commande.html.twig');
+        return $app['twig']->render('recapitulatif_commande.html.twig', array(
+            'title' => 'Récapitulatif de votre commande')
+        );
     }
 
     public function paiement(Application $app){
-        return $app['twig']->render('paiement.html.twig');
+        return $app['twig']->render('paiement.html.twig', array(
+            'title' => 'Paiement')
+        );
     }
 
     public function validation_commande(Application $app){
-        return $app['twig']->render('validation_commande.html.twig');
+        return $app['twig']->render('validation_commande.html.twig', array(
+            'title' => 'Validation de votre commande')
+        );
     }
 
     public function index(Application $app){
-        return $app['twig']->render('index.html.twig');
+        return $app['twig']->render('index.html.twig', array(
+            'title' => 'Accueil')
+        );
     }
 
+    public function password(Application $app){
+        return $app['twig']->render('password.html.twig', array(
+            'title' => 'Mot de passe oublié')
+        );
+    }
 
 // Adrien - Route pour inscription utilisateur :
 
@@ -58,6 +83,27 @@ class Home
         $inscriptionForm -> handleRequest($request);
 
         if($inscriptionForm -> isSubmitted() && $inscriptionForm -> isValid()){
+
+// JS Vérification de la présence de l'email dans la base :
+            $email = $membre -> getUsername();
+
+            // $id = $app['dao.membre'] -> find($app['user'] -> getId());
+            $id = $app['dao.membre'] -> findByUsername($email);
+            // $id = findByUsername();
+            // $username = $id -> getUsername();
+
+            if(!is_null($id)){
+                print_r('if');
+
+                return $app['twig']->render('connexion.html.twig', array(
+                    'title' => 'Connexion',
+                    'error' => $app['security.last_error']($request),
+                    'erreur' => 'Vous avez déjà un compte, vous pouvez vous connecter !',
+                    'last_username' => $email,
+                    )
+                );
+            }
+            else{
             $salt = substr(md5(time()), 0, 23);
             $membre -> setSalt($salt);
 
@@ -72,13 +118,15 @@ class Home
 
             // Adrien - Redirection suite à l'inscription
             return $app->redirect('/');
+            }
         }
 
         $inscriptionFormView = $inscriptionForm -> createView();
 
         $params = array(
             'title' => 'Inscription',
-            'inscriptionForm' => $inscriptionFormView
+            'inscriptionForm' => $inscriptionFormView,
+            'erreur' => '',
         );
 
         return $app['twig']->render('inscription.html.twig', $params);
@@ -91,7 +139,9 @@ class Home
         $params = array(
             'error' => $app['security.last_error']($request),
             'last_username' => $app['session'] -> get('_security.last_username'),
-            'title' => 'Connexion'
+            'title' => 'Connexion',
+            'erreur' => '',
+
         );
 
         return $app['twig'] -> render('connexion.html.twig', $params);
@@ -167,8 +217,8 @@ class Home
 // Rudy - Route pour la génération du formulaire options :
 
     public function option(Request $request, Application $app){
-        $cv = new \Entity\Cv;
-        $optionForm = $app['form.factory'] -> create(\Form\Type\OptionType::class, $cv);
+        $options = new \Entity\Options;
+        $optionForm = $app['form.factory'] -> create(\Form\Type\OptionType::class, $options);
 
         $optionForm -> handleRequest($request);
 
@@ -350,7 +400,7 @@ class Home
             }
 
             $formulaireFormView = $formulaireForm -> createView();
-         
+
             $cvFormView = $cvForm -> createView();
             $experienceForm1View = $experienceForm1 -> createView();
             $experienceForm2View = $experienceForm2 -> createView();

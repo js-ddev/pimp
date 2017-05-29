@@ -62,10 +62,10 @@
                 <div class="tab-content">
                     <div class="tab-pane active" role="tabpanel" id="step2">
                         <h3>Contenu de votre CV</h3>
-                        
+
                         <div class="container">
 							<div class="row">
-								<div class="col-md-12">							
+								<div class="col-md-12">
 									<div class="panel-group">
 
 										<!-- Partie informations personnelles (table cv) -->
@@ -107,8 +107,10 @@
 
 													<div class="form-group">
 														<label>Permis de travail / séjour</label>
+
 														{{ form_errors(cvForm.permis_travail) }}
 														{{ form_widget(cvForm.permis_travail) }}														
+
 													</div>
 
 													<div class="form-group">
@@ -150,7 +152,7 @@
 
 													<div class="form-group col-md-12">
 														<input class="btn btn-md btn-dark" type="submit" value="Valider">
-													</div>												
+													</div>
 												</div>
 											</div>
 										</div>
@@ -167,6 +169,7 @@
 											</div>
 											<div id="collapse2" class="panel-collapse collapse">
 												<div class="panel-body">
+
 													<ul class="nav nav-tabs tab-style-1">
 														<li class="active"><a data-toggle="tab" href="#Experience-1">Experience 1</a></li>
 														<li><a data-toggle="tab" href="#Experience-2">Experience 2</a></li>
@@ -382,6 +385,7 @@
 															</div>
 														{{ form_end(experienceForm2) }}													
 														</div>
+
 
 														<div id="Experience-3" class="tab-pane pdd-horizon-10 fade">
 															
@@ -698,7 +702,9 @@
 														{{ form_end(experienceForm5) }}														
 														</div>							
 													</div>
+
 												</div>	
+
 											</div>
 										</div>									
 										<!-- Fin Partie expérience -->
@@ -714,7 +720,7 @@
 												</span>
 											</div>
 											<div id="collapse3" class="panel-collapse collapse">
-												<div class="panel-body">												
+												<div class="panel-body">
 													<div class="form-group">
 														<label for="diplome">Diplome*</label>
 														{{ form_errors(formationForm1.diplome) }}
@@ -755,7 +761,7 @@
 													</div>
 													<div class="form-group col-md-12">
 														<input class="btn btn-md btn-dark" type="submit" value="Valider">
-													</div>												
+													</div>
 												</div>
 											</div>
 										</div>
@@ -919,6 +925,7 @@
 														{{ form_end(certificationForm3) }}							
 														</div>
 													</div>
+
 												</div>
 											</div>
 										</div>
@@ -935,7 +942,7 @@
 												</span>
 											</div>
 											<div id="collapse5" class="panel-collapse collapse">
-												<div class="panel-body">											
+												<div class="panel-body">
 													<div class="form-group">
 														<label for="nom">Langue</label>
 														{{ form_errors(langueForm1.nom) }}
@@ -949,9 +956,10 @@
 														<div style="max-width:250px" id="slider1"></div>
 													</div>
 
+
 													<div class="form-group col-md-12">
 														<input class="btn btn-md btn-dark" type="submit" value="Valider">
-													</div>													
+													</div>
 												</div>
 											</div>
 										</div>
@@ -970,7 +978,7 @@
 												</span>
 											</div>
 											<div id="collapse6" class="panel-collapse collapse">
-												<div class="panel-body">												
+												<div class="panel-body">
 													<div class="form-group">
 														<label for="nom_benevolat">Nom de la structure*</label>
 														{{ form_errors(benevolatForm1.nom) }}
@@ -1068,7 +1076,7 @@
 
 													<div class="form-group col-md-12">
 														<input class="btn btn-md btn-dark" type="submit" value="Valider">
-													</div>												
+													</div>
 												</div>
 											</div>
 										</div>
@@ -1086,7 +1094,7 @@
 											<div id="collapse7" class="panel-collapse collapse">
 												<div class="panel-body">
 													<div class="row mrg-top-70">
-														<div class="col-md-10 col-md-offset-1">															
+														<div class="col-md-10 col-md-offset-1">
 														<div class="text-center">
 															<h3 class="mrg-btm-40">Informations diverses</h3>
 														</div>
@@ -1112,7 +1120,7 @@
 																	</div>
 																	<div class="form-group col-md-12">
 																		<input class="btn btn-md btn-dark" type="submit" value="Valider">
-																	</div>	
+																	</div>
 																</div>
 																{{ form_end(autre_infoForm1) }}
 																<!-- Fin sous-partie description -->
@@ -1130,7 +1138,7 @@
 																	<div class="form-group">
 																		<label for="niveau">Votre niveau de pratique</label>
 																		<span id="slider2value"></span><span> %</span>
-																		<div style="max-width:250px" id="slider2"></div>	
+																		<div style="max-width:250px" id="slider2"></div>
 																	</div>
 																	<div class="form-group col-md-12">
 																		<input class="btn btn-md btn-dark" type="submit" value="Valider">
@@ -1168,11 +1176,11 @@
 																	</div>
 																	<div class="form-group col-md-12">
 																		<input class="btn btn-md btn-dark" type="submit" value="Valider">
-																	</div>	
+																	</div>
 																</div>
 																{{ form_end(autre_infoForm3) }}
 																<!-- Fin Sous-partie informations complémentaires -->
-															</div>														
+															</div>
 														</div>
 													</div>
 												</div>
@@ -1191,9 +1199,11 @@
 							</div>
 						</div>
 					</div>
+
 				</div>	
 	
 			<!-- Fin formulaire -->	                      											      
+
         </div>
     </section>
    </div>

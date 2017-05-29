@@ -3,7 +3,7 @@
 {% block content %}
 	 <!-- Hero Start -->
         <section id="hero">
-            <div class="fs-hero hero-img" style="background-image:url({{ asset('images/about-bg1.jpg') }})">
+            <div class="fs-hero hero-img" style="background-image:url({{ asset('images/bg-1.jpg') }})">
                 <div class="hero-caption text-white center-left">
                     <h3 class="font-weight-light">Pimp It</h3>
                     <h1 class="ls-2">Relookez votre CV !</h1>
@@ -15,11 +15,11 @@
             </div>
         </section>
         <!-- Hero End -->
-            
+
     </div>
     <!-- wrapper -->
 
-    
+
     <!-- Modal Start -->
     <!-- use data-backdrop="static" & data-keyboard="false" to lock modal -->
     <div class="modal fade modal-center load-active" id="login" role="dialog" data-backdrop="static" data-keyboard="false">
@@ -32,10 +32,11 @@
                                 <div class="row">
                                     <div class="col-md-7 col-md-offset-5">
                                         <div class="text-content pdd-horizon-60">
-                                            <h3 class="mrg-btm-30 mrg-top-15">Connection</h3>
+                                            <h3 class="mrg-btm-30 mrg-top-15">Connexion</h3>
                                             <form action="{{ path('login_check') }}" method="post">
                                                 <div class="form-wrapper">
                                                     <label><b>Email</b></label>
+                                                    <span style="color:red">{{ erreur }}</span>
                                                     <input type="text" class="form-control" placeholder="Email" name="_username" value="{{ last_username }}">
                                                 </div>
                                                 <div class="form-wrapper">
@@ -43,24 +44,27 @@
                                                     <input type="password" class="form-control" placeholder="Mot de passe" name="_password">
                                                 </div>
                                                 <div>
-                                                <a href="#"><i class="text-gray">Mot de passe oublié ?</i></a>
+                                                <a href="/password"><i class="text-gray">Mot de passe oublié ?</i></a>
                                                 </div>
                                                 <input class="btn btn-md btn-theme mrg-vertical-20" type="submit" value="Connexion">
                                             </form>
                                         </div><!-- /content -->
                                     </div>
                                 </div>
-                            </div>  
+                            </div>
                             <div class="image-container col-md-5 hidden-xs hidden-sm">
-                                <div class="background-holder theme-overlay has-content" style="background-image:url({{ asset('images/about-bg1.jpg') }})">
+                                <div class="background-holder theme-overlay has-content" style="background-image:url({{ asset('images/bg-1.jpg') }})">
                                     <div class="content pdd-horizon-50">
                                         <h3 class="mrg-btm-20 text-white">Connectez-vous maintenant !</h3>
-                                        <p class="text-white font-size-14">Si vous n'avez pas encore de compte sur Pimp My CV, merci de vous inscrire !</p>
+                                        <p class="text-white font-size-14">Si vous n'avez pas encore de compte sur Pimp My CV, il suffit de vous inscrire !</p>
                                         <a href="{{ path('inscription') }}" class="btn btn-sm btn-white-inverse mrg-vertical-20">S'inscrire</a>
                                     </div><!-- content -->
                                 </div><!-- /background-holder -->
                             </div><!-- /image-container -->
                         </div>
+                    </div>
+                    <div class="modal-close">
+                        <a href="/"><button type="button" class="btn icon-btn-md icon-btn-round btn-dark lh-0"><i class="ei ei-close"></i></button></a>
                     </div>
                 </div>
             </div>
