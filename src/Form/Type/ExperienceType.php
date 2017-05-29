@@ -29,7 +29,7 @@ class ExperienceType extends AbstractType
         ->add('type', HiddenType::class, array(
                 'attr'=> array(
                     'editable' => false
-                )
+                ),
             ))
 
         -> add('nom', TextType::class, array(
@@ -51,7 +51,7 @@ class ExperienceType extends AbstractType
             ),
             'required' => false,
         ))
-
+        /*
         -> add('description', TextType::class, array(
             'constraints' => array(
                 new Assert\Length(array(
@@ -73,7 +73,7 @@ class ExperienceType extends AbstractType
             ),
             'required' => false,
         ))
-
+        */
         -> add('effectif', ChoiceType::class, array(
             'choices' => array(
                 'Entre 1 et 9 personnes' => '1',
