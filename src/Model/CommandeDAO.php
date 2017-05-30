@@ -122,6 +122,55 @@ class CommandeDAO extends DAO/* implements StorageInterface*/
         return $commande;
     }
 
+
+
+// Rudy - fonction pour récapituler la commande
+
+  public function recap($id_commande){
+        $requete = "SELECT * FROM commande WHERE id = ?";
+        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_commande));
+
+        if($resultat){
+            return $this -> buildEntityObject($resultat);
+        }
+        else{
+            throw new \Exception("Aucune commande à l'id:" . $id_commande);
+        }
+    }
+
+    public function recapAll(){
+        
+    $requete = 
+
+    "SELECT c.date_commande, c.statut_commande, c.prix, cv.email_cv, cv.couleur, cv.puce, cv.fond, cv.indicateur_performance, cv.activite
+    FROM commande c, cv cv
+    where c.id_membre = cv.id_membre";
+
+
+        $resultat = $this -> getDb() -> fetchAll($requete);
+        
+        $commandes = array();
+        foreach($resultat as $value){
+            $id = $value['id'];
+            $commandes[$id] = $this -> BuildEntityObject($value);
+        }
+        return $commandes;
+    }
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
     //
     // /**
     //  * devra retourner une nouvelle entité de paiement : une instance de

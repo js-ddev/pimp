@@ -45,6 +45,8 @@ class Home
     }
 
     public function recapitulatif_commande(Application $app){
+        $commandes = $app['dao.commande'] -> findAll();
+        print_r($commandes);
         return $app['twig']->render('recapitulatif_commande.html.twig', array(
             'title' => 'Récapitulatif de votre commande')
         );
@@ -213,7 +215,6 @@ class Home
         }
     }
 
-
 // Rudy - Route pour la génération du formulaire options :
 
     public function option(Request $request, Application $app){
@@ -238,6 +239,23 @@ class Home
         return $app['twig']->render('template_options.html.twig', $params);
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 // Adrien - Controller pour générer le formulaire de création du CV :
 
