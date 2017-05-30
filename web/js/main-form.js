@@ -36,4 +36,74 @@ $( document ).ready(function() {
     });
 
 
+     var slider3 = document.getElementById('slider3');
+
+    noUiSlider.create(slider3, {
+        start: [ 0 ],
+        step: 10,
+        range: {
+            'min': [  0 ],
+            'max': [ 100 ]
+        }
+    });
+
+    var stepSlider3ValueElement = document.getElementById('slider3value');
+
+    slider3.noUiSlider.on('update', function( values, handle ) {
+        stepSlider3ValueElement.innerHTML = values[handle];
+    });
+
+
+     var slider4 = document.getElementById('slider4');
+
+    noUiSlider.create(slider4, {
+        start: [ 0 ],
+        step: 10,
+        range: {
+            'min': [  0 ],
+            'max': [ 100 ]
+        }
+    });
+
+    var stepSlider4ValueElement = document.getElementById('slider4value');
+
+    slider4.noUiSlider.on('update', function( values, handle ) {
+        stepSlider4ValueElement.innerHTML = values[handle];
+    });
+
+     var slider5 = document.getElementById('slider5');
+
+    noUiSlider.create(slider5, {
+        start: [ 0 ],
+        step: 10,
+        range: {
+            'min': [  0 ],
+            'max': [ 100 ]
+        }
+    });
+
+    var stepSlider5ValueElement = document.getElementById('slider5value');
+
+    slider5.noUiSlider.on('update', function( values, handle ) {
+        stepSlider5ValueElement.innerHTML = values[handle];
+    });
+
+     var slider6 = document.getElementById('slider6');
+
+    noUiSlider.create(slider6, {
+        start: [ 0 ],
+        step: 10,
+        range: {
+            'min': [  0 ],
+            'max': [ 100 ]
+        }
+    });
+
+    var stepSlider6ValueElement = document.getElementById('slider6value');
+
+    slider6.noUiSlider.on('update', function( values, handle ) {
+        stepSlider6ValueElement.innerHTML = values[handle];
+    });
+
+
 });
