@@ -102,12 +102,121 @@
                                         <th>Site perso</th>
                                         <th>URL autre</th>
 
+                                        <!-- Didier - Partie Expérience entreprise -->
+                                        <th>Nom de l'entreprise</th>
+                                        <th>Secteur de l'entreprise<!-- Secteur : menu déroulant commun à expérience entreprise et expérience bénévolat --></th>
+                                        <th>Effectif</th>
+                                        <!-- <th>Description</th> -->
+                                        <!-- <th>CA</th> -->
+                                        <th>Site web de l'entreprise</th>
+                                        <th>Intitulé du poste</th>
+                                        <th>Localisation du poste</th>
+                                        <th>Rôle dans l'entreprise</th>
+                                        <th>Date de début</th>
+                                        <th>Date de fin</th>
+                                        <th>Responsabilité 1</th>
+                                        <th>Réalisation 1</th>
+                                        <th>Responsabilité 2</th>
+                                        <th>Réalisation 2</th>
+                                        <th>Responsabilité 3</th>
+                                        <th>Réalisation 3</th>
+                                        <th>Responsabilité 4</th>
+                                        <th>Réalisation 4</th>
+                                        <th>Responsabilité 5</th>
+                                        <th>Réalisation 5</th>
+
+                                        <!-- Didier - Partie Expérience bénévolat -->
+                                        <th>Nom de la structure</th>
+
+                                        <!-- Didier - Partie Expérience bénévolat -->
+                                        <th>Nom de la structure</th>
+                                        <th>Secteur bénévolat<!-- Secteur : menu déroulant commun à expérience entreprise et expérience bénévolat --></th>
+                                        <th>Effectif</th>
+                                        <!-- <th>Description</th> -->
+                                        <!-- <th>CA</th> -->
+                                        <th>Site web</th>
+                                        <th>Intitulé du poste</th>
+                                        <th>Localisation du poste</th>
+                                        <th>Rôle dans la structure</th>
+                                        <th>Date de début</th>
+                                        <th>Date de fin</th>
+                                        <th>Responsabilité 1</th>
+                                        <th>Réalisation 1</th>
+                                        <th>Responsabilité 2</th>
+                                        <th>Réalisation 2</th>
+                                        <th>Responsabilité 3</th>
+                                        <th>Réalisation 3</th>
+                                        <th>Responsabilité 4</th>
+                                        <th>Réalisation 4</th>
+                                        <th>Responsabilité 5</th>
+                                        <th>Réalisation 5</th>
+
+                                        <!-- Didier - Partie Formation/formation -->
+                                        <th>Formation</th><!-- type = formation -->
+                                        <th>Diplôme</th>
+                                        <th>Etablissement</th>
+                                        <th>Spécialité</th>
+                                        <th>Lieu</th>
+                                        <th>Date d'obtention</th>
+                                        <th>Site web</th>
+
+                                        <!-- Didier - Partie Formation/certification -->
+                                        <th>Certification</th><!-- type = certification -->
+                                        <th>Diplôme</th>
+                                        <th>Etablissement</th>
+                                        <th>Spécialité</th>
+                                        <th>Lieu</th>
+                                        <th>Date d'obtention</th>
+                                        <th>Site web</th>
+
+                                        <!-- Didier - Partie Aptitudes (langue) -->
+                                        <th>Langue</th>
+                                        <th>Nom</th>
+                                        <th>Niveau</th>
+                                        <th>Niveau TOEIC</th>
+                                        <th>Niveau TOEFL</th>
+                                        <th>Niveau IELTS</th>
+
+                                        <!-- Didier - Partie Aptitudes (competence) -->
+                                        <th>Competence</th>
+                                        <th>Nom</th>
+                                        <th>Niveau</th>
+                                        <th>Niveau TOEIC</th>
+                                        <th>Niveau TOEFL</th>
+                                        <th>Niveau IELTS</th>
+
+                                        <!-- Didier - Partie Aptitudes (centre_interet) -->
+                                        <th>Centre d'intérêt</th>
+                                        <th>Nom</th>
+                                        <th>Niveau</th>
+                                        <th>Niveau TOEIC</th>
+                                        <th>Niveau TOEFL</th>
+                                        <th>Niveau IELTS</th>
+
+                                        <!-- Didier - Partie Autre info (info) -->
+                                        <th>Info</th>
+                                        <th>Description personnelle</th>
+
+                                        <!-- Didier - Partie Autre info (voyage) -->
+                                        <th>Voyage</th>
+                                        <th>Description voyages</th>
+
+                                        <!-- Didier - Partie Autre info (divers) -->
+                                        <th>Divers</th>
+                                        <th>Informations complémentaires</th>
+
                                         <th colspan="2">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
                                     <tr>
+
+                                    <!-- En hidden :
+                                            - table expérience : id, id_cv
+                                            - table formation : id, id_cv
+                                            - table aptitude : id, id_cv
+                                     -->
 
                                         <!-- Didier - Partie ID -->
                                         <td>{{ cv.id }}</td>
@@ -155,6 +264,102 @@
                                         <td>{{ cv.skype }}</td>
                                         <td>{{ cv.site_perso }}</td>
                                         <td>{{ cv.url_autre }}</td>
+
+                                        <!-- Didier - Partie Expérience entreprise -->
+                                        <td>{{ experience.type }}</td><!-- type = entreprise -->
+                                        <td>{{ experience.nom }}</td>
+                                        <td>{{ experience.secteur }}</td>
+                                        <td>{{ experience.effectif }}</td>
+                                        <!-- <td>experience.description</td> NON implémenté-->
+                                        <!-- <td>experience.ca</td> NON implémenté-->
+                                        <td>{{ experience.url_experience }}</td>
+                                        <td>{{ experience.intitule }}</td>
+                                        <td>{{ experience.lieu }}</td>
+                                        <td>{{ experience.role }}</td>
+                                        <td>{{ experience.date_debut }}</td>
+                                        <td>{{ experience.date_fin }}</td>
+                                        <td>{{ experience.responsabilite1 }}</td>
+                                        <td>{{ experience.realisation1 }}</td>
+                                        <td>{{ experience.responsabilite2 }}</td>
+                                        <td>{{ experience.realisation2 }}</td>
+                                        <td>{{ experience.responsabilite3 }}</td>
+                                        <td>{{ experience.realisation3 }}</td>
+                                        <td>{{ experience.responsabilite4 }}</td>
+                                        <td>{{ experience.realisation4 }}</td>
+                                        <td>{{ experience.responsabilite5 }}</td>
+                                        <td>{{ experience.realisation5 }}</td>
+
+                                        <!-- Didier - Partie Expérience bénévolat -->
+                                        <td>{{ experience.type }}</td><!-- type = benevolat -->
+                                        <td>{{ experience.nom }}</td>
+                                        <td>{{ experience.secteur }}</td>
+                                        <td>{{ experience.effectif }}</td>
+                                        <!-- <td>experience.description</td> NON implémenté-->
+                                        <!-- <td>experience.ca</td> NON implémenté car pas pertinent pour ce genre de structure -->
+                                        <td>{{ experience.url_experience }}</td>
+                                        <td>{{ experience.intitule }}</td>
+                                        <td>{{ experience.lieu }}</td>
+                                        <td>{{ experience.role }}</td>
+                                        <td>{{ experience.date_debut }}</td>
+                                        <td>{{ experience.date_fin }}</td>
+                                        <td>{{ experience.responsabilite1 }}</td>
+                                        <td>{{ experience.realisation1 }}</td>
+                                        <td>{{ experience.responsabilite2 }}</td>
+                                        <td>{{ experience.realisation2 }}</td>
+                                        <td>{{ experience.responsabilite3 }}</td>
+                                        <td>{{ experience.realisation3 }}</td>
+                                        <td>{{ experience.responsabilite4 }}</td>
+                                        <td>{{ experience.realisation4 }}</td>
+                                        <td>{{ experience.responsabilite5 }}</td>
+                                        <td>{{ experience.realisation5 }}</td>
+
+                                        <!-- Didier - Partie Formation/formation -->
+                                        <td>{{ formation.type }}</td><!-- type = formation -->
+                                        <td>{{ formation.diplome }}</td>
+                                        <td>{{ formation.etablissement }}</td>
+                                        <td>{{ formation.specialite }}</td>
+                                        <td>{{ formation.lieu }}</td>
+                                        <td>{{ formation.date_obtention }}</td>
+                                        <td>{{ formation.url_formatio }}</td>
+
+                                        <!-- Didier - Partie Formation/certification -->
+                                        <td>{{ formation.type }}</td><!-- type = certification -->
+                                        <td>{{ formation.diplome }}</td>
+                                        <td>{{ formation.etablissement }}</td>
+                                        <td>{{ formation.specialite }}</td>
+                                        <td>{{ formation.lieu }}</td>
+                                        <td>{{ formation.date_obtention }}</td>
+                                        <td>{{ formation.url_formatio }}</td>
+
+                                        <!-- Didier - Partie Aptitudes (langue) -->
+                                        <td>{{ aptitude.type }}</td><!-- type = langue -->
+                                        <td>{{ aptitude.nom }}</td>
+                                        <td>{{ aptitude.niveau }}</td>
+                                        <td>{{ aptitude.TOEIC }}</td>
+                                        <td>{{ aptitude.TOEFL }}</td>
+                                        <td>{{ aptitude.IELTS }}</td>
+
+                                        <!-- Didier - Partie Aptitudes (competence) -->
+                                        <td>{{ aptitude.type }}</td><!-- type = competence -->
+                                        <td>{{ aptitude.nom }}</td>
+                                        <td>{{ aptitude.niveau }}</td>
+
+                                        <!-- Didier - Partie Aptitudes (centre_interet) -->
+                                        <td>{{ aptitude.type }}</td><!-- type = centre_interet -->
+                                        <td>{{ aptitude.nom }}</td>
+                                        <td>{{ aptitude.niveau }}</td>
+
+                                        <!-- Didier - Partie Autre info (info) -->
+                                        <td>{{ autre_info.type }}</td><!-- type = info -->
+                                        <td>{{ autre_info.description }}</td>
+
+                                        <!-- Didier - Partie Autre info (voyage) -->
+                                        <td>{{ autre_info.type }}</td><!-- type = voyage -->
+                                        <td>{{ autre_info.description }}</td>
+
+                                        <!-- Didier - Partie Autre info (divers) -->
+                                        <td>{{ autre_info.type }}</td><!-- type = divers -->
+                                        <td>{{ autre_info.description }}</td>
 
 
                                         <!-- Didier - Bouton modifier l'identité, les infos perso... -->
