@@ -343,7 +343,7 @@ class Home
     }
 */
 
-    // Adrien - Controller pour générer un Formulaire parent de la collection (NON FONCTIONNEL !)
+// Adrien - Controller pour générer un Formulaire parent de la collection
     public function formulaire(Request $request, Application $app){
 
         // JS - Si l'utilisateur est connecté :
@@ -354,76 +354,134 @@ class Home
 
 
             // JS - Si l'utilisateur a déjà un CV de créé :
-            if(!is_null($app['dao.cv'] -> find($app['user'] -> getId()))){
-                $cv = $app['dao.cv'] -> find($membre -> getId());
-                // print_r($cv);
+           if(!is_null($app['dao.cv'] -> find($app['user'] -> getId()))){
+               $cv = $app['dao.cv'] -> find($membre -> getId());
+               // print_r($cv);
 
-                // JS - On vérifie la présence d'une expérience avant d'en gérer une autre
-                if($app['dao.experience'] -> findEntreprise1($cv -> getId()) == FALSE){
 
-                    $experience1 = new \Entity\Experience;
-                    $experience2 = new \Entity\Experience;
-                }
-                else{
+               // JS - On vérifie la présence d'une expérience avant d'en gérer une autre
+               if($app['dao.experience'] -> findEntreprise1($cv -> getId()) == FALSE){
 
-                    print_r('passage if, entreprise1 trouvée');
+                   $experience1 = new \Entity\Experience;
+                   $experience2 = new \Entity\Experience;
+                   $experience3 = new \Entity\Experience;
+                   $experience4 = new \Entity\Experience;
+                   $experience5 = new \Entity\Experience;
 
-                    $experience1 = $app['dao.experience'] -> findEntreprise1($cv -> getId());
-
-                    if($app['dao.experience'] -> findEntreprise2($cv -> getId()) == FALSE){
-
-                        $experience2 = new \Entity\Experience;
+                   if ($request->isMethod('POST')) {
+                        $experienceForm1 = $app['form.factory'] -> create(\Form\Type\ExperienceType::class, $experience1);
+                        $experienceForm1->submit($request->request->get($experienceForm1->getName()));
+                       if ($experienceForm1->isSubmitted() && $experienceForm1->isValid()) {
+                           print_r('insert1');
+                           $type = 'entreprise1';
+                           $app['dao.experience'] -> insertExperience($experience1, $cv, $type);
+                       }
                     }
-                    else{
+                   else{
 
-                        print_r('passage if, entreprise2 trouvée');
+                       $experienceForm2 = $app['form.factory'] -> create(\Form\Type\ExperienceType::class, $experience2);
+                   }
+               }
+               else{
 
-                        $experience2 = $app['dao.experience'] -> findEntreprise2($cv -> getId());
+                   print_r('passage if, entreprise1 trouvée');
 
-                        $experienceForm2->handleRequest($request);
+                   $experience1 = $app['dao.experience'] -> findEntreprise1($cv -> getId());
 
-                        if($app['dao.experience'] -> findEntreprise3($cv -> getId()) == FALSE){
 
-                            $experience3 = new \Entity\Experience;
+                   if($app['dao.experience'] -> findEntreprise2($cv -> getId()) == FALSE){
+                       $experience2 = new \Entity\Experience;
+
+                       if ($request->isMethod('POST')) {
+                            $experienceForm2 = $app['form.factory'] -> create(\Form\Type\ExperienceType::class, $experience2);
+                            $experienceForm2->submit($request->request->get($experienceForm2->getName()));
+                           if ($experienceForm2->isSubmitted() && $experienceForm2->isValid()) {
+                               print_r('insert2');
+                               $type = 'entreprise2';
+                               $app['dao.experience'] -> insertExperience($experience2, $cv, $type);
+                           }
                         }
-                        else{
+                       else{
 
-                            print_r('passage if, entreprise3 trouvée');
+                           $experienceForm2 = $app['form.factory'] -> create(\Form\Type\ExperienceType::class, $experience2);
+                       }
 
-                            $experience3 = $app['dao.experience'] -> findEntreprise3($cv -> getId());
-                            $experienceForm3->handleRequest($request);
 
-                            if($app['dao.experience'] -> findEntreprise4($cv -> getId()) == FALSE){
 
-                                $experience4 = new \Entity\Experience;
-                            }
-                            else{
+                   }
+                   else{
 
-                                print_r('passage if, entreprise4 trouvée');
+                       print_r('passage if, entreprise2 trouvée');
 
-                                $experience4 = $app['dao.experience'] -> findEntreprise4($cv -> getId());
-                                $experienceForm4->handleRequest($request);
+                       $experience2 = $app['dao.experience'] -> findEntreprise2($cv -> getId());
+                       $experienceForm2 = $app['form.factory'] -> create(\Form\Type\ExperienceType::class, $experience2);
 
-                                if($app['dao.experience'] -> findEntreprise5($cv -> getId()) == FALSE){
-
-                                    $experience5 = new \Entity\Experience;
-                                }
-                                else{
-
-                                    print_r('passage if, entreprise5 trouvée');
-
-                                    $experience5 = $app['dao.experience'] -> findEntreprise5($cv -> getId());
-                                    $experienceForm5->handleRequest($request);
-                                }
-
-                            }
-
+                       if ($request->isMethod('POST')) {
+                            $experienceForm2->submit($request->request->get($experienceForm2->getName()));
+                           if ($experienceForm2->isSubmitted() && $experienceForm2->isValid()) {
+                               print_r('update2');
+                               $type = 'entreprise2';
+                               $app['dao.experience'] -> updateExperience($experience2, $cv, $type);
+                           }
                         }
 
-                    }
 
-                }
+                       if(!$app['dao.experience'] -> findEntreprise3($cv -> getId()) == FALSE){
 
+                           $experience3 = new \Entity\Experience;
+                       }
+                       else{
+
+                           print_r('passage if, entreprise3 trouvée');
+
+                           $experience3 = $app['dao.experience'] -> findEntreprise3($cv -> getId());
+                           $experienceForm3 = $app['form.factory'] -> create(\Form\Type\ExperienceType::class, $experience3);
+
+                           $experienceForm3->handleRequest($request);
+                           if ($experienceForm3->isSubmitted() && $experienceForm3->isValid()) {
+                               $app['dao.experience'] -> saveExperience($experience3, $cv);
+                           }
+
+                           if($app['dao.experience'] -> findEntreprise4($cv -> getId()) == FALSE){
+
+                               $experience4 = new \Entity\Experience;
+                           }
+                           else{
+
+                               print_r('passage if, entreprise4 trouvée');
+
+                               $experience4 = $app['dao.experience'] -> findEntreprise4($cv -> getId());
+                               $experienceForm4 = $app['form.factory'] -> create(\Form\Type\ExperienceType::class, $experience4);
+                               $experienceForm4->handleRequest($request);
+                               if ($experienceForm4->isSubmitted() && $experienceForm4->isValid()) {
+                                   $app['dao.experience'] -> saveExperience($experience4, $cv);
+                               }
+
+
+                               if($app['dao.experience'] -> findEntreprise5($cv -> getId()) == FALSE){
+
+                                   $experience5 = new \Entity\Experience;
+                               }
+                               else{
+
+                                   print_r('passage if, entreprise5 trouvée');
+
+                                   $experience5 = $app['dao.experience'] -> findEntreprise5($cv -> getId());
+                                   $experienceForm5 = $app['form.factory'] -> create(\Form\Type\ExperienceType::class, $experience5);
+                                   $experienceForm5->handleRequest($request);
+                                   if ($experienceForm5->isSubmitted() && $experienceForm5->isValid()) {
+                                       $app['dao.experience'] -> saveExperience($experience5, $cv);
+                                   }
+
+                               }
+
+                           }
+
+                       }
+
+                   }
+
+               }
 
                 $experience = new \Entity\Experience;
 
@@ -440,14 +498,27 @@ class Home
                 $cv = new \Entity\Cv;
             }
 
-
             $formulaireForm = $app['form.factory'] -> create(\Form\Type\FormulaireType::class, $formulaire);
             $cvForm = $app['form.factory'] -> create(\Form\Type\CvType::class, $cv);
+
             $experienceForm1 = $app['form.factory'] -> create(\Form\Type\ExperienceType::class, $experience1);
             $experienceForm2 = $app['form.factory'] -> create(\Form\Type\ExperienceType::class, $experience2);
-            $experienceForm3 = $app['form.factory'] -> create(\Form\Type\ExperienceType::class, $experience2);
-            $experienceForm4 = $app['form.factory'] -> create(\Form\Type\ExperienceType::class, $experience2);
-            $experienceForm5 = $app['form.factory'] -> create(\Form\Type\ExperienceType::class, $experience2);
+            $experienceForm3 = $app['form.factory'] -> create(\Form\Type\ExperienceType::class, $experience3);
+            $experienceForm4 = $app['form.factory'] -> create(\Form\Type\ExperienceType::class, $experience4);
+            $experienceForm5 = $app['form.factory'] -> create(\Form\Type\ExperienceType::class, $experience5);
+
+            if(!$app['dao.experience'] -> findEntreprise1($cv -> getId()) == FALSE){
+                $experienceForm2 = $app['form.factory'] -> create(\Form\Type\ExperienceType::class, $experience2);
+            }
+            if(!$app['dao.experience'] -> findEntreprise2($cv -> getId()) == FALSE){
+                $experienceForm3 = $app['form.factory'] -> create(\Form\Type\ExperienceType::class, $experience3);
+            }
+            if(!$app['dao.experience'] -> findEntreprise3($cv -> getId()) == FALSE){
+                $experienceForm4 = $app['form.factory'] -> create(\Form\Type\ExperienceType::class, $experience4);
+            }
+            if(!$app['dao.experience'] -> findEntreprise4($cv -> getId()) == FALSE){
+                $experienceForm5 = $app['form.factory'] -> create(\Form\Type\ExperienceType::class, $experience5);
+            }
             $benevolatForm1 = $app['form.factory'] -> create(\Form\Type\ExperienceType::class, $experience);
             $benevolatForm2 = $app['form.factory'] -> create(\Form\Type\ExperienceType::class, $experience);
             $benevolatForm3 = $app['form.factory'] -> create(\Form\Type\ExperienceType::class, $experience);
@@ -473,26 +544,37 @@ class Home
 
             $formulaireForm->handleRequest($request);
             $cvForm->handleRequest($request);
-            $experienceForm1->handleRequest($request);
+            // $experienceForm1 -> handleRequest($request);
+            // $experienceForm2 -> handleRequest($request);
+            // $experienceForm3 -> handleRequest($request);
+            // $experienceForm4 -> handleRequest($request);
+            // $experienceForm5 -> handleRequest($request);
 
+//==========================================
 
             // JS - Prise en compte des entreprises précédentes avant de gérer les suivantes :
-            if(is_null($experience1)){
-                $experienceForm2 -> handleRequest($request);
 
-                if (is_null($experience2)){
-                    $experienceForm3 -> handleRequest($request);
 
-                    if (is_null($experience3)){
-                        $experienceForm4 -> handleRequest($request);
+            // if ($request->isMethod('POST')) {
+            //     $experienceForm1->submit($request->request->get($experienceForm1->getName()));
 
-                        if (is_null($experience4)){
-                            $experienceForm5 -> handleRequest($request);
+                // if(!$app['dao.experience'] -> findEntreprise1($cv -> getId()) == FALSE){
+                //         $experienceForm2->submit($request->request->get($experienceForm2->getName()));
+                // }
+                //
+                // if (!$app['dao.experience'] -> findEntreprise2($cv -> getId()) == FALSE){
+                //             $experienceForm3->submit($request->request->get($experienceForm3->getName()));
+                // }
+                //
+                // if (!$app['dao.experience'] -> findEntreprise3($cv -> getId()) == FALSE){
+                //                 $experienceForm4->submit($request->request->get($experienceForm4->getName()));
+                // }
+                //
+                // if (!$app['dao.experience'] -> findEntreprise4($cv -> getId()) == FALSE){
+                //     $experienceForm5->submit($request->request->get($experienceForm5->getName()));
+                // }
+            // }
 
-                        }
-                    }
-                }
-            }
 
 
             if ($cvForm->isSubmitted() && $cvForm->isValid()) {
@@ -503,35 +585,49 @@ class Home
                 // // die();
             }
 
-            if ($experienceForm1->isSubmitted() && $experienceForm1->isValid()) {
-                // $cv1 = $app['dao.experience'] -> findEntreprise1($cv -> getId());
-                $type = 'experience1';
-                // $typedb = $app['dao.experience'] -> findEntreprise1($cv -> getId() -> getType());
-                var_dump('$typedb');
-                // var_dump($typedb);
-                $app['dao.experience'] -> saveExperience($experience1, $cv, $type);
-                // $app['dao.experience'] -> saveExperience($experience1, $cv, $type, $typedb);
-            }
 
-            if ($experienceForm2->isSubmitted() && $experienceForm2->isValid()) {
-                $type = 'experience2';
-                $typedb = $app['dao.experience'] -> findEntreprise2($cv -> getId() -> getType());
-                var_dump('$typedb');
-                var_dump($typedb);
-                $app['dao.experience'] -> saveExperience($experience2, $cv, $type);
-            }
+//==================================
+
+
+            // if ($experienceForm2->isSubmitted() && $experienceForm2->isValid()) {
+            //     $type = 'experience2';
+            //     if($app['dao.experience'] -> findEntreprise2($cv -> getId()) == FALSE){
+            //         $app['dao.experience'] -> insertExperience($experience2, $cv, $type);
+            //     }
+            //     else{
+            //         $app['dao.experience'] -> updateExperience($experience2, $cv, $type);
+            //     }
+            // }
+
             if ($experienceForm3->isSubmitted() && $experienceForm3->isValid()) {
                 $type = 'experience3';
-                $app['dao.experience'] -> saveExperience($experience3, $cv, $type);
+                if($app['dao.experience'] -> findEntreprise3($cv -> getId()) == FALSE){
+                    $app['dao.experience'] -> insertExperience($experience3, $cv, $type);
+                }
+                else{
+                    $app['dao.experience'] -> saveExperience($experience3, $cv, $type);
+                }
             }
             if ($experienceForm4->isSubmitted() && $experienceForm4->isValid()) {
                 $type = 'experience4';
-                $app['dao.experience'] -> saveExperience($experience4, $cv, $type);
+                if($app['dao.experience'] -> findEntreprise4($cv -> getId()) == FALSE){
+                    $app['dao.experience'] -> insertExperience($experience4, $cv, $type);
+                }
+                else{
+                    $app['dao.experience'] -> saveExperience($experience4, $cv, $type);
+                }
             }
             if ($experienceForm5->isSubmitted() && $experienceForm5->isValid()) {
                 $type = 'experience5';
-                $app['dao.experience'] -> saveExperience($experience5, $cv, $type);
+                if($app['dao.experience'] -> findEntreprise5($cv -> getId()) == FALSE){
+                    $app['dao.experience'] -> insertExperience($experience5, $cv, $type);
+                }
+                else{
+                    $app['dao.experience'] -> saveExperience($experience5, $cv, $type);
+                }
             }
+
+
 
             if ($formationForm1->isSubmitted() && $formationForm->isValid()) {
                 $app['dao.formation'] -> saveFormation($formation, $cv);
