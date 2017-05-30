@@ -1,124 +1,149 @@
 {% extends "layout.html.twig" %}
 
 {% block content %}
-	<!-- Page Tittle Start -->
-        <section class="page-tittle page-tittle-lg parallax-bg dark-overlay">
-            <img class="parallax-img no-mobile-parallax" src="{{ asset('images/bg-2.jpg') }}" alt="" data-parallax='{"y": 150}'>
-            <div class="container">
-                <div class="page-tittle-head">
-                    <h2>Options</h2>
-                    <p>Choisissez vos options</p>
-                </div>
+<!-- Page Tittle Start -->
+<section class="page-tittle page-tittle-lg parallax-bg dark-overlay">
+    <img class="parallax-img no-mobile-parallax" src="{{ asset('images/bg-2.jpg') }}" alt="" data-parallax='{"y": 150}'>
+    <div class="container">
+        <div class="page-tittle-head">
+            <h2>Options</h2>
+            <p>Choisissez vos options</p>
+        </div>
+    </div>
+</section>
+<!-- Page Tittle End -->
+
+<!-- Form wizard -->
+<div class="container">
+    <div class="row">
+        <section>
+        <div class="wizard">
+            <div class="wizard-inner">
+                <div class="connecting-line"></div>
+                <ul class="nav nav-tabs" role="tablist">
+
+                    <li role="presentation" class="disabled">
+                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Informations générales">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-folder-open"></i>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li role="presentation" class="disabled">
+                        <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Contenu de votre CV">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-pencil"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li role="presentation" class="active">
+                        <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Template et options">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-picture"></i>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li role="presentation" class="disabled">
+                        <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Récapitulatif">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-ok"></i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
             </div>
-        </section>
-        <!-- Page Tittle End -->
 
             <section class="section-5 bg-gray">
-            
+
             <div class="container">
                 <div class="row">
-                <form id="formulaire" action="" method="post">
-                    
+                    <div class="container">
+                    <h2>Choix de votre template et de vos options graphiques</h2>
+                    </div>
                     <div class="col-lg-2 col-md-6">
-                     {{ form_start(optionForm) }}
+                    {{ form_start(optionForm) }}
                         <div class="pricing-1" style="padding:15px; margin-top: 15px;">
                             <div class="pricing-status">
                                 <i class="glyphicon glyphicon-heart-empty" style="font-size:2em;"></i>
                                 <h3 class="plan"><b>Choix du modèle</b></h3>
-                                    {{ form_errors(optionForm.template) }}
-                                    {{ form_widget(optionForm.template) }}
+                                {{ form_errors(optionForm.template) }}
+                                {{ form_widget(optionForm.template) }}
                             </div>
                         </div>
                     </div>
                
-
-
                     <div class="col-lg-2 col-md-6">
                         <div class="pricing-1 couleur" style="padding:15px; margin-top: 15px;">
                             <div class="pricing-status">
                                 <i class="glyphicon glyphicon-tint" style="font-size:2em;"></i>
-                                <h3 class="plan"><b>Couleur du modèle</b></h3>
-                             
-                                        {{ form_errors(optionForm.couleur) }}
-                                        {{ form_widget(optionForm.couleur) }}
+                                <h3 class="plan"><b>Couleur du modèle</b></h3> 
+                                {{ form_errors(optionForm.couleur) }}
+                                {{ form_widget(optionForm.couleur) }}
                             </div>
                         </div>
                     </div>
-
 
                      <div class="col-lg-2 col-md-6">
                         <div class="pricing-1" style="padding:15px; margin-top: 15px;">
                             <div class="pricing-status">
                                 <i class="glyphicon glyphicon-option-vertical" style="font-size:2em;"></i>
                                 <h3 class="plan"><b>Puce du modèle</b></h3>
-                                        {{ form_errors(optionForm.puce) }}
-                                        {{ form_widget(optionForm.puce) }}
-
+                                {{ form_errors(optionForm.puce) }}
+                                {{ form_widget(optionForm.puce) }}
                             </div>
                         </div>
                     </div>
               
-
                     <div class="col-lg-2 col-md-6">
                         <div class="pricing-1" style="padding:15px; margin-top: 15px;">
                             <div class="pricing-status">
                                 <i class="glyphicon glyphicon-adjust" style="font-size:2em;"></i>
                                 <h3 class="plan"><b>Arrière plan du modèle</b></h3>
-                                        {{ form_errors(optionForm.fond) }}
-                                        {{ form_widget(optionForm.fond) }}
+                                {{ form_errors(optionForm.fond) }}
+                                {{ form_widget(optionForm.fond) }}
                             </div>
                         </div>
                     </div>
             
-                    
                     <div class="col-lg-2 col-md-6">
                         <div class="pricing-1" style="padding:15px; margin-top: 15px;">
                             <div class="pricing-status">
                                 <i class="glyphicon glyphicon-signal" style="font-size:2em;"></i>
                                 <h3 class="plan"><b>Indicateurs performance</b></h3>
-                                        {{ form_errors(optionForm.indicateur_performance) }}
-                                        {{ form_widget(optionForm.indicateur_performance) }}
-
+                                {{ form_errors(optionForm.indicateur_performance) }}
+                                {{ form_widget(optionForm.indicateur_performance) }}
                             </div>
                         </div>
-                      </div>
-
+                    </div>
 
                     <div class="col-lg-2 col-md-6">
                         <div class="pricing-1" style="padding:15px; margin-top: 15px;">
                             <div class="pricing-status">
                                 <i class="glyphicon glyphicon-sunglasses" style="font-size:2em;"></i>
                                 <h3 class="plan"><b>Style activités</b></h3>
-                                        {{ form_errors(optionForm.activite) }}
-                                        {{ form_widget(optionForm.activite) }}
+                                {{ form_errors(optionForm.activite) }}
+                                {{ form_widget(optionForm.activite) }}
                             </div>
                         </div>
                     </div>
                 
-                   
                     <div class="col-lg-12 col-md-6">
                         <div class="pricing-1" style="padding:12px; margin-top: 16px;">
-                           
-                                <i class="glyphicon glyphicon-thumbs-up" style="font-size:2em;"></i>
-                                    <h3 class="plan"><b>Pimp mon CV!</b></h3>
-                                    <button type="submit" id="envoyez" value="Valider" class="btn btn-sm btn-theme">Go</button> 
+                            <i class="glyphicon glyphicon-thumbs-up" style="font-size:2em;"></i>
+                            <h3 class="plan"><b>Pimp mon CV!</b></h3>
+                            <button type="submit" id="envoyez" value="Valider" class="btn btn-sm btn-theme">Go</button> 
                         </div>
                     </div> 
-            {{ form_end(optionForm) }}
-
-             </form>
-        </div> <!-- fin de row -->         
-     </div> <!-- fin de container -->
-
-</section>
-
-
-
-
-
-
-     
+                    {{ form_end(optionForm) }}
+                </div> <!-- fin de row -->         
+            </div> <!-- fin de container -->
+            </section>
+        </div>
+        </section>
+    </div>
+</div>
+<!-- Fin form wizard -->
 
 {% endblock %}
-
-
