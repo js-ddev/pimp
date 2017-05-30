@@ -70,6 +70,5 @@ class OptionType extends AbstractType
                     'Icone' => 'icone'
                 ))
             );
-
     }
 }
