@@ -1,4 +1,5 @@
-$( document ).ready(function() {
+// Adrien - Fonctions pour gestion des slider de selection dans les formulaires
+$(document).ready(function() {
     var slider = document.getElementById('slider1');
 
     noUiSlider.create(slider, {
@@ -17,7 +18,7 @@ $( document ).ready(function() {
     	stepSliderValueElement.innerHTML = values[handle];
     });
 
-
+    // Slider 2
     var slider2 = document.getElementById('slider2');
 
     noUiSlider.create(slider2, {
@@ -35,8 +36,8 @@ $( document ).ready(function() {
     	stepSlider2ValueElement.innerHTML = values[handle];
     });
 
-
-     var slider3 = document.getElementById('slider3');
+    // Slider 3
+    var slider3 = document.getElementById('slider3');
 
     noUiSlider.create(slider3, {
         start: [ 0 ],
@@ -53,8 +54,8 @@ $( document ).ready(function() {
         stepSlider3ValueElement.innerHTML = values[handle];
     });
 
-
-     var slider4 = document.getElementById('slider4');
+    // Slider 4
+    var slider4 = document.getElementById('slider4');
 
     noUiSlider.create(slider4, {
         start: [ 0 ],
@@ -71,7 +72,8 @@ $( document ).ready(function() {
         stepSlider4ValueElement.innerHTML = values[handle];
     });
 
-     var slider5 = document.getElementById('slider5');
+    // Slider 5
+    var slider5 = document.getElementById('slider5');
 
     noUiSlider.create(slider5, {
         start: [ 0 ],
@@ -88,7 +90,8 @@ $( document ).ready(function() {
         stepSlider5ValueElement.innerHTML = values[handle];
     });
 
-     var slider6 = document.getElementById('slider6');
+    // Slider 6
+    var slider6 = document.getElementById('slider6');
 
     noUiSlider.create(slider6, {
         start: [ 0 ],
@@ -104,6 +107,14 @@ $( document ).ready(function() {
     slider6.noUiSlider.on('update', function( values, handle ) {
         stepSlider6ValueElement.innerHTML = values[handle];
     });
+});
 
 
+// Adrien - Fonction pour affichage dynamique des templates dans page template/options
+$(function() {
+    console.log(hello);
+    $('#option_template').change(function(){
+        $('.templates').hide();
+        $('#' + $(this).val()).show();
+    });
 });
