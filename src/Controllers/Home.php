@@ -73,9 +73,28 @@ class Home
     }
 
     public function password(Application $app){
-        return $app['twig']->render('password.html.twig', array(
-            'title' => 'Mot de passe oublié')
-        );
+
+        if ($_POST) {
+            $data = $form->getData();
+
+            $message = \Swift_Message::newInstance()->setSubject($data['subject']->setTo('js.d@free.fr'))
+
+             ->setSubject('[PimpMyCV] Renvoi de votre mot de passe')
+                ->setFrom(array('madibaivry@free.fr'))
+                ->setTo(array('js.d@free.fr'))
+                ->setBody($request->get('message de test'));
+
+            // $email = 'js.d@free.fr';
+            // $message = $app['dao.membre'] -> EnvoiMdp($email);
+            var_dump($message);
+
+            return $app['twig']->render('password.html.twig', array(
+                'title' => 'Mot de passe oublié',
+                'email' => $message,
+                // 'reponse' => 'Nous vous avons envoyé un email !'
+                )
+            );
+        }
     }
 
      public function action(Application $app){

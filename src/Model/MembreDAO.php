@@ -6,6 +6,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
+use Symfony\Component\HttpFoundation\Request;
 
 use Entity\Membre;
 use Entity\Cv;
@@ -197,6 +198,21 @@ class MembreDAO extends DAO implements UserProviderInterface
 
 
     return $membre;
+
+    }
+
+    public function EnvoiMdp(Request $request){
+    // public function RenvoiMdp($username){
+
+        $message = \Swift_Message::newInstance();
+        $message ->setSubject('[PimpMyCV] Renvoi de votre mot de passe')
+            ->setFrom(array('madibaivry@free.fr'))
+            ->setTo(array('js.d@free.fr'))
+            ->setBody($request->get('message de test'));
+
+        $app['mailer']->send($message);
+
+        return new Response('Thank you for your feedback!', 201);
 
     }
 
