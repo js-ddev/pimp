@@ -125,7 +125,7 @@ class Home
             $app['session'] -> getFlashBag() -> add('success', 'Votre inscription a bien été prise en compte !');
 
             // Adrien - Redirection suite à l'inscription
-            return $app->redirect('/inscription/action');
+            return $app->redirect('/');
             }
         }
 
@@ -622,7 +622,7 @@ class Home
         else {
 
         // JS - A prevoir une meilleure redirection et une page d'inscription avec message :
-            header("Location:/inscription");
+            header("Location:/connexion");
             exit();
         }
     }
