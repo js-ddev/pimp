@@ -74,6 +74,12 @@ class Home
         );
     }
 
+     public function action(Application $app){
+        return $app['twig']->render('action.html.twig', array(
+            'title' => 'Action')
+        );
+    }
+
 // Adrien - Route pour inscription utilisateur :
 
     public function inscription(Request $request, Application $app){
@@ -117,7 +123,7 @@ class Home
             $app['session'] -> getFlashBag() -> add('success', 'Votre inscription a bien été prise en compte !');
 
             // Adrien - Redirection suite à l'inscription
-            return $app->redirect('/');
+            return $app->redirect('/inscription/action');
             }
         }
 
@@ -208,7 +214,7 @@ class Home
         else{
 
         // JS - A prevoir une meilleure redirection et une page d'inscription avec message :
-            header("Location:/inscription");
+            header("Location:/connexion");
             exit();
         }
     }
@@ -341,12 +347,12 @@ class Home
             }
 
 
-            // if(!is_null($app['dao.experience'] -> find($app['user'] -> getId()))){
-            //     $experience = $app['dao.experience'] -> find($membre -> getId());
-            // }
-            // else{
+            if(!is_null($app['dao.experience'] -> find($app['user'] -> getId()))){
+                $experience = $app['dao.experience'] -> find($cv -> getId());
+            }
+            else{
                 $experience = new \Entity\Experience;
-            // }
+            }
 
             $formulaireForm = $app['form.factory'] -> create(\Form\Type\FormulaireType::class, $formulaire);
             $cvForm = $app['form.factory'] -> create(\Form\Type\CvType::class, $cv);
@@ -372,6 +378,8 @@ class Home
             $passionForm1 = $app['form.factory'] -> create(\Form\Type\AptitudeType::class, $aptitude);
             $passionForm2 = $app['form.factory'] -> create(\Form\Type\AptitudeType::class, $aptitude);
             $passionForm3 = $app['form.factory'] -> create(\Form\Type\AptitudeType::class, $aptitude);
+            $passionForm4 = $app['form.factory'] -> create(\Form\Type\AptitudeType::class, $aptitude);
+            $passionForm5 = $app['form.factory'] -> create(\Form\Type\AptitudeType::class, $aptitude);
             $autre_infoForm1 = $app['form.factory'] -> create(\Form\Type\AutreInfoType::class, $autre_info);
             $autre_infoForm2 = $app['form.factory'] -> create(\Form\Type\AutreInfoType::class, $autre_info);
             $autre_infoForm3 = $app['form.factory'] -> create(\Form\Type\AutreInfoType::class, $autre_info);
@@ -443,6 +451,8 @@ class Home
             $passionForm1View = $passionForm1 -> createView();
             $passionForm2View = $passionForm2 -> createView();
             $passionForm3View = $passionForm3 -> createView();
+            $passionForm4View = $passionForm4 -> createView();
+            $passionForm5View = $passionForm5 -> createView();
             $autre_infoForm1View = $autre_infoForm1 -> createView();
             $autre_infoForm2View = $autre_infoForm2 -> createView();
             $autre_infoForm3View = $autre_infoForm3 -> createView();
@@ -474,6 +484,8 @@ class Home
                 'passionForm1' => $passionForm1View,
                 'passionForm2' => $passionForm2View,
                 'passionForm3' => $passionForm3View,
+                'passionForm4' => $passionForm4View,
+                'passionForm5' => $passionForm5View,
                 'autre_infoForm1' => $autre_infoForm1View,
                 'autre_infoForm2' => $autre_infoForm2View,
                 'autre_infoForm3' => $autre_infoForm3View,
