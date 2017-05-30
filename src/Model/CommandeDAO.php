@@ -126,8 +126,9 @@ class CommandeDAO extends DAO/* implements StorageInterface*/
 
 // Rudy - fonction pour récapituler la commande
 
-  public function recap($id_commande){
-        $requete = "SELECT * FROM commande WHERE id = ?";
+/*  public function find($id_commande){
+        $requete = 
+        "SELECT * FROM commande WHERE id = ?";
         $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_commande));
 
         if($resultat){
@@ -136,26 +137,29 @@ class CommandeDAO extends DAO/* implements StorageInterface*/
         else{
             throw new \Exception("Aucune commande à l'id:" . $id_commande);
         }
-    }
+    }*/
 
-    public function recapAll(){
-        
-    $requete = 
+    public function findRudy($id_commande){ 
 
-    "SELECT c.date_commande, c.statut_commande, c.prix, cv.email_cv, cv.couleur, cv.puce, cv.fond, cv.indicateur_performance, cv.activite
-    FROM commande c, cv cv
-    where c.id_membre = cv.id_membre";
-
-
-        $resultat = $this -> getDb() -> fetchAll($requete);
-        
-        $commandes = array();
-        foreach($resultat as $value){
-            $id = $value['id'];
-            $commandes[$id] = $this -> BuildEntityObject($value);
+   $requete = "SELECT * FROM commande WHERE id = ?";
+        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_commande));
+    
+     if($resultat){
+            return $this -> buildEntityObject($resultat);
         }
-        return $commandes;
+        else{
+            throw new \Exception("Aucune commande à l'id:" . $id_commande);
+        }
+          return $commandes;
     }
+
+/*    "SELECT co.date_commande, co.statut_commande, co.prix, op.couleur, op.puce, op.fond, op.indicateur_performance, op.activite, c.email_cv
+    FROM commande co, options op, c cv
+    where co.id_cv = op.id_cv
+    And c.id_membre = co.id_membre";*/
+
+
+  
 
     
 

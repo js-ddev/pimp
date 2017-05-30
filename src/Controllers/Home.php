@@ -45,10 +45,12 @@ class Home
     }
 
     public function recapitulatif_commande(Application $app){
-        $commandes = $app['dao.commande'] -> findAll();
+        $commandes = $app['dao.commande'] -> find(1);
         print_r($commandes);
-        return $app['twig']->render('recapitulatif_commande.html.twig', array(
-            'title' => 'Récapitulatif de votre commande')
+        return $app['twig']->render('recapitulatif_commande.html.twig',
+            array(
+            'title' => 'Récapitulatif de votre commande',
+            'commandes' => $commandes)
         );
     }
 
