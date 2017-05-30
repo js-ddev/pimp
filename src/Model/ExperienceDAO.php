@@ -44,6 +44,71 @@ class ExperienceDAO extends DAO
         */
     }
 
+    public function findEntreprise1($id_cv){
+        $requete = "SELECT * FROM experience WHERE id_cv = ? AND type = 'entreprise1'";
+        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_cv));
+
+        if($resultat){
+            return $this -> buildEntityObject($resultat);
+        }
+        else{
+            return FALSE;
+        }
+
+    }
+
+    public function findEntreprise2($id_cv){
+        $requete = "SELECT * FROM experience WHERE id_cv = ? AND type = 'entreprise2'";
+        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_cv));
+
+        if($resultat){
+            return $this -> buildEntityObject($resultat);
+        }
+        else{
+            return FALSE;
+        }
+
+    }
+
+    public function findEntreprise3($id_cv){
+        $requete = "SELECT * FROM experience WHERE id_cv = ? AND type = 'entreprise2'";
+        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_cv));
+
+        if($resultat){
+            return $this -> buildEntityObject($resultat);
+        }
+        else{
+            return FALSE;
+        }
+
+    }
+
+    public function findEntreprise4($id_cv){
+        $requete = "SELECT * FROM experience WHERE id_cv = ? AND type = 'entreprise2'";
+        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_cv));
+
+        if($resultat){
+            return $this -> buildEntityObject($resultat);
+        }
+        else{
+            return FALSE;
+        }
+
+    }
+
+    public function findEntreprise5($id_cv){
+        $requete = "SELECT * FROM experience WHERE id_cv = ? AND type = 'entreprise2'";
+        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_cv));
+
+        if($resultat){
+            return $this -> buildEntityObject($resultat);
+        }
+        else{
+            return FALSE;
+        }
+
+    }
+
 
     /**
     * Création d'une experience et enregistrement en BDD
@@ -52,7 +117,7 @@ class ExperienceDAO extends DAO
     *
     * @return \pimp\Entity\experience
     */
-    public function saveExperience(Experience $experience, Cv $cv){
+    public function saveExperience(Experience $experience, Cv $cv, $type, $typedb){
         $experienceData = array(
             'id' => $experience -> getId(),
             'id_cv' => $cv -> getId(),
@@ -69,25 +134,26 @@ class ExperienceDAO extends DAO
             'role' => $experience -> getRole(),
             'date_debut' => $experience -> getDateDebut(),
             'date_fin' => $experience -> getDateFin(),
-            'responsabilite1' => $experience -> setResponsabilite1(),
-            'responsabilite2' => $experience -> setResponsabilite2(),
-            'responsabilite3' => $experience -> setResponsabilite3(),
-            'responsabilite4' => $experience -> setResponsabilite4(),
+            'responsabilite1' => $experience -> getResponsabilite1(),
+            'responsabilite2' => $experience -> getResponsabilite2(),
+            'responsabilite3' => $experience -> getResponsabilite3(),
+            'responsabilite4' => $experience -> getResponsabilite4(),
             'responsabilite5' => $experience -> getResponsabilite5(),
-            'realisation1' => $experience -> setRealisation1(),
-            'realisation2' => $experience -> setRealisation2(),
-            'realisation3' => $experience -> setRealisation3(),
-            'realisation4' => $experience -> setRealisation4(),
-            'realisation5' => $experience -> setRealisation5(),
+            'realisation1' => $experience -> getRealisation1(),
+            'realisation2' => $experience -> getRealisation2(),
+            'realisation3' => $experience -> getRealisation3(),
+            'realisation4' => $experience -> getRealisation4(),
+            'realisation5' => $experience -> getRealisation5(),
         );
+        // print_r($type);
+        // print_r($typedb);
+        if($experience->getId() && $type != $typedb) { // Modifier une expérience
+            $this->getDb()->update('experience', $experienceData, array('id'=>$experience->getId()));
 
-        // if($experience->getId()) { // Modifier un cv
-        //     $this->getDb()->update('experience', $experienceData, array('id'=>$experience->getId()));
-        //
-        // }
-        // else { // Créer une experience
+        }
+        else { // Créer une experience
             $this -> getDb() -> insert('experience', $experienceData);
-        // }
+        }
         $experience -> setId($this -> getDb() -> lastInsertId());
     }
 
@@ -98,6 +164,7 @@ class ExperienceDAO extends DAO
         $experience = new experience;
 
         $experience -> setId($value['id']);
+        $experience -> setIdCv($value['id_cv']);
         $experience -> setType($value['type']);
         $experience -> setNom($value['nom']);
         $experience -> setSecteur($value['secteur']);
