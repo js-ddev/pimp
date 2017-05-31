@@ -3,11 +3,19 @@
 namespace Form\Type;
 
 use Entity\Formulaire;
+// use Entity\Cv;
+// use Entity\Experience;
+// use Entity\Formation;
+// use Entity\Aptitude;
+// use Entity\AutreInfo;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Form\Type\CvType;
+
+
 
 class FormulaireType extends AbstractType
 {
@@ -15,14 +23,8 @@ class FormulaireType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options){
         $builder
             // Adrien - C'est ici que nous imbriquons nos formulaires
-            ->add('cvs', CollectionType::class, array(
-                'entry_type' => CvType::class,
-                'allow_add' => true,
-                'allow_delete' => true,
-                'prototype' => true,
-                'by_reference' => false,
-            ))
-            
+            ->add('cv', CvType::class)
+
             ->add('experiences', CollectionType::class, array(
                 'entry_type' => ExperienceType::class,
                 'allow_add' => true,

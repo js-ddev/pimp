@@ -69,7 +69,7 @@ class PimpitType extends AbstractType
             ))
 
 
-            -> add('username', TextType::class, array(
+            -> add('username', EmailType::class, array(
                 // 'constraints' => array(
                 //     new Assert\Email(),
                 // ),

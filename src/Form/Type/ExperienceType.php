@@ -6,6 +6,8 @@ use Entity\Experience;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -270,5 +272,11 @@ class ExperienceType extends AbstractType
         // -> add('envoyer', SubmitType::class, array('label' => 'envoyer'))
 
         ;
+    }
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => Experience::class,
+        ));
     }
 }

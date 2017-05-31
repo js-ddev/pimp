@@ -16,35 +16,66 @@ class Formulaire
 
     public function __construct()
     {
-        $this->cvs = new ArrayCollection();
         $this->experiences = new ArrayCollection();
         $this->formations = new ArrayCollection();
         $this->aptitudes = new ArrayCollection();
         $this->autres_infos = new ArrayCollection();
     }
 
-    public function getCvs()
+    public function getCv()
     {
-        return $this->cvs;
+        return $this->cv;
+    }
+    public function setCv($cv) {
+        $this->cv = $cv;
+        return $this;
     }
 
      public function getExperiences()
     {
         return $this->experiences;
     }
+    public function setExperiences($experience) {
+        $this->experiences = $experience;
+        return $this;
+    }
 
      public function getFormations()
     {
         return $this->formations;
+    }
+    public function setFormations($formation) {
+        $this->formations = $formation;
+        return $this;
     }
 
      public function getAptitudes()
     {
         return $this->aptitudes;
     }
+    public function setAptitudes($aptitude) {
+        $this->aptitudes = $aptitude;
+        return $this;
+    }
 
      public function getAutresInfos()
     {
         return $this->autres_infos;
+    }
+    public function setAutresInfos($autre_info) {
+        $this->autres_infos = $autre_info;
+        return $this;
+    }
+
+// Test pour le CV :
+    public function getIdMembre()
+    {
+        return $this->id_membre;
+    }
+    public function setIdMembre(Membre $id_membre)
+    {
+        $this->id_membre = $id_membre;
+
+        return $this;
     }
 }

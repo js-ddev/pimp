@@ -67,8 +67,8 @@
 									<div class="panel-group">
 
 										<!-- Partie informations personnelles (table cv) -->
-										{{ form_start(formulaireForm)}}
-										{{ form_errors(formulaireForm)}}
+										{{ form_start(cvForm)}}
+										{{ form_errors(cvForm)}}
 										{{ form_widget(cvForm.id_membre,{value : app.user.id}) }}
 										<div class="panel panel-default">
 											<div class="panel-heading">
@@ -277,7 +277,425 @@
 																<input class="btn btn-md btn-dark" name="entreprise1" type="submit" value="Valider">
 															</div>
 
+
+
 														{{ form_end(experienceForm1) }}
+														</div>
+
+														<div id="Experience-2" class="tab-pane pdd-horizon-10 fade">
+														{{ form_start(experienceForm2) }}
+														{{ form_errors(experienceForm2) }}
+														{{ form_widget(experienceForm2.type,{value :'entreprise2'}) }}
+
+															<h4>Entreprise :</h4>
+
+															<div class="form-group">
+																<label for="nom">Nom de l'entreprise*</label>
+																{{ form_errors(experienceForm2.nom) }}
+																{{ form_widget(experienceForm2.nom) }}
+															</div>
+
+															<div class="form-group">
+																<label>Secteur* : </label>
+																{{ form_errors(experienceForm2.secteur) }}
+																{{ form_widget(experienceForm2.secteur) }}
+															</div>
+
+															<div class="form-group">
+																<label for="effectif">Effectifs :</label>
+																{{ form_errors(experienceForm2.effectif) }}
+																{{ form_widget(experienceForm2.effectif) }}
+															</div>
+
+															<div class="form-group">
+																<label for="url_entreprise">Site web de l'entreprise</label>
+																{{ form_errors(experienceForm2.url_experience) }}
+																{{ form_widget(experienceForm2.url_experience) }}
+															</div>
+
+															<div class="form-group">
+																<label for="poste">Intitulé du poste*</label>
+																{{ form_errors(experienceForm2.poste) }}
+																{{ form_widget(experienceForm2.poste) }}
+															</div>
+
+															<div class="form-group">
+																<label for="role">Rôle dans l'entreprise*</label>
+																{{ form_errors(experienceForm2.role) }}
+																{{ form_widget(experienceForm2.role) }}
+															</div>
+															<div class="form-group">
+																<label for="lieu_entreprise">Localisation du poste*</label>
+																{{ form_errors(experienceForm2.lieu) }}
+																{{ form_widget(experienceForm2.lieu) }}
+															</div>
+
+															<div class="form-group">
+																<label for="Duree">Durée du poste* : </label>
+																<span> de </span>
+																{{ form_errors(experienceForm2.date_debut) }}
+																{{ form_widget(experienceForm2.date_debut) }}
+
+																<select class="" name="annee_debut">
+																	{% for annee_debut in range("now"|date("Y"),1950) %}
+																		<option value="{{ annee_debut }}"> {{ annee_debut }}</option>
+																	{% endfor %}
+																</select>
+
+																<span> à </span>
+																{{ form_errors(experienceForm2.date_fin) }}
+																{{ form_widget(experienceForm2.date_fin) }}
+
+																<select class="" name="annee_fin">
+																	{% for annee_fin in range("now"|date("Y"),1950) %}
+																		<option value="{{ annee_fin }}"> {{ annee_fin }}</option>
+																	{% endfor %}
+																</select>
+															</div>
+
+															<div class="form-group">
+																<label for="responsabilite">Responsabilités* :</label><br />
+																{{ form_errors(experienceForm2.responsabilite1) }}
+																{{ form_widget(experienceForm2.responsabilite1) }}
+																{{ form_errors(experienceForm2.responsabilite2) }}
+																{{ form_widget(experienceForm2.responsabilite2) }}
+																{{ form_errors(experienceForm2.responsabilite3) }}
+																{{ form_widget(experienceForm2.responsabilite3) }}
+																{{ form_errors(experienceForm2.responsabilite4) }}
+																{{ form_widget(experienceForm2.responsabilite4) }}
+																{{ form_errors(experienceForm2.responsabilite5) }}
+																{{ form_widget(experienceForm2.responsabilite5) }}
+															</div>
+
+															<div class="form-group">
+																<label for="reussite">Réussites / accomplissements* :</label><br />
+																{{ form_errors(experienceForm2.realisation1) }}
+																{{ form_widget(experienceForm2.realisation1) }}
+																{{ form_errors(experienceForm2.realisation2) }}
+																{{ form_widget(experienceForm2.realisation2) }}
+																{{ form_errors(experienceForm2.realisation3) }}
+																{{ form_widget(experienceForm2.realisation3) }}
+																{{ form_errors(experienceForm2.realisation4) }}
+																{{ form_widget(experienceForm2.realisation4) }}
+																{{ form_errors(experienceForm2.realisation5) }}
+																{{ form_widget(experienceForm2.realisation5) }}
+															</div>
+														<div class="form-group col-md-12">
+															<input class="btn btn-md btn-dark" name="entreprise2" type="submit" value="Valider">
+														</div>
+														{{ form_end(experienceForm2) }}
+														</div>
+
+														<div id="Experience-3" class="tab-pane pdd-horizon-10 fade">
+															{{ form_start(experienceForm3) }}
+															{{ form_errors(experienceForm3) }}
+															{{ form_widget(experienceForm3.type,{value :'entreprise3'}) }}
+
+															<h4>Entreprise :</h4>
+
+															<div class="form-group">
+																<label for="nom">Nom de l'entreprise*</label>
+																{{ form_errors(experienceForm3.nom) }}
+																{{ form_widget(experienceForm3.nom) }}
+															</div>
+
+															<div class="form-group">
+																<label>Secteur* : </label>
+																{{ form_errors(experienceForm3.secteur) }}
+																{{ form_widget(experienceForm3.secteur) }}
+															</div>
+
+															<div class="form-group">
+																<label for="effectif">Effectifs :</label>
+																{{ form_errors(experienceForm3.effectif) }}
+																{{ form_widget(experienceForm3.effectif) }}
+															</div>
+
+															<div class="form-group">
+																<label for="url_entreprise">Site web de l'entreprise</label>
+																{{ form_errors(experienceForm3.url_experience) }}
+																{{ form_widget(experienceForm3.url_experience) }}
+															</div>
+
+															<div class="form-group">
+																<label for="poste">Intitulé du poste*</label>
+																{{ form_errors(experienceForm3.poste) }}
+																{{ form_widget(experienceForm3.poste) }}
+															</div>
+
+															<div class="form-group">
+																<label for="role">Rôle dans l'entreprise*</label>
+																{{ form_errors(experienceForm3.role) }}
+																{{ form_widget(experienceForm3.role) }}
+															</div>
+															<div class="form-group">
+																<label for="lieu_entreprise">Localisation du poste*</label>
+																{{ form_errors(experienceForm3.lieu) }}
+																{{ form_widget(experienceForm3.lieu) }}
+															</div>
+
+															<div class="form-group">
+																<label for="Duree">Durée du poste* : </label>
+																<span> de </span>
+																{{ form_errors(experienceForm3.date_debut) }}
+																{{ form_widget(experienceForm3.date_debut) }}
+
+																<select class="" name="annee_debut">
+																	{% for annee_debut in range("now"|date("Y"),1950) %}
+																		<option value="{{ annee_debut }}"> {{ annee_debut }}</option>
+																	{% endfor %}
+																</select>
+
+																<span> à </span>
+																{{ form_errors(experienceForm3.date_fin) }}
+																{{ form_widget(experienceForm3.date_fin) }}
+
+																<select class="" name="annee_fin">
+																	{% for annee_fin in range("now"|date("Y"),1950) %}
+																		<option value="{{ annee_fin }}"> {{ annee_fin }}</option>
+																	{% endfor %}
+																</select>
+															</div>
+
+															<div class="form-group">
+																<label for="responsabilite">Responsabilités* :</label><br />
+																{{ form_errors(experienceForm3.responsabilite1) }}
+																{{ form_widget(experienceForm3.responsabilite1) }}
+																{{ form_errors(experienceForm3.responsabilite2) }}
+																{{ form_widget(experienceForm3.responsabilite2) }}
+																{{ form_errors(experienceForm3.responsabilite3) }}
+																{{ form_widget(experienceForm3.responsabilite3) }}
+																{{ form_errors(experienceForm3.responsabilite4) }}
+																{{ form_widget(experienceForm3.responsabilite4) }}
+																{{ form_errors(experienceForm3.responsabilite5) }}
+																{{ form_widget(experienceForm3.responsabilite5) }}
+															</div>
+
+															<div class="form-group">
+																<label for="reussite">Réussites / accomplissements* :</label><br />
+																{{ form_errors(experienceForm3.realisation1) }}
+																{{ form_widget(experienceForm3.realisation1) }}
+																{{ form_errors(experienceForm3.realisation2) }}
+																{{ form_widget(experienceForm3.realisation2) }}
+																{{ form_errors(experienceForm3.realisation3) }}
+																{{ form_widget(experienceForm3.realisation3) }}
+																{{ form_errors(experienceForm3.realisation4) }}
+																{{ form_widget(experienceForm3.realisation4) }}
+																{{ form_errors(experienceForm3.realisation5) }}
+																{{ form_widget(experienceForm3.realisation5) }}
+															</div>
+															<div class="form-group col-md-12">
+																<input class="btn btn-md btn-dark" type="submit" value="Valider">
+															</div>
+														{{ form_end(experienceForm3) }}
+														</div>
+
+														<div id="Experience-4" class="tab-pane pdd-horizon-10 fade">
+															{{ form_start(experienceForm4) }}
+															{{ form_errors(experienceForm4) }}
+															{{ form_widget(experienceForm4.type,{value :'entreprise4'}) }}
+
+															<h4>Entreprise :</h4>
+
+															<div class="form-group">
+																<label for="nom">Nom de l'entreprise*</label>
+																{{ form_errors(experienceForm4.nom) }}
+																{{ form_widget(experienceForm4.nom) }}
+															</div>
+
+															<div class="form-group">
+																<label>Secteur* : </label>
+																{{ form_errors(experienceForm4.secteur) }}
+																{{ form_widget(experienceForm4.secteur) }}
+															</div>
+
+															<div class="form-group">
+																<label for="effectif">Effectifs :</label>
+																{{ form_errors(experienceForm4.effectif) }}
+																{{ form_widget(experienceForm4.effectif) }}
+															</div>
+
+															<div class="form-group">
+																<label for="url_entreprise">Site web de l'entreprise</label>
+																{{ form_errors(experienceForm4.url_experience) }}
+																{{ form_widget(experienceForm4.url_experience) }}
+															</div>
+
+															<div class="form-group">
+																<label for="poste">Intitulé du poste*</label>
+																{{ form_errors(experienceForm4.poste) }}
+																{{ form_widget(experienceForm4.poste) }}
+															</div>
+
+															<div class="form-group">
+																<label for="role">Rôle dans l'entreprise*</label>
+																{{ form_errors(experienceForm4.role) }}
+																{{ form_widget(experienceForm4.role) }}
+															</div>
+															<div class="form-group">
+																<label for="lieu_entreprise">Localisation du poste*</label>
+																{{ form_errors(experienceForm4.lieu) }}
+																{{ form_widget(experienceForm4.lieu) }}
+															</div>
+
+															<div class="form-group">
+																<label for="Duree">Durée du poste* : </label>
+																<span> de </span>
+																{{ form_errors(experienceForm4.date_debut) }}
+																{{ form_widget(experienceForm4.date_debut) }}
+
+																<select class="" name="annee_debut">
+																	{% for annee_debut in range("now"|date("Y"),1950) %}
+																		<option value="{{ annee_debut }}"> {{ annee_debut }}</option>
+																	{% endfor %}
+																</select>
+
+																<span> à </span>
+																{{ form_errors(experienceForm4.date_fin) }}
+																{{ form_widget(experienceForm4.date_fin) }}
+
+																<select class="" name="annee_fin">
+																	{% for annee_fin in range("now"|date("Y"),1950) %}
+																		<option value="{{ annee_fin }}"> {{ annee_fin }}</option>
+																	{% endfor %}
+																</select>
+															</div>
+
+															<div class="form-group">
+																<label for="responsabilite">Responsabilités* :</label><br />
+																{{ form_errors(experienceForm4.responsabilite1) }}
+																{{ form_widget(experienceForm4.responsabilite1) }}
+																{{ form_errors(experienceForm4.responsabilite2) }}
+																{{ form_widget(experienceForm4.responsabilite2) }}
+																{{ form_errors(experienceForm4.responsabilite3) }}
+																{{ form_widget(experienceForm4.responsabilite3) }}
+																{{ form_errors(experienceForm4.responsabilite4) }}
+																{{ form_widget(experienceForm4.responsabilite4) }}
+																{{ form_errors(experienceForm4.responsabilite5) }}
+																{{ form_widget(experienceForm4.responsabilite5) }}
+															</div>
+
+															<div class="form-group">
+																<label for="reussite">Réussites / accomplissements* :</label><br />
+																{{ form_errors(experienceForm4.realisation1) }}
+																{{ form_widget(experienceForm4.realisation1) }}
+																{{ form_errors(experienceForm4.realisation2) }}
+																{{ form_widget(experienceForm4.realisation2) }}
+																{{ form_errors(experienceForm4.realisation3) }}
+																{{ form_widget(experienceForm4.realisation3) }}
+																{{ form_errors(experienceForm4.realisation4) }}
+																{{ form_widget(experienceForm4.realisation4) }}
+																{{ form_errors(experienceForm4.realisation5) }}
+																{{ form_widget(experienceForm4.realisation5) }}
+															</div>
+															<div class="form-group col-md-12">
+																<input class="btn btn-md btn-dark" type="submit" value="Valider">
+															</div>
+														{{ form_end(experienceForm4) }}
+														</div>
+
+														<div id="Experience-5" class="tab-pane pdd-horizon-10 fade">
+															{{ form_start(experienceForm5) }}
+															{{ form_errors(experienceForm5) }}
+															{{ form_widget(experienceForm5.type,{value :'entreprise5'}) }}
+
+															<h4>Entreprise :</h4>
+
+															<div class="form-group">
+																<label for="nom">Nom de l'entreprise*</label>
+																{{ form_errors(experienceForm5.nom) }}
+																{{ form_widget(experienceForm5.nom) }}
+															</div>
+
+															<div class="form-group">
+																<label>Secteur* : </label>
+																{{ form_errors(experienceForm5.secteur) }}
+																{{ form_widget(experienceForm5.secteur) }}
+															</div>
+
+															<div class="form-group">
+																<label for="effectif">Effectifs :</label>
+																{{ form_errors(experienceForm5.effectif) }}
+																{{ form_widget(experienceForm5.effectif) }}
+															</div>
+
+															<div class="form-group">
+																<label for="url_entreprise">Site web de l'entreprise</label>
+																{{ form_errors(experienceForm5.url_experience) }}
+																{{ form_widget(experienceForm5.url_experience) }}
+															</div>
+
+															<div class="form-group">
+																<label for="poste">Intitulé du poste*</label>
+																{{ form_errors(experienceForm5.poste) }}
+																{{ form_widget(experienceForm5.poste) }}
+															</div>
+
+															<div class="form-group">
+																<label for="role">Rôle dans l'entreprise*</label>
+																{{ form_errors(experienceForm5.role) }}
+																{{ form_widget(experienceForm5.role) }}
+															</div>
+															<div class="form-group">
+																<label for="lieu_entreprise">Localisation du poste*</label>
+																{{ form_errors(experienceForm5.lieu) }}
+																{{ form_widget(experienceForm5.lieu) }}
+															</div>
+
+															<div class="form-group">
+																<label for="Duree">Durée du poste* : </label>
+																<span> de </span>
+																{{ form_errors(experienceForm5.date_debut) }}
+																{{ form_widget(experienceForm5.date_debut) }}
+
+																<select class="" name="annee_debut">
+																	{% for annee_debut in range("now"|date("Y"),1950) %}
+																		<option value="{{ annee_debut }}"> {{ annee_debut }}</option>
+																	{% endfor %}
+																</select>
+
+																<span> à </span>
+																{{ form_errors(experienceForm5.date_fin) }}
+																{{ form_widget(experienceForm5.date_fin) }}
+
+																<select class="" name="annee_fin">
+																	{% for annee_fin in range("now"|date("Y"),1950) %}
+																		<option value="{{ annee_fin }}"> {{ annee_fin }}</option>
+																	{% endfor %}
+																</select>
+															</div>
+
+															<div class="form-group">
+																<label for="responsabilite">Responsabilités* :</label><br />
+																{{ form_errors(experienceForm5.responsabilite1) }}
+																{{ form_widget(experienceForm5.responsabilite1) }}
+																{{ form_errors(experienceForm5.responsabilite2) }}
+																{{ form_widget(experienceForm5.responsabilite2) }}
+																{{ form_errors(experienceForm5.responsabilite3) }}
+																{{ form_widget(experienceForm5.responsabilite3) }}
+																{{ form_errors(experienceForm5.responsabilite4) }}
+																{{ form_widget(experienceForm5.responsabilite4) }}
+																{{ form_errors(experienceForm5.responsabilite5) }}
+																{{ form_widget(experienceForm5.responsabilite5) }}
+															</div>
+
+															<div class="form-group">
+																<label for="reussite">Réussites / accomplissements* :</label><br />
+																{{ form_errors(experienceForm5.realisation1) }}
+																{{ form_widget(experienceForm5.realisation1) }}
+																{{ form_errors(experienceForm5.realisation2) }}
+																{{ form_widget(experienceForm5.realisation2) }}
+																{{ form_errors(experienceForm5.realisation3) }}
+																{{ form_widget(experienceForm5.realisation3) }}
+																{{ form_errors(experienceForm5.realisation4) }}
+																{{ form_widget(experienceForm5.realisation4) }}
+																{{ form_errors(experienceForm5.realisation5) }}
+																{{ form_widget(experienceForm5.realisation5) }}
+															</div>
+															<div class="form-group col-md-12">
+																<input class="btn btn-md btn-dark" type="submit" value="Valider">
+															</div>
+														{{ form_end(experienceForm5) }}
 														</div>
 													</div>
 												</div>
@@ -350,6 +768,202 @@
 																<input class="btn btn-md btn-dark" type="submit" value="Valider">
 															</div>
 														{{ form_end(formationForm1) }}
+														</div>
+
+														<div id="Formation-2" class="tab-pane fade pdd-horizon-10 fade">
+														{{ form_start(formationForm2) }}
+														{{ form_errors(formationForm2) }}
+														{{ form_widget(formationForm2.type,{value :'formation2'}) }}
+
+															<div class="form-group">
+																<label for="diplome">Diplome*</label>
+																{{ form_errors(formationForm2.diplome) }}
+																{{ form_widget(formationForm2.diplome) }}
+															</div>
+
+															<div class="form-group">
+																<label for="etablissement_formation">Etablissement*</label>
+																{{ form_errors(formationForm2.etablissement) }}
+																{{ form_widget(formationForm2.etablissement) }}
+															</div>
+
+															<div class="form-group">
+																<label for="specialite_formation">Spécialité</label>
+																{{ form_errors(formationForm2.specialite) }}
+																{{ form_widget(formationForm2.specialite) }}
+															</div>
+
+															<div class="form-group">
+																<label for="lieu_formation">Localisation</label>
+																{{ form_errors(formationForm2.lieu) }}
+																{{ form_widget(formationForm2.lieu) }}
+															</div>
+
+															<div class="form-group">
+																<label for="date_diplome">Année d'obtention du diplome* : </label>
+																<select class="" name="annee_diplome">
+																	{% for annee_diplome in range("now"|date("Y"),1950) %}
+																		<option value="{{ annee_diplome }}"> {{ annee_diplome }}</option>
+																	{% endfor %}
+																</select>
+															</div>
+
+															<div class="form-group">
+																<label for="url_formation">Site web</label>
+																{{ form_errors(formationForm2.url_formation) }}
+																{{ form_widget(formationForm2.url_formation) }}
+															</div>
+															<div class="form-group col-md-12">
+																<input class="btn btn-md btn-dark" type="submit" value="Valider">
+															</div>
+														{{ form_end(formationForm2) }}
+														</div>
+
+														<div id="Formation-3" class="tab-pane fade pdd-horizon-10 fade">
+														{{ form_start(formationForm3) }}
+														{{ form_errors(formationForm3) }}
+														{{ form_widget(formationForm3.type,{value :'formation3'}) }}
+
+															<div class="form-group">
+																<label for="diplome">Diplome*</label>
+																{{ form_errors(formationForm3.diplome) }}
+																{{ form_widget(formationForm3.diplome) }}
+															</div>
+
+															<div class="form-group">
+																<label for="etablissement_formation">Etablissement*</label>
+																{{ form_errors(formationForm3.etablissement) }}
+																{{ form_widget(formationForm3.etablissement) }}
+															</div>
+
+															<div class="form-group">
+																<label for="specialite_formation">Spécialité</label>
+																{{ form_errors(formationForm3.specialite) }}
+																{{ form_widget(formationForm3.specialite) }}
+															</div>
+
+															<div class="form-group">
+																<label for="lieu_formation">Localisation</label>
+																{{ form_errors(formationForm3.lieu) }}
+																{{ form_widget(formationForm3.lieu) }}
+															</div>
+
+															<div class="form-group">
+																<label for="date_diplome">Année d'obtention du diplome* : </label>
+																<select class="" name="annee_diplome">
+																	{% for annee_diplome in range("now"|date("Y"),1950) %}
+																		<option value="{{ annee_diplome }}"> {{ annee_diplome }}</option>
+																	{% endfor %}
+																</select>
+															</div>
+
+															<div class="form-group">
+																<label for="url_formation">Site web</label>
+																{{ form_errors(formationForm3.url_formation) }}
+																{{ form_widget(formationForm3.url_formation) }}
+															</div>
+															<div class="form-group col-md-12">
+																<input class="btn btn-md btn-dark" type="submit" value="Valider">
+															</div>
+														{{ form_end(formationForm3) }}
+														</div>
+
+														<div id="Formation-4" class="tab-pane fade pdd-horizon-10 fade">
+														{{ form_start(formationForm4) }}
+														{{ form_errors(formationForm4) }}
+														{{ form_widget(formationForm4.type,{value :'formation4'}) }}
+
+															<div class="form-group">
+																<label for="diplome">Diplome*</label>
+																{{ form_errors(formationForm4.diplome) }}
+																{{ form_widget(formationForm4.diplome) }}
+															</div>
+
+															<div class="form-group">
+																<label for="etablissement_formation">Etablissement*</label>
+																{{ form_errors(formationForm4.etablissement) }}
+																{{ form_widget(formationForm4.etablissement) }}
+															</div>
+
+															<div class="form-group">
+																<label for="specialite_formation">Spécialité</label>
+																{{ form_errors(formationForm4.specialite) }}
+																{{ form_widget(formationForm4.specialite) }}
+															</div>
+
+															<div class="form-group">
+																<label for="lieu_formation">Localisation</label>
+																{{ form_errors(formationForm4.lieu) }}
+																{{ form_widget(formationForm4.lieu) }}
+															</div>
+
+															<div class="form-group">
+																<label for="date_diplome">Année d'obtention du diplome* : </label>
+																<select class="" name="annee_diplome">
+																	{% for annee_diplome in range("now"|date("Y"),1950) %}
+																		<option value="{{ annee_diplome }}"> {{ annee_diplome }}</option>
+																	{% endfor %}
+																</select>
+															</div>
+
+															<div class="form-group">
+																<label for="url_formation">Site web</label>
+																{{ form_errors(formationForm4.url_formation) }}
+																{{ form_widget(formationForm4.url_formation) }}
+															</div>
+															<div class="form-group col-md-12">
+																<input class="btn btn-md btn-dark" type="submit" value="Valider">
+															</div>
+														{{ form_end(formationForm4) }}
+														</div>
+
+														<div id="Formation-5" class="tab-pane fade pdd-horizon-10 fade">
+														{{ form_start(formationForm5) }}
+														{{ form_errors(formationForm5) }}
+														{{ form_widget(formationForm5.type,{value :'formation5'}) }}
+
+															<div class="form-group">
+																<label for="diplome">Diplome*</label>
+																{{ form_errors(formationForm5.diplome) }}
+																{{ form_widget(formationForm5.diplome) }}
+															</div>
+
+															<div class="form-group">
+																<label for="etablissement_formation">Etablissement*</label>
+																{{ form_errors(formationForm5.etablissement) }}
+																{{ form_widget(formationForm5.etablissement) }}
+															</div>
+
+															<div class="form-group">
+																<label for="specialite_formation">Spécialité</label>
+																{{ form_errors(formationForm5.specialite) }}
+																{{ form_widget(formationForm5.specialite) }}
+															</div>
+
+															<div class="form-group">
+																<label for="lieu_formation">Localisation</label>
+																{{ form_errors(formationForm5.lieu) }}
+																{{ form_widget(formationForm5.lieu) }}
+															</div>
+
+															<div class="form-group">
+																<label for="date_diplome">Année d'obtention du diplome* : </label>
+																<select class="" name="annee_diplome">
+																	{% for annee_diplome in range("now"|date("Y"),1950) %}
+																		<option value="{{ annee_diplome }}"> {{ annee_diplome }}</option>
+																	{% endfor %}
+																</select>
+															</div>
+
+															<div class="form-group">
+																<label for="url_formation">Site web</label>
+																{{ form_errors(formationForm5.url_formation) }}
+																{{ form_widget(formationForm5.url_formation) }}
+															</div>
+															<div class="form-group col-md-12">
+																<input class="btn btn-md btn-dark" type="submit" value="Valider">
+															</div>
+														{{ form_end(formationForm5) }}
 														</div>
 													</div>
 												</div>
