@@ -71,29 +71,57 @@ class Home
         );
     }
 
-    public function password(Application $app){
+    public function password(Request $request, Application $app){
+        $membre = new \Entity\Membre;
 
-        if ($_POST) {
-            $data = $form->getData();
+        $passwordForm = $app['form.factory'] -> create(\Form\Type\PasswordType::class, $membre);
 
-            $message = \Swift_Message::newInstance()->setSubject($data['subject']->setTo('js.d@free.fr'))
+        $passwordForm -> handleRequest($request);
 
-             ->setSubject('[PimpMyCV] Renvoi de votre mot de passe')
-                ->setFrom(array('madibaivry@free.fr'))
-                ->setTo(array('js.d@free.fr'))
-                ->setBody($request->get('message de test'));
+        if($passwordForm -> isSubmitted() && $passwordForm -> isValid()){
 
-            // $email = 'js.d@free.fr';
-            // $message = $app['dao.membre'] -> EnvoiMdp($email);
-            var_dump($message);
+            $email = $app['dao.membre'] -> find($request->query->get('username'));
 
-            return $app['twig']->render('password.html.twig', array(
-                'title' => 'Mot de passe oublié',
-                'email' => $message,
-                // 'reponse' => 'Nous vous avons envoyé un email !'
-                )
-            );
+            // return $app['twig']->render('password.html.twig', array(
+            //     'title' => 'Mot de passe envoyé',
+            //     'passwordForm' => $passwordFormView,
+            //     'message' => 'Un email vient de vous être envoyé',
+            // ));
+            return $app->redirect('/');
+
         }
+
+        $passwordFormView = $passwordForm -> createView();
+
+        $params = array(
+            'title' => 'Mot de passe oublié',
+            'passwordForm' => $passwordFormView,
+            'message' => '',
+        );
+
+        return $app['twig']->render('password.html.twig', $params);
+
+        // if ($_POST) {
+        //     $data = $form->getData();
+        //
+        //     $message = \Swift_Message::newInstance()->setSubject($data['subject']->setTo('js.d@free.fr'))
+        //
+        //      ->setSubject('[PimpMyCV] Renvoi de votre mot de passe')
+        //         ->setFrom(array('madibaivry@free.fr'))
+        //         ->setTo(array('js.d@free.fr'))
+        //         ->setBody($request->get('message de test'));
+        //
+        //     // $email = 'js.d@free.fr';
+        //     // $message = $app['dao.membre'] -> EnvoiMdp($email);
+        //     var_dump($message);
+        //
+        //     return $app['twig']->render('password.html.twig', array(
+        //         'title' => 'Mot de passe oublié',
+        //         'email' => $message,
+        //         'Response' => 'Nous vous avons envoyé un email !'
+        //         )
+        //     );
+        // }
     }
 
      public function action(Application $app){
