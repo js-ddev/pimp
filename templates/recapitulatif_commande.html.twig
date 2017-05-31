@@ -10,38 +10,122 @@
             </div>
         </section>
         <!-- Page Tittle End -->
-        
+            
+        <!-- Form wizard -->
+        <div class="container">
+            <div class="row">
+                <section>
+                <div class="wizard">
+                    <div class="wizard-inner">
+                        <div class="connecting-line"></div>
+                        <ul class="nav nav-tabs" role="tablist">
+
+                            <li role="presentation" class="disabled">
+                                <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Informations générales">
+                                    <span class="round-tab">
+                                        <i class="glyphicon glyphicon-folder-open"></i>
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li role="presentation" class="disabled">
+                                <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Contenu de votre CV">
+                                    <span class="round-tab">
+                                        <i class="glyphicon glyphicon-pencil"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li role="presentation" class="disabled">
+                                <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Template et options">
+                                    <span class="round-tab">
+                                        <i class="glyphicon glyphicon-picture"></i>
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li role="presentation" class="active">
+                                <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Récapitulatif">
+                                    <span class="round-tab">
+                                        <i class="glyphicon glyphicon-ok"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+        <!-- Pricing Table 2 Start -->
+        <section class="section-5">
+            <div class="container">
+                <div class="row">
+                <div class="pricing-2 column-2">
+                    <div class="pricing-table">
+                        <div class="pricing-info">
+                            <div class="pricing-status">
+                                <i class="ei ei-cart"></i>
+                                <div class="plan border bottom">
+                                    <h2 class="mrg-btm-20">Basic</h2>
+                                    <span class="mrg-btm-10"><span class="font-size-25 theme-color price"><b>€100</b></span></span>
+                                    <p class="width-80 mrg-horizon-auto">Lorem Ipsum has been the industry's standard dummy text ever.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pricing-footer">
+                            <button class="btn btn-block btn-dark no-mrg-btm">Choisir</button>
+                        </div>
+                    </div>
+                    <div class="pricing-table">
+                        <div class="pricing-info">
+                            <div class="pricing-status">
+                                <i class="ei ei-airplane-side"></i>
+                                <div class="plan border bottom">
+                                    <h2 class="mrg-btm-20">Premium</h2>
+                                    <span class="mrg-btm-10"><span class="font-size-25 theme-color price"><b>€250</b></span>
+                                    <p class="width-80 mrg-horizon-auto">Lorem Ipsum has been the industry's standard dummy text ever.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pricing-footer">
+                            <button class="btn btn-block btn-dark no-mrg-btm">Choisir</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+        <!-- Pricing Table 2 End -->
         
         <!-- Cart Start -->
-        <section class="section-1">
+        <section class="section-5">
             <div class="container">
                 
                 <div class="row">
-                    <div class="col-lg-12">
+                    
+                      
                         <div class="card pdd-horizon-30 pdd-vertical-50 mrg-top-30">
                             <div class="border bottom">
                                 <h3 class="mrg-btm-30">Résumé de votre commande</h3>
                                
-                                 {% for commande in commandes %}
-
                                 
-                                <p>ID Membre: <span class="pull-right"> {{ commande.idMembre }} </span></p>
-                                <p> Numero de commande: <span class="pull-right">{{ commande.idMembre }}</span>
-                                <p>ID CV: <span class="pull-right"> {{ commande.idCv }} </span></p>
-                                <p>Date commande: <span class="pull-right"> {{ commande.dateCommande }} </span></p>
+      
+                                <p>Numéro de la commande: <span class="pull-right">{{ commande.Id }}</span></p>
+                                <p>Date commande: <span class="pull-right"> {{ commande.dateCommande|date("m/d/Y")}} </span></p>
                                 <p>Statut de la commande <span class="pull-right">{{ commande.statutCommande }} </span></p>
-                                 <p>Type de prestation <span class="pull-right">{{ commande.Prestation}} </span></p>
+                                <p>Type de prestation <span class="pull-right">{{ commande.Prestation}} </span></p>
                             </div>
                             <p class="mrg-top-20">Total: <span class="pull-right text-dark font-size-18"><b>€ {{ commande.prix }}</b></span></p>
-                             {% endfor %}
-                            <div class="text-center mrg-top-30">
-                                <a class="btn btn-dark btn-block" href="checkout.html">Payer</a>
-                             
-                            </div>
-                       
                     </div>
-                </div>
+                
             </div>
+        </div>
+
+        <div class="row mrg-top-50">
+            <ul class="list-inline pull-right">
+                <li><a href="{{ path('template_options') }}"><button type="button" class="btn btn-default prev-step">Etape précédente</button></a></li>
+                <li><a href="{{ path('paiement') }}"><button type="submit" class="btn btn-md btn-dark next step">Payer</button></a></li>
+            </ul>
+        </div>
+
+
         </section>
            
         <!-- Cart End -->
