@@ -74,10 +74,10 @@
                                 </div>
                                 <div class="features-block-2 col-md-6">
                                     <i id="rouge" class="ei-palette couleurs"></i>
-                                    <i id="vert" class="ei-palette couleurs" style="display:none"></i>
-                                    <i id="bleu" class="ei-palette couleurs" style="display:none"></i>
-                                    <i id="gris" class="ei-palette couleurs" style="display:none"></i>
-                                    <i id="marron" class="ei-palette couleurs" style="display:none"></i>
+                                    <i id="vert" class="ei-palette couleurs"></i>
+                                    <i id="bleu" class="ei-palette couleurs"></i>
+                                    <i id="gris" class="ei-palette couleurs"></i>
+                                    <i id="marron" class="ei-palette couleurs"></i>
                                     <div class="form-group features-info">
                                         <span class="features-tittle theme-color">Couleur</span>
                                         {{ form_errors(optionForm.couleur) }}
@@ -85,11 +85,11 @@
                                     </div>
                                 </div>
                                 <div class="features-block-2 col-md-6">
-                                    <i id="1" class="glyphicon glyphicon-option-vertical puces"></i>
-                                    <i id="2" class="glyphicon glyphicon-option-vertical puces" style="display:none"></i>
-                                    <i id="3" id="1" id="1" class="glyphicon glyphicon-option-vertical puces" style="display:none"></i>
-                                    <i id="4" id="1" class="glyphicon glyphicon-option-vertical puces" style="display:none"></i>
-                                    <i id="5" class="glyphicon glyphicon-option-vertical puces" style="display:none"></i>
+                                    <i class="glyphicon glyphicon-option-vertical puces"></i>
+                                    <i class="glyphicon glyphicon-option-vertical puces"></i>
+                                    <i class="glyphicon glyphicon-option-vertical puces"></i>
+                                    <i class="glyphicon glyphicon-option-vertical puces"></i>
+                                    <i class="glyphicon glyphicon-option-vertical puces"></i>
                                     <div class="form-group features-info">
                                         <span class="features-tittle theme-color">Puce</span><br>
                                         {{ form_errors(optionForm.puce) }}
@@ -98,7 +98,7 @@
                                 </div>
                                 <div class="features-block-2 col-md-6">
                                     <i id="fond_blanc" class="ei-file-blank fonds"></i>
-                                    <i id="fond_filigrane" class="ei-file-blank fonds" style="display:none"></i>
+                                    <i id="fond_filigrane" class="ei-file-blank fonds"></i>
                                     <div class="form-group features-info">
                                         <span class="features-tittle theme-color">Arrière plan</span>
                                         {{ form_errors(optionForm.fond) }}
@@ -106,9 +106,9 @@
                                     </div>
                                 </div>
                                 <div class="features-block-2 col-md-6">
-                                    <i id="texte" class="ei-paragraph indicateurs-performance"></i>
-                                    <i id="barre" class="ei-bar-chart-1 indicateurs-performance" style="display:none"></i>
-                                    <i id="rond" class="ei-redo-1 indicateurs-performance" style="display:none"></i>
+                                        <i id="indicateur-texte" class="ei-paragraph indicateurs-performance indicateurs-performance-first"></i>
+                                        <i id="indicateur-barre" class="ei-bar-chart-1 indicateurs-performance"></i>
+                                        <i id="indicateur-rond" class="ei-redo-1 indicateurs-performance"></i>
                                     <div class="form-group features-info">
                                         <span class="features-tittle theme-color">Indicateurs performance</span>
                                         {{ form_errors(optionForm.indicateur_performance) }}
@@ -116,8 +116,8 @@
                                     </div>
                                 </div>
                                 <div class="features-block-2 col-md-6">
-                                    <i id="texte" class="ei-paragraph activites"></i>
-                                    <i id="icone" class="ei-badminton activites" style="display:none"></i>
+                                    <i id="activite-texte" class="ei-paragraph activites activites-first"></i>
+                                    <i id="activite-icone" class="ei-badminton activites"></i>
                                     <div class="form-group features-info">
                                         <span class="features-tittle theme-color">Style activités</span>
                                         {{ form_errors(optionForm.activite) }}
@@ -131,16 +131,16 @@
                             {{ form_end(optionForm) }}
                             <!-- Fin formulaire options -->
 
-                            <div id="1" class="col-md-6 templates">
+                            <div id="template-1" class="col-md-6 templates templates-first">
                                 <img class="img-responsive" src="{{ asset('images/modele-cv1.jpg') }}" alt="">
                             </div>
-                            <div id="2" class="col-md-6 templates" style="display:none">
+                            <div id="template-2" class="col-md-6 templates">
                                 <img class="img-responsive" src="{{ asset('images/modele-cv2.jpg') }}" alt="">
                             </div>
-                            <div id="3" class="col-md-6 templates" style="display:none">
+                            <div id="template-3" class="col-md-6 templates">
                                 <img class="img-responsive" src="{{ asset('images/modele-cv3.jpg') }}" alt="">
                             </div>
-                            <div id="4" class="col-md-6 templates" style="display:none">
+                            <div id="template-4" class="col-md-6 templates">
                                 <img class="img-responsive" src="{{ asset('images/modele-cv4.jpg') }}" alt="">
                             </div>
                         </div>
