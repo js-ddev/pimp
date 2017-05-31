@@ -10,6 +10,7 @@ use Entity\AutreInfo;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -27,7 +28,7 @@ class CvType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options){
         $builder
-         
+
             ->add('id_membre', HiddenType::class, array(
                 'attr'=> array(
                     'editable' => false
@@ -145,5 +146,12 @@ class CvType extends AbstractType
                 ),
                 'required' => false,
             ));
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => Cv::class,
+        ));
     }
 }

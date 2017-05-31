@@ -58,6 +58,7 @@
 
             <!-- Pimp It ! -->
             {{ form_start(pimpitForm) }}
+			{{ form_errors(pimpitForm) }}
 			{{ form_widget(pimpitForm.id,{value : app.user.id}) }}
                 <div class="tab-content">
                     <div class="tab-pane active" role="tabpanel" id="step1">
@@ -68,25 +69,21 @@
 
 								<div class="form-group">
 									<label><b>Prénom</b></label>
-									{{ form_errors(pimpitForm.prenom) }}
 									{{ form_widget(pimpitForm.prenom) }}
 								</div>
 
 								<div class="form-group">
 									<label><b>Nom</b></label>
-									{{ form_errors(pimpitForm.nom) }}
 									{{ form_widget(pimpitForm.nom) }}
 								</div>
 
 								<div class="form-group">
 									<label><b>Email</b></label>
-									{{ form_errors(pimpitForm.username) }}
 									{{ form_widget(pimpitForm.username, {value : app.user.username}) }}
 								</div>
 
 								<div class="form-group">
 									<label><b>Date de naissance</b></label>
-									{{ form_errors(pimpitForm.date_naissance) }}
 									{{ form_widget(pimpitForm.date_naissance) }}
 								</div>
 
@@ -94,38 +91,32 @@
 
 								<div class="form-group">
 									<label><b>Adresse</b></label>
-										{{ form_errors(pimpitForm.adresse) }}
 										{{ form_widget(pimpitForm.adresse) }}
 								</div>
 
 								<div class="form-group">
 									<label><b>Ville</b></label>
-										{{ form_errors(pimpitForm.ville) }}
 										{{ form_widget(pimpitForm.ville) }}
 								</div>
 
 								<div class="form-group">
 									<label><b>Code Postal</b></label>
-										{{ form_errors(pimpitForm.code_postal) }}
 										{{ form_widget(pimpitForm.code_postal) }}
 								</div>
 
 								<div class="form-group">
 									<label><b>Pays</b></label>
-										{{ form_errors(pimpitForm.pays) }}
 										{{ form_widget(pimpitForm.pays) }}
 								</div>
 
 								<div class="form-group">
 									<label><b>Téléphone</b></label>
-										{{ form_errors(pimpitForm.telephone) }}
 										{{ form_widget(pimpitForm.telephone) }}
 								</div>
 
 								<h3>Si vous avez déjà un CV, vous pouvez nous l'envoyer :</h3>
 
 								<div class="form-group">
-									{{ form_errors(pimpitForm.cv) }}
 									{{ form_widget(pimpitForm.cv) }}
 								</div>
 

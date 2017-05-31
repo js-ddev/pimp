@@ -71,7 +71,7 @@ class ExperienceDAO extends DAO
     }
 
     public function findEntreprise3($id_cv){
-        $requete = "SELECT * FROM experience WHERE id_cv = ? AND type = 'entreprise2'";
+        $requete = "SELECT * FROM experience WHERE id_cv = ? AND type = 'entreprise3'";
         $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_cv));
 
         if($resultat){
@@ -84,7 +84,7 @@ class ExperienceDAO extends DAO
     }
 
     public function findEntreprise4($id_cv){
-        $requete = "SELECT * FROM experience WHERE id_cv = ? AND type = 'entreprise2'";
+        $requete = "SELECT * FROM experience WHERE id_cv = ? AND type = 'entreprise4'";
         $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_cv));
 
         if($resultat){
@@ -97,7 +97,7 @@ class ExperienceDAO extends DAO
     }
 
     public function findEntreprise5($id_cv){
-        $requete = "SELECT * FROM experience WHERE id_cv = ? AND type = 'entreprise2'";
+        $requete = "SELECT * FROM experience WHERE id_cv = ? AND type = 'entreprise5'";
         $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_cv));
 
         if($resultat){
@@ -117,7 +117,7 @@ class ExperienceDAO extends DAO
     *
     * @return \pimp\Entity\experience
     */
-    public function saveExperience(Experience $experience, Cv $cv, $type){
+    public function saveExperience(Experience $experience, Cv $cv){
         $experienceData = array(
             'id' => $experience -> getId(),
             'id_cv' => $cv -> getId(),
@@ -164,7 +164,7 @@ class ExperienceDAO extends DAO
     *
     * @return \pimp\Entity\experience
     */
-    public function insertExperience(Experience $experience, Cv $cv, $type){
+    public function insertExperience(Experience $experience, Cv $cv){
         $experienceData = array(
             'id_cv' => $cv -> getId(),
             'type' => $experience -> getType(),
@@ -204,7 +204,7 @@ class ExperienceDAO extends DAO
     *
     * @return \pimp\Entity\experience
     */
-    public function updateExperience(Experience $experience, Cv $cv, $type){
+    public function updateExperience(Experience $experience, Cv $cv){
         $experienceData = array(
             'id_cv' => $cv -> getId(),
             'type' => $experience -> getType(),
