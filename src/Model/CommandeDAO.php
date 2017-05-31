@@ -139,18 +139,18 @@ class CommandeDAO extends DAO/* implements StorageInterface*/
         }
     }*/
 
-    public function findRudy($id_commande){ 
+    public function findRudy($id_cv){ 
 
-   $requete = "SELECT * FROM commande WHERE id = ?";
-        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_commande));
+   $requete = "SELECT * FROM commande WHERE id_cv = ?";
+        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_cv));
     
      if($resultat){
             return $this -> buildEntityObject($resultat);
         }
         else{
-            throw new \Exception("Aucune commande à l'id:" . $id_commande);
+            throw new \Exception("Aucune commande à l'id:" . $id_cv);
         }
-          return $commandes;
+          return $commande;
     }
 
 /*    "SELECT co.date_commande, co.statut_commande, co.prix, op.couleur, op.puce, op.fond, op.indicateur_performance, op.activite, c.email_cv
