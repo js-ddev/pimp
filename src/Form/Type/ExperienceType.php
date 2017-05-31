@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -264,6 +265,10 @@ class ExperienceType extends AbstractType
                 'class' => 'form-control',
             ),
             'required' => false,
-        ));
+        ))
+
+        // -> add('envoyer', SubmitType::class, array('label' => 'envoyer'))
+
+        ;
     }
 }

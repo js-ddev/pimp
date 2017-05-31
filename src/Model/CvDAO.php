@@ -116,8 +116,8 @@ class CvDAO extends DAO
     *
     * @return \Entity\Cv|throws an exception si pas de matching
     */
-    public function find($id_membre){
-        $requete = "SELECT 
+    public function find2($id_membre){
+        $requete = "SELECT
 
             cv.id_membre,
 
@@ -125,7 +125,7 @@ class CvDAO extends DAO
 
             cv.nombre_sections,
             cv.nombre_page,
-                                                    
+
             cv.template,
             cv.couleur,
             cv.puce,
@@ -140,19 +140,19 @@ class CvDAO extends DAO
             m.date_naissance,
             cv.nationalite,
 
-            cv.email_cv,                                     
+            cv.email_cv,
             m.telephone,
             m.adresse,
             m.code_postal,
             m.ville,
             m.pays,
-                                                    
+
             cv.famille,
             cv.langue_maternelle,
             cv.permis_conduire,
             cv.permis_travail,
 
-            cv.twitter,                                   
+            cv.twitter,
             cv.linkedin,
             cv.skype,
             cv.site_perso,
@@ -161,7 +161,7 @@ class CvDAO extends DAO
             e.type,
             e.nom,
             e.secteur,
-            e.effectif,                                     
+            e.effectif,
             e.url_experience,
             e.poste,
             e.lieu,
@@ -179,35 +179,35 @@ class CvDAO extends DAO
             e.responsabilite5,
             e.realisation5,
 
-            f.type,                                        
+            f.type,
             f.diplome,
             f.etablissement,
             f.specialite,
             f.lieu,
             f.date_obtention,
             f.url_formation,
-                                                    
+
             a.type,
             a.nom,
             a.niveau,
             a.TOEIC,
             a.TOEFL,
             a.IELTS,
-                                                    
-            a.type,                                        
+
+            a.type,
             a.nom,
             a.niveau,
 
-            a_i.type,                                        
+            a_i.type,
             a_i.description
-        FROM 
+        FROM
             cv cv,
             membre m,
             experience e,
             formation f,
             aptitude a,
             autre_info a_i
-        WHERE 
+        WHERE
             m.id = cv.id_membre
             AND cv.id = a.id_cv
             AND cv.id = e.id_cv

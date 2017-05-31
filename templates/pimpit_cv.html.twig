@@ -274,8 +274,11 @@
 																{{ form_widget(experienceForm1.realisation5) }}
 															</div>
 															<div class="form-group col-md-12">
-																<input class="btn btn-md btn-dark" type="submit" value="Valider">
+																<input class="btn btn-md btn-dark" name="entreprise1" type="submit" value="Valider">
 															</div>
+
+
+
 														{{ form_end(experienceForm1) }}
 														</div>
 
@@ -377,9 +380,9 @@
 																{{ form_errors(experienceForm2.realisation5) }}
 																{{ form_widget(experienceForm2.realisation5) }}
 															</div>
-															<div class="form-group col-md-12">
-																<input class="btn btn-md btn-dark" type="submit" value="Valider">
-															</div>
+														<div class="form-group col-md-12">
+															<input class="btn btn-md btn-dark" name="entreprise2" type="submit" value="Valider">
+														</div>
 														{{ form_end(experienceForm2) }}
 														</div>
 
@@ -722,7 +725,7 @@
 														{{ form_start(formationForm1) }}
 														{{ form_errors(formationForm1) }}
 														{{ form_widget(formationForm1.type,{value :'formation1'}) }}
-														
+
 															<div class="form-group">
 																<label for="diplome">Diplome*</label>
 																{{ form_errors(formationForm1.diplome) }}
@@ -771,7 +774,7 @@
 														{{ form_start(formationForm2) }}
 														{{ form_errors(formationForm2) }}
 														{{ form_widget(formationForm2.type,{value :'formation2'}) }}
-										
+
 															<div class="form-group">
 																<label for="diplome">Diplome*</label>
 																{{ form_errors(formationForm2.diplome) }}
@@ -820,7 +823,7 @@
 														{{ form_start(formationForm3) }}
 														{{ form_errors(formationForm3) }}
 														{{ form_widget(formationForm3.type,{value :'formation3'}) }}
-										
+
 															<div class="form-group">
 																<label for="diplome">Diplome*</label>
 																{{ form_errors(formationForm3.diplome) }}
@@ -869,7 +872,7 @@
 														{{ form_start(formationForm4) }}
 														{{ form_errors(formationForm4) }}
 														{{ form_widget(formationForm4.type,{value :'formation4'}) }}
-										
+
 															<div class="form-group">
 																<label for="diplome">Diplome*</label>
 																{{ form_errors(formationForm4.diplome) }}
@@ -918,7 +921,7 @@
 														{{ form_start(formationForm5) }}
 														{{ form_errors(formationForm5) }}
 														{{ form_widget(formationForm5.type,{value :'formation5'}) }}
-										
+
 															<div class="form-group">
 																<label for="diplome">Diplome*</label>
 																{{ form_errors(formationForm5.diplome) }}
@@ -1021,7 +1024,7 @@
 																	{% endfor %}
 																</select>
 															</div>
-														
+
 															<div class="form-group">
 																<label for="url_formation">Site web</label>
 																{{ form_errors(certificationForm1.url_formation) }}
@@ -1222,11 +1225,11 @@
 																<input class="btn btn-md btn-dark" type="submit" value="Valider">
 															</div>
 														{{ form_end(langueForm3) }}
-														</div>	
+														</div>
 													</div>
 												</div>
 											</div>
-										</div>									
+										</div>
 										<!-- Fin Partie langues -->
 
 										<!-- Partie bénévolat -->
@@ -1577,7 +1580,7 @@
 												</span>
 											</div>
 											<div id="collapse7" class="panel-collapse collapse">
-												
+
 													<div class="row mrg-top-70">
 														<div class="col-md-10 col-md-offset-1">
 														<div class="text-center">
@@ -1591,7 +1594,7 @@
 																<li><a data-toggle="tab" href="#s4-option-4"><i class="ei ei-id-card-alt"></i>Divers</a></li>
 															</ul>
 
-															<div class="tab-content pdd-horizon-30">	
+															<div class="tab-content pdd-horizon-30">
 																<!-- Partie AutreInfo Sous-partie description -->
 																<div id="s4-option-1" class="tab-pane fade in active">
 																	<div class="panel-body">
@@ -1609,9 +1612,9 @@
 																		</div>
 																	{{ form_end(autre_infoForm1) }}
 																	</div>
-																</div>																
+																</div>
 																<!-- Fin sous-partie description -->
-															
+
 																<!-- Sous-partie passion -->
 																<div id="s4-option-2" class="tab-pane fade">
 																	<div class="panel-body">
@@ -1686,7 +1689,7 @@
 																		</div>
 																	</div>
 																</div>
-																<!-- Fin Sous-partie passion -->														
+																<!-- Fin Sous-partie passion -->
 
 																<!-- Sous-partie voyages -->
 																<div id="s4-option-3" class="tab-pane fade">
@@ -1718,7 +1721,7 @@
 																		<div class="form-group">
 																			<label for="description">Informations diverses que vous souhaitez nous communiquer par rapport à votre CV</label>
 																			{{ form_errors(autre_infoForm3.description) }}
-																			{{ form_widget(autre_infoForm3.description) }}	
+																			{{ form_widget(autre_infoForm3.description) }}
 																		</div>
 																		<div class="form-group col-md-12">
 																			<input class="btn btn-md btn-dark" type="submit" value="Valider">
