@@ -17,7 +17,7 @@
                     <div class="col-lg-12">
                         <h1 class="page-header">
                             Gestion des membres
-                            <small>Consulter | Ajouter | Modifier | Supprimer</small>
+                            <small>Consulter</small>
                         </h1>
                         <ol class="breadcrumb">
                             <li>
@@ -35,23 +35,11 @@
                     <div class="col-lg-12">
                         <h2>Tableaux du CV</h2>
 
-                        <div class="row">
-                            <div class="col-lg-2">
-                                <ol class="breadcrumb">
-                                    <li>
-
-                                        <!-- Didier - Bouton ajouter un CV -->
-
-                                        <a href="#"></i> Ajouter un membre</a>
-                                    </li>
-                                </ol>
-                            </div>
-                        </div>
 
                         <!-- Didier - TABLEAU 1 : ID, Fichier CV, Stucture CV, Design CV, Identité, Coordonnées, Infos perso, Réseaux sociaux et web -->
 
                         <div class="table-responsive">
-                            <table class="table table-bordered table-hover table-striped">
+                            <table id="myTable" class="table table-bordered table-hover table-striped">
                                 <thead>
                                     <tr>
 
@@ -103,6 +91,7 @@
                                         <th>URL autre</th>
 
                                         <!-- Didier - Partie Expérience entreprise -->
+                                        <th>Type d'expérience</th>
                                         <th>Nom de l'entreprise</th>
                                         <th>Secteur de l'entreprise<!-- Secteur : menu déroulant commun à expérience entreprise et expérience bénévolat --></th>
                                         <th>Effectif</th>
@@ -126,6 +115,7 @@
                                         <th>Réalisation 5</th>
 
                                         <!-- Didier - Partie Expérience bénévolat -->
+                                        <th>Type d'expérience</th>
                                         <th>Nom de la structure</th>
 
                                         <!-- Didier - Partie Expérience bénévolat -->
@@ -204,8 +194,6 @@
                                         <!-- Didier - Partie Autre info (divers) -->
                                         <th>Divers</th>
                                         <th>Informations complémentaires</th>
-
-                                        <th colspan="2">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -220,50 +208,50 @@
 
                                         <!-- Didier - Partie ID -->
                                         <td>{{ cv.id }}</td>
-                                        <td>{{ cv.id_membre }}</td>
+                                        <td>{{ cv.idMembre }}</td>
 
                                         <!-- Didier - Partie Fichier CV téléchargé -->
                                         <td>{{ membre.cv }}</td>
 
                                         <!-- Didier - Partie Structure du CV -->
-                                        <td>{{ cv.nombre_sections }}</td>
-                                        <td>{{ cv.nombre_page }}</td>
+                                        <td>{{ cv.nombreSections }}</td>
+                                        <td>{{ cv.nombrePage }}</td>
 
                                         <!-- Didier - Partie Design du CV -->
-                                        <td>{{ cv.template }}</td>
+                                        <td>{{ options.template }}</td>
                                         <td>{{ cv.couleur }}</td>
                                         <td>{{ cv.puce }}</td>
                                         <td>{{ cv.fond }}</td>
-                                        <td>{{ cv.indicateur_performance }}</td>
+                                        <td>{{ cv.indicateurPerformance }}</td>
                                         <td>{{ cv.activite }}</td>
 
                                         <!-- Didier - Partie Identité -->
                                         <td>{{ cv.photo }}</td>
                                         <td>{{ membre.prenom }}</td>
                                         <td>{{ membre.nom }}</td>
-                                        <td>{{ membre.date_naissance }}</td>
+                                        <td>{{ membre.dateNaissance }}</td>
                                         <td>{{ cv.nationalite }}</td>
 
                                         <!-- Didier - Partie Coordonnées -->
-                                        <td>{{ cv.email_cv }}</td>
+                                        <td>{{ cv.emailCv }}</td>
                                         <td>{{ membre.telephone }}</td>
                                         <td>{{ membre.adresse }}</td>
-                                        <td>{{ membre.code_postal }}</td>
+                                        <td>{{ membre.codePostal }}</td>
                                         <td>{{ membre.ville }}</td>
                                         <td>{{ membre.pays }}</td>
 
                                         <!-- Didier - Partie Informations personnelles -->
                                         <td>{{ cv.famille }}</td>
-                                        <td>{{ cv.langue_maternelle }}</td>
-                                        <td>{{ cv.permis_conduire }}</td>
-                                        <td>{{ cv.permis_travail }}</td>
+                                        <td>{{ cv.langueMaternelle }}</td>
+                                        <td>{{ cv.permisConduire }}</td>
+                                        <td>{{ cv.permisTravail }}</td>
 
                                         <!-- Didier - Partie Réseaux sociaux -->
                                         <td>{{ cv.twitter }}</td>
                                         <td>{{ cv.linkedin }}</td>
                                         <td>{{ cv.skype }}</td>
-                                        <td>{{ cv.site_perso }}</td>
-                                        <td>{{ cv.url_autre }}</td>
+                                        <td>{{ cv.sitePerso }}</td>
+                                        <td>{{ cv.urlAutre }}</td>
 
                                         <!-- Didier - Partie Expérience entreprise -->
                                         <td>{{ experience.type }}</td><!-- type = entreprise -->
@@ -272,12 +260,12 @@
                                         <td>{{ experience.effectif }}</td>
                                         <!-- <td>experience.description</td> NON implémenté-->
                                         <!-- <td>experience.ca</td> NON implémenté-->
-                                        <td>{{ experience.url_experience }}</td>
+                                        <td>{{ experience.urlExperience }}</td>
                                         <td>{{ experience.poste }}</td>
                                         <td>{{ experience.lieu }}</td>
                                         <td>{{ experience.role }}</td>
-                                        <td>{{ experience.date_debut }}</td>
-                                        <td>{{ experience.date_fin }}</td>
+                                        <td>{{ experience.dateDebut }}</td>
+                                        <td>{{ experience.dateFin }}</td>
                                         <td>{{ experience.responsabilite1 }}</td>
                                         <td>{{ experience.realisation1 }}</td>
                                         <td>{{ experience.responsabilite2 }}</td>
@@ -296,12 +284,12 @@
                                         <td>{{ experience.effectif }}</td>
                                         <!-- <td>experience.description</td> NON implémenté-->
                                         <!-- <td>experience.ca</td> NON implémenté car pas pertinent pour ce genre de structure -->
-                                        <td>{{ experience.url_experience }}</td>
+                                        <td>{{ experience.urlExperience }}</td>
                                         <td>{{ experience.poste }}</td>
                                         <td>{{ experience.lieu }}</td>
                                         <td>{{ experience.role }}</td>
-                                        <td>{{ experience.date_debut }}</td>
-                                        <td>{{ experience.date_fin }}</td>
+                                        <td>{{ experience.dateDebut }}</td>
+                                        <td>{{ experience.dateFin }}</td>
                                         <td>{{ experience.responsabilite1 }}</td>
                                         <td>{{ experience.realisation1 }}</td>
                                         <td>{{ experience.responsabilite2 }}</td>
@@ -319,8 +307,8 @@
                                         <td>{{ formation.etablissement }}</td>
                                         <td>{{ formation.specialite }}</td>
                                         <td>{{ formation.lieu }}</td>
-                                        <td>{{ formation.date_obtention }}</td>
-                                        <td>{{ formation.url_formation }}</td>
+                                        <td>{{ formation.dateObtention }}</td>
+                                        <td>{{ formation.urlFormation }}</td>
 
                                         <!-- Didier - Partie Formation/certification -->
                                         <td>{{ formation.type }}</td><!-- type = certification -->
@@ -328,8 +316,8 @@
                                         <td>{{ formation.etablissement }}</td>
                                         <td>{{ formation.specialite }}</td>
                                         <td>{{ formation.lieu }}</td>
-                                        <td>{{ formation.date_obtention }}</td>
-                                        <td>{{ formation.url_formation }}</td>
+                                        <td>{{ formation.dateObtention }}</td>
+                                        <td>{{ formation.urlFormation }}</td>
 
                                         <!-- Didier - Partie Aptitudes (langue) -->
                                         <td>{{ aptitude.type }}</td><!-- type = langue -->
@@ -361,16 +349,8 @@
                                         <td>{{ autre_info.type }}</td><!-- type = divers -->
                                         <td>{{ autre_info.description }}</td>
 
-
-                                        <!-- Didier - Bouton modifier l'identité, les infos perso... -->
-
-                                        <td><a href="#"></i></a></td>
-
-                                        <!-- Didier - Bouton supprimer l'identité, les infos perso... -->
-
-                                        <td><a href="#"></a></td>
-
                                     </tr>
+
 
                                 </tbody>
                             </table>

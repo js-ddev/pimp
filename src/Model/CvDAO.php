@@ -305,8 +305,10 @@ class CvDAO extends DAO
 
       protected function buildEntityObjectCommande(array $value){
         // Adrien - Création d'un nouveau CV
+
         $cv = new cv;
         $membre = new Membre;
+        
         $cv -> setId($value['id']);
         $cv -> setIdMembre($value['id_membre']);
         $cv -> setNombreSections($value['nombre_sections']);
