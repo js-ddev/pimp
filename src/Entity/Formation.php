@@ -70,7 +70,7 @@ class Formation
         return $this->etablissement;
     }
 
-    public function setEtablissment($etablissement)
+    public function setEtablissement($etablissement)
     {
         $this->etablissement = $etablissement;
         return $this;

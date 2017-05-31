@@ -201,15 +201,40 @@ class Bo
 /*        $request->query->get('id')
 */           $cv = $app['dao.cv'] -> find2($request->query->get('id'));
             
+            // var_dump($cv);
             if( ! $cv){
                 // TODO faire qqchose si pas de cv
             }
-
+        
             $experience = $app['dao.experience'] -> find($cv->getId());
+            // $formation bien avancé mais à finir ////////////
             $formation = $app['dao.formation'] -> find($cv->getId());
-            $aptitude = $app['dao.aptitude'] -> find($cv->getId());
+            // $aptitude = $app['dao.aptitude'] -> find($cv->getId());
             $autre_info = $app['dao.autre_info'] -> find($cv->getId());
-            $option = $app['dao.option'] -> find($cv->getId());
+            $options = $app['dao.options'] -> find($cv->getId());
+
+
+
+            print_r('<pre>');
+            print_r($cv);
+            print_r('</pre>');
+            
+            print_r('<pre>');
+            print_r($experience);
+            print_r('</pre>');
+            
+            print_r('<pre>');
+            print_r($formation);
+            print_r('</pre>');
+
+            print_r('<pre>');
+            print_r($options);
+            print_r('</pre>');
+
+            print_r('<pre>');
+            print_r($autre_info);
+            print_r('</pre>');
+
                /* $cvFormBo = $app['form.factory'] -> create(\Form\Type\CvTypeBo::class, $cv);
 
         $cvFormBo -> handleRequest($request);
