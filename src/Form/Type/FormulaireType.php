@@ -3,11 +3,6 @@
 namespace Form\Type;
 
 use Entity\Formulaire;
-// use Entity\Cv;
-// use Entity\Experience;
-// use Entity\Formation;
-// use Entity\Aptitude;
-// use Entity\AutreInfo;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -35,6 +30,14 @@ class FormulaireType extends AbstractType
 
              ->add('formations', CollectionType::class, array(
                 'entry_type' => FormationType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'prototype' => true,
+                'by_reference' => false,
+            ))
+
+            ->add('benevolat', CollectionType::class, array(
+                'entry_type' => BenevolatType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
                 'prototype' => true,

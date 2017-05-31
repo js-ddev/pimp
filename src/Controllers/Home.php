@@ -328,13 +328,13 @@ class Home
             $langue3 = new \Entity\Aptitude;
             $formulaire -> getAptitudes() -> add($langue3);
 
-
-            $benevolat1 = new \Entity\Experience;
-            $formulaire -> getExperiences() -> add($benevolat1);
-            $benevolat2 = new \Entity\Experience;
-            $formulaire -> getExperiences() -> add($benevolat2);
-            $benevolat3 = new \Entity\Experience;
-            $formulaire -> getExperiences() -> add($benevolat3);
+            //
+            // $benevolat1 = new \Entity\Experience;
+            // $formulaire -> getBenevolat() -> add($benevolat1);
+            // $benevolat2 = new \Entity\Experience;
+            // $formulaire -> getBenevolat() -> add($benevolat2);
+            // $benevolat3 = new \Entity\Experience;
+            // $formulaire -> getBenevolat() -> add($benevolat3);
 
 
             $autre_info1 = new \Entity\AutreInfo;
@@ -358,22 +358,28 @@ class Home
 
 
 
-
-
-
             $membre = $app['dao.membre'] -> find($app['user'] -> getId());
 
                 $cv = $app['dao.cv'] -> find($membre -> getId());
                 // print_r($cv);
                 $experiences = $app['dao.experience'] -> findEntreprise($cv -> getId());
                 $countExperiences = count($experiences);
-                for($i=0; $i<5 - $countExperiences; $i++){
+                for($i=0; $i<=5 - $countExperiences; $i++){
 
                     $experiences[] = new \Entity\Experience;
 
-                } // Fin de la boucle FOR
+                }
+
+                $benevolat = $app['dao.experience'] -> findBenevolat($cv -> getId());
+                $countBenevolat = count($benevolat);
+                for($i=0; $i<=3 - $countBenevolat; $i++){
+
+                    $benevolat[] = new \Entity\Experience;
+
+                }
 
                 $formulaire->setExperiences($experiences);
+                $formulaire->setBenevolat($benevolat);
                 // $experience = new \Entity\Experience;
 
                 // $formulaire = new \Entity\Formulaire;
@@ -383,11 +389,6 @@ class Home
                 // $autre_info = new \Entity\AutreInfo;
 
             // Fin du if de vérification de présence du CV sur la BDD pour l'utilisateur
-
-
-
-
-
 
 
             // $cv = new \Entity\Cv;
@@ -406,8 +407,6 @@ class Home
             // $formulaire -> getExperiences() -> add($experience5);
 
 
-
-
             // $formulaireForm->handleRequest($request);
             //
             // if ($formulaireForm->isSubmitted() && $formulaireForm->isValid()) {
@@ -422,8 +421,12 @@ class Home
                 foreach ($formulaire->getExperiences() as $experience) {
                     $app['dao.experience'] -> saveExperience($experience, $cv);
                 }
+                foreach ($formulaire->getBenevolat() as $experience) {
+                    $app['dao.experience'] -> saveExperience($experience, $cv);
+                }
 
             }
+
 
             $formulaireFormView = $formulaireForm -> createView();
 
