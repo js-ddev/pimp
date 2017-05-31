@@ -14,6 +14,9 @@ use Payum\Silex\PayumProvider;
 // JS - Enregistrement pour l'envoi de fichier :
 use Silex\Provider\ValidatorServiceProvider;
 
+// Enregistrement du maileur :
+use Symfony\Component\HttpFoundation\Request;
+
 $app = new Application();
 $app->register(new ServiceControllerServiceProvider());
 $app->register(new AssetServiceProvider());
@@ -93,6 +96,17 @@ $app -> register(new Silex\Provider\TranslationServiceProvider(), array(
 $app -> register(new Silex\Provider\DoctrineServiceProvider());
 $app -> register(new Silex\Provider\SessionServiceProvider());
 
+// JS - Enregistrement du mailer :
+$app->register(new Silex\Provider\SwiftmailerServiceProvider());
+
+$app['swiftmailer.options'] = array(
+    'host' => 'smtp.free.fr',
+    'port' => '465',
+    'username' => 'madibaivry',
+    'password' => 'M1llenmadiba',
+    'encryption' => 'ssl',
+    'auth_mode' => null
+);
 
 // Adrien - Gestion de la sécurité en connexion
 $app->register(new Silex\Provider\SecurityServiceProvider(), array(

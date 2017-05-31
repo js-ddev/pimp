@@ -223,7 +223,7 @@
                                         <td>{{ cv.id_membre }}</td>
 
                                         <!-- Didier - Partie Fichier CV téléchargé -->
-                                        <td>{{ cv.fichier_cv }}</td>
+                                        <td>{{ membre.cv }}</td>
 
                                         <!-- Didier - Partie Structure du CV -->
                                         <td>{{ cv.nombre_sections }}</td>
@@ -242,7 +242,7 @@
                                         <td>{{ membre.prenom }}</td>
                                         <td>{{ membre.nom }}</td>
                                         <td>{{ membre.date_naissance }}</td>
-                                        <td>{{ cv.nationnalite }}</td>
+                                        <td>{{ cv.nationalite }}</td>
 
                                         <!-- Didier - Partie Coordonnées -->
                                         <td>{{ cv.email_cv }}</td>
@@ -273,7 +273,7 @@
                                         <!-- <td>experience.description</td> NON implémenté-->
                                         <!-- <td>experience.ca</td> NON implémenté-->
                                         <td>{{ experience.url_experience }}</td>
-                                        <td>{{ experience.intitule }}</td>
+                                        <td>{{ experience.poste }}</td>
                                         <td>{{ experience.lieu }}</td>
                                         <td>{{ experience.role }}</td>
                                         <td>{{ experience.date_debut }}</td>
@@ -297,7 +297,7 @@
                                         <!-- <td>experience.description</td> NON implémenté-->
                                         <!-- <td>experience.ca</td> NON implémenté car pas pertinent pour ce genre de structure -->
                                         <td>{{ experience.url_experience }}</td>
-                                        <td>{{ experience.intitule }}</td>
+                                        <td>{{ experience.poste }}</td>
                                         <td>{{ experience.lieu }}</td>
                                         <td>{{ experience.role }}</td>
                                         <td>{{ experience.date_debut }}</td>
@@ -320,7 +320,7 @@
                                         <td>{{ formation.specialite }}</td>
                                         <td>{{ formation.lieu }}</td>
                                         <td>{{ formation.date_obtention }}</td>
-                                        <td>{{ formation.url_formatio }}</td>
+                                        <td>{{ formation.url_formation }}</td>
 
                                         <!-- Didier - Partie Formation/certification -->
                                         <td>{{ formation.type }}</td><!-- type = certification -->
@@ -329,7 +329,7 @@
                                         <td>{{ formation.specialite }}</td>
                                         <td>{{ formation.lieu }}</td>
                                         <td>{{ formation.date_obtention }}</td>
-                                        <td>{{ formation.url_formatio }}</td>
+                                        <td>{{ formation.url_formation }}</td>
 
                                         <!-- Didier - Partie Aptitudes (langue) -->
                                         <td>{{ aptitude.type }}</td><!-- type = langue -->

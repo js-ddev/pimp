@@ -6,13 +6,13 @@
     <img class="parallax-img no-mobile-parallax" src="{{ asset('images/bg-2.jpg') }}" alt="" data-parallax='{"y": 150}'>
     <div class="container">
         <div class="page-tittle-head">
-            <h2>Options</h2>
-            <p>Choisissez vos options</p>
+            <h2>Template et options</h2>
+            <p>Choix de votre template et de vos options graphiques</p>
         </div>
     </div>
 </section>
 <!-- Page Tittle End -->
-
+      
 <!-- Form wizard -->
 <div class="container">
     <div class="row">
@@ -55,93 +55,90 @@
                 </ul>
             </div>
 
-            <section class="section-5 bg-gray">
-
-            <div class="container">
-                <div class="row">
+            <div class="row mrg-top-50 features-block-2">
+                <section class="bg-gray">
                     <div class="container">
-                    <h2>Choix de votre template et de vos options graphiques</h2>
-                    </div>
-                    <div class="col-lg-2 col-md-6">
-                    {{ form_start(optionForm) }}
-                        <div class="pricing-1" style="padding:15px; margin-top: 15px;">
-                            <div class="pricing-status">
-                                <i class="glyphicon glyphicon-heart-empty" style="font-size:2em;"></i>
-                                <h3 class="plan"><b>Choix du modèle</b></h3>
-                                {{ form_errors(optionForm.template) }}
-                                {{ form_widget(optionForm.template) }}
+                        <div class="row">
+                            <!-- Début formulaire options -->
+                            {{ form_start(optionForm) }}
+                            <div class="col-md-5 col-md-offset-1 pdd-vertical-80">
+                            <h2 class="heading-1 right">Personnalisez votre Cv</h2>
+                                <div class="features-block-2 col-md-12 mrg-top-10"></div>
+                                <div class="features-block-2 col-md-6">
+                                    <i class="glyphicon glyphicon-heart-empty"></i>
+                                    <div class="form-group features-info">
+                                        <span class="features-tittle theme-color">Template</span>
+                                        {{ form_errors(optionForm.template) }}
+                                        {{ form_widget(optionForm.template) }}                                   
+                                    </div>
+                                </div>
+                                <div class="features-block-2 col-md-6">
+                                    <i class="glyphicon glyphicon-tint"></i>
+                                    <div class="form-group features-info">
+                                        <span class="features-tittle theme-color">Couleur</span>
+                                        {{ form_errors(optionForm.couleur) }}
+                                        {{ form_widget(optionForm.couleur) }}
+                                    </div>
+                                </div>
+                                <div class="features-block-2 col-md-6">
+                                    <i class="glyphicon glyphicon-option-vertical"></i>
+                                    <div class="form-group features-info">
+                                        <span class="features-tittle theme-color">Puce</span><br>
+                                        {{ form_errors(optionForm.puce) }}
+                                        {{ form_widget(optionForm.puce) }}
+                                    </div>
+                                </div>
+                                <div class="features-block-2 col-md-6">
+                                    <i class="glyphicon glyphicon-adjust"></i>
+                                    <div class="form-group features-info">
+                                        <span class="features-tittle theme-color">Arrière plan</span>
+                                        {{ form_errors(optionForm.fond) }}
+                                        {{ form_widget(optionForm.fond) }}
+                                    </div>
+                                </div>
+                                <div class="features-block-2 col-md-6">
+                                    <i class="glyphicon glyphicon-signal"></i>
+                                    <div class="form-group features-info">
+                                        <span class="features-tittle theme-color">Indicateurs performance</span>
+                                        {{ form_errors(optionForm.indicateur_performance) }}
+                                        {{ form_widget(optionForm.indicateur_performance) }}
+                                    </div>
+                                </div>
+                                <div class="features-block-2 col-md-6">
+                                    <i class="glyphicon glyphicon-sunglasses"></i>
+                                    <div class="form-group features-info">
+                                        <span class="features-tittle theme-color">Style activités</span>
+                                        {{ form_errors(optionForm.activite) }}
+                                        {{ form_widget(optionForm.activite) }}
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-12 features-info">
+                                    <input class="btn btn-md btn-dark" type="submit" value="Valider">
+                                </div>
                             </div>
-                        </div>
-                    </div>
-               
-                    <div class="col-lg-2 col-md-6">
-                        <div class="pricing-1 couleur" style="padding:15px; margin-top: 15px;">
-                            <div class="pricing-status">
-                                <i class="glyphicon glyphicon-tint" style="font-size:2em;"></i>
-                                <h3 class="plan"><b>Couleur du modèle</b></h3> 
-                                {{ form_errors(optionForm.couleur) }}
-                                {{ form_widget(optionForm.couleur) }}
-                            </div>
-                        </div>
-                    </div>
+                            {{ form_end(optionForm) }}
+                            <!-- Fin formulaire options -->
 
-                     <div class="col-lg-2 col-md-6">
-                        <div class="pricing-1" style="padding:15px; margin-top: 15px;">
-                            <div class="pricing-status">
-                                <i class="glyphicon glyphicon-option-vertical" style="font-size:2em;"></i>
-                                <h3 class="plan"><b>Puce du modèle</b></h3>
-                                {{ form_errors(optionForm.puce) }}
-                                {{ form_widget(optionForm.puce) }}
+                            <div id="1" class="col-md-6 templates">
+                                <img class="img-responsive" src="{{ asset('images/modele-cv1.jpg') }}" alt="">
                             </div>
-                        </div>
-                    </div>
-              
-                    <div class="col-lg-2 col-md-6">
-                        <div class="pricing-1" style="padding:15px; margin-top: 15px;">
-                            <div class="pricing-status">
-                                <i class="glyphicon glyphicon-adjust" style="font-size:2em;"></i>
-                                <h3 class="plan"><b>Arrière plan du modèle</b></h3>
-                                {{ form_errors(optionForm.fond) }}
-                                {{ form_widget(optionForm.fond) }}
+                            <div id="2" class="col-md-6 templates" style="display:none">
+                                <img class="img-responsive" src="{{ asset('images/modele-cv2.jpg') }}" alt="">
                             </div>
-                        </div>
-                    </div>
-            
-                    <div class="col-lg-2 col-md-6">
-                        <div class="pricing-1" style="padding:15px; margin-top: 15px;">
-                            <div class="pricing-status">
-                                <i class="glyphicon glyphicon-signal" style="font-size:2em;"></i>
-                                <h3 class="plan"><b>Indicateurs performance</b></h3>
-                                {{ form_errors(optionForm.indicateur_performance) }}
-                                {{ form_widget(optionForm.indicateur_performance) }}
+                            <div id="3" class="col-md-6 templates" style="display:none">
+                                <img class="img-responsive" src="{{ asset('images/modele-cv3.jpg') }}" alt="">
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-2 col-md-6">
-                        <div class="pricing-1" style="padding:15px; margin-top: 15px;">
-                            <div class="pricing-status">
-                                <i class="glyphicon glyphicon-sunglasses" style="font-size:2em;"></i>
-                                <h3 class="plan"><b>Style activités</b></h3>
-                                {{ form_errors(optionForm.activite) }}
-                                {{ form_widget(optionForm.activite) }}
+                            <div id="4" class="col-md-6 templates" style="display:none">
+                                <img class="img-responsive" src="{{ asset('images/modele-cv4.jpg') }}" alt="">
                             </div>
-                        </div>
-                    </div>
-                
-                    <div class="col-lg-12 col-md-6">
-                        <div class="pricing-1" style="padding:12px; margin-top: 16px;">
-
-                            <i class="glyphicon glyphicon-thumbs-up" style="font-size:2em;"></i>
-                            <h3 class="plan"><b>Pimp mon CV!</b></h3>
-                            <button type="submit" id="envoyez" value="Valider" class="btn btn-sm btn-theme">Go</button> 
                         </div>
 
-                    </div> 
-                    {{ form_end(optionForm) }}
-                </div> <!-- fin de row -->         
-            </div> <!-- fin de container -->
-            </section>
+            <div class="row mrg-top-50">
+                <ul class="list-inline pull-right">
+                    <li><a href="{{ path('pimpit_cv') }}"><button type="button" class="btn btn-default prev-step">Etape précédente</button></a></li>
+                    <li><a href="{{ path('recapitulatif_commande') }}"><button type="button" class="btn btn-md btn-dark next step">Etape suivante</button></a></li>
+                </ul>
+            </div>
         </div>
         </section>
     </div>
