@@ -447,7 +447,7 @@
 														<li><a data-toggle="tab" href="#Benevolat-3">Bénévolat 3</a></li>
 													</ul>
 													<div class="tab-content">
-														{% for experience in formulaireForm.experiences %}
+														{% for experience in formulaireForm.benevolat %}
 														<div id="Benevolat-{{ loop.index }}" class="tab-pane fade pdd-horizon-10">
 														{{ form_widget(experience.type,{value :'benevolat'}) }}
 
@@ -513,8 +513,6 @@
 																{{ form_widget(experience.responsabilite1) }}
 																{{ form_widget(experience.responsabilite2) }}
 																{{ form_widget(experience.responsabilite3) }}
-																{{ form_widget(experience.responsabilite4) }}
-																{{ form_widget(experience.responsabilite5) }}
 															</div>
 
 															<div class="form-group">
@@ -522,8 +520,6 @@
 																{{ form_widget(experience.realisation1) }}
 																{{ form_widget(experience.realisation2) }}
 																{{ form_widget(experience.realisation3) }}
-																{{ form_widget(experience.realisation4) }}
-																{{ form_widget(experience.realisation5) }}
 															</div>
 
 															<div class="form-group col-md-12">

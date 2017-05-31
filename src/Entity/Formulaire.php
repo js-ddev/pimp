@@ -10,6 +10,7 @@ class Formulaire
 {
     protected $cv;
     protected $experiences;
+    protected $benevolat;
     protected $formations;
     protected $aptitudes;
     protected $autre_infos;
@@ -17,6 +18,7 @@ class Formulaire
     public function __construct()
     {
         $this->experiences = new ArrayCollection();
+        $this->benevolat = new ArrayCollection();
         $this->formations = new ArrayCollection();
         $this->aptitudes = new ArrayCollection();
         $this->autres_infos = new ArrayCollection();
@@ -37,6 +39,15 @@ class Formulaire
     }
     public function setExperiences($experience) {
         $this->experiences = $experience;
+        return $this;
+    }
+
+     public function getBenevolat()
+    {
+        return $this->benevolat;
+    }
+    public function setBenevolat($benevolat) {
+        $this->benevolat = $benevolat;
         return $this;
     }
 
