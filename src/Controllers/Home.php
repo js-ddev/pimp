@@ -45,7 +45,7 @@ class Home
     }
 
     public function recapitulatif_commande(Application $app){
-        $commandes = $app['dao.commande'] -> find(1);
+        $commandes = $app['dao.commande'] -> findRudy(1);
         print_r($commandes);
         return $app['twig']->render('recapitulatif_commande.html.twig',
             array(
