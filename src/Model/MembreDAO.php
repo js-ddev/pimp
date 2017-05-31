@@ -108,6 +108,7 @@ class MembreDAO extends DAO implements UserProviderInterface
             $this->getDb()->update('membre', $membreData, array('id'=>$membre->getId()));
 
         } else { // Créer un membre
+            $membreData['date_inscription'] = date('Y-m-d H:i:s');
             $this -> getDb() -> insert('membre', $membreData);
         }
         $membre -> setId($this -> getDb() -> lastInsertId());

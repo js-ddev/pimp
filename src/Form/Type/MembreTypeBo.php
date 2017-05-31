@@ -190,22 +190,24 @@ class MembreTypeBo extends AbstractType
             ))
 
             // Rôle :
-            // code qui fonctionne mais pas de liste de choix !!!
             
-            -> add('role', TextType::class, array(
-                'required' => true,
-                'attr' => array(
-                    'placeholder' => 'Rôle',
-                    'class' => 'form-control',
-                ),
-            ))
-
-/*            ->add('role', ChoiceType::class, array(
+            -> add('role', ChoiceType::class, array(
                 'choices' => array(
                     'Utilisateur' => 'ROLE_USER',
                     'Administrateur' => 'ROLE_ADMIN'
                 ),
                 'preferred_choices' => array('ROLE_USER')
+            ))
+
+            // Rôle :
+            // code qui fonctionne mais pas de liste de choix !!!
+            
+/*            -> add('role', TextType::class, array(
+                'required' => true,
+                'attr' => array(
+                    'placeholder' => 'Rôle',
+                    'class' => 'form-control',
+                ),
             ))*/
 
             ->add('id', HiddenType::class, array(
