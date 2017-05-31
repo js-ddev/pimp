@@ -116,9 +116,9 @@ class CvDAO extends DAO
     *
     * @return \Entity\Cv|throws an exception si pas de matching
     */
-    public function find2($id_membre){
+    public function find2($id_cv){
         $requete = "SELECT
-
+            cv.id,
             cv.id_membre,
 
             m.cv,
@@ -126,7 +126,6 @@ class CvDAO extends DAO
             cv.nombre_sections,
             cv.nombre_page,
 
-            cv.template,
             cv.couleur,
             cv.puce,
             cv.fond,
@@ -213,7 +212,7 @@ class CvDAO extends DAO
             AND cv.id = e.id_cv
             AND cv.id = f.id_cv
             AND cv.id = a_i.id_cv
-        id_membre = ?";
+            AND cv.id_membre = ?";
         $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_membre));
 
         if($resultat){
@@ -278,7 +277,6 @@ class CvDAO extends DAO
     protected function BuildEntityObject(array $value){
         // Adrien - Création d'un nouveau CV
         $cv = new cv;
-
         $cv -> setId($value['id']);
         $cv -> setIdMembre($value['id_membre']);
         $cv -> setNombreSections($value['nombre_sections']);

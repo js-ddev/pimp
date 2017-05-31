@@ -195,15 +195,22 @@ class Bo
 
 
 
-// Didier - Route pour inscription utilisateur (fiche utilisateur)
+// Didier - Route pour inscription cv
     public function gestion_cv(Request $request, Application $app){
 
-        if( ! empty($request->query->get('id'))) {
-            $cv = $app['dao.cv'] -> find($request->query->get('id'));
-        } else {
-            $cv = new \Entity\Cv;
-        }
-        $cvFormBo = $app['form.factory'] -> create(\Form\Type\CvTypeBo::class, $cv);
+/*        $request->query->get('id')
+*/           $cv = $app['dao.cv'] -> find2($request->query->get('id'));
+            
+            if( ! $cv){
+                // TODO faire qqchose si pas de cv
+            }
+
+            $experience = $app['dao.experience'] -> find($cv->getId());
+            $formation = $app['dao.formation'] -> find($cv->getId());
+            $aptitude = $app['dao.aptitude'] -> find($cv->getId());
+            $autre_info = $app['dao.autre_info'] -> find($cv->getId());
+            $option = $app['dao.option'] -> find($cv->getId());
+               /* $cvFormBo = $app['form.factory'] -> create(\Form\Type\CvTypeBo::class, $cv);
 
         $cvFormBo -> handleRequest($request);
 
@@ -220,12 +227,17 @@ class Bo
             $app['session'] -> getFlashBag() -> add('success', 'Votre inscription a bien été prise en compte !');
         }
 
-        $cvFormView = $cvFormBo -> createView();
+        $cvFormView = $cvFormBo -> createView();*/
 
         $params = array(
             'cv' => $cv,
-            'title' => 'Inscription',
-            'cvFormBo' => $cvFormView
+            'experience' => $experience,
+            'formation' => $formation,
+            'aptitude' => $aptitude,
+            'autre_info' => $autre_info,
+            'option' => $option
+/*            'title' => 'Inscription'
+*/            /*'cvFormBo' => $cvFormView*/
         );
 
         return $app['twig']->render('/bo/gestion_cv.html.twig', $params);
