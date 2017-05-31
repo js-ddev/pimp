@@ -19,7 +19,7 @@ $app -> get('/recapitulatif_commande','Controllers\\Home::recapitulatif_commande
 
 $app -> get('/paiement','Controllers\\Home::paiement') -> bind('paiement');
 
-$app -> get('/validation_commande','Controllers\\Home::validation_commande') -> bind('validation-commande');
+$app -> get('/validation_commande','Controllers\\Home::validation_commande') -> bind('validation_commande');
 
 
 // Route pour formulaire d'inscription
