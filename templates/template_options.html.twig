@@ -1,4 +1,4 @@
-{% extends "layout.html.twig" %}
+{% extends "layout3.html.twig" %}
 
 {% block content %}
 <!-- Page Tittle Start -->
@@ -65,7 +65,7 @@
                             <h2 class="heading-1 right">Personnalisez votre Cv</h2>
                                 <div class="features-block-2 col-md-12 mrg-top-10"></div>
                                 <div class="features-block-2 col-md-6">
-                                    <i class="glyphicon glyphicon-heart-empty"></i>
+                                    <i class="ei-id-card-alt"></i>
                                     <div class="form-group features-info">
                                         <span class="features-tittle theme-color">Template</span>
                                         {{ form_errors(optionForm.template) }}
@@ -73,7 +73,11 @@
                                     </div>
                                 </div>
                                 <div class="features-block-2 col-md-6">
-                                    <i class="glyphicon glyphicon-tint"></i>
+                                    <i id="rouge" class="ei-palette couleurs"></i>
+                                    <i id="vert" class="ei-palette couleurs" style="display:none"></i>
+                                    <i id="bleu" class="ei-palette couleurs" style="display:none"></i>
+                                    <i id="gris" class="ei-palette couleurs" style="display:none"></i>
+                                    <i id="marron" class="ei-palette couleurs" style="display:none"></i>
                                     <div class="form-group features-info">
                                         <span class="features-tittle theme-color">Couleur</span>
                                         {{ form_errors(optionForm.couleur) }}
@@ -81,7 +85,11 @@
                                     </div>
                                 </div>
                                 <div class="features-block-2 col-md-6">
-                                    <i class="glyphicon glyphicon-option-vertical"></i>
+                                    <i id="1" class="glyphicon glyphicon-option-vertical puces"></i>
+                                    <i id="2" class="glyphicon glyphicon-option-vertical puces" style="display:none"></i>
+                                    <i id="3" id="1" id="1" class="glyphicon glyphicon-option-vertical puces" style="display:none"></i>
+                                    <i id="4" id="1" class="glyphicon glyphicon-option-vertical puces" style="display:none"></i>
+                                    <i id="5" class="glyphicon glyphicon-option-vertical puces" style="display:none"></i>
                                     <div class="form-group features-info">
                                         <span class="features-tittle theme-color">Puce</span><br>
                                         {{ form_errors(optionForm.puce) }}
@@ -89,7 +97,8 @@
                                     </div>
                                 </div>
                                 <div class="features-block-2 col-md-6">
-                                    <i class="glyphicon glyphicon-adjust"></i>
+                                    <i id="fond_blanc" class="ei-file-blank fonds"></i>
+                                    <i id="fond_filigrane" class="ei-file-blank fonds" style="display:none"></i>
                                     <div class="form-group features-info">
                                         <span class="features-tittle theme-color">Arrière plan</span>
                                         {{ form_errors(optionForm.fond) }}
@@ -97,7 +106,9 @@
                                     </div>
                                 </div>
                                 <div class="features-block-2 col-md-6">
-                                    <i class="glyphicon glyphicon-signal"></i>
+                                    <i id="texte" class="ei-paragraph indicateurs-performance"></i>
+                                    <i id="barre" class="ei-bar-chart-1 indicateurs-performance" style="display:none"></i>
+                                    <i id="rond" class="ei-redo-1 indicateurs-performance" style="display:none"></i>
                                     <div class="form-group features-info">
                                         <span class="features-tittle theme-color">Indicateurs performance</span>
                                         {{ form_errors(optionForm.indicateur_performance) }}
@@ -105,7 +116,8 @@
                                     </div>
                                 </div>
                                 <div class="features-block-2 col-md-6">
-                                    <i class="glyphicon glyphicon-sunglasses"></i>
+                                    <i id="texte" class="ei-paragraph activites"></i>
+                                    <i id="icone" class="ei-badminton activites" style="display:none"></i>
                                     <div class="form-group features-info">
                                         <span class="features-tittle theme-color">Style activités</span>
                                         {{ form_errors(optionForm.activite) }}

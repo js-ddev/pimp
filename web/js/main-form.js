@@ -108,13 +108,3 @@ $(document).ready(function() {
         stepSlider6ValueElement.innerHTML = values[handle];
     });
 });
-
-
-// Adrien - Fonction pour affichage dynamique des templates dans page template/options
-$(function() {
-    console.log(hello);
-    $('#option_template').change(function(){
-        $('.templates').hide();
-        $('#' + $(this).val()).show();
-    });
-});
