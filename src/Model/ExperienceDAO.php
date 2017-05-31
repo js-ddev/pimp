@@ -44,12 +44,18 @@ class ExperienceDAO extends DAO
         */
     }
 
-    public function findEntreprise1($id_cv){
-        $requete = "SELECT * FROM experience WHERE id_cv = ? AND type = 'entreprise1'";
-        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_cv));
+    public function findEntreprise($id_cv){
+        $requete = "SELECT * FROM experience WHERE id_cv = ? AND type = 'entreprise'";
+        $resultat = $this -> getDb() -> fetchAll($requete, array($id_cv));
 
         if($resultat){
-            return $this -> buildEntityObject($resultat);
+            $experiences = array();
+            foreach ($resultat as $res) {
+
+                $experiences[] = $this -> buildEntityObject($res);
+            }
+
+            return $experiences;
         }
         else{
             return FALSE;

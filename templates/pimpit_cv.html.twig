@@ -68,7 +68,7 @@
 								<div class="col-md-12">
 									<div class="panel-group">
 
-										<!-- Partie informations personnelles (table cv) -->									
+										<!-- Partie informations personnelles (table cv) -->
 										{{ form_widget(formulaireForm.cv.id_membre,{value : app.user.id}) }}
 										<div class="panel panel-default">
 											<div class="panel-heading">
@@ -85,7 +85,7 @@
 													</div>
 
 													<div class="form-group">
-														<label for="situation">Situation familiale :</label>				
+														<label for="situation">Situation familiale :</label>
 														{{ form_widget(formulaireForm.cv.famille) }}
 													</div>
 
@@ -141,7 +141,7 @@
 													</div>
 												</div>
 											</div>
-										</div>									
+										</div>
 										<!-- Fin Partie informations personnelles (table cv) -->
 
 										<!--  Partie expérience -->
@@ -206,7 +206,7 @@
 															<div class="form-group">
 																<label for="Duree">Durée du poste* : </label>
 																<span> de </span>
-														
+
 																{{ form_widget(experience.date_debut) }}
 
 																<select class="" name="annee_debut">
@@ -216,7 +216,7 @@
 																</select>
 
 																<span> à </span>
-													
+
 																{{ form_widget(experience.date_fin) }}
 
 																<select class="" name="annee_fin">
@@ -342,25 +342,25 @@
 
 															<div class="form-group">
 																<label for="diplome">Intitulé de la certification*</label>
-															
+
 																{{ form_widget(certification.diplome) }}
 															</div>
 
 															<div class="form-group">
 																<label for="etablissement">Etablissement*</label>
-															
+
 																{{ form_widget(certification.etablissement) }}
 															</div>
 
 															<div class="form-group">
 																<label for="specialite">Spécialité</label>
-												
+
 																{{ form_widget(certification.specialite) }}
 															</div>
 
 															<div class="form-group">
 																<label for="lieu">Localisation</label>
-													
+
 																{{ form_widget(certification.lieu) }}
 															</div>
 
@@ -375,7 +375,7 @@
 
 															<div class="form-group">
 																<label for="url_formation">Site web</label>
-														
+
 																{{ form_widget(certification.url_formation) }}
 															</div>
 															<div class="form-group col-md-12">
@@ -405,7 +405,7 @@
 														<li><a data-toggle="tab" href="#Langue-3">Langue étrangère 3</a></li>
 													</ul>
 													<div class="tab-content">
-														{% for langue in formulaireForm.aptitudes %} 
+														{% for langue in formulaireForm.aptitudes %}
 														<div id="Langue-{{ loop.index }}" class="tab-pane fade pdd-horizon-10">
 														{{ form_widget(langue.type,{value :'langue'}) }}
 
@@ -509,7 +509,7 @@
 															</div>
 
 															<div class="form-group">
-																<label for="responsabilite">Responsabilités* :</label><br />															
+																<label for="responsabilite">Responsabilités* :</label><br />
 																{{ form_widget(experience.responsabilite1) }}
 																{{ form_widget(experience.responsabilite2) }}
 																{{ form_widget(experience.responsabilite3) }}
@@ -529,7 +529,7 @@
 															<div class="form-group col-md-12">
 																<input class="btn btn-md btn-dark" type="submit" value="Valider">
 															</div>
-														</div>	
+														</div>
 														{% endfor %}
 													</div>
 												</div>
@@ -556,17 +556,17 @@
 													</ul>
 													<div class="tab-content">
 													{% for passion in formulaireForm.aptitudes %}
-														<div id="Interet-{{ loop.index }}" class="tab-pane fade pdd-horizon-10">																						
+														<div id="Interet-{{ loop.index }}" class="tab-pane fade pdd-horizon-10">
 														{{ form_widget(passion.type,{value :'centre_interet'}) }}
 															<h4 class="no-mrg-top mrg-btm-20">Centre d'intérêt 1</h4>
 															<div class="form-group">
-																<label for="nom"></label>															
+																<label for="nom"></label>
 																{{ form_widget(passion.nom) }}
 															</div>
 															<div class="form-group col-md-12">
 																<input class="btn btn-md btn-dark" type="submit" value="Valider">
 															</div>
-														</div>	
+														</div>
 														{% endfor %}
 													</div>
 												</div>
@@ -591,7 +591,7 @@
 														</div>
 														<div class="card">
 															<ul class="nav nav-tabs tab-style-4 item-4">
-																<li><a data-toggle="tab" href="#s4-option-1"><i class="display-block ei ei-human-resources"></i>Description</a></li>	
+																<li><a data-toggle="tab" href="#s4-option-1"><i class="display-block ei ei-human-resources"></i>Description</a></li>
 																<li><a data-toggle="tab" href="#s4-option-2"><i class="ei ei-departures"></i>Voyages</a></li>
 																<li><a data-toggle="tab" href="#s4-option-3"><i class="ei ei-id-card-alt"></i>Divers</a></li>
 															</ul>
@@ -600,7 +600,7 @@
 																{% for autre_info in formulaireForm.autres_infos %}
 																<!-- Partie AutreInfo Sous-partie description -->
 																<div id="s4-option-{{ loop.index }}" class="tab-pane fade">
-																	<div class="panel-body">																
+																	<div class="panel-body">
 																	{{ form_widget(autre_info.type,{value :'info'}) }}
 																	{{ form_widget(autre_info.type,{value :'voyage'}) }}
 																	{{ form_widget(autre_info.type,{value :'divers'}) }}
@@ -632,7 +632,7 @@
 			                            <li><a href="{{ path('pimpit') }}"><button type="button" class="btn btn-default prev-step">Etape précédente</button></a></li>
 			                            <li><a href="{{ path('template_options') }}"><button type="button" class="btn btn-md btn-dark next step">Etape suivante</button></a></li>
 			                        </ul>
-			                    </div>	
+			                    </div>
 			                </div>
 			            </div>
 					</div>

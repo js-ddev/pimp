@@ -8,4 +8,4 @@ $bo -> get('/gestion_commandes', 'Controllers\\Bo::gestion_commandes') ;
 $app -> match('/pimpit/cv1','Controllers\\Home::formulaire1') -> bind('pimpit_cv1');
 $app -> match('/pimpit/cv','Controllers\\Home::formulaire') -> bind('pimpit_cv');
 
-$app -> get('/password','Controllers\\Home::password') -> bind('password');
+$app -> match('/password','Controllers\\Home::password') -> bind('password');

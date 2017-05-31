@@ -18,8 +18,8 @@ class PayumProvider implements ServiceProviderInterface
     public function register(Container $app) {
         $app['payum'] = function () use ($app) {
             return (new PayumBuilder())
-                // -> addDefaultStorages()
-                -> addStorage('\Model\CustomStorage', new CustomStorage())
+                -> addDefaultStorages()
+                -> addStorage(\Model\CustomStorage::class, new CustomStorage($app['db']))
                 // TODO après que tout fonctionne
                 // cette ligne sert à ajouter notre storage BDD
                 // -> addStorage('\Model\CommandeDAO', new CommandeDAO())

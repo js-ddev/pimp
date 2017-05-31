@@ -23,7 +23,7 @@ class CustomStorage implements StorageInterface
     private $db;
 
 
-    public function Connection ($db){
+    public function __construct ($db){
         $this -> db = $db;
     }
 
@@ -45,7 +45,7 @@ class CustomStorage implements StorageInterface
     // public function create($command)
     {
 
-        return new $this->model();
+        return new \Entity\Commande();
 
         // $command = new Commande;
         // $command->setNumber($value['12']);
@@ -76,7 +76,8 @@ class CustomStorage implements StorageInterface
     public function support($model)
     {
         $class = get_class($model);
-        return $class === '\Entity\Commande';
+        var_dump($class);
+        return $class === \Entity\Commande::class;
     }
 
 
@@ -91,24 +92,30 @@ class CustomStorage implements StorageInterface
     public function update($model)
     {
         $modelData = array(
-            $number => $model->getNumber(),
-            $currency_code => $model->getCurrencyCode(),
-            $total_amount => $model->getTotalAmount(),
-            $description => $model->getDescription(),
-            $client_id => $model->getClientId(),
-            $client_email => $model->getClientEmail(),
-            $details => $model->getDetails(),
-            $id_cv => $model->getIdCv(),
+            'number' => $model->getNumber(),
+            'currency_code' => $model->getCurrencyCode(),
+            'total_amount' => $model->getTotalAmount(),
+            'description' => $model->getDescription(),
+            'client_id' => $model->getClientId(),
+            'client_email' => $model->getClientEmail(),
+            'details' => $model->getDetails(),
+            'id_cv' => $model->getIdCv(),
 
     );
         if( ! $this->support($model)){
 
             throw \Payum\Core\Exception\InvalidArgumentException;
         }
+        if($model->getId()) {
+            $requete = $this->getDb()->query("UPDATE commande SET number = ?, currency_code = '?', total_amount = ?, description = '?', client_id = ?, client_email = '?', details = '?' WHERE id_cv = ?");
+            $this->getDb()->executeUpdate($requete, array($number, $currency_code, $total_amount, $description, $client_id, $client_email, $details, $id_cv));
+        } else {
+            $requete = $this->getDb()->insert('commande', $modelData);
 
-        $requete = getDb()->query("UPDATE commande SET number = ?, currency_code = '?', total_amount = ?, description = '?', client_id = ?, client_email = '?', details = '?' WHERE id_cv = ?");
+        }
 
-        $this->getDb()->executeUpdate($requete, array($number, $currency_code, $total_amount, $description, $client_id, $client_email, $details, $id_cv));
+
+
     }
 
 
