@@ -67,15 +67,4 @@ class Formulaire
         return $this;
     }
 
-// Test pour le CV :
-    public function getIdMembre()
-    {
-        return $this->id_membre;
-    }
-    public function setIdMembre(Membre $id_membre)
-    {
-        $this->id_membre = $id_membre;
-
-        return $this;
-    }
 }

@@ -370,19 +370,74 @@ class Home
 
 
             // $cv = new \Entity\Cv;
-            // $experience = new \Entity\Experience;
-            // $formation = new \Entity\Formation;
-            // $aptitude = new \Entity\Aptitude;
-            // $autre_info = new \Entity\AutreInfo;
+            // $formulaire -> setCv($cv);
 
-            $cv = new \Entity\Cv;
-            $formulaire -> setCv($cv);
 
             $experience1 = new \Entity\Experience;
             $formulaire -> getExperiences() -> add($experience1);
-
             $experience2 = new \Entity\Experience;
             $formulaire -> getExperiences() -> add($experience2);
+            $experience3 = new \Entity\Experience;
+            $formulaire -> getExperiences() -> add($experience3);
+            $experience4 = new \Entity\Experience;
+            $formulaire -> getExperiences() -> add($experience4);
+            $experience5 = new \Entity\Experience;
+            $formulaire -> getExperiences() -> add($experience5);
+
+
+
+            $formation1 = new \Entity\Formation;
+            $formulaire -> getFormation() -> add($formation1);
+            $formation2 = new \Entity\Formation;
+            $formulaire -> getFormation() -> add($formation2);
+            $formation3 = new \Entity\Formation;
+            $formulaire -> getFormation() -> add($formation3);
+            $formation4 = new \Entity\Formation;
+            $formulaire -> getFormation() -> add($formation4);
+            $formation5 = new \Entity\Formation;
+            $formulaire -> getFormation() -> add($formation5);
+
+
+
+            $certification1 = new \Entity\Formation;
+            $formulaire -> getFormations() -> add($certification1);
+            $certification2 = new \Entity\Formation;
+            $formulaire -> getFormations() -> add($certification2);
+            $certification3 = new \Entity\Formation;
+            $formulaire -> getFormations() -> add($certification3);
+
+
+            $langue1 = new \Entity\Aptitude;
+            $formulaire -> getAptitudes() -> add($langue1);
+            $langue2 = new \Entity\Aptitude;
+            $formulaire -> getAptitudes() -> add($langue2);
+            $langue3 = new \Entity\Aptitude;
+            $formulaire -> getAptitudes() -> add($langue3);
+
+
+
+            $benevolat1 = new \Entity\Experience;
+            $formulaire -> getExperiences() -> add($benevolat1);
+            $benevolat2 = new \Entity\Experience;
+            $formulaire -> getExperiences() -> add($benevolat2);
+            $benevolat3 = new \Entity\Experience;
+            $formulaire -> getExperiences() -> add($benevolat3);
+
+
+            $autre_info1 = new \Entity\AutreInfo;
+            $formulaire -> getAutresInfos() -> add($autre_info1);
+            $autre_info2 = new \Entity\AutreInfo;
+            $formulaire -> getAutresInfos() -> add($autre_info2);
+            $autre_info3 = new \Entity\AutreInfo;
+            $formulaire -> getAutresInfos() -> add($autre_info3);
+
+
+            $passion1 = new \Entity\Aptitude;
+            $formulaire -> getAptitudes() -> add($passion1);
+            $passion2 = new \Entity\Aptitude;
+            $formulaire -> getAptitudes() -> add($passion2);
+            $passion3 = new \Entity\Aptitude;
+            $formulaire -> getAptitudes() -> add($passion3);
 
 
             $formulaireForm = $app['form.factory'] -> create(\Form\Type\FormulaireType::class, $formulaire);
@@ -394,35 +449,7 @@ class Home
             if ($formulaireForm->isSubmitted() && $formulaireForm->isValid()) {
                 Print_r('yes');
             }
-            // $cvFormView = $cvForm -> createView();
-            // $experienceForm1View = $experienceForm1 -> createView();
 
-            // $experienceForm2View = $experienceForm2 -> createView();
-            // $experienceForm3View = $experienceForm3 -> createView();
-            // $experienceForm4View = $experienceForm4 -> createView();
-            // $experienceForm5View = $experienceForm5 -> createView();
-            // $benevolatForm1View = $benevolatForm1 -> createView();
-            // $benevolatForm2View = $benevolatForm2 -> createView();
-            // $benevolatForm3View = $benevolatForm3 -> createView();
-            // $formationForm1View = $formationForm1 -> createView();
-            // $formationForm2View = $formationForm2 -> createView();
-            // $formationForm3View = $formationForm3 -> createView();
-            // $formationForm4View = $formationForm4 -> createView();
-            // $formationForm5View = $formationForm5 -> createView();
-            // $certificationForm1View = $certificationForm1 -> createView();
-            // $certificationForm2View = $certificationForm2 -> createView();
-            // $certificationForm3View = $certificationForm3 -> createView();
-            // $langueForm1View = $langueForm1 -> createView();
-            // $langueForm2View = $langueForm2 -> createView();
-            // $langueForm3View = $langueForm3 -> createView();
-            // $passionForm1View = $passionForm1 -> createView();
-            // $passionForm2View = $passionForm2 -> createView();
-            // $passionForm3View = $passionForm3 -> createView();
-            // $passionForm4View = $passionForm4 -> createView();
-            // $passionForm5View = $passionForm5 -> createView();
-            // $autre_infoForm1View = $autre_infoForm1 -> createView();
-            // $autre_infoForm2View = $autre_infoForm2 -> createView();
-            // $autre_infoForm3View = $autre_infoForm3 -> createView();
 
             $params = array(
                 'title' => 'Contenu de votre CV',
