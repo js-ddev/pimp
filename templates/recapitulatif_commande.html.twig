@@ -70,7 +70,7 @@
                             </div>
                         </div>
                         <div class="pricing-footer">
-                            <button class="btn btn-block btn-dark no-mrg-btm">Choisir</button>
+                            <a href="#switch1"><button class="btn btn-block btn-dark no-mrg-btm">Choisir</button></a>
                         </div>
                     </div>
                     <div class="pricing-table">
@@ -85,7 +85,7 @@
                             </div>
                         </div>
                         <div class="pricing-footer">
-                            <button class="btn btn-block btn-dark no-mrg-btm">Choisir</button>
+                            <a href="#switch2"><button class="btn btn-block btn-dark no-mrg-btm">Choisir</button></a>
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
         <!-- Pricing Table 2 End -->
         
         <!-- Cart Start -->
-        <section class="section-5">
+        <section class="section-5" id="resume">
             <div class="container">
                 
                 <div class="row">
@@ -104,16 +104,18 @@
                         <div class="card pdd-horizon-30 pdd-vertical-50 mrg-top-30">
                             <div class="border bottom">
                                 <h3 class="mrg-btm-30">Résumé de votre commande</h3>
-                               
-                                
-      
                                 <p>Numéro de la commande: <span class="pull-right">{{ commande.Id }}</span></p>
                                 <p>Date commande: <span class="pull-right"> {{ commande.dateCommande|date("m/d/Y")}} </span></p>
                                 <p>Statut de la commande <span class="pull-right">{{ commande.statutCommande }} </span></p>
                                 <p>Type de prestation <span class="pull-right">{{ commande.Prestation}} </span></p>
                             </div>
-                            <p class="mrg-top-20">Total: <span class="pull-right text-dark font-size-18"><b>€ {{ commande.prix }}</b></span></p>
-                    </div>
+                            <p class="mrg-top-20">Total en €: <span class="pull-right text-dark font-size-18"><span class="pull-right text-dark font-size-18"></span></p>
+                            <i id="switch1"></i>
+                            <div class="pull-right text-dark font-size-18">100</div>
+                            <i id="switch2"></i>
+                            <span class="pull-right text-dark font-size-18">250</span>
+                        </div>
+
                 
             </div>
         </div>
@@ -125,9 +127,18 @@
             </ul>
         </div>
 
-
         </section>
            
         <!-- Cart End -->
-      
-{% endblock %}
+        <style type="text/css">
+        [id^=switch] + *{
+          display:none;
+        }
+        [id^=switch]:target + *{
+          display:block;
+        }</style>
+
+       
+
+
+    {% endblock %}
