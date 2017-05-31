@@ -267,116 +267,14 @@ class Home
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-// Adrien - Controller pour générer le formulaire de création du CV :
-
-    public function cv(Request $request, Application $app){
-
-        // JS - Si l'utilisateur est connecté :
-        if($app['security.authorization_checker'] -> isGranted('IS_AUTHENTICATED_FULLY')){
-
-            $membre = $app['dao.membre'] -> find($app['user'] -> getId());
-
-            // $cv = $app['dao.cv'] -> find($app['user'] -> getId());
-            $experience = new \Entity\Experience;
-            $formation = new \Entity\Formation;
-            $aptitude = new \Entity\Aptitude;
-            $autre_info = new \Entity\AutreInfo;
-
-            // JS - Si l'utilisateur a déjà un CV de créé :
-            if(!is_null($app['dao.cv'] -> find($app['user'] -> getId()))){
-                $cv = $app['dao.cv'] -> find($membre -> getId());
-                // var_dump('idmembre trouvé');
-            }
-            else{
-                $cv = new \Entity\Cv;
-                // var_dump('else, idmembre non trouvé');
-
-            }
-
-            $cvForm = $app['form.factory'] -> create(\Form\Type\CvType::class, $cv);
-            $experienceForm = $app['form.factory'] -> create(\Form\Type\ExperienceType::class, $experience);
-            $formationForm = $app['form.factory'] -> create(\Form\Type\FormationType::class, $formation);
-            $aptitudeForm = $app['form.factory'] -> create(\Form\Type\AptitudeType::class, $aptitude);
-            $autre_infoForm = $app['form.factory'] -> create(\Form\Type\AutreInfoType::class, $autre_info);
-
-            $cvForm -> handleRequest($request);
-            $experienceForm -> handleRequest($request);
-            $formationForm -> handleRequest($request);
-            $aptitudeForm -> handleRequest($request);
-
-            if($cvForm -> isSubmitted() && $cvForm -> isValid()){
-                $app['dao.cv'] -> saveCv($cv, $membre);
-                $app['dao.experience'] -> saveExperience($experience, $cv);
-                $app['dao.formation'] -> saveFormation($formation, $cv);
-                $app['dao.aptitude'] -> saveAptitude($aptitude, $cv);
-                $app['dao.autre_info'] -> saveAutreInfo($autre_info, $cv);
-
-                $app['session'] -> getFlashBag() -> add('success', 'Le contenu de votre CV a été pris en compte !');
-
-                // Adrien - Redirection suite à la sousmission Pimp It CV pour step3 form wizard
-                return $app->redirect('/template_options');
-            }
-
-            $cvFormView = $cvForm -> createView();
-            $experienceFormView = $experienceForm -> createView();
-            $formationFormView = $formationForm -> createView();
-            $aptitudeFormView = $aptitudeForm -> createView();
-            $autre_infoFormView = $autre_infoForm -> createView();
-            // var_dump($cvForm->getErrors());
-            // die();
-            $params = array(
-                'title' => 'Contenu de votre CV',
-                'id_membre' => $membre -> getId(),
-                'cvForm' => $cvFormView,
-                'experienceForm' => $experienceFormView,
-                'formationForm' => $formationFormView,
-                'aptitudeForm' => $aptitudeFormView,
-                'autre_infoForm' => $autre_infoFormView,
-            );
-            // print_r('$cv');
-            // print_r($cv);
-            return $app['twig']->render('pimpit_cv.html.twig', $params);
-        }
-        // Si l'utilisateur n'est pas connecté le renvoyer vers l'inscription/login :
-        else {
-
-        // JS - A prevoir une meilleure redirection et une page d'inscription avec message :
-            header("Location:/inscription");
-            exit();
-        }
-    }
-*/
-
+    // Adrien - Controller pour générer le formulaire parent sur Pimpit/cv
     public function formulaire(Request $request, Application $app){
         if($app['security.authorization_checker'] -> isGranted('IS_AUTHENTICATED_FULLY')){
 
             $formulaire = new \Entity\Formulaire;
 
-
-            // $cv = new \Entity\Cv;
-            // $experience = new \Entity\Experience;
-            // $formation = new \Entity\Formation;
-            // $aptitude = new \Entity\Aptitude;
-            // $autre_info = new \Entity\AutreInfo;
-
-            $cv = new \Entity\Cv;
-            $formulaire -> setCv($cv);
+            //$cv = new \Entity\Cv;
+            //$formulaire -> setCv($cv);
 
             $experience1 = new \Entity\Experience;
             $formulaire -> getExperiences() -> add($experience1);
@@ -384,6 +282,17 @@ class Home
             $experience2 = new \Entity\Experience;
             $formulaire -> getExperiences() -> add($experience2);
 
+            $experience3 = new \Entity\Experience;
+            $formulaire -> getExperiences() -> add($experience3);
+
+            $experience4 = new \Entity\Experience;
+            $formulaire -> getExperiences() -> add($experience4);
+
+            $experience5 = new \Entity\Experience;
+            $formulaire -> getExperiences() -> add($experience5);
+
+            $formation1 = new \Entity\Formation;
+            $formulaire -> getFormations() -> add($formation1);
 
             $formulaireForm = $app['form.factory'] -> create(\Form\Type\FormulaireType::class, $formulaire);
 
@@ -394,35 +303,7 @@ class Home
             if ($formulaireForm->isSubmitted() && $formulaireForm->isValid()) {
                 Print_r('yes');
             }
-            // $cvFormView = $cvForm -> createView();
-            // $experienceForm1View = $experienceForm1 -> createView();
 
-            // $experienceForm2View = $experienceForm2 -> createView();
-            // $experienceForm3View = $experienceForm3 -> createView();
-            // $experienceForm4View = $experienceForm4 -> createView();
-            // $experienceForm5View = $experienceForm5 -> createView();
-            // $benevolatForm1View = $benevolatForm1 -> createView();
-            // $benevolatForm2View = $benevolatForm2 -> createView();
-            // $benevolatForm3View = $benevolatForm3 -> createView();
-            // $formationForm1View = $formationForm1 -> createView();
-            // $formationForm2View = $formationForm2 -> createView();
-            // $formationForm3View = $formationForm3 -> createView();
-            // $formationForm4View = $formationForm4 -> createView();
-            // $formationForm5View = $formationForm5 -> createView();
-            // $certificationForm1View = $certificationForm1 -> createView();
-            // $certificationForm2View = $certificationForm2 -> createView();
-            // $certificationForm3View = $certificationForm3 -> createView();
-            // $langueForm1View = $langueForm1 -> createView();
-            // $langueForm2View = $langueForm2 -> createView();
-            // $langueForm3View = $langueForm3 -> createView();
-            // $passionForm1View = $passionForm1 -> createView();
-            // $passionForm2View = $passionForm2 -> createView();
-            // $passionForm3View = $passionForm3 -> createView();
-            // $passionForm4View = $passionForm4 -> createView();
-            // $passionForm5View = $passionForm5 -> createView();
-            // $autre_infoForm1View = $autre_infoForm1 -> createView();
-            // $autre_infoForm2View = $autre_infoForm2 -> createView();
-            // $autre_infoForm3View = $autre_infoForm3 -> createView();
 
             $params = array(
                 'title' => 'Contenu de votre CV',

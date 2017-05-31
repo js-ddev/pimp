@@ -6,6 +6,7 @@ use Entity\Formation;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -72,6 +73,13 @@ class FormationType extends AbstractType
                 'class' => 'form-control',
             ),
             'required' => false,
+        ));
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => Formation::class,
         ));
     }
 }
