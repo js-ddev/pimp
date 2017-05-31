@@ -3,12 +3,14 @@
 namespace Entity;
 
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\File;
 
-class Membre
+class Membre implements Userinterface
 
 {
     private $id;
-    private $email;
+    private $username;
     private $password;
     private $nom;
     private $prenom;
@@ -21,6 +23,13 @@ class Membre
     private $statut_membre;
     private $date_inscription;
     private $role;
+    private $salt;
+    private $cv;
+
+// JS - AJout des propriétés photo et fichier de l'entité cv :
+    // private $photo;
+    // private $fichier;
+
 
     // ID----------------------------//
     public function getId() {
@@ -33,13 +42,13 @@ class Membre
     }
     //------------------------------//
 
-    // EMAIL-----------------------//
-    public function getEmail() {
-        return $this->email;
+    // USERNAME-----------------------//
+    public function getUsername() {
+        return $this->username;
     }
 
-    public function setEmail($email) {
-        $this->email = $email;
+    public function setUsername($username) {
+        $this->username = $username;
         return $this;
     }
     //-------------------------------//
@@ -119,11 +128,11 @@ class Membre
     // CODE POSTAL-------------------//
     public function getCodepostal()
     {
-        return $this->codepostal;
+        return $this->code_postal;
     }
 
     public function setCodepostal($code_postal) {
-        $this->codepostal = $code_postal;
+        $this->code_postal = $code_postal;
         return $this;
     }
     //-------------------------------//
@@ -177,13 +186,114 @@ class Membre
     //-------------------------------//
 
     // ROLE--------------------------//
+    public function setRole($role) {
+        return $this->role = $role;
+    }
 
+    public function getRole() {
+        return $this->role;
+    }
+    //-------------------------------//
+
+    // SALT--------------------------//
+    public function setSalt($salt) {
+        return $this->salt = $salt;
+    }
+
+    public function getSalt() {
+        return $this->salt;
+    }
+    //------------------------------//
+
+    // Ce get est utilisé lors de la vérification pour la connexion
     public function getRoles(){
         return array($this->getRole());
 
     }
-    //-------------------------------//
+
+    /**
+     * Gets the value of fichier.
+     *
+     * @return mixed
+     */
+    public function getCv()
+    {
+        return $this->cv;
+    }
+
+    /**
+     * Sets the value of fichier.
+     *
+     * @param mixed $fichier the fichier
+     *
+     * @return self
+     */
+    public function setCv($cv)
+    {
+        $this->cv = $cv;
+
+        return $this;
+    }
+
+
+// JS - Ajout du Fichier de l'entité Photo :
+//     /**
+//      * Gets the value of fichier.
+//      *
+//      * @return mixed
+//      */
+//     public function getPhoto()
+//     {
+//         return $this->photo;
+//     }
+//
+//     /**
+//      * Sets the value of fichier.
+//      *
+//      * @param mixed $fichier the fichier
+//      *
+//      * @return self
+//      */
+//     public function setPhoto(Cv $photo)
+//     {
+//         $this-> photo = $photo;
+//
+//         return $this;
+//     }
+//
+// // JS - Ajout du Fichier de l'entité CV :
+//     /**
+//      * Gets the value of fichier.
+//      *
+//      * @return mixed
+//      */
+//     public function getFichier()
+//     {
+//         return $this->fichier;
+//     }
+//
+//     /**
+//      * Sets the value of fichier.
+//      *
+//      * @param mixed $fichier the fichier
+//      *
+//      * @return self
+//      */
+//     public function setFichier(Cv $fichier)
+//     {
+//         $this-> fichier = $fichier;
+//
+//         return $this;
+//     }
+
+
+    // Adrien - Fonction imposée par UserInterface
+     /**
+    * @inheritDoc
+    */
+    public function eraseCredentials()
+    {
+      // Nothing to do here
+    }
 
 }
-
-?>

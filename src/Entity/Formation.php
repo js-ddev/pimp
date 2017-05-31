@@ -1,6 +1,6 @@
 <?php
 
-namespace Pimpmycv\Entity;
+namespace Entity;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -61,7 +61,7 @@ class Formation
     {
         $this->diplome = $diplome;
         return $this;
-    } 
+    }
     //-------------------------------//
 
     // ETABLISSEMENT-------------------//
@@ -70,11 +70,11 @@ class Formation
         return $this->etablissement;
     }
 
-    public function setEtablissment($etablissement)
+    public function setEtablissement($etablissement)
     {
         $this->etablissement = $etablissement;
         return $this;
-    } 
+    }
     //-------------------------------//
 
     // SPECIALITE------------------------//
@@ -87,7 +87,7 @@ class Formation
     {
         $this->specialite = $specialite;
         return $this;
-    } 
+    }
     //-------------------------------//
 
     // LIEU------------------------//
@@ -100,7 +100,7 @@ class Formation
     {
         $this->lieu = $lieu;
         return $this;
-    } 
+    }
     //-------------------------------//
 
     // DATE D'OBTENTION------------------------//
@@ -113,7 +113,7 @@ class Formation
     {
         $this->date_obtention = $date_obtention;
         return $this;
-    } 
+    }
     //-------------------------------//
 
     // URL FORMATION------------------------//
@@ -126,10 +126,8 @@ class Formation
     {
         $this->url_formation = $url_formation;
         return $this;
-    } 
+    }
     //-------------------------------//
 
 
 }
-
-?>

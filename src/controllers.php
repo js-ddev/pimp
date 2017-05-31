@@ -5,6 +5,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Payum\Core\Storage\FilesystemStorage; // Ajout pour le paiement Payum
 
 //Request::setTrustedProxies(array('127.0.0.1'));
 
@@ -47,3 +48,5 @@ $app->error(function (\Exception $e, Request $request, $code) use ($app) {
 
 // Définition du controller pour le backoffice :
 $app->mount('/bo', $bo);
+
+

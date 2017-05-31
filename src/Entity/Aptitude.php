@@ -1,6 +1,6 @@
 <?php
 
-namespace Pimpmycv\Entity;
+namespace Entity;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -35,7 +35,7 @@ class Aptitude
      *
      * @return self
      */
-    private function setId($id)
+    public function setId($id)
     {
         $this->id = $id;
 
@@ -59,7 +59,7 @@ class Aptitude
      *
      * @return self
      */
-    private function setIdCv($id_cv)
+    public function setIdCv($id_cv)
     {
         $this->id_cv = $id_cv;
 
@@ -83,7 +83,7 @@ class Aptitude
      *
      * @return self
      */
-    private function setType($type)
+    public function setType($type)
     {
         $this->type = $type;
 
@@ -107,7 +107,7 @@ class Aptitude
      *
      * @return self
      */
-    private function setNom($nom)
+    public function setNom($nom)
     {
         $this->nom = $nom;
 
@@ -131,7 +131,7 @@ class Aptitude
      *
      * @return self
      */
-    private function setNiveau($niveau)
+    public function setNiveau($niveau)
     {
         $this->niveau = $niveau;
 
@@ -155,7 +155,7 @@ class Aptitude
      *
      * @return self
      */
-    private function setToeic($toeic)
+    public function setToeic($toeic)
     {
         $this->toeic = $toeic;
 
@@ -179,7 +179,7 @@ class Aptitude
      *
      * @return self
      */
-    private function setToefl($toefl)
+    public function setToefl($toefl)
     {
         $this->toefl = $toefl;
 
@@ -203,16 +203,10 @@ class Aptitude
      *
      * @return self
      */
-    private function setIelts($ielts)
+    public function setIelts($ielts)
     {
         $this->ielts = $ielts;
 
         return $this;
     }
 }
-
-
-
-
-
-?>

@@ -1,12 +1,20 @@
 <?php
 
-namespace Pimpmycv\Entity;
+namespace Entity;
 
 use Symfony\Component\Security\Core\User\UserInterface;
+use Payum\Core\Storage\FilesystemStorage;
+use Payum\Core\Storage\StorageInterface;
 
-class Commande
+/*use Payum\Core\Model\Payment as BasePayment;
+
+use Payum\Core\Model\ArrayObject;
+use Payum\Core\Model\Payment;*/
+
+class Commande /*extends BasePayment*/
 
 {
+
     private $id;
     private $id_membre;
     private $id_cv;
@@ -15,6 +23,13 @@ class Commande
     private $prestation;
     private $prix;
     private $commentaires;
+    protected $number;
+    protected $currency_code;
+    protected $total_amount;
+    protected $description;
+    protected $client_id;
+    protected $client_email;
+    protected $details;
 
 
 
@@ -36,7 +51,7 @@ class Commande
      *
      * @return self
      */
-    private function setId($id)
+    public function setId($id)
     {
         $this->id = $id;
 
@@ -60,7 +75,7 @@ class Commande
      *
      * @return self
      */
-    private function setIdMembre($id_membre)
+    public function setIdMembre($id_membre)
     {
         $this->id_membre = $id_membre;
 
@@ -84,7 +99,7 @@ class Commande
      *
      * @return self
      */
-    private function setIdCv($id_cv)
+    public function setIdCv($id_cv)
     {
         $this->id_cv = $id_cv;
 
@@ -101,6 +116,7 @@ class Commande
         return $this->date_commande;
     }
 
+
     /**
      * Sets the value of date_commande.
      *
@@ -108,7 +124,7 @@ class Commande
      *
      * @return self
      */
-    private function setDateCommande($date_commande)
+    public function setDateCommande($date_commande)
     {
         $this->date_commande = $date_commande;
 
@@ -132,7 +148,7 @@ class Commande
      *
      * @return self
      */
-    private function setStatutCommande($statut_commande)
+    public function setStatutCommande($statut_commande)
     {
         $this->statut_commande = $statut_commande;
 
@@ -156,7 +172,7 @@ class Commande
      *
      * @return self
      */
-    private function setPrestation($prestation)
+    public function setPrestation($prestation)
     {
         $this->prestation = $prestation;
 
@@ -180,7 +196,7 @@ class Commande
      *
      * @return self
      */
-    private function setPrix($prix)
+    public function setPrix($prix)
     {
         $this->prix = $prix;
 
@@ -204,12 +220,183 @@ class Commande
      *
      * @return self
      */
-    private function setCommentaires($commentaires)
+    public function setCommentaires($commentaires)
     {
         $this->commentaires = $commentaires;
 
         return $this;
     }
+
+
+    /**
+     * Gets the value of number.
+     *
+     * @return mixed
+     */
+    public function getNumber()
+    {
+        return $this->number;
+    }
+
+    /**
+     * Sets the value of number.
+     *
+     * @param mixed $number the number
+     *
+     * @return self
+     */
+    public function setNumber($number)
+    {
+        $this->number = $number;
+
+        return $this;
+    }
+
+       /**
+     * Gets the value of currency_code.
+     *
+     * @return mixed
+     */
+    public function getCurrencyCode()
+    {
+        return $this->currency_code;
+    }
+
+    /**
+     * Sets the value of currency_code.
+     *
+     * @param mixed $currency_code the currency_code
+     *
+     * @return self
+     */
+    public function setCurrencyCode($currency_code)
+    {
+        $this->currency_code = $currency_code;
+
+        return $this;
+    }
+
+        /**
+     * Gets the value of total_amount.
+     *
+     * @return mixed
+     */
+    public function getTotalAmount()
+    {
+        return $this->total_amount;
+    }
+
+    /**
+     * Sets the value of total_amount.
+     *
+     * @param mixed $total_amount the total_amount
+     *
+     * @return self
+     */
+    public function setTotalAmount($total_amount)
+    {
+        $this->total_amount = $total_amount;
+
+        return $this;
+    }
+
+         /**
+     * Gets the value of description.
+     *
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Sets the value of description.
+     *
+     * @param mixed $description the description
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+          /**
+     * Gets the value of client_id.
+     *
+     * @return mixed
+     */
+    public function getClientId()
+    {
+        return $this->client_id;
+    }
+
+    /**
+     * Sets the value of client_id.
+     *
+     * @param mixed $client_id the client_id
+     *
+     * @return self
+     */
+    public function setClientId($client_id)
+    {
+        $this->client_id = $client_id;
+
+        return $this;
+    }
+
+              /**
+     * Gets the value of client_email.
+     *
+     * @return mixed
+     */
+    public function getClientEmail()
+    {
+        return $this->client_email;
+    }
+
+    /**
+     * Sets the value of client_email.
+     *
+     * @param mixed $client_email the client_email
+     *
+     * @return self
+     */
+    public function setClientEmail($client_email)
+    {
+        $this->client_email = $client_email;
+
+        return $this;
+    }
+
+                 /**
+     * Gets the value of details.
+     *
+     * @return mixed
+     */
+    public function getDetails()
+    {
+        return $this->details;
+    }
+
+    /**
+     * Sets the value of details.
+     *
+     * @param mixed $details the details
+     *
+     * @return self
+     */
+    public function setDetails($details)
+    {
+        $this->details = $details;
+
+        return $this;
+    }
+
+
 }
 
 ?>

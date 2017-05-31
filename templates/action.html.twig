@@ -1,0 +1,59 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+	<!-- Hero Start -->
+        <section id="hero">
+            <div class="fs-hero hero-img" style="background-image:url({{ asset('images/bg-1.jpg') }})">
+				<div class="hero-caption text-white center-left">
+                    <h3 class="font-weight-light">Pimp My CV</h3>
+                    <h1 class="ls-2">Relookez votre CV !</h1>
+                    <p class="mrg-top-20">Lorem Ipsum is simply dummy text of the printing and typesetting industry. printer took a galley of type and scrambled it to make a type .</p>
+                    <div class="mrg-top-20">
+                        <a href class="btn btn-white-inverse btn-md">Pimp It !</a>
+                    </div><!-- margin -->
+                </div>
+            </div>
+        </section>
+        <!-- Hero End -->
+
+	</div>
+	<!-- wrapper -->
+
+
+	<!-- Modal Start -->
+		<!-- use data-backdrop="static" & data-keyboard="false" to lock modal -->
+		<div class="modal fade modal-center load-active" id="login" role="dialog" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-body no-pdd">
+                       <div class="login-panel">
+							<div class="content-block-2">
+								<div class="container-fluid">
+									<div class="row">
+										<div class="col-md-7 col-md-offset-5">
+											<div class="text-content pdd-horizon-60 pdd-vertical-60">
+												<h3 class="mrg-btm-30 mrg-top-15">Pimpi It now !</h3>
+												<p>Vouds pouvez dès maintenant commencver à utiliser notre service Pimpi It pour faire relokker votre CV !</p>
+												<a href="{{ path('pimpit') }}"><button class="btn btn-md btn-dark">Pimpi It !</button></a>
+											</div><!-- /content -->
+										</div>
+									</div>
+								</div>
+								<div class="image-container col-md-5 hidden-xs hidden-sm">
+									<div class="background-holder theme-overlay has-content" style="background-image:url({{ asset('images/bg-1.jpg') }})">
+										<div class="content pdd-horizon-50">
+											<img class="img-responsive mrg-btm-20" src="{{ asset('images/logo-pimpmycv-fond-jaune-coin-arrondi-transparence.png') }}" alt="PimpPMyCV">
+										</div><!-- content -->
+									</div><!-- /background-holder -->
+								</div><!-- /image-container -->
+							</div>
+                        </div>
+                        <div class="modal-close">
+                            <a href="/"><button type="button" class="btn icon-btn-md icon-btn-round btn-dark lh-0"><i class="ei ei-close"></i></button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<!-- Modal End -->
+{% endblock %}

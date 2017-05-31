@@ -1,37 +1,41 @@
 <?php
 
-$app -> get('/pimpit/','Controllers\\Home::formulaire') -> bind('pimpit');
+$app -> match('/pimpit','Controllers\\Home::pimpit') -> bind('pimpit');
 
-$app -> get('/modeles/','Controllers\\Home::modeles') -> bind('modeles');
+$app -> get('/modeles','Controllers\\Home::modeles') -> bind('modeles');
 
-$app -> get('/mentions_legales/','Controllers\\Home::mentions_legales') -> bind('mentions-legales');
+$app -> get('/mentions_legales','Controllers\\Home::mentions_legales') -> bind('mentions-legales');
 
-$app -> get('/contact/','Controllers\\Home::contact') -> bind('contact');
+$app -> get('/contact','Controllers\\Home::contact') -> bind('contact');
 
-$app -> get('/faq/','Controllers\\Home::faq') -> bind('faq');
+$app -> get('/faq','Controllers\\Home::faq') -> bind('faq');
 
-$app -> get('/about/','Controllers\\Home::about') -> bind('about');
+$app -> get('/about','Controllers\\Home::about') -> bind('about');
+
+
+$app -> match('/template_options/','Controllers\\Home::option') -> bind('template_options');
+
+$app -> get('/recapitulatif_commande','Controllers\\Home::recapitulatif_commande') -> bind('recapitulatif_commande');
+
+$app -> get('/paiement','Controllers\\Home::paiement') -> bind('paiement');
+
+$app -> get('/validation_commande','Controllers\\Home::validation_commande') -> bind('validation_commande');
+
 
 // Route pour formulaire d'inscription
-$app -> match('/inscription/', function(Request $request) use ($app) {
-	$membre = new Entity\Membre;
-	$membreForm = $app['form.factory'] -> create(Form\Type\MembreType::class, $membre);
+$app -> match('/inscription/', 'Controllers\\Home::inscription') -> bind('inscription');
 
-	$membreForm -> handleRequest($request);
+// Route pour accès au call-to-action suite à l'inscription
+$app -> get('/inscription/action','Controllers\\Home::action') -> bind('action');
 
-	if($membreForm -> isSubmitted() && $membreForm -> isValid()){
-		$salt = substr(md5(time()), 0, 23);
-		$membre -> setSalt($salt);
+// Route pour formulaire de connexion
+$app -> match('/connexion', 'Controllers\\Home::connexion') -> bind('connexion') ;
 
-		$mdp = $membre -> getPassword(); //'bonjour'
-		$password_encode = $app['security.encoder.bcrypt'] -> encodePassword($mdp, $membre -> getSalt());
+// Route pour redirection suite à la connexion utilisateur
+$app -> get('/login/redirect', 'Controllers\\Home::index') -> bind('index');
 
-		$membre -> setPassword($password_encode);
+// Route pour accès au formulaire de connexion admin
+$app -> get('/login_bo','Controllers\\Bo::index') -> bind('login_bo');
 
-		$app['dao.membre'] -> save($membre);
-		$app['session'] -> getFlashBag() -> add('success', 'Votre inscription a bien été prise en compte !');
-	}
-
-	$membreFormView = $membreForm -> createView();
-
-}) -> bind('inscription');
+// Route pour redirection suite à la connexion admin
+$bo -> get('/', 'Controllers\\Bo::accueil') -> bind('accueil');

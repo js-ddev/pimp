@@ -1,6 +1,6 @@
 <?php
 
-namespace Pimpmycv\Entity;
+namespace Entity;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -13,7 +13,7 @@ class Experience
     private $nom;
     private $secteur;
     private $secteur_benevolat;
-    private $produit_service;
+    private $description;
     private $ca;
     private $effectif;
     private $url_experience;
@@ -76,7 +76,7 @@ class Experience
     {
         $this->nom = $nom;
         return $this;
-    } 
+    }
     //-------------------------------//
 
     // SECTEUR-------------------//
@@ -89,7 +89,7 @@ class Experience
     {
         $this->secteur = $secteur;
         return $this;
-    } 
+    }
     //-------------------------------//
 
     // SECTEUR BENEVOLAT--------------//
@@ -102,20 +102,20 @@ class Experience
     {
         $this->secteur_benevolat = $secteur_benevolat;
         return $this;
-    } 
+    }
     //-------------------------------//
 
-    // PRODUIT SERVICE------------------------//
-    public function getProduitService()
+    // DESRIPTION-------------------//
+    public function getDescription()
     {
-        return $this->produit_service;
+        return $this->description;
     }
 
-    public function setProduitService($produit_service)
+    public function setDescription($description)
     {
-        $this->produit_service = $produit_service;
+        $this->description = $description;
         return $this;
-    } 
+    }
     //-------------------------------//
 
     // CA------------------------//
@@ -128,7 +128,7 @@ class Experience
     {
         $this->ca = $ca;
         return $this;
-    } 
+    }
     //-------------------------------//
 
     // EFFECTIF------------------------//
@@ -141,7 +141,7 @@ class Experience
     {
         $this->effectif = $effectif;
         return $this;
-    } 
+    }
     //-------------------------------//
 
     // URL_EXPERIENCE-------------------//
@@ -154,7 +154,7 @@ class Experience
     {
         $this->url_experience = $url_experience;
         return $this;
-    } 
+    }
     //-------------------------------//
 
     // POSTE-------------------//
@@ -167,7 +167,7 @@ class Experience
     {
         $this->poste = $poste;
         return $this;
-    } 
+    }
     //-------------------------------//
 
     // LIEU--------------------------//
@@ -180,7 +180,7 @@ class Experience
     {
         $this->lieu = $lieu;
         return $this;
-    } 
+    }
     //-------------------------------//
 
     // ROLE-------------------//
@@ -193,7 +193,7 @@ class Experience
     {
         $this->role = $role;
         return $this;
-    } 
+    }
     //-------------------------------//
 
 
@@ -203,11 +203,11 @@ class Experience
         return $this->date_debut;
     }
 
-    public function setDebut($date_debut)
+    public function setDateDebut($date_debut)
     {
         $this->date_debut= $date_debut;
         return $this;
-    } 
+    }
     //-------------------------------//
 
 
@@ -221,7 +221,7 @@ class Experience
     {
         $this->date_fin = $date_fin;
         return $this;
-    } 
+    }
     //-------------------------------//
 
     // RESPONSABILITE 1-------------------//
@@ -234,7 +234,7 @@ class Experience
     {
         $this->responsabilite1 = $responsabilite1;
         return $this;
-    } 
+    }
     //-------------------------------//
 
     // RESPONSABILITE 2-------------------//
@@ -247,7 +247,7 @@ class Experience
     {
         $this->responsabilite2 = $responsabilite2;
         return $this;
-    } 
+    }
     //-------------------------------//
 
     // RESPONSABILITE 3-------------------//
@@ -260,7 +260,7 @@ class Experience
     {
         $this->responsabilite3 = $responsabilite3;
         return $this;
-    } 
+    }
     //-------------------------------//
 
     // RESPONSABILITE 4-------------------//
@@ -273,7 +273,7 @@ class Experience
     {
         $this->responsabilite4 = $responsabilite4;
         return $this;
-    } 
+    }
     //-------------------------------//
 
     // RESPONSABILITE 5-------------------//
@@ -286,7 +286,7 @@ class Experience
     {
         $this->responsabilite5 = $responsabilite5;
         return $this;
-    } 
+    }
     //-------------------------------//
 
      // REALISATION 1-------------------//
@@ -299,7 +299,7 @@ class Experience
     {
         $this->realisation1 = $realisation1;
         return $this;
-    } 
+    }
     //-------------------------------//
 
     // REALISATION 2-------------------//
@@ -312,7 +312,7 @@ class Experience
     {
         $this->realisation2 = $realisation2;
         return $this;
-    } 
+    }
     //-------------------------------//
 
 
@@ -326,7 +326,7 @@ class Experience
     {
         $this->realisation3 = $realisation3;
         return $this;
-    } 
+    }
     //-------------------------------//
 
     // REALISATION 4-------------------//
@@ -339,7 +339,7 @@ class Experience
     {
         $this->realisation4 = $realisation4;
         return $this;
-    } 
+    }
     //-------------------------------//
 
     // REALISATION 5-------------------//
@@ -352,8 +352,6 @@ class Experience
     {
         $this->realisation5 = $realisation5;
         return $this;
-    } 
+    }
     //-------------------------------//
 }
-
-?>

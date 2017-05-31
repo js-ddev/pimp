@@ -5,6 +5,7 @@
 $app['twig.path'] = array(__DIR__.'/../templates');
 $app['twig.options'] = array('cache' => __DIR__.'/../var/cache/twig');
 
+
 // JS - Connexion à la BDD PROD
 // Necessite un user avec mot de passe pimp dans phpmyadmin
 $app['db.options'] = array(
@@ -15,5 +16,3 @@ $app['db.options'] = array(
     'user' => 'user',
     'password' => 'pimp'
 );
-
-?>

@@ -1,8 +1,10 @@
-{% extends "layout.html.twig" %}
+{% extends "layout2.html.twig" %}
 
 {% block content %}
 	<!-- Page Tittle Start -->
 		<section class="page-tittle page-tittle-md bg-white">
+			
+
 			<div class="container">						    
 				<div class="page-tittle-head display-block text-center">
 					<h1 class="font-size-45 font-weight-light ls-1-5">Modèles de CV</h1>
@@ -16,29 +18,28 @@
 		<section class="section-5">
 			<div class="container">
 				<div class="isotope-filter filter-1 text-center">
-					<a href="#" class="filter-item active" data-filter="*">All</a>
-					<a href="#" class="filter-item" data-filter=".web-design">Web Design</a>
+					<a href="#" class="filter-item active" data-filter="*">Tout</a>
+					<a href="#" class="filter-item" data-filter=".web-design"> Design</a>
 					<a href="#" class="filter-item" data-filter=".branding">Branding</a>
-					<a href="#" class="filter-item" data-filter=".apps">Apps</a>
-					<a href="#" class="filter-item" data-filter=".photography">Photography</a>
+					<a href="#" class="filter-item" data-filter=".apps">Applications</a>
+					<a href="#" class="filter-item" data-filter=".photography">Photographie</a>
 				</div>	
 				<div class="portfolio isotope row col-2 gutter mrg-top-50">
 					<div class="folio-item web-design">
                         <div class="folio-style-4">
                             <div class="folio-image">
-                                <img class="img-responsive" src="assets/images/portfolio/folio-26.jpg" alt="">
+                                <img class="img-responsive" src="{{ asset('images/modele-cv1.jpg') }}" alt="modele-cv1">
 							</div>
                             <div class="overlay">
                                 <div class="folio-caption">
                                     <div class="folio-content">
 										<div class="folio-info">
-											<h3 class="folio-tittle">The Card</h3>
-											<span class="folio-sub-title">Branding / Graphic</span>
+											<h3 class="folio-tittle"></h3>
 										</div>
-										<span class="divider"></span>
+										
 										<div class="folio-action">
-											<a class="lightbox-img" href="assets/images/portfolio/folio-26.jpg" title="The Card"><i class="ei ei-plus-boxed"></i></a>
-											<a class="" href="portfolio-single-1.html"><i class="ei ei-link"></i></a>
+											<a class="lightbox-img" href="{{ asset('images/modele-cv1.jpg') }}" title="Voir l'image"><i class="ei ei-plus-boxed"></i></a>
+											
 										</div>
                                     </div>
                                 </div>
@@ -48,19 +49,16 @@
 					<div class="folio-item branding">
                         <div class="folio-style-4">
                             <div class="folio-image">
-                                <img class="img-responsive" src="assets/images/portfolio/folio-28.jpg" alt="">
+                                <img class="img-responsive" src="{{ asset('images/modele-cv2.jpg') }}" alt="modele-cv2">
 							</div>
                             <div class="overlay">
                                 <div class="folio-caption">
                                     <div class="folio-content">
 										<div class="folio-info">
-											<h3 class="folio-tittle">The Card</h3>
-											<span class="folio-sub-title">Branding / Graphic</span>
+											<h3 class="folio-tittle"></h3>
 										</div>
-										<span class="divider"></span>
 										<div class="folio-action">
-											<a class="lightbox-img" href="assets/images/portfolio/folio-28.jpg" title="The Card"><i class="ei ei-plus-boxed"></i></a>
-											<a class="" href="portfolio-single-1.html"><i class="ei ei-link"></i></a>
+											<a class="lightbox-img" href="{{ asset('images/modele-cv2.jpg') }}" title="Voir l'image"><i class="ei ei-plus-boxed"></i></a>
 										</div>
                                     </div>
                                 </div>
@@ -70,19 +68,16 @@
 					<div class="folio-item web-design">
                         <div class="folio-style-4">
                             <div class="folio-image">
-                                <img class="img-responsive" src="assets/images/portfolio/folio-30.jpg" alt="">
+                                <img class="img-responsive" src="{{ asset('images/modele-cv3.jpg') }}" alt="modele-cv3">
 							</div>
                             <div class="overlay">
                                 <div class="folio-caption">
                                     <div class="folio-content">
 										<div class="folio-info">
-											<h3 class="folio-tittle">The Card</h3>
-											<span class="folio-sub-title">Branding / Graphic</span>
+											<h3 class="folio-tittle"></h3>
 										</div>
-										<span class="divider"></span>
 										<div class="folio-action">
-											<a class="lightbox-img" href="assets/images/portfolio/folio-30.jpg" title="The Card"><i class="ei ei-plus-boxed"></i></a>
-											<a class="" href="portfolio-single-1.html"><i class="ei ei-link"></i></a>
+											<a class="lightbox-img" href="{{ asset('images/modele-cv3.jpg') }}" title="Voir l'image"><i class="ei ei-plus-boxed"></i></a>
 										</div>
                                     </div>
                                 </div>
@@ -92,19 +87,16 @@
 					<div class="folio-item apps">
                         <div class="folio-style-4">
                             <div class="folio-image">
-                                <img class="img-responsive" src="assets/images/portfolio/folio-27.jpg" alt="">
+                                <img class="img-responsive" src="{{ asset('images/modele-cv4.jpg') }}" alt="modele-cv4">
 							</div>
                             <div class="overlay">
                                 <div class="folio-caption">
                                     <div class="folio-content">
 										<div class="folio-info">
-											<h3 class="folio-tittle">The Card</h3>
-											<span class="folio-sub-title">Branding / Graphic</span>
+											<h3 class="folio-tittle"></h3>
 										</div>
-										<span class="divider"></span>
 										<div class="folio-action">
-											<a class="lightbox-img" href="assets/images/portfolio/folio-27.jpg" title="The Card"><i class="ei ei-plus-boxed"></i></a>
-											<a class="" href="portfolio-single-1.html"><i class="ei ei-link"></i></a>
+											<a class="lightbox-img" href="{{ asset('images/modele-cv4.jpg') }}" title="Voir l'image"><i class="ei ei-plus-boxed"></i></a>
 										</div>
                                     </div>
                                 </div>
@@ -114,19 +106,17 @@
 					<div class="folio-item photography">
                         <div class="folio-style-4">
                             <div class="folio-image">
-                                <img class="img-responsive" src="assets/images/portfolio/folio-29.jpg" alt="">
+                                <img class="img-responsive" src="{{ asset('images/modele-cv1.jpg') }}" alt="modele-cv1">
 							</div>
                             <div class="overlay">
                                 <div class="folio-caption">
                                     <div class="folio-content">
 										<div class="folio-info">
-											<h3 class="folio-tittle">The Card</h3>
-											<span class="folio-sub-title">Branding / Graphic</span>
+											<h3 class="folio-tittle"></h3>
+											<span class="folio-sub-title"></span>
 										</div>
-										<span class="divider"></span>
 										<div class="folio-action">
-											<a class="lightbox-img" href="assets/images/portfolio/folio-29.jpg" title="The Card"><i class="ei ei-plus-boxed"></i></a>
-											<a class="" href="portfolio-single-1.html"><i class="ei ei-link"></i></a>
+											<a class="lightbox-img" href="{{ asset('images/modele-cv1.jpg') }}" title="Voir l'image"><i class="ei ei-plus-boxed"></i></a>
 										</div>
                                     </div>
                                 </div>
@@ -136,19 +126,17 @@
 					<div class="folio-item web-design">
                         <div class="folio-style-4">
                             <div class="folio-image">
-                                <img class="img-responsive" src="assets/images/portfolio/folio-31.jpg" alt="">
+                                <img class="img-responsive" src="{{ asset('images/modele-cv2.jpg') }}" alt="modele-cv2">
 							</div>
                             <div class="overlay">
                                 <div class="folio-caption">
                                     <div class="folio-content">
 										<div class="folio-info">
-											<h3 class="folio-tittle">The Card</h3>
-											<span class="folio-sub-title">Branding / Graphic</span>
+											<h3 class="folio-tittle"></h3>
+											<span class="folio-sub-title"></span>
 										</div>
-										<span class="divider"></span>
 										<div class="folio-action">
-											<a class="lightbox-img" href="assets/images/portfolio/folio-31.jpg" title="The Card"><i class="ei ei-plus-boxed"></i></a>
-											<a class="" href="portfolio-single-1.html"><i class="ei ei-link"></i></a>
+											<a class="lightbox-img" href="{{ asset('images/modele-cv2.jpg') }}" title="Voir l'image"><i class="ei ei-plus-boxed"></i></a>
 										</div>
                                     </div>
                                 </div>
@@ -158,19 +146,17 @@
 					<div class="folio-item apps">
                         <div class="folio-style-4">
                             <div class="folio-image">
-                                <img class="img-responsive" src="assets/images/portfolio/folio-35.jpg" alt="">
+                                <img class="img-responsive" src="{{ asset('images/modele-cv3.jpg') }}" alt="modele-cv3">
 							</div>
                             <div class="overlay">
                                 <div class="folio-caption">
                                     <div class="folio-content">
 										<div class="folio-info">
-											<h3 class="folio-tittle">The Card</h3>
-											<span class="folio-sub-title">Branding / Graphic</span>
+											<h3 class="folio-tittle"></h3>
+											<span class="folio-sub-title"></span>
 										</div>
-										<span class="divider"></span>
 										<div class="folio-action">
-											<a class="lightbox-img" href="assets/images/portfolio/folio-35.jpg" title="The Card"><i class="ei ei-plus-boxed"></i></a>
-											<a class="" href="portfolio-single-1.html"><i class="ei ei-link"></i></a>
+											<a class="lightbox-img" href="{{ asset('images/modele-cv3.jpg') }}" title="Voir l'image"><i class="ei ei-plus-boxed"></i></a>
 										</div>
                                     </div>
                                 </div>
@@ -180,28 +166,23 @@
 					<div class="folio-item branding">
                         <div class="folio-style-4">
                             <div class="folio-image">
-                                <img class="img-responsive" src="assets/images/portfolio/folio-34.jpg" alt="">
+                                <img class="img-responsive" src="{{ asset('images/modele-cv4.jpg') }}" alt="modele-cv4">
 							</div>
                             <div class="overlay">
                                 <div class="folio-caption">
                                     <div class="folio-content">
 										<div class="folio-info">
-											<h3 class="folio-tittle">The Card</h3>
-											<span class="folio-sub-title">Branding / Graphic</span>
+											<h3 class="folio-tittle"></h3>
+											<span class="folio-sub-title"></span>
 										</div>
-										<span class="divider"></span>
 										<div class="folio-action">
-											<a class="lightbox-img" href="assets/images/portfolio/folio-34.jpg" title="The Card"><i class="ei ei-plus-boxed"></i></a>
-											<a class="" href="portfolio-single-1.html"><i class="ei ei-link"></i></a>
+											<a class="lightbox-img" href="{{ asset('images/modele-cv4.jpg') }}" title="Voir l'image"><i class="ei ei-plus-boxed"></i></a>
 										</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-				</div>
-				<div class="mrg-vertical-50 text-center">
-					<a href="#" class="btn btn-dark btn-md">Show More</a>
 				</div>
 			</div>
 		</section>
