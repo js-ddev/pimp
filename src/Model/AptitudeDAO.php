@@ -3,7 +3,7 @@
 namespace Model;
 
 use Entity\Cv;
-use Entity\Formation;
+use Entity\Aptitude;
 
 class AptitudeDAO extends DAO
 {
@@ -78,31 +78,17 @@ class AptitudeDAO extends DAO
     // Adrien - Methode obligatoirement déclarée dans le fichier
     protected function BuildEntityObject(array $value){
         // Adrien - Création d'un nouveau CV
-        $cv = new cv;
+        $aptitude = new aptitude;
 
-        $cv -> setId($value['id']);
-        $cv -> setIdMembre($value['id_membre']);
-        $cv -> setTemplate($value['template']);
-        $cv -> setNombreSections($value['nombre_sections']);
-        $cv -> setPhoto($value['photo']);
-        $cv -> setLangueMaternelle($value['langue_maternelle']);
-        $cv -> setEmailCv($value['email_cv']);
-        $cv -> setFamille($value['famille']);
-        $cv -> setNationalite($value['nationalite']);
-        $cv -> setPermisConduire($value['permis_conduire']);
-        $cv -> setPermisTravail($value['permis_travail']);
-        $cv -> setTwitter($value['twitter']);
-        $cv -> setLinkedin($value['linkedin']);
-        $cv -> setSkype($value['skype']);
-        $cv -> setSitePerso($value['site_perso']);
-        $cv -> setUrlAutre($value['url_autre']);
-        $cv -> setNombrePage($value['nombre_page']);
-        $cv -> setCouleur($value['couleur']);
-        $cv -> setPuce($value['puce']);
-        $cv -> setFond($value['fond']);
-        $cv -> setIndicateurPerformance($value['indicateur_performance']);
-        $cv -> setActivite($value['activite']);
+        $aptitude -> setId($value['id']);
+        $aptitude -> setIdCv($value['id_cv']);
+        $aptitude -> setType($value['type']);
+        $aptitude -> setNom($value['nom']);
+        $aptitude -> setNiveau($value['niveau']);
+        $aptitude -> setTOEIC($value['TOEIC']);
+        $aptitude -> setTOEFL($value['TOEFL']);
+        $aptitude -> setIELTS($value['IELTS']);
 
-        return $cv;
+        return $aptitude;
     }
 }

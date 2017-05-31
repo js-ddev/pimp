@@ -52,8 +52,8 @@ class AutreInfoDAO extends DAO
     *
     * @return \pimp\Entity\AutreInfo
     */
-    public function saveAutreInfo(aptitude $aptitude, Cv $cv){
-        $autre_infoData = array(
+    public function saveAutreInfo(autre_info $autre_info, Cv $cv){
+        $autreInfoData = array(
             'id' => $autre_info -> getId(),
             'id_cv' => $cv -> getId(),
             'type' => $autre_info -> getType(),
@@ -65,22 +65,21 @@ class AutreInfoDAO extends DAO
         //
         // }
         // else { // Créer une aptitude
-            $this -> getDb() -> insert('aptitude', $aptitudeData);
+            $this -> getDb() -> insert('autre_info', $autreInfo);
         // }
-        $aptitude -> setId($this -> getDb() -> lastInsertId());
+        $autre_info -> setId($this -> getDb() -> lastInsertId());
     }
 
 
     // Adrien - Methode obligatoirement déclarée dans le fichier
     protected function BuildEntityObject(array $value){
         // Adrien - Création d'un nouveau CV
-        $autre_info = new autre_info;
+        $autre_info = new autreInfo;
 
         $autre_info -> setId($value['id']);
         $autre_info -> setIdCv($value['id_cv']);
         $autre_info -> setType($value['type']);
         $autre_info -> setDescription($value['description']);
-
 
         return $autre_info;
     }
