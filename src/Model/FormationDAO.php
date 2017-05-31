@@ -31,9 +31,9 @@ class FormationDAO extends DAO
     *
     * @return \Entity\Formation|throws an exception si pas de matching
     */
-    public function find($id_cv){
+    public function find($id){
         $requete = "SELECT * FROM formation WHERE id_cv = ?";
-        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_cv));
+        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id));
 
         if($resultat){
             return $this -> buildEntityObject($resultat);
@@ -53,7 +53,7 @@ class FormationDAO extends DAO
     *
     * @return \pimp\Entity\formation
     */
-    public function saveformation(formation $formation, Cv $cv){
+    public function saveformation(formation $formation/*, Cv $cv*/){
         $formationData = array(
             'id' => $formation -> getId(),
             'id_cv' => $cv -> getId(),
@@ -80,31 +80,18 @@ class FormationDAO extends DAO
     // Adrien - Methode obligatoirement déclarée dans le fichier
     protected function BuildEntityObject(array $value){
         // Adrien - Création d'un nouveau CV
-        $cv = new cv;
+        $formation = new formation;
 
-        $cv -> setId($value['id']);
-        $cv -> setIdMembre($value['id_membre']);
-        $cv -> setTemplate($value['template']);
-        $cv -> setNombreSections($value['nombre_sections']);
-        $cv -> setPhoto($value['photo']);
-        $cv -> setLangueMaternelle($value['langue_maternelle']);
-        $cv -> setEmailCv($value['email_cv']);
-        $cv -> setFamille($value['famille']);
-        $cv -> setNationalite($value['nationalite']);
-        $cv -> setPermisConduire($value['permis_conduire']);
-        $cv -> setPermisTravail($value['permis_travail']);
-        $cv -> setTwitter($value['twitter']);
-        $cv -> setLinkedin($value['linkedin']);
-        $cv -> setSkype($value['skype']);
-        $cv -> setSitePerso($value['site_perso']);
-        $cv -> setUrlAutre($value['url_autre']);
-        $cv -> setNombrePage($value['nombre_page']);
-        $cv -> setCouleur($value['couleur']);
-        $cv -> setPuce($value['puce']);
-        $cv -> setFond($value['fond']);
-        $cv -> setIndicateurPerformance($value['indicateur_performance']);
-        $cv -> setActivite($value['activite']);
+        $formation -> setId($value['id']);
+        $formation -> setIdCv($value['id_cv']);
+        $formation -> setType($value['type']);
+        $formation -> setDiplome($value['diplome']);
+        $formation -> setEtablissement($value['etablissement']);
+        $formation -> setSpecialite($value['specialite']);
+        $formation -> setLieu($value['lieu']);
+        $formation -> setDateObtention($value['date_obtention']);
+        $formation -> setUrlFormation($value['url_formation']);
 
-        return $cv;
+        return $formation;
     }
 }

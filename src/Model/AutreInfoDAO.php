@@ -74,31 +74,14 @@ class AutreInfoDAO extends DAO
     // Adrien - Methode obligatoirement déclarée dans le fichier
     protected function BuildEntityObject(array $value){
         // Adrien - Création d'un nouveau CV
-        $cv = new cv;
+        $autre_info = new autre_info;
 
-        $cv -> setId($value['id']);
-        $cv -> setIdMembre($value['id_membre']);
-        $cv -> setTemplate($value['template']);
-        $cv -> setNombreSections($value['nombre_sections']);
-        $cv -> setPhoto($value['photo']);
-        $cv -> setLangueMaternelle($value['langue_maternelle']);
-        $cv -> setEmailCv($value['email_cv']);
-        $cv -> setFamille($value['famille']);
-        $cv -> setNationalite($value['nationalite']);
-        $cv -> setPermisConduire($value['permis_conduire']);
-        $cv -> setPermisTravail($value['permis_travail']);
-        $cv -> setTwitter($value['twitter']);
-        $cv -> setLinkedin($value['linkedin']);
-        $cv -> setSkype($value['skype']);
-        $cv -> setSitePerso($value['site_perso']);
-        $cv -> setUrlAutre($value['url_autre']);
-        $cv -> setNombrePage($value['nombre_page']);
-        $cv -> setCouleur($value['couleur']);
-        $cv -> setPuce($value['puce']);
-        $cv -> setFond($value['fond']);
-        $cv -> setIndicateurPerformance($value['indicateur_performance']);
-        $cv -> setActivite($value['activite']);
+        $autre_info -> setId($value['id']);
+        $autre_info -> setIdCv($value['id_cv']);
+        $autre_info -> setType($value['type']);
+        $autre_info -> setDescription($value['description']);
 
-        return $cv;
+
+        return $autre_info;
     }
 }

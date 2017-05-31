@@ -57,7 +57,9 @@
                                     <tr>
                                         <td>{{ commande.id }}</td>
                                         <td><a href="{{ path('gestion_membre', {'id' : commande.idMembre }) }}" title="Consulter les infos du membre">{{ commande.idMembre }}</a></td>
-                                        <td><a href="#">{{ commande.idCv }}</a></td>
+
+                                        <td><a href="{{ path('gestion_cv', {'id' : commande.idCv }) }}" title="Consulter les infos CV du membre">{{ commande.idCv }}</a></td>
+
                                          <td>{{ commande.dateCommande }}</td>
                                         <td>{{ commande.statutCommande }}</td>
                                         <td>{{ commande.prestation }}</td>

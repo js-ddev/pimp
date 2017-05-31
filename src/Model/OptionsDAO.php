@@ -38,9 +38,9 @@ class OptionsDAO extends DAO
     *
     * @return \Entity\Cv|throws an exception si pas de matching
     */
-/*    public function find($id_membre){
-        $requete = "SELECT * FROM cv WHERE id_membre = ?";
-        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_membre));
+   public function find($id_cv){
+        $requete = "SELECT * FROM options WHERE id_cv = ?";
+        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_cv));
 
         if($resultat){
             return $this -> buildEntityObject($resultat);
@@ -49,8 +49,10 @@ class OptionsDAO extends DAO
         else{
             throw new \Exception("Aucun CV à l'id_membre:" . $id_membre);
         }
+        */
+        }
         
-    }*/
+    
 
 
     /**
@@ -87,9 +89,9 @@ class OptionsDAO extends DAO
         $options = new options;
 
         $options -> setId($value['id']);
-        $options -> setIdMembre($value['id_membre']);
+        $options -> setIdCv($value['id_cv']);
         $options -> setTemplate($value['template']);
-        $options -> setNombrePage($value['nombre_page']);
+        $options -> setNombrePages($value['nombre_pages']);
         $options -> setCouleur($value['couleur']);
         $options -> setPuce($value['puce']);
         $options -> setFond($value['fond']);

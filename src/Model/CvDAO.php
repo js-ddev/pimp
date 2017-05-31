@@ -116,7 +116,7 @@ class CvDAO extends DAO
     *
     * @return \Entity\Cv|throws an exception si pas de matching
     */
-    public function find2($id_cv){
+    public function find2($id){
         $requete = "SELECT
             cv.id,
             cv.id_membre,
@@ -212,17 +212,18 @@ class CvDAO extends DAO
             AND cv.id = e.id_cv
             AND cv.id = f.id_cv
             AND cv.id = a_i.id_cv
-            AND cv.id_membre = ?";
-        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_membre));
-
+            AND cv.id = ?";
+        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id));
+/*        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_membre));
+*/
         if($resultat){
             return $this -> buildEntityObject($resultat);
         }
-        /*
+        
         else{
-            throw new \Exception("Aucun CV à l'id_membre:" . $id_membre);
+            throw new \Exception("Aucun CV à l'id:" . $id);
         }
-        */
+        
     }
 
 
@@ -300,5 +301,37 @@ class CvDAO extends DAO
         $cv -> setActivite($value['activite']);
 
         return $cv;
+    }
+
+      protected function buildEntityObjectCommande(array $value){
+        // Adrien - Création d'un nouveau CV
+        $cv = new cv;
+        $membre = new Membre;
+        $cv -> setId($value['id']);
+        $cv -> setIdMembre($value['id_membre']);
+        $cv -> setNombreSections($value['nombre_sections']);
+        $cv -> setPhoto($value['photo']);
+        $cv -> setLangueMaternelle($value['langue_maternelle']);
+        $cv -> setEmailCv($value['email_cv']);
+        $cv -> setFamille($value['famille']);
+        $cv -> setNationalite($value['nationalite']);
+        $cv -> setPermisConduire($value['permis_conduire']);
+        $cv -> setPermisTravail($value['permis_travail']);
+        $cv -> setTwitter($value['twitter']);
+        $cv -> setLinkedin($value['linkedin']);
+        $cv -> setSkype($value['skype']);
+        $cv -> setSitePerso($value['site_perso']);
+        $cv -> setUrlAutre($value['url_autre']);
+        $cv -> setNombrePage($value['nombre_page']);
+        $cv -> setCouleur($value['couleur']);
+        $cv -> setPuce($value['puce']);
+        $cv -> setFond($value['fond']);
+        $cv -> setIndicateurPerformance($value['indicateur_performance']);
+        $cv -> setActivite($value['activite']);
+        $membre -> setPrenom($value['prenom']);
+
+
+        return $cv;
+        return $membre;
     }
 }
