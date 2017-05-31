@@ -43,3 +43,10 @@ i:hover {
     border-radius: 1em;
     padding: 1em;
 }
+
+[id^=switch] + *{
+    display:none !important;
+}
+[id^=switch]:target + *{
+    display:block !important;
+}
