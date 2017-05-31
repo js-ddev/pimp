@@ -27,4 +27,5 @@ $(function() {
         $('.activites').hide();
         $('#activite-' + $(this).val()).show();
     });
+
 });
