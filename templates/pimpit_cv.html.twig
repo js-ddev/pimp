@@ -1,4 +1,4 @@
-{% extends "layout.html.twig" %}
+{% extends "layout4.html.twig" %}
 
 {% block content %}
 
@@ -68,7 +68,81 @@
 								<div class="col-md-12">
 									<div class="panel-group">
 
-										<!-- XXX CvForm XXX -->
+										<!-- Partie informations personnelles (table cv) -->									
+										{{ form_widget(formulaireForm.cv.id_membre,{value : app.user.id}) }}
+										<div class="panel panel-default">
+											<div class="panel-heading">
+												<span class="panel-title">
+												<a data-toggle="collapse" href="#collapse1">
+												<i class="ei ei-id-card-alt"></i> Informations diverses</a>
+												</span>
+											</div>
+											<div id="collapse1" class="panel-collapse collapse">
+												<div class="panel-body">
+													<div class="form-group">
+														<label for="email_cv">Email*</label>
+														{{ form_widget(formulaireForm.cv.email_cv) }}
+													</div>
+
+													<div class="form-group">
+														<label for="situation">Situation familiale :</label>				
+														{{ form_widget(formulaireForm.cv.famille) }}
+													</div>
+
+													<div class="form-group">
+														<label for="nationalite">Nationalité*</label>
+														{{ form_widget(formulaireForm.cv.nationalite) }}
+													</div>
+
+													<div class="form-group">
+														<label for="langue_maternelle">Langue maternelle*</label>
+														{{ form_widget(formulaireForm.cv.langue_maternelle) }}
+													</div>
+
+													<div class="form-group">
+														<label>Permis de travail / séjour</label>
+														{{ form_widget(formulaireForm.cv.permis_travail) }}
+
+													</div>
+
+													<div class="form-group">
+														<label>Permis de conduire</label>
+														{{ form_widget(formulaireForm.cv.permis_conduire) }}
+													</div>
+
+													<div class="form-group">
+														<i class="ei ei-linkedin"></i>
+														<label for="url_linkdein"> LinkedIn</label>
+														{{ form_widget(formulaireForm.cv.linkedin) }}
+													</div>
+													<div class="form-group">
+														<i class="ei ei-twitter"></i>
+														<label for="url_twitter"> Twitter</label>
+														{{ form_widget(formulaireForm.cv.twitter) }}
+													</div>
+													<div class="form-group">
+														<i class="ei ei-skype"></i>
+														<label for="url_skype"> Skype</label>
+														{{ form_widget(formulaireForm.cv.skype) }}
+													</div>
+													<div class="form-group">
+														<i class="ei ei-monitor"></i>
+														<label for="url_perso"> Site personnel</label>
+														{{ form_widget(formulaireForm.cv.site_perso) }}
+													</div>
+													<div class="form-group">
+														<i class="ei ei-monitor"></i>
+														<label for="url_autre"> Autre site</label>
+														{{ form_widget(formulaireForm.cv.url_autre) }}
+													</div>
+
+													<div class="form-group col-md-12">
+														<input class="btn btn-md btn-dark" type="submit" value="Valider">
+													</div>
+												</div>
+											</div>
+										</div>									
+										<!-- Fin Partie informations personnelles (table cv) -->
 
 										<!--  Partie expérience -->
 										<div class="panel panel-default">
@@ -82,15 +156,15 @@
 												<div class="panel-body">
 
 													<ul class="nav nav-tabs tab-style-1">
-														<li class="active"><a data-toggle="tab" href="#Experience-1">Experience 1</a></li>
+														<li><a data-toggle="tab" href="#Experience-1">Experience 1</a></li>
 														<li><a data-toggle="tab" href="#Experience-2">Experience 2</a></li>
 														<li><a data-toggle="tab" href="#Experience-3">Experience 3</a></li>
 														<li><a data-toggle="tab" href="#Experience-4">Experience 4</a></li>
 														<li><a data-toggle="tab" href="#Experience-5">Experience 5</a></li>
 													</ul>
 													<div class="tab-content">
-														<div id="Experience-1" class="tab-pane fade pdd-horizon-10 in active">
 														{% for experience in formulaireForm.experiences %}
+														<div id="Experience-{{ loop.index }}" class="tab-pane fade pdd-horizon-10">
 														{{ form_widget(experience.type,{value :'entreprise'}) }}
 
 															<h4>Entreprise :</h4>
@@ -172,8 +246,8 @@
 															<div class="form-group col-md-12">
 																<input class="btn btn-md btn-dark" name="entreprise1" type="submit" value="Valider">
 															</div>
-														{% endfor %}
 														</div>
+														{% endfor %}
 													</div>
 												</div>
 											</div>
@@ -191,15 +265,15 @@
 											<div id="collapse3" class="panel-collapse collapse">
 												<div class="panel-body">
 													<ul class="nav nav-tabs tab-style-1">
-														<li class="active"><a data-toggle="tab" href="#Formation-1">Formation 1</a></li>
+														<li><a data-toggle="tab" href="#Formation-1">Formation 1</a></li>
 														<li><a data-toggle="tab" href="#Formation-2">Formation 2</a></li>
 														<li><a data-toggle="tab" href="#Formation-3">Formation 3</a></li>
 														<li><a data-toggle="tab" href="#Formation-4">Formation 4</a></li>
 														<li><a data-toggle="tab" href="#Formation-5">Formation 5</a></li>
 													</ul>
 													<div class="tab-content">
-														<div id="Formation-1" class="tab-pane fade pdd-horizon-10 in active">
 														{% for formation in formulaireForm.formations %}
+														<div id="Formation-{{ loop.index }}" class="tab-pane fade pdd-horizon-10">
 														{{ form_widget(formation.type,{value :'formation'}) }}
 
 															<div class="form-group">
@@ -238,26 +312,329 @@
 															<div class="form-group col-md-12">
 																<input class="btn btn-md btn-dark" type="submit" value="Valider">
 															</div>
-														{% endfor %}
 														</div>
+														{% endfor %}
 													</div>
 												</div>
 											</div>
 										</div>
 										<!-- Fin Partie formation -->
 
+										<!-- Certification -->
+										<div class="panel panel-default">
+											<div class="panel-heading">
+												<span class="panel-title">
+												<a data-toggle="collapse" class="collapsed" href="#collapse4">
+												<i class="ei ei-medal"></i> Certifications</a>
+												</span>
+											</div>
+											<div id="collapse4" class="panel-collapse collapse">
+												<div class="panel-body">
+													<ul class="nav nav-tabs tab-style-1">
+														<li><a data-toggle="tab" href="#Certification-1">Certification 1</a></li>
+														<li><a data-toggle="tab" href="#Certification-2">Certification 2</a></li>
+														<li><a data-toggle="tab" href="#Certification-3">Certification 3</a></li>
+													</ul>
+													<div class="tab-content">
+														{% for certification in formulaireForm.formations %}
+														<div id="Certification-{{ loop.index }}" class="tab-pane fade pdd-horizon-10">
+														{{ form_widget(certification.type,{value :'certification'}) }}
+
+															<div class="form-group">
+																<label for="diplome">Intitulé de la certification*</label>
+															
+																{{ form_widget(certification.diplome) }}
+															</div>
+
+															<div class="form-group">
+																<label for="etablissement">Etablissement*</label>
+															
+																{{ form_widget(certification.etablissement) }}
+															</div>
+
+															<div class="form-group">
+																<label for="specialite">Spécialité</label>
+												
+																{{ form_widget(certification.specialite) }}
+															</div>
+
+															<div class="form-group">
+																<label for="lieu">Localisation</label>
+													
+																{{ form_widget(certification.lieu) }}
+															</div>
+
+															<div class="form-group">
+																<label for="date_formation">Année d'obtention de la certification* : </label>
+																<select class="" name="annee_formation">
+																	{% for annee_formation in range("now"|date("Y"),1950) %}
+																		<option value="{{ annee_formation }}"> {{ annee_formation }}</option>
+																	{% endfor %}
+																</select>
+															</div>
+
+															<div class="form-group">
+																<label for="url_formation">Site web</label>
+														
+																{{ form_widget(certification.url_formation) }}
+															</div>
+															<div class="form-group col-md-12">
+																<input class="btn btn-md btn-dark" type="submit" value="Validerr">
+															</div>
+														</div>
+														{% endfor %}
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- Fin certification -->
+
+										<!-- Partie langues -->
+										<div class="panel panel-default">
+											<div class="panel-heading">
+												<span class="panel-title">
+												<a data-toggle="collapse" class="collapsed" href="#collapse5">
+												<i class="ei ei-microphone"></i> Langues étrangères</a>
+												</span>
+											</div>
+											<div id="collapse5" class="panel-collapse collapse">
+												<div class="panel-body">
+													<ul class="nav nav-tabs tab-style-1">
+														<li><a data-toggle="tab" href="#Langue-1">Langue étrangère 1</a></li>
+														<li><a data-toggle="tab" href="#Langue-2">Langue étrangère 2</a></li>
+														<li><a data-toggle="tab" href="#Langue-3">Langue étrangère 3</a></li>
+													</ul>
+													<div class="tab-content">
+														{% for langue in formulaireForm.aptitudes %} 
+														<div id="Langue-{{ loop.index }}" class="tab-pane fade pdd-horizon-10">
+														{{ form_widget(langue.type,{value :'langue'}) }}
+
+															<div class="form-group">
+																<label for="nom">Langue</label>
+																{{ form_widget(langue.nom) }}
+															</div>
+
+															<div class="form-group">
+																<label for="niveau">Votre niveau de 1 à 100 : *</label>
+																<!-- <input type="text" id="langue_1_niveau"> -->
+																<span id="slider{{ loop.index }}value"></span><span> %</span>
+															</div>
+
+															<div class="form-group col-md-12">
+																<input class="btn btn-md btn-dark" type="submit" value="Valider">
+															</div>
+														</div>
+														{% endfor %}
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- Fin Partie langues -->
+
+										<!-- Partie bénévolat -->
+										<div class="panel panel-default">
+											<div class="panel-heading">
+												<span class="panel-title">
+												<a data-toggle="collapse" class="collapsed" href="#collapse6">
+												<i class="ei ei-hand"></i> Bénévolat</a>
+												</span>
+											</div>
+											<div id="collapse6" class="panel-collapse collapse">
+												<div class="panel-body">
+													<ul class="nav nav-tabs tab-style-1">
+														<li><a data-toggle="tab" href="#Benevolat-1">Bénévolat 1</a></li>
+														<li><a data-toggle="tab" href="#Benevolat-2">Bénévolat 2</a></li>
+														<li><a data-toggle="tab" href="#Benevolat-3">Bénévolat 3</a></li>
+													</ul>
+													<div class="tab-content">
+														{% for experience in formulaireForm.experiences %}
+														<div id="Benevolat-{{ loop.index }}" class="tab-pane fade pdd-horizon-10">
+														{{ form_widget(experience.type,{value :'benevolat'}) }}
+
+															<div class="form-group">
+																<label for="nom_benevolat">Nom de la structure*</label>
+																{{ form_widget(experience.nom) }}
+															</div>
+
+															<div class="form-group">
+																<label for="secteur_benevolat">Secteur*</label>
+																{{ form_widget(experience.secteur) }}
+															</div>
+
+															<div class="form-group">
+																<label for="effectif_benevolat">Effectifs :</label>
+																{{ form_widget(experience.effectif) }}
+															</div>
+
+															<div class="form-group">
+																<label for="url_benevolat">Site web</label>
+																{{ form_widget(experience.url_experience) }}
+															</div>
+															<br/>
+
+															<div class="form-group">
+																<label for="poste">Intitulé du poste*</label>
+																{{ form_widget(experience.poste) }}
+															</div>
+
+															<div class="form-group">
+																<label for="role">Rôle dans la structure*</label>
+																{{ form_widget(experience.role) }}
+															</div>
+															<div class="form-group">
+																<label for="lieu_benevolat">Localisation du poste</label>
+																{{ form_widget(experience.lieu) }}
+															</div>
+
+															<div class="form-group">
+																<label for="Duree">Durée du poste* : </label>
+																<span>de </span>
+																{{ form_widget(experience.date_debut) }}
+
+
+																<select class="" name="annee_debut">
+																	{% for annee_debut in range("now"|date("Y"),1950) %}
+																		<option value="{{ annee_debut }}"> {{ annee_debut }}</option>
+																	{% endfor %}
+																</select>
+
+																<span>à </span>
+																	{{ form_widget(experience.date_fin) }}
+
+																<select class="" name="annee_fin">
+																	{% for annee_fin in range("now"|date("Y"),1950) %}
+																		<option value="{{ annee_fin }}"> {{ annee_fin }}</option>
+																	{% endfor %}
+																</select>
+															</div>
+
+															<div class="form-group">
+																<label for="responsabilite">Responsabilités* :</label><br />															
+																{{ form_widget(experience.responsabilite1) }}
+																{{ form_widget(experience.responsabilite2) }}
+																{{ form_widget(experience.responsabilite3) }}
+																{{ form_widget(experience.responsabilite4) }}
+																{{ form_widget(experience.responsabilite5) }}
+															</div>
+
+															<div class="form-group">
+																<label for="reussite">Réussites / accomplissements* :</label><br />
+																{{ form_widget(experience.realisation1) }}
+																{{ form_widget(experience.realisation2) }}
+																{{ form_widget(experience.realisation3) }}
+																{{ form_widget(experience.realisation4) }}
+																{{ form_widget(experience.realisation5) }}
+															</div>
+
+															<div class="form-group col-md-12">
+																<input class="btn btn-md btn-dark" type="submit" value="Valider">
+															</div>
+														</div>	
+														{% endfor %}
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- Fin Partie bénévolat -->
+
+										<!-- Partie centres d'interêt -->
+										<div class="panel panel-default">
+											<div class="panel-heading">
+												<span class="panel-title">
+												<a data-toggle="collapse" class="collapsed" href="#collapse7">
+												<i class="ei ei-favorite-heart"></i> Centres d'interêt</a>
+												</span>
+											</div>
+											<div id="collapse7" class="panel-collapse collapse">
+												<div class="panel-body">
+													<ul class="nav nav-tabs tab-style-1">
+														<li><a data-toggle="tab" href="#Interet-1">Interêt 1</a></li>
+														<li><a data-toggle="tab" href="#Interet-2">Interêt 2</a></li>
+														<li><a data-toggle="tab" href="#Interet-3">Interêt 3</a></li>
+														<li><a data-toggle="tab" href="#Interet-4">Interêt 4</a></li>
+														<li><a data-toggle="tab" href="#Interet-5">Interêt 5</a></li>
+													</ul>
+													<div class="tab-content">
+													{% for passion in formulaireForm.aptitudes %}
+														<div id="Interet-{{ loop.index }}" class="tab-pane fade pdd-horizon-10">																						
+														{{ form_widget(passion.type,{value :'centre_interet'}) }}
+															<h4 class="no-mrg-top mrg-btm-20">Centre d'intérêt 1</h4>
+															<div class="form-group">
+																<label for="nom"></label>															
+																{{ form_widget(passion.nom) }}
+															</div>
+															<div class="form-group col-md-12">
+																<input class="btn btn-md btn-dark" type="submit" value="Valider">
+															</div>
+														</div>	
+														{% endfor %}
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- Fin Partie centres d'interêt -->
+
+										<!-- Partie informations diverses -->
+										<div class="panel panel-default">
+											<div class="panel-heading">
+												<span class="panel-title">
+												<a data-toggle="collapse" class="collapsed" href="#collapse8">
+												<i class="ei ei-human-resources"></i> Informations diverses</a>
+												</span>
+											</div>
+											<div id="collapse8" class="panel-collapse collapse">
+
+													<div class="row mrg-top-70">
+														<div class="col-md-10 col-md-offset-1">
+														<div class="text-center">
+															<h3 class="mrg-btm-40">Informations diverses</h3>
+														</div>
+														<div class="card">
+															<ul class="nav nav-tabs tab-style-4 item-4">
+																<li><a data-toggle="tab" href="#s4-option-1"><i class="display-block ei ei-human-resources"></i>Description</a></li>	
+																<li><a data-toggle="tab" href="#s4-option-2"><i class="ei ei-departures"></i>Voyages</a></li>
+																<li><a data-toggle="tab" href="#s4-option-3"><i class="ei ei-id-card-alt"></i>Divers</a></li>
+															</ul>
+
+															<div class="tab-content pdd-horizon-30">
+																{% for autre_info in formulaireForm.autres_infos %}
+																<!-- Partie AutreInfo Sous-partie description -->
+																<div id="s4-option-{{ loop.index }}" class="tab-pane fade">
+																	<div class="panel-body">																
+																	{{ form_widget(autre_info.type,{value :'info'}) }}
+																	{{ form_widget(autre_info.type,{value :'voyage'}) }}
+																	{{ form_widget(autre_info.type,{value :'divers'}) }}
+																		<div class="form-group">
+																			<label id="1" for="description">Décrivez vous en quelques mots ! Et essayez de répondre à la question épineuse de pourquoi voudriez vous travailler avec vous même ?</label>
+																			<label id="2" for="description">Si vous avez voyagé, indiquez nous vos dernières destinations</label>
+																			<label id="3" for="description">Informations diverses que vous souhaitez nous communiquer par rapport à votre CV</label>
+																			{{ form_widget(autre_info.description) }}
+																		</div>
+																		<div class="form-group col-md-12">
+																			<input class="btn btn-md btn-dark" type="submit" value="Valider">
+																		</div>
+																	</div>
+																</div>
+																{% endfor %}
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- Fin Partie informations diverses -->
+
 									</div>
 								</div>
-							</div>
-						</div>	
 
-						<div class="form-group">
-							<ul class="list-inline pull-right">
-	                            <li><a href="{{ path('pimpit') }}"><button type="button" class="btn btn-default prev-step">Etape précédente</button></a></li>
-	                            <li><a href="{{ path('template_options') }}"><button type="button" class="btn btn-md btn-dark next step">Etape suivante</button></a></li>
-	                        </ul>
-	                    </div>	
-
+								<div class="form-group">
+									<ul class="list-inline pull-right">
+			                            <li><a href="{{ path('pimpit') }}"><button type="button" class="btn btn-default prev-step">Etape précédente</button></a></li>
+			                            <li><a href="{{ path('template_options') }}"><button type="button" class="btn btn-md btn-dark next step">Etape suivante</button></a></li>
+			                        </ul>
+			                    </div>	
+			                </div>
+			            </div>
 					</div>
 				</div>
 			{{ form_end(formulaireForm)}}

@@ -290,18 +290,16 @@ class Home
             $formulaire -> getExperiences() -> add($experience5);
 
 
-
             $formation1 = new \Entity\Formation;
-            $formulaire -> getFormation() -> add($formation1);
+            $formulaire -> getFormations() -> add($formation1);
             $formation2 = new \Entity\Formation;
-            $formulaire -> getFormation() -> add($formation2);
+            $formulaire -> getFormations() -> add($formation2);
             $formation3 = new \Entity\Formation;
-            $formulaire -> getFormation() -> add($formation3);
+            $formulaire -> getFormations() -> add($formation3);
             $formation4 = new \Entity\Formation;
-            $formulaire -> getFormation() -> add($formation4);
+            $formulaire -> getFormations() -> add($formation4);
             $formation5 = new \Entity\Formation;
-            $formulaire -> getFormation() -> add($formation5);
-
+            $formulaire -> getFormations() -> add($formation5);
 
 
             $certification1 = new \Entity\Formation;
@@ -318,7 +316,6 @@ class Home
             $formulaire -> getAptitudes() -> add($langue2);
             $langue3 = new \Entity\Aptitude;
             $formulaire -> getAptitudes() -> add($langue3);
-
 
 
             $benevolat1 = new \Entity\Experience;
@@ -342,7 +339,11 @@ class Home
             $passion2 = new \Entity\Aptitude;
             $formulaire -> getAptitudes() -> add($passion2);
             $passion3 = new \Entity\Aptitude;
-            $formulaire -> getAptitudes() -> add($passion3);
+            $formulaire -> getAptitudes() -> add($passion3); 
+            $passion4 = new \Entity\Aptitude;
+            $formulaire -> getAptitudes() -> add($passion4);
+            $passion5 = new \Entity\Aptitude;
+            $formulaire -> getAptitudes() -> add($passion5);
 
 
             $formulaireForm = $app['form.factory'] -> create(\Form\Type\FormulaireType::class, $formulaire);
