@@ -37,7 +37,7 @@ class Gertrude
                 $command = new \Entity\Commande;
 
 
-				var_dump($command);
+				// var_dump($command);
 
 
                 $payum = $app['payum'];
@@ -51,13 +51,9 @@ class Gertrude
                 // $command = new CommandeDAO();
 
 
-				$storage = $payum->getStorage($command);
+				$storage = $payum->getStorage(\Model\CustomStorage::class);
 				// $storage = new FilesystemStorage('../storage/payment', $command);
 
-				// $tokenstorage = $payum->getStorage('../torage/tokens');
-				var_dump('<pre>');
-				var_dump($payment);
-				var_dump('</pre>');
 
                 // $storage = new FilesystemStorage('../storage/payment', $command);
 
@@ -71,7 +67,7 @@ class Gertrude
                 $payment->setCurrencyCode('EUR');
                 $payment->setTotalAmount(123); // 1.23 EUR
                 $payment->setDescription('A description');
-                $payment->setClientId('anId');
+                $payment->setClientId('4');
                 $payment->setClientEmail('foo@example.com');
 				//
                 // $payment->setDetails(array(

@@ -301,23 +301,6 @@ class Home
 
             $formulaire = new \Entity\Formulaire;
 
-
-            // $cv = new \Entity\Cv;
-            // $formulaire -> setCv($cv);
-
-
-            $experience1 = new \Entity\Experience;
-            $formulaire -> getExperiences() -> add($experience1);
-            $experience2 = new \Entity\Experience;
-            $formulaire -> getExperiences() -> add($experience2);
-            $experience3 = new \Entity\Experience;
-            $formulaire -> getExperiences() -> add($experience3);
-            $experience4 = new \Entity\Experience;
-            $formulaire -> getExperiences() -> add($experience4);
-            $experience5 = new \Entity\Experience;
-            $formulaire -> getExperiences() -> add($experience5);
-
-
             $formation1 = new \Entity\Formation;
             $formulaire -> getFormations() -> add($formation1);
             $formation2 = new \Entity\Formation;
@@ -367,23 +350,82 @@ class Home
             $passion2 = new \Entity\Aptitude;
             $formulaire -> getAptitudes() -> add($passion2);
             $passion3 = new \Entity\Aptitude;
-            $formulaire -> getAptitudes() -> add($passion3); 
+            $formulaire -> getAptitudes() -> add($passion3);
             $passion4 = new \Entity\Aptitude;
             $formulaire -> getAptitudes() -> add($passion4);
             $passion5 = new \Entity\Aptitude;
             $formulaire -> getAptitudes() -> add($passion5);
 
 
-            $formulaireForm = $app['form.factory'] -> create(\Form\Type\FormulaireType::class, $formulaire);
 
-            $formulaireFormView = $formulaireForm -> createView();
+
+
+
+            $membre = $app['dao.membre'] -> find($app['user'] -> getId());
+
+                $cv = $app['dao.cv'] -> find($membre -> getId());
+                // print_r($cv);
+                $experiences = $app['dao.experience'] -> findEntreprise($cv -> getId());
+                $countExperiences = count($experiences);
+                for($i=0; $i<5 - $countExperiences; $i++){
+
+                    $experiences[] = new \Entity\Experience;
+
+                } // Fin de la boucle FOR
+
+                $formulaire->setExperiences($experiences);
+                // $experience = new \Entity\Experience;
+
+                // $formulaire = new \Entity\Formulaire;
+                //
+                // $formation = new \Entity\Formation;
+                // $aptitude = new \Entity\Aptitude;
+                // $autre_info = new \Entity\AutreInfo;
+
+            // Fin du if de vérification de présence du CV sur la BDD pour l'utilisateur
+
+
+
+
+
+
+
+            // $cv = new \Entity\Cv;
+            // $formulaire -> setCv($cv);
+
+            //
+            // $experience1 = new \Entity\Experience;
+            // $formulaire -> getExperiences() -> add($experience1);
+            // $experience2 = new \Entity\Experience;
+            // $formulaire -> getExperiences() -> add($experience2);
+            // $experience3 = new \Entity\Experience;
+            // $formulaire -> getExperiences() -> add($experience3);
+            // $experience4 = new \Entity\Experience;
+            // $formulaire -> getExperiences() -> add($experience4);
+            // $experience5 = new \Entity\Experience;
+            // $formulaire -> getExperiences() -> add($experience5);
+
+
+
+
+            // $formulaireForm->handleRequest($request);
+            //
+            // if ($formulaireForm->isSubmitted() && $formulaireForm->isValid()) {
+            //     Print_r('formulaire validé');
+            // }
+            $formulaireForm = $app['form.factory'] -> create(\Form\Type\FormulaireType::class, $formulaire);
 
             $formulaireForm->handleRequest($request);
 
-            if ($formulaireForm->isSubmitted() && $formulaireForm->isValid()) {
-                Print_r('yes');
+             if ($formulaireForm->isSubmitted() && $formulaireForm->isValid()) {
+                $cv = $app['dao.cv'] -> find($membre -> getId());
+                foreach ($formulaire->getExperiences() as $experience) {
+                    $app['dao.experience'] -> saveExperience($experience, $cv);
+                }
+
             }
 
+            $formulaireFormView = $formulaireForm -> createView();
 
             $params = array(
                 'title' => 'Contenu de votre CV',

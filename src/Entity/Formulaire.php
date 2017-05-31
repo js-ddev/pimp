@@ -9,10 +9,10 @@ class Formulaire
 
 {
     protected $cv;
-    protected $experience;
-    protected $formation;
-    protected $aptitude;
-    protected $autre_info;
+    protected $experiences;
+    protected $formations;
+    protected $aptitudes;
+    protected $autre_infos;
 
     public function __construct()
     {
