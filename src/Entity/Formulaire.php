@@ -26,7 +26,7 @@ class Formulaire
         $this->benevolat = new ArrayCollection();
         $this->formations = new ArrayCollection();
         $this->certifications = new ArrayCollection();
-        $this->aptitudes = new ArrayCollection();
+        // $this->aptitudes = new ArrayCollection();
         $this->langues = new ArrayCollection();
         $this->passions = new ArrayCollection();
         $this->autres_infos = new ArrayCollection();

@@ -36,7 +36,7 @@ class FormulaireType extends AbstractType
                 'by_reference' => false,
             ))
 
-            ->add('benevolat', CollectionType::class, array(
+            ->add('benevolats', CollectionType::class, array(
                 'entry_type' => BenevolatType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
@@ -60,7 +60,7 @@ class FormulaireType extends AbstractType
                 'by_reference' => false,
             ))
 
-            ->add('aptitudes', CollectionType::class, array(
+            ->add('langues', CollectionType::class, array(
                 'entry_type' => LangueType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
@@ -68,7 +68,7 @@ class FormulaireType extends AbstractType
                 'by_reference' => false,
             ))
 
-            ->add('aptitudes', CollectionType::class, array(
+            ->add('passions', CollectionType::class, array(
                 'entry_type' => PassionType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
@@ -84,7 +84,7 @@ class FormulaireType extends AbstractType
                 'by_reference' => false,
             ))
 
-            ->add('autres_infos', CollectionType::class, array(
+            ->add('voyages', CollectionType::class, array(
                 'entry_type' => VoyageType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
@@ -92,7 +92,7 @@ class FormulaireType extends AbstractType
                 'by_reference' => false,
             ))
 
-            ->add('autres_infos', CollectionType::class, array(
+            ->add('infos_diverses', CollectionType::class, array(
                 'entry_type' => InfoDiverseType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
