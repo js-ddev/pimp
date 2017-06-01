@@ -180,6 +180,17 @@
 															</div>
 
 															<div class="form-group">
+																<label for="description">Description</label>
+																{{ form_widget(experience.description) }}
+															</div>
+
+
+															<div class="form-group">
+																<label for="ca">Chiffre d'affaire</label>
+																{{ form_widget(experience.ca) }}
+															</div>
+
+															<div class="form-group">
 																<label for="effectif">Effectifs :</label>
 																{{ form_widget(experience.effectif) }}
 															</div>
@@ -420,6 +431,17 @@
 																<span id="slider{{ loop.index }}value"></span><span> %</span>
 															</div>
 
+															<div class="form-group">
+																<label for="langue_score_toeic">Score TOEIC</label>
+																{{ form_widget(aptitude.toeic) }}
+
+																<label for="langue_score_toefl">Score TOEFL</label>
+																{{ form_widget(aptitude.toefl) }}
+
+																<label for="langue_score_ielts">Score IELTS</label>
+																{{ form_widget(aptitude.ielts) }}
+															</div>
+
 															<div class="form-group col-md-12">
 																<input class="btn btn-md btn-dark" type="submit" value="Valider">
 															</div>
@@ -553,7 +575,7 @@
 													<div class="tab-content">
 													{% for aptitude in formulaireForm.passions %}
 														<div id="Interet-{{ loop.index }}" class="tab-pane fade pdd-horizon-10">
-														{{ form_widget(passion.type,{value :'centre_interet'}) }}
+														{{ form_widget(aptitude.type,{value :'centre_interet'}) }}
 															<h4 class="no-mrg-top mrg-btm-20">Centre d'intérêt 1</h4>
 															<div class="form-group">
 																<label for="nom"></label>
@@ -597,7 +619,7 @@
 																<!-- Sous-partie description -->
 																<div id="s4-option-1" class="tab-pane fade">
 																	<div class="panel-body">
-																	{{ form_widget(autre_info.type,{value :'info'}) }}															
+																	{{ form_widget(autre_info.type,{value :'info'}) }}
 																		<div class="form-group">
 																			<label for="description">Décrivez vous en quelques mots ! Et essayez de répondre à la question épineuse de pourquoi voudriez vous travailler avec vous même ?</label>label>
 																			{{ form_widget(autre_info.description) }}

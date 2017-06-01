@@ -314,47 +314,39 @@ class Home
 
 
             $certification1 = new \Entity\Formation;
-            $formulaire -> getFormations() -> add($certification1);
+            $formulaire -> getCertifications() -> add($certification1);
             $certification2 = new \Entity\Formation;
-            $formulaire -> getFormations() -> add($certification2);
+            $formulaire -> getCertifications() -> add($certification2);
             $certification3 = new \Entity\Formation;
-            $formulaire -> getFormations() -> add($certification3);
+            $formulaire -> getCertifications() -> add($certification3);
 
 
             $langue1 = new \Entity\Aptitude;
-            $formulaire -> getAptitudes() -> add($langue1);
+            $formulaire -> getLangues() -> add($langue1);
             $langue2 = new \Entity\Aptitude;
-            $formulaire -> getAptitudes() -> add($langue2);
+            $formulaire -> getLangues() -> add($langue2);
             $langue3 = new \Entity\Aptitude;
-            $formulaire -> getAptitudes() -> add($langue3);
-
-            //
-            // $benevolat1 = new \Entity\Experience;
-            // $formulaire -> getBenevolat() -> add($benevolat1);
-            // $benevolat2 = new \Entity\Experience;
-            // $formulaire -> getBenevolat() -> add($benevolat2);
-            // $benevolat3 = new \Entity\Experience;
-            // $formulaire -> getBenevolat() -> add($benevolat3);
+            $formulaire -> getLangues() -> add($langue3);
 
 
-            $autre_info1 = new \Entity\AutreInfo;
-            $formulaire -> getAutresInfos() -> add($autre_info1);
-            $autre_info2 = new \Entity\AutreInfo;
-            $formulaire -> getAutresInfos() -> add($autre_info2);
-            $autre_info3 = new \Entity\AutreInfo;
-            $formulaire -> getAutresInfos() -> add($autre_info3);
+            $autre_info = new \Entity\AutreInfo;
+            $formulaire -> getAutresInfos() -> add($autre_info);
+            $voyage = new \Entity\AutreInfo;
+            $formulaire -> getVoyages() -> add($voyage);
+            $info_diverse = new \Entity\AutreInfo;
+            $formulaire -> getInfosDiverses() -> add($info_diverse);
 
 
             $passion1 = new \Entity\Aptitude;
-            $formulaire -> getAptitudes() -> add($passion1);
+            $formulaire -> getPassions() -> add($passion1);
             $passion2 = new \Entity\Aptitude;
-            $formulaire -> getAptitudes() -> add($passion2);
+            $formulaire -> getPassions() -> add($passion2);
             $passion3 = new \Entity\Aptitude;
-            $formulaire -> getAptitudes() -> add($passion3);
+            $formulaire -> getPassions() -> add($passion3);
             $passion4 = new \Entity\Aptitude;
-            $formulaire -> getAptitudes() -> add($passion4);
+            $formulaire -> getPassions() -> add($passion4);
             $passion5 = new \Entity\Aptitude;
-            $formulaire -> getAptitudes() -> add($passion5);
+            $formulaire -> getPassions() -> add($passion5);
 
 
 
@@ -375,11 +367,11 @@ class Home
                 $formulaire -> getExperiences() -> add($experience5);
 
                 $benevolat1 = new \Entity\Experience;
-                $formulaire -> getBenevolat() -> add($benevolat1);
+                $formulaire -> getBenevolats() -> add($benevolat1);
                 $benevolat2 = new \Entity\Experience;
-                $formulaire -> getBenevolat() -> add($benevolat2);
+                $formulaire -> getBenevolats() -> add($benevolat2);
                 $benevolat3 = new \Entity\Experience;
-                $formulaire -> getBenevolat() -> add($benevolat3);
+                $formulaire -> getBenevolats() -> add($benevolat3);
 
                 // var_dump($pasdecv);
             }
@@ -405,7 +397,7 @@ class Home
                 }
 
                 $formulaire->setExperiences($experiences);
-                $formulaire->setBenevolat($benevolat);
+                $formulaire->setBenevolats($benevolat);
             }
 
                 // $experience = new \Entity\Experience;
@@ -464,7 +456,7 @@ class Home
                     foreach ($formulaire->getExperiences() as $experience) {
                         $app['dao.experience'] -> saveExperience($experience, $cv);
                     }
-                    foreach ($formulaire->getBenevolat() as $experience) {
+                    foreach ($formulaire->getBenevolats() as $experience) {
                         $app['dao.experience'] -> saveExperience($experience, $cv);
                     }
 
