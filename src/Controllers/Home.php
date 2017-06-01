@@ -270,8 +270,9 @@ class Home
         $optionForm -> handleRequest($request);
 
         if($optionForm -> isSubmitted() && $optionForm -> isValid()){
-
-            $app['dao.options'] -> saveOptions($options);
+            $membre = $app['dao.membre'] -> find($app['user'] -> getId());
+            $cv = $app['dao.cv'] -> find($membre -> getId());
+            $app['dao.options'] -> saveOptions($options, $cv);
             $app['session'] -> getFlashBag() -> add('success', 'vos options sont prises en compte !');
         }
 
@@ -358,10 +359,13 @@ class Home
 
                 $benevolat1 = new \Entity\Experience;
                 $formulaire -> getBenevolats() -> add($benevolat1);
+                // var_dump($benevolat1);
+                // die();
                 $benevolat2 = new \Entity\Experience;
                 $formulaire -> getBenevolats() -> add($benevolat2);
                 $benevolat3 = new \Entity\Experience;
                 $formulaire -> getBenevolats() -> add($benevolat3);
+
 
             }
             else{
@@ -404,7 +408,7 @@ class Home
                     }
                     $membre = $app['dao.membre'] -> find($app['user'] -> getId());
                     $app['dao.cv'] -> saveCv($cv, $membre);
-                    foreach ($formulaire->getBenevolat() as $experience) {
+                    foreach ($formulaire->getBenevolats() as $experience) {
                         $app['dao.experience'] -> saveExperience($experience, $cv);
                     }
                 }
