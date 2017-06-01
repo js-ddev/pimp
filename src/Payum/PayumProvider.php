@@ -20,8 +20,7 @@ class PayumProvider implements ServiceProviderInterface
             return (new PayumBuilder())
                 -> addDefaultStorages()
                 -> addStorage(\Model\CustomStorage::class, new CustomStorage($app['db']))
-                // TODO après que tout fonctionne
-                // cette ligne sert à ajouter notre storage BDD
+                // cette ligne sert à ajouter notre storage BDD,ex :
                 // -> addStorage('\Model\CommandeDAO', new CommandeDAO())
                 ->setGenericTokenFactoryPaths(array(
                     'capture' => $app['url_generator']->generate('payment_capture'),
