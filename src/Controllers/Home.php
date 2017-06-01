@@ -379,7 +379,7 @@ class Home
                 }
 
                 $formulaire->setExperiences($experiences);
-                $formulaire->setBenevolat($benevolat);
+                $formulaire->setBenevolats($benevolat);
                 // $experience = new \Entity\Experience;
 
                 // $formulaire = new \Entity\Formulaire;
