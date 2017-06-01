@@ -400,38 +400,7 @@ class Home
                 $formulaire->setBenevolats($benevolat);
             }
 
-                // $experience = new \Entity\Experience;
 
-                // $formulaire = new \Entity\Formulaire;
-                //
-                // $formation = new \Entity\Formation;
-                // $aptitude = new \Entity\Aptitude;
-                // $autre_info = new \Entity\AutreInfo;
-
-            // Fin du if de vérification de présence du CV sur la BDD pour l'utilisateur
-
-
-            // $cv = new \Entity\Cv;
-            // $formulaire -> setCv($cv);
-
-            //
-            // $experience1 = new \Entity\Experience;
-            // $formulaire -> getExperiences() -> add($experience1);
-            // $experience2 = new \Entity\Experience;
-            // $formulaire -> getExperiences() -> add($experience2);
-            // $experience3 = new \Entity\Experience;
-            // $formulaire -> getExperiences() -> add($experience3);
-            // $experience4 = new \Entity\Experience;
-            // $formulaire -> getExperiences() -> add($experience4);
-            // $experience5 = new \Entity\Experience;
-            // $formulaire -> getExperiences() -> add($experience5);
-
-
-            // $formulaireForm->handleRequest($request);
-            //
-            // if ($formulaireForm->isSubmitted() && $formulaireForm->isValid()) {
-            //     Print_r('formulaire validé');
-            // }
             $formulaireForm = $app['form.factory'] -> create(\Form\Type\FormulaireType::class, $formulaire);
 
             $formulaireForm->handleRequest($request);
@@ -463,7 +432,6 @@ class Home
                 }
 
             }
-
 
 
             $formulaireFormView = $formulaireForm -> createView();
