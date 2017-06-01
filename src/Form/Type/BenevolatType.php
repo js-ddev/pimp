@@ -22,7 +22,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Email;
 
-class ExperienceType extends AbstractType
+class BenevolatType extends AbstractType
 {
 
     public function buildForm(FormBuilderInterface $builder, array $options){
@@ -54,7 +54,7 @@ class ExperienceType extends AbstractType
             ),
             'required' => false,
         ))
-        
+        /*
         -> add('description', TextType::class, array(
             'constraints' => array(
                 new Assert\Length(array(
@@ -76,7 +76,7 @@ class ExperienceType extends AbstractType
             ),
             'required' => false,
         ))
-      
+        */
         -> add('effectif', ChoiceType::class, array(
             'choices' => array(
                 'Entre 1 et 9 personnes' => '1',
@@ -199,25 +199,6 @@ class ExperienceType extends AbstractType
             'required' => false,
         ))
 
-        -> add('responsabilite4', TextType::class, array(
-            'constraints' => array(
-            ),
-            'attr' => array(
-                'placeholder' => '4',
-                'class' => 'form-control',
-            ),
-            'required' => false,
-        ))
-
-        -> add('responsabilite5', TextType::class, array(
-            'constraints' => array(
-            ),
-            'attr' => array(
-                'placeholder' => '5',
-                'class' => 'form-control',
-            ),
-            'required' => false,
-        ))
 
         -> add('realisation1', TextType::class, array(
             'constraints' => array(
@@ -249,34 +230,15 @@ class ExperienceType extends AbstractType
             'required' => false,
         ))
 
-        -> add('realisation4', TextType::class, array(
-            'constraints' => array(
-            ),
-            'attr' => array(
-                'placeholder' => '4',
-                'class' => 'form-control',
-            ),
-            'required' => false,
-        ))
-
-        -> add('realisation5', TextType::class, array(
-            'constraints' => array(
-            ),
-            'attr' => array(
-                'placeholder' => '5',
-                'class' => 'form-control',
-            ),
-            'required' => false,
-        ))
-
         // -> add('envoyer', SubmitType::class, array('label' => 'envoyer'))
 
         ;
     }
-    
+
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
+            // 'data_class' => Benevolat::class,
             'data_class' => Experience::class,
         ));
     }

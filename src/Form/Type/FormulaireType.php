@@ -3,11 +3,6 @@
 namespace Form\Type;
 
 use Entity\Formulaire;
-// use Entity\Cv;
-// use Entity\Experience;
-// use Entity\Formation;
-// use Entity\Aptitude;
-// use Entity\AutreInfo;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -33,7 +28,7 @@ class FormulaireType extends AbstractType
                 'by_reference' => false,
             ))
 
-             ->add('formations', CollectionType::class, array(
+            ->add('formations', CollectionType::class, array(
                 'entry_type' => FormationType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
@@ -41,16 +36,64 @@ class FormulaireType extends AbstractType
                 'by_reference' => false,
             ))
 
-             ->add('aptitudes', CollectionType::class, array(
-                'entry_type' => AptitudeType::class,
+            ->add('benevolats', CollectionType::class, array(
+                'entry_type' => BenevolatType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
                 'prototype' => true,
                 'by_reference' => false,
             ))
 
-             ->add('autres_infos', CollectionType::class, array(
+             ->add('certifications', CollectionType::class, array(
+                'entry_type' => CertificationType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'prototype' => true,
+                'by_reference' => false,
+            ))
+            /*
+            ->add('aptitudes', CollectionType::class, array(
+                'entry_type' => AptitudeType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'prototype' => true,
+                'by_reference' => false,
+            ))
+            */
+            ->add('langues', CollectionType::class, array(
+                'entry_type' => LangueType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'prototype' => true,
+                'by_reference' => false,
+            ))
+
+            ->add('passions', CollectionType::class, array(
+                'entry_type' => PassionType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'prototype' => true,
+                'by_reference' => false,
+            ))
+
+            ->add('autres_infos', CollectionType::class, array(
                 'entry_type' => AutreInfoType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'prototype' => true,
+                'by_reference' => false,
+            ))
+
+            ->add('voyages', CollectionType::class, array(
+                'entry_type' => VoyageType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'prototype' => true,
+                'by_reference' => false,
+            ))
+
+            ->add('infos_diverses', CollectionType::class, array(
+                'entry_type' => InfoDiverseType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
                 'prototype' => true,

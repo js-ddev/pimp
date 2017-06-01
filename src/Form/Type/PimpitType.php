@@ -132,10 +132,17 @@ class PimpitType extends AbstractType
                 ),
             ))
 
+            // JS - TODO la vérification du mimetype fonctionne, mais n'affiche pas d'erreur à l'utilisateur en cas de mauvais fichier envoyé :
             -> add('cv', FileType::class, array(
-                    'label' => 'Votre ancien CV (si vous en avez un)',
-                    'required' => false,
+                'constraints' => new Assert\File(array(
+                    'mimeTypes' => array('image/png','image/jpeg', 'image/gif'),
+                    'maxSize' => '500k'
                     )
+                ),
+                'label' => 'Votre ancien CV (si vous en avez un)',
+                 'attr' => array('class' => 'input-file form-control'),
+                'required' => false,
+                )
             );
     }
 
