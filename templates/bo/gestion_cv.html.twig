@@ -16,7 +16,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Gestion des membres
+                            Gestion du CV du membre
                             <small>Consulter</small>
                         </h1>
                         <ol class="breadcrumb">
@@ -28,18 +28,25 @@
                 </div>
                 <!-- /.row -->
 
-                <!-- Didier - DEBUT TABLEAUX DU CV -->
 
                 <div class="row">
 
                     <div class="col-lg-12">
                         <h2>Tableaux du CV</h2>
+                    </div>
+                </div>
+                        
+                <!-- Didier - DEBUT TABLEAUX DU CV -->
 
+                <div class="row">
 
-                        <!-- Didier - TABLEAU 1 : ID, Fichier CV, Stucture CV, Design CV, Identité, Coordonnées, Infos perso, Réseaux sociaux et web -->
+                    <div class="col-lg-12">
+                        <h3>Infos commande et design</h3>
+
+                        <!-- Didier - TABLEAU 1 : infos commande et design -->
 
                         <div class="table-responsive">
-                            <table id="myTable" class="table table-bordered table-hover table-striped">
+                            <table style="display: none;" class="myTable table table-bordered table-hover table-striped">
                                 <thead>
                                     <tr>
 
@@ -62,138 +69,6 @@
                                         <th>Indicateur de performance</th>
                                         <th>Activité(s)</th>
 
-                                        <!-- Didier - Partie Identité -->
-                                        <th>Photo</th>
-                                        <th>Prénom</th>
-                                        <th>Nom</th>
-                                        <th>Date de naissance</th>
-                                        <th>Nationalité</th>
-
-                                        <!-- Didier - Partie Coordonnées -->
-                                        <th>Email du CV</th>
-                                        <th>Téléphone</th>
-                                        <th>Adresse</th>
-                                        <th>Code Postal</th>
-                                        <th>Ville</th>
-                                        <th>Pays</th>
-
-                                        <!-- Didier - Partie Informations personnelles -->
-                                        <th>Famille</th>
-                                        <th>Langue maternelle</th>
-                                        <th>Permis de conduire</th>
-                                        <th>Permis de travail</th>
-
-                                        <!-- Didier - Partie Réseaux sociaux et web -->
-                                        <th>Twitter</th>
-                                        <th>LinkedIn</th>
-                                        <th>Skype</th>
-                                        <th>Site perso</th>
-                                        <th>URL autre</th>
-
-                                        <!-- Didier - Partie Expérience entreprise -->
-                                        <th>Type d'expérience</th>
-                                        <th>Nom de l'entreprise</th>
-                                        <th>Secteur de l'entreprise<!-- Secteur : menu déroulant commun à expérience entreprise et expérience bénévolat --></th>
-                                        <th>Effectif</th>
-                                        <!-- <th>Description</th> -->
-                                        <!-- <th>CA</th> -->
-                                        <th>Site web de l'entreprise</th>
-                                        <th>Intitulé du poste</th>
-                                        <th>Localisation du poste</th>
-                                        <th>Rôle dans l'entreprise</th>
-                                        <th>Date de début</th>
-                                        <th>Date de fin</th>
-                                        <th>Responsabilité 1</th>
-                                        <th>Réalisation 1</th>
-                                        <th>Responsabilité 2</th>
-                                        <th>Réalisation 2</th>
-                                        <th>Responsabilité 3</th>
-                                        <th>Réalisation 3</th>
-                                        <th>Responsabilité 4</th>
-                                        <th>Réalisation 4</th>
-                                        <th>Responsabilité 5</th>
-                                        <th>Réalisation 5</th>
-
-                                        <!-- Didier - Partie Expérience bénévolat -->
-                                        <th>Type d'expérience</th>
-                                        <th>Nom de la structure</th>
-
-                                        <!-- Didier - Partie Expérience bénévolat -->
-                                        <th>Nom de la structure</th>
-                                        <th>Secteur bénévolat<!-- Secteur : menu déroulant commun à expérience entreprise et expérience bénévolat --></th>
-                                        <th>Effectif</th>
-                                        <!-- <th>Description</th> -->
-                                        <!-- <th>CA</th> -->
-                                        <th>Site web</th>
-                                        <th>Intitulé du poste</th>
-                                        <th>Localisation du poste</th>
-                                        <th>Rôle dans la structure</th>
-                                        <th>Date de début</th>
-                                        <th>Date de fin</th>
-                                        <th>Responsabilité 1</th>
-                                        <th>Réalisation 1</th>
-                                        <th>Responsabilité 2</th>
-                                        <th>Réalisation 2</th>
-                                        <th>Responsabilité 3</th>
-                                        <th>Réalisation 3</th>
-                                        <th>Responsabilité 4</th>
-                                        <th>Réalisation 4</th>
-                                        <th>Responsabilité 5</th>
-                                        <th>Réalisation 5</th>
-
-                                        <!-- Didier - Partie Formation/formation -->
-                                        <th>Formation</th><!-- type = formation -->
-                                        <th>Diplôme</th>
-                                        <th>Etablissement</th>
-                                        <th>Spécialité</th>
-                                        <th>Lieu</th>
-                                        <th>Date d'obtention</th>
-                                        <th>Site web</th>
-
-                                        <!-- Didier - Partie Formation/certification -->
-                                        <th>Certification</th><!-- type = certification -->
-                                        <th>Diplôme</th>
-                                        <th>Etablissement</th>
-                                        <th>Spécialité</th>
-                                        <th>Lieu</th>
-                                        <th>Date d'obtention</th>
-                                        <th>Site web</th>
-
-                                        <!-- Didier - Partie Aptitudes (langue) -->
-                                        <th>Langue</th>
-                                        <th>Nom</th>
-                                        <th>Niveau</th>
-                                        <th>Niveau TOEIC</th>
-                                        <th>Niveau TOEFL</th>
-                                        <th>Niveau IELTS</th>
-
-                                        <!-- Didier - Partie Aptitudes (competence) -->
-                                        <th>Competence</th>
-                                        <th>Nom</th>
-                                        <th>Niveau</th>
-                                        <th>Niveau TOEIC</th>
-                                        <th>Niveau TOEFL</th>
-                                        <th>Niveau IELTS</th>
-
-                                        <!-- Didier - Partie Aptitudes (centre_interet) -->
-                                        <th>Centre d'intérêt</th>
-                                        <th>Nom</th>
-                                        <th>Niveau</th>
-                                        <th>Niveau TOEIC</th>
-                                        <th>Niveau TOEFL</th>
-                                        <th>Niveau IELTS</th>
-
-                                        <!-- Didier - Partie Autre info (info) -->
-                                        <th>Info</th>
-                                        <th>Description personnelle</th>
-
-                                        <!-- Didier - Partie Autre info (voyage) -->
-                                        <th>Voyage</th>
-                                        <th>Description voyages</th>
-
-                                        <!-- Didier - Partie Autre info (divers) -->
-                                        <th>Divers</th>
-                                        <th>Informations complémentaires</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -225,6 +100,67 @@
                                         <td>{{ cv.indicateurPerformance }}</td>
                                         <td>{{ cv.activite }}</td>
 
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                
+                        </div>
+
+                        <!-- Didier - FIN TABLEAU 1 -->
+                        
+                    </div>
+                    
+                </div>           
+
+
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <h3>Identité, coordonnées...</h3>
+
+                        <!-- Didier - TABLEAU 2 : ID, Fichier CV, Stucture CV, Design CV, Identité, Coordonnées, Infos perso, Réseaux sociaux et web -->
+
+                        <div class="table-responsive">
+                            <table style="display: none;" class="myTable table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
+
+                                        <!-- Didier - Partie Identité -->
+                                        <th>Photo</th>
+                                        <th>Prénom</th>
+                                        <th>Nom</th>
+                                        <th>Date de naissance</th>
+                                        <th>Nationalité</th>
+
+                                        <!-- Didier - Partie Coordonnées -->
+                                        <th>Email du CV</th>
+                                        <th>Téléphone</th>
+                                        <th>Adresse</th>
+                                        <th>Code Postal</th>
+                                        <th>Ville</th>
+                                        <th>Pays</th>
+
+                                        <!-- Didier - Partie Informations personnelles -->
+                                        <th>Famille</th>
+                                        <th>Langue maternelle</th>
+                                        <th>Permis de conduire</th>
+                                        <th>Permis de travail</th>
+
+                                        <!-- Didier - Partie Réseaux sociaux et web -->
+                                        <th>Twitter</th>
+                                        <th>LinkedIn</th>
+                                        <th>Skype</th>
+                                        <th>Site perso</th>
+                                        <th>URL autre</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+
                                         <!-- Didier - Partie Identité -->
                                         <td>{{ cv.photo }}</td>
                                         <td>{{ membre.prenom }}</td>
@@ -253,7 +189,125 @@
                                         <td>{{ cv.sitePerso }}</td>
                                         <td>{{ cv.urlAutre }}</td>
 
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                
+                        </div>
+
+                        <!-- Didier - FIN TABLEAU 2 -->
+
+                    </div>
+
+                </div>           
+
+
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <h3>Formation</h3>
+
+                        <!-- Didier - TABLEAU 3 : formation -->
+
+                        <div class="table-responsive">
+                            <table style="display: none;" class="myTable table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
+
+                                        <!-- Didier - Partie Formation/formation -->
+                                        <!-- Didier - Partie Formation/certification -->
+                                        <th>Formation</th><!-- type = formation -->
+                                        <th>Diplôme</th>
+                                        <th>Etablissement</th>
+                                        <th>Spécialité</th>
+                                        <th>Lieu</th>
+                                        <th>Date d'obtention</th>
+                                        <th>Site web</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+
+                                    <!-- En hidden :
+                                            - table formation : id, id_cv
+                                     -->
+
+                                        <!-- Didier - Partie Formation/formation -->
+                                        <!-- Didier - Partie Formation/certification -->
+                                        <td>{{ formation.type }}</td><!-- type = formation -->
+                                        <td>{{ formation.diplome }}</td>
+                                        <td>{{ formation.etablissement }}</td>
+                                        <td>{{ formation.specialite }}</td>
+                                        <td>{{ formation.lieu }}</td>
+                                        <td>{{ formation.dateObtention }}</td>
+                                        <td>{{ formation.urlFormation }}</td>
+
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                
+                        </div>
+
+                        <!-- Didier - FIN TABLEAU 3 -->
+
+                    </div>
+                    
+                </div>           
+
+
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <h3>Expérience</h3>
+
+                        <!-- Didier - TABLEAU 4 : experience -->
+
+                        <div class="table-responsive">
+                            <table style="display: none;" class="myTable table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
+
                                         <!-- Didier - Partie Expérience entreprise -->
+                                        <!-- Didier - Partie Expérience bénévolat -->
+                                        <th>Type d'expérience</th>
+                                        <th>Nom de l'entité</th>
+                                        <th>Secteur<!-- Secteur : menu déroulant commun à expérience entreprise et expérience bénévolat --></th>
+                                        <th>Effectif</th>
+                                        <!-- <th>Description</th> -->
+                                        <!-- <th>CA</th> -->
+                                        <th>Site web</th>
+                                        <th>Intitulé du poste</th>
+                                        <th>Localisation du poste</th>
+                                        <th>Rôle dans l'entité</th>
+                                        <th>Date de début</th>
+                                        <th>Date de fin</th>
+                                        <th>Responsabilité 1</th>
+                                        <th>Réalisation 1</th>
+                                        <th>Responsabilité 2</th>
+                                        <th>Réalisation 2</th>
+                                        <th>Responsabilité 3</th>
+                                        <th>Réalisation 3</th>
+                                        <th>Responsabilité 4</th>
+                                        <th>Réalisation 4</th>
+                                        <th>Responsabilité 5</th>
+                                        <th>Réalisation 5</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+
+                                    <!-- En hidden :
+                                            - table expérience : id, id_cv
+                                     -->
+
+                                        <!-- Didier - Partie Expérience entreprise -->
+                                        <!-- Didier - Partie Expérience bénévolat -->
                                         <td>{{ experience.type }}</td><!-- type = entreprise -->
                                         <td>{{ experience.nom }}</td>
                                         <td>{{ experience.secteur }}</td>
@@ -277,49 +331,53 @@
                                         <td>{{ experience.responsabilite5 }}</td>
                                         <td>{{ experience.realisation5 }}</td>
 
-                                        <!-- Didier - Partie Expérience bénévolat -->
-                                        <td>{{ experience.type }}</td><!-- type = benevolat -->
-                                        <td>{{ experience.nom }}</td>
-                                        <td>{{ experience.secteur }}</td>
-                                        <td>{{ experience.effectif }}</td>
-                                        <!-- <td>experience.description</td> NON implémenté-->
-                                        <!-- <td>experience.ca</td> NON implémenté car pas pertinent pour ce genre de structure -->
-                                        <td>{{ experience.urlExperience }}</td>
-                                        <td>{{ experience.poste }}</td>
-                                        <td>{{ experience.lieu }}</td>
-                                        <td>{{ experience.role }}</td>
-                                        <td>{{ experience.dateDebut }}</td>
-                                        <td>{{ experience.dateFin }}</td>
-                                        <td>{{ experience.responsabilite1 }}</td>
-                                        <td>{{ experience.realisation1 }}</td>
-                                        <td>{{ experience.responsabilite2 }}</td>
-                                        <td>{{ experience.realisation2 }}</td>
-                                        <td>{{ experience.responsabilite3 }}</td>
-                                        <td>{{ experience.realisation3 }}</td>
-                                        <td>{{ experience.responsabilite4 }}</td>
-                                        <td>{{ experience.realisation4 }}</td>
-                                        <td>{{ experience.responsabilite5 }}</td>
-                                        <td>{{ experience.realisation5 }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                
+                        </div>
 
-                                        <!-- Didier - Partie Formation/formation -->
-                                        <td>{{ formation.type }}</td><!-- type = formation -->
-                                        <td>{{ formation.diplome }}</td>
-                                        <td>{{ formation.etablissement }}</td>
-                                        <td>{{ formation.specialite }}</td>
-                                        <td>{{ formation.lieu }}</td>
-                                        <td>{{ formation.dateObtention }}</td>
-                                        <td>{{ formation.urlFormation }}</td>
+                        <!-- Didier - FIN TABLEAU 4 -->
 
-                                        <!-- Didier - Partie Formation/certification -->
-                                        <td>{{ formation.type }}</td><!-- type = certification -->
-                                        <td>{{ formation.diplome }}</td>
-                                        <td>{{ formation.etablissement }}</td>
-                                        <td>{{ formation.specialite }}</td>
-                                        <td>{{ formation.lieu }}</td>
-                                        <td>{{ formation.dateObtention }}</td>
-                                        <td>{{ formation.urlFormation }}</td>
+                    </div>
+                    
+                </div>           
+
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <h3>Langue</h3>
+
+                        <!-- Didier - TABLEAU 5 : aptitude -->
+
+                        <div class="table-responsive">
+                            <table style="display: none;" class="myTable table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
 
                                         <!-- Didier - Partie Aptitudes (langue) -->
+                                        <!-- Didier - Partie Aptitudes (competence) -->
+                                        <!-- Didier - Partie Aptitudes (centre_interet) -->
+                                        <th>Langue</th>
+                                        <th>Nom</th>
+                                        <th>Niveau</th>
+                                        <th>Niveau TOEIC</th>
+                                        <th>Niveau TOEFL</th>
+                                        <th>Niveau IELTS</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+
+                                    <!-- En hidden :
+                                            - table aptitude : id, id_cv
+                                     -->
+
+                                        <!-- Didier - Partie Aptitudes (langue) -->
+                                        <!-- Didier - Partie Aptitudes (competence) -->
+                                        <!-- Didier - Partie Aptitudes (centre_interet) -->
                                         <td>{{ aptitude.type }}</td><!-- type = langue -->
                                         <td>{{ aptitude.nom }}</td>
                                         <td>{{ aptitude.niveau }}</td>
@@ -327,39 +385,18 @@
                                         <td>{{ aptitude.TOEFL }}</td>
                                         <td>{{ aptitude.IELTS }}</td>
 
-                                        <!-- Didier - Partie Aptitudes (competence) -->
-                                        <td>{{ aptitude.type }}</td><!-- type = competence -->
-                                        <td>{{ aptitude.nom }}</td>
-                                        <td>{{ aptitude.niveau }}</td>
-
-                                        <!-- Didier - Partie Aptitudes (centre_interet) -->
-                                        <td>{{ aptitude.type }}</td><!-- type = centre_interet -->
-                                        <td>{{ aptitude.nom }}</td>
-                                        <td>{{ aptitude.niveau }}</td>
-
-                                        <!-- Didier - Partie Autre info (info) -->
-                                        <td>{{ autre_info.type }}</td><!-- type = info -->
-                                        <td>{{ autre_info.description }}</td>
-
-                                        <!-- Didier - Partie Autre info (voyage) -->
-                                        <td>{{ autre_info.type }}</td><!-- type = voyage -->
-                                        <td>{{ autre_info.description }}</td>
-
-                                        <!-- Didier - Partie Autre info (divers) -->
-                                        <td>{{ autre_info.type }}</td><!-- type = divers -->
-                                        <td>{{ autre_info.description }}</td>
-
                                     </tr>
-
 
                                 </tbody>
                             </table>
+                
                         </div>
-                        <!-- Didier - FIN TABLEAU 1 -->
 
+                        <!-- Didier - FIN TABLEAU 5 -->
 
-
-
+                    </div>
+                    
+                </div>           
 
             </div>
             <!-- /.container-fluid -->
