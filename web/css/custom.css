@@ -43,10 +43,15 @@ i:hover {
     border-radius: 1em;
     padding: 1em;
 }
-
+/* Rudy - Réglage du prix selon le type de prestation */
 [id^=switch] + *{
     display:none !important;
 }
 [id^=switch]:target + *{
     display:block !important;
+}
+
+/* Rudy - H1 display none*/
+h1.Pimpmycv {
+  display: none;
 }
