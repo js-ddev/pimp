@@ -6,7 +6,11 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Payum\Core\Storage\FilesystemStorage;
 use Payum\Core\Storage\StorageInterface;
 
+
 /*use Payum\Core\Model\Payment as BasePayment;
+
+use Payum\Core\Security\GenericTokenFactory;
+use Payum\Core\Security\GenericTokenFactoryInterface;
 
 use Payum\Core\Model\ArrayObject;
 use Payum\Core\Model\Payment;*/

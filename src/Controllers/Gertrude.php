@@ -21,6 +21,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Payum\Core\Model\Payment;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
+use Payum\Core\Security\GenericTokenFactory;
+use Payum\Core\Security\GenericTokenFactoryInterface;
+
+use Payum\Core\Request\Capture;
+
 use Model\CommandeDAO;
 use Model\CustomStorage;
 
@@ -69,6 +74,10 @@ class Gertrude
                 $payment->setDescription('A description');
                 $payment->setClientId('4');
                 $payment->setClientEmail('foo@example.com');
+                $payment->setDetails('detail');
+                $payment->setIdCv('3');
+                // $payment->setId('6');
+
 				//
                 // $payment->setDetails(array(
                 //   // put here any fields in a gateway format.
@@ -79,21 +88,29 @@ class Gertrude
 
 
                 $storage->update($payment);
+				// var_dump($gatewayName);
 
-                $captureToken = $payum->getTokenFactory()->createCaptureToken($gatewayName, $payment, $app['url_generator']->generate('payment_done'));
+				// var_dump($payum->getTokenFactory());
 
+
+                $captureToken = $payum->getTokenFactory()->createCaptureToken($gatewayName, $storage, $app['url_generator']->generate('payment_done'));
+
+				var_dump($captureToken);
 				// JS - Test
 				// $captureToken = $app['payum.security.token_factory']->createCaptureToken($gatewayName, $payment, $app['url_generator']->generate('payment_done'));
 
                 return new RedirectResponse($captureToken->getTargetUrl());
         }
 
-        public function capture(Application $app, Request $request) {
+        public function capture(Application $app) {
                 $payum = $app['payum'];
 
-                // TODO - OK JS - remplacer $_REQUEST par un objet $request
-                $token = $payum->getHttpRequestVerifier()->verify($request);
+                // TODO Thibault :- remplacer $_REQUEST par un objet $request
+				// JS - hum non... c'est un tableau qui est envoyé et demandé !
+                $token = $payum->getHttpRequestVerifier()->verify($_REQUEST);
                 $gateway = $payum->getGateway($token->getGatewayName());
+				
+				var_dump($token);
 
                 if ($reply = $gateway->execute(new Capture($token), true)) {
                         if ($reply instanceof HttpRedirect) {
@@ -113,7 +130,7 @@ class Gertrude
         public function paymentDone(Application $app, Request $request)
         {
                 $payum = $app['payum'];
-                $token = $payum->getHttpRequestVerifier()->verify($_REQUEST);
+                $token = $payum->getHttpRequestVerifier()->verify($request);
                 $gateway = $payum->getGateway($token->getGatewayName());
 
                 // you can invalidate the token. The url could not be requested any more.
