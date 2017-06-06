@@ -71,8 +71,8 @@ class Home
         );
     }
 
-
-    // Adrien - Controller pour envoi du mail de génération nouveau mdp
+// Adrien - Controller pour envoi du mail de génération nouveau mdp
+  
     public function password(Request $request, Application $app){
         $membre = new \Entity\Membre;
 
@@ -141,13 +141,13 @@ class Home
 
         if($inscriptionForm -> isSubmitted() && $inscriptionForm -> isValid()){
 
-// JS Vérification de la présence de l'email dans la base :
+            // JS Vérification de la présence de l'email dans la base :
             $email = $membre -> getUsername();
 
             $id = $app['dao.membre'] -> findByUsername($email);
 
+            // Gestion de la présence de l'email dans la base, et renvoi vers la connexion avec un message adapté et l'email prérempli :
             if(!is_null($id)){
-                // print_r('if');
 
                 return $app['twig']->render('connexion.html.twig', array(
                     'title' => 'Connexion',
@@ -171,7 +171,7 @@ class Home
             $app['session'] -> getFlashBag() -> add('success', 'Votre inscription a bien été prise en compte !');
 
             // Adrien - Redirection suite à l'inscription
-            return $app->redirect('/');
+            return $app->redirect('/connexion');
             }
         }
 
@@ -184,11 +184,11 @@ class Home
         );
 
         return $app['twig']->render('inscription.html.twig', $params);
-
     }
 
 
-// Adrien - Route pour connexion utilisateur
+// Adrien - Route pour connexion utilisateur :
+
     public function connexion(Request $request, Application $app){
         $params = array(
             'error' => $app['security.last_error']($request),
@@ -220,7 +220,7 @@ class Home
 
             $files = $request-> files ->get($pimpitForm->getName());
 
-            // JS - Gestion de l'upload des fichiers cv, fichiers de type id-type.extension, la photo passe dans le formulaire suivant !
+            // JS - Gestion de l'upload des fichiers cv, fichiers de type id-type.extension, la photo passe dans le formulaire suivant et dans la table cv :
 
             // $photo = $files['photo'];
             $cv = $files['cv'];
@@ -231,10 +231,7 @@ class Home
                     $filenameCv = $id.'-cv.'.$cv->guessExtension();
                     $cv -> move($path2,$filenameCv);
                     $membre -> setCv($filenameCv);
-                    // $fichier -> setIdMembre($membre);
-                    // $app['dao.membre'] -> saveCv($cv);
-                    // print_r("cv uniquement");
-                    // print_r($files);
+
                 }
                 else {
                     $app['session'] -> getFlashBag() -> add('success', 'Formulaire pris en compte sans photo !');
@@ -276,8 +273,9 @@ class Home
         $optionForm -> handleRequest($request);
 
         if($optionForm -> isSubmitted() && $optionForm -> isValid()){
-
-            $app['dao.options'] -> saveOptions($options);
+            $membre = $app['dao.membre'] -> find($app['user'] -> getId());
+            $cv = $app['dao.cv'] -> find($membre -> getId());
+            $app['dao.options'] -> saveOptions($options, $cv);
             $app['session'] -> getFlashBag() -> add('success', 'vos options sont prises en compte !');
         }
 
@@ -293,10 +291,12 @@ class Home
     }
 
 
-    // Adrien - Controller pour générer le formulaire parent sur Pimpit/cv
+// JS - Controller pour générer le formulaire parent sur Pimpit/cv
+
     public function formulaire(Request $request, Application $app){
         if($app['security.authorization_checker'] -> isGranted('IS_AUTHENTICATED_FULLY')){
 
+            // Création du formulaire et des formulaires qui ne sont pas bouclés :
             $formulaire = new \Entity\Formulaire;
 
             $formation1 = new \Entity\Formation;
@@ -310,14 +310,12 @@ class Home
             $formation5 = new \Entity\Formation;
             $formulaire -> getFormations() -> add($formation5);
 
-
             $certification1 = new \Entity\Formation;
             $formulaire -> getCertifications() -> add($certification1);
             $certification2 = new \Entity\Formation;
             $formulaire -> getCertifications() -> add($certification2);
             $certification3 = new \Entity\Formation;
             $formulaire -> getCertifications() -> add($certification3);
-
 
             $langue1 = new \Entity\Aptitude;
             $formulaire -> getLangues() -> add($langue1);
@@ -326,14 +324,12 @@ class Home
             $langue3 = new \Entity\Aptitude;
             $formulaire -> getLangues() -> add($langue3);
 
-
             $autre_info = new \Entity\AutreInfo;
             $formulaire -> getAutresInfos() -> add($autre_info);
             $voyage = new \Entity\AutreInfo;
             $formulaire -> getVoyages() -> add($voyage);
             $info_diverse = new \Entity\AutreInfo;
             $formulaire -> getInfosDiverses() -> add($info_diverse);
-
 
             $passion1 = new \Entity\Aptitude;
             $formulaire -> getPassions() -> add($passion1);
@@ -347,12 +343,12 @@ class Home
             $formulaire -> getPassions() -> add($passion5);
 
 
-
-
+            // On vérifie la présence d'un cv pour générer les vues des collections et on créer une variable pour gérer les soumissions après :
             if($pasdecv = is_null($app['dao.cv'] -> find($app['user'] -> getId()))){
                 $cv = new \Entity\Cv;
                 $formulaire -> setCv($cv);
 
+                // TODO - Ces collections seront à mettre dans une boucle for plus tard :
                 $experience1 = new \Entity\Experience;
                 $formulaire -> getExperiences() -> add($experience1);
                 $experience2 = new \Entity\Experience;
@@ -366,17 +362,19 @@ class Home
 
                 $benevolat1 = new \Entity\Experience;
                 $formulaire -> getBenevolats() -> add($benevolat1);
+                // var_dump($benevolat1);
+                // die();
                 $benevolat2 = new \Entity\Experience;
                 $formulaire -> getBenevolats() -> add($benevolat2);
                 $benevolat3 = new \Entity\Experience;
                 $formulaire -> getBenevolats() -> add($benevolat3);
 
-                // var_dump($pasdecv);
+
             }
             else{
-            $membre = $app['dao.membre'] -> find($app['user'] -> getId());
-
+                $membre = $app['dao.membre'] -> find($app['user'] -> getId());
                 $cv = $app['dao.cv'] -> find($membre -> getId());
+                $formulaire -> setCv($cv);
                 // print_r($cv);
                 $experiences = $app['dao.experience'] -> findEntreprise($cv -> getId());
                 $countExperiences = count($experiences);
@@ -403,6 +401,7 @@ class Home
 
             $formulaireForm->handleRequest($request);
 
+            // A la soumission on vérifie si on doit créer ou updater des données :
             if($pasdecv){
                 if ($formulaireForm->isSubmitted() && $formulaireForm->isValid()) {
                     $membre = $app['dao.membre'] -> find($app['user'] -> getId());
@@ -412,7 +411,7 @@ class Home
                     }
                     $membre = $app['dao.membre'] -> find($app['user'] -> getId());
                     $app['dao.cv'] -> saveCv($cv, $membre);
-                    foreach ($formulaire->getBenevolat() as $experience) {
+                    foreach ($formulaire->getBenevolats() as $experience) {
                         $app['dao.experience'] -> saveExperience($experience, $cv);
                     }
                 }
@@ -426,9 +425,7 @@ class Home
                     foreach ($formulaire->getBenevolats() as $experience) {
                         $app['dao.experience'] -> saveExperience($experience, $cv);
                     }
-
                 }
-
             }
 
 
@@ -441,13 +438,11 @@ class Home
 
             return $app['twig']->render('pimpit_cv.html.twig', $params);
 
-
         }
         // JS - A prevoir une meilleure redirection et une page d'inscription avec message :
         header("Location:/connexion");
         exit();
 
     }
-
 
 }
