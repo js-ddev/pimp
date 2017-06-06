@@ -1,14 +1,11 @@
 <?php
 
-// JS - Formulaire de la page Pimpit: remplissage de l'objet membre et upload du cv (objet Cv)
-
 namespace Form\Type;
 
 use Entity\Membre;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
 use Symfony\Component\Validator\Constraints as Assert;
@@ -37,8 +34,6 @@ class PasswordType extends AbstractType
                 ),
             ))
 
-            ;
+        ;
     }
-
-
 }

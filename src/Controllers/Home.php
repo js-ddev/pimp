@@ -71,8 +71,8 @@ class Home
         );
     }
 
-// JS - Page de mot de passe oublié, TODO fonction + envoi email :
-
+// Adrien - Controller pour envoi du mail de génération nouveau mdp
+  
     public function password(Request $request, Application $app){
         $membre = new \Entity\Membre;
 
@@ -82,29 +82,31 @@ class Home
 
         if($passwordForm -> isSubmitted() && $passwordForm -> isValid()){
 
-            $email = $app['dao.membre'] -> find($request->query->get('username'));
+            $email = $app['dao.membre'] -> findByUsername($request->query->get('username'));
 
-            // Tentative d'envoi d'email avec swiftmail :
-            //     $data = $form->getData();
-            //
-            //     $message = \Swift_Message::newInstance()->setSubject($data['subject']->setTo('js.d@free.fr'))
-            //
-            //      ->setSubject('[PimpMyCV] Renvoi de votre mot de passe')
-            //         ->setFrom(array('js.d@free.fr'))
-            //         ->setTo(array('js.d@free.fr'))
-            //         ->setBody($request->get('message de test'));
-            //
-            //     // $email = 'js.d@free.fr';
-            //     // $message = $app['dao.membre'] -> EnvoiMdp($email);
-            //     var_dump($message);
-            //
-            //     return $app['twig']->render('password.html.twig', array(
-            //         'title' => 'Mot de passe oublié',
-            //         'email' => $message,
-            //          'passwordForm' => $passwordFormView,
-            //         'Response' => 'Nous vous avons envoyé un email !'
-            //         )
-            //     );
+           /* $data = $passwordForm->getData();*/
+        
+            $message = \Swift_Message::newInstance()
+        
+            ->setSubject('[PimpMyCV] Renvoi de votre mot de passe')
+            ->setFrom(array('adrien.malavialle@gmail.com'))
+            ->setTo(array('adrien.malavialle@gmail.com'))
+            ->setBody($request->get('message de test'));
+            
+            $app['mailer']->send($message);
+
+            /*
+            $email = 'adrien.malavialle@gmail.com';
+            $message = $app['dao.membre'] -> EnvoiMdp($email);
+            var_dump($message);
+            */
+        
+            return $app['twig']->render('password.html.twig', array(
+                'title' => 'Mot de passe oublié',
+                'email' => $message,
+                'Response' => 'Nous vous avons envoyé un email !'
+                )
+            );
 
             return $app->redirect('/');
 
@@ -121,6 +123,7 @@ class Home
         return $app['twig']->render('password.html.twig', $params);
 
     }
+
 
      public function action(Application $app){
         return $app['twig']->render('action.html.twig', array(
