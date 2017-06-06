@@ -168,7 +168,7 @@ class Home
             $app['session'] -> getFlashBag() -> add('success', 'Votre inscription a bien été prise en compte !');
 
             // Adrien - Redirection suite à l'inscription
-            return $app->redirect('/');
+            return $app->redirect('/connexion');
             }
         }
 
