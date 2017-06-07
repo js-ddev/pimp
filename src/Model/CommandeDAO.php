@@ -45,7 +45,7 @@ class CommandeDAO extends DAO/* implements StorageInterface*/
     public function findAll(){
         $requete = "SELECT * FROM commande";
         $resultat = $this -> getDb() -> fetchAll($requete);
-        
+
         $commandes = array();
         foreach($resultat as $value){
             $id = $value['id'];
@@ -83,7 +83,7 @@ class CommandeDAO extends DAO/* implements StorageInterface*/
         ///////////////////////////////////////////////////////////////////
         //////////    /!\  retravailler la ligne ci-dessous     ///////////
         ///////////////////////////////////////////////////////////////////
- 
+
         if($commande->getId()) { // Modifier une commande
             $this->getDb()->update('commande', $commandeData, array('id'=>$commande->getId()));
         }
@@ -127,7 +127,7 @@ class CommandeDAO extends DAO/* implements StorageInterface*/
 // Rudy - fonction pour récapituler la commande
 
 /*  public function find($id_commande){
-        $requete = 
+        $requete =
         "SELECT * FROM commande WHERE id = ?";
         $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_commande));
 
@@ -139,11 +139,11 @@ class CommandeDAO extends DAO/* implements StorageInterface*/
         }
     }*/
 
-    public function findRudy($id_cv){ 
+    public function findRudy($id_cv){
 
    $requete = "SELECT * FROM commande WHERE id_cv = ?";
         $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_cv));
-    
+
      if($resultat){
             return $this -> buildEntityObject($resultat);
         }
@@ -159,9 +159,9 @@ class CommandeDAO extends DAO/* implements StorageInterface*/
     And c.id_membre = co.id_membre";*/
 
 
-  
 
-    
+
+
 
 
 

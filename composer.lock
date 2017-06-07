@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3dee620e7005a1a21843c4c1c18e3b5a",
+    "content-hash": "a00c1787e1ac1735d49f8fd720de9046",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1069,6 +1069,72 @@
                 "payment"
             ],
             "time": "2016-03-25T14:09:06+00:00"
+        },
+        {
+            "name": "payum/stripe",
+            "version": "1.3.0",
+            "target-dir": "Payum/Stripe",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Payum/Stripe.git",
+                "reference": "10fec0fcfe6faaeb81c28c2635dff59a8a15b102"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Payum/Stripe/zipball/10fec0fcfe6faaeb81c28c2635dff59a8a15b102",
+                "reference": "10fec0fcfe6faaeb81c28c2635dff59a8a15b102",
+                "shasum": ""
+            },
+            "require": {
+                "payum/core": "^1.2.5",
+                "stripe/stripe-php": "~2.0|~3.0"
+            },
+            "require-dev": {
+                "payum/core": "~1.0@dev",
+                "phpunit/phpunit": "~4.0",
+                "symfony/phpunit-bridge": "~2.8|~3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Payum\\Stripe": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Community contributions",
+                    "homepage": "https://github.com/Payum/Stripe/contributors"
+                },
+                {
+                    "name": "Kotlyar Maksim",
+                    "email": "kotlyar.maksim@gmail.com"
+                },
+                {
+                    "name": "Payum project",
+                    "homepage": "http://payum.org/"
+                }
+            ],
+            "description": "The Payum extension. It provides Stripe payment integration.",
+            "homepage": "http://payum.org",
+            "keywords": [
+                "checkout",
+                "direct",
+                "payment",
+                "store card",
+                "stripe",
+                "stripe.js",
+                "subscription"
+            ],
+            "time": "2016-03-25T15:36:41+00:00"
         },
         {
             "name": "php-http/guzzle6-adapter",
@@ -3807,7 +3873,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "payum/stripe": 0
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
