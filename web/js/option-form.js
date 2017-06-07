@@ -28,5 +28,16 @@ $(function() {
         $('#activite-' + $(this).val()).show();
     });
 
+
+// Rudy - Fonction pour affichage dynamique des puces dans page template/options
+// $(function() {
+//     $('.puces').hide();
+//     $('.puces-first').show();
+//     $('#option_puce').change(function(){
+//         $('.puce').hide();
+//         $('#puce-' + $(this).val()).show();
+//     });
+
+
 });
 
