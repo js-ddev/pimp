@@ -2,7 +2,6 @@
 
 namespace Model;
 
-use Entity\Membre;
 use Entity\Cv;
 use Entity\Options;
 
@@ -51,8 +50,8 @@ class OptionsDAO extends DAO
         }
         */
         }
-        
-    
+
+
 
 
     /**
@@ -62,10 +61,10 @@ class OptionsDAO extends DAO
     *
     * @return \pimp\Entity\cv
     */
-    public function saveOptions(Options $options/*, Membre $membre*/){
+    public function saveOptions(Options $options, $cv){
         $optionsData = array(
             'id' => $options -> getId(),
-            /*'id_membre' => $membre -> getId(),*/
+            'id_cv' => $cv -> getId(),
             'template' => $options -> getTemplate(),
             'nombre_pages' => $options -> getNombrePages(),
             'couleur' => $options -> getCouleur(),
@@ -85,7 +84,7 @@ class OptionsDAO extends DAO
     }
 
     protected function BuildEntityObject(array $value){
-       
+
         $options = new options;
 
         $options -> setId($value['id']);
@@ -101,4 +100,3 @@ class OptionsDAO extends DAO
         return $options;
     }
 }
-

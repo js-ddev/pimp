@@ -12,7 +12,6 @@ use Payum\Core\Model\Identity;
 
 use Payum\Core\Model\Payment;
 
-
 use Payum\Core\Storage\FilesystemStorage;
 
 use Payum\PayumStorage;
@@ -76,7 +75,7 @@ class CustomStorage implements StorageInterface
     public function support($model)
     {
         $class = get_class($model);
-        var_dump($class);
+        // var_dump($class);
         return $class === \Entity\Commande::class;
     }
 
@@ -102,8 +101,13 @@ class CustomStorage implements StorageInterface
             'id_cv' => $model->getIdCv(),
 
     );
+
+    // var_dump($modelData);
+    // var_dump($model);
+
         if( ! $this->support($model)){
 
+            // echo ('erreur');
             throw \Payum\Core\Exception\InvalidArgumentException;
         }
         if($model->getId()) {
@@ -114,7 +118,7 @@ class CustomStorage implements StorageInterface
 
         }
 
-
+        return $model;
 
     }
 
@@ -161,6 +165,9 @@ class CustomStorage implements StorageInterface
      */
     public function identify($model)
     {
-        return new Identity($model->getId(), get_class($model));
+        // var_dump($model);
+        // if($model->getId()) {
+        //     return new Identity($model->getId(), get_class($model));
+        // }
     }
 }
