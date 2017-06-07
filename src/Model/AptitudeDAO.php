@@ -30,18 +30,18 @@ class AptitudeDAO extends DAO
     *
     * @return \Entity\Aptitude|throws an exception si pas de matching
     */
-    public function find($id_cv){
+    public function find($id){
         $requete = "SELECT * FROM aptitude WHERE id_cv = ?";
-        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_cv));
+        $resultat = $this -> getDb() -> fetchAll($requete, array($id));
 
-        if($resultat){
-            return $this -> buildEntityObject($resultat);
+        $aptitude = array();
+        foreach($resultat as $value){
+            $id = $value['id'];
+
+            $aptitude[$id] = $this -> BuildEntityObject($value);
+
         }
-        /*
-        else{
-            throw new \Exception("Aucun CV à l'id_membre:" . $id_membre);
-        }
-        */
+        return $aptitude;
     }
 
 

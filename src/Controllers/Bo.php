@@ -218,11 +218,11 @@ class Bo
             print_r('</pre>');
 
             print_r('<pre>');
-            print_r($experience);
+            print_r($formation);
             print_r('</pre>');
 
             print_r('<pre>');
-            print_r($formation);
+            print_r($experience);
             print_r('</pre>');
 
             print_r('<pre>');
