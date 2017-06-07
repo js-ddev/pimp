@@ -49,6 +49,7 @@ class OptionType extends AbstractType
                     'Type 3' => '3',
                     'Type 4' => '4',
                     'Type 5' => '5',
+                    'Type 6' => '6',
                 ))
             )
             -> add('fond', ChoiceType::class, array(

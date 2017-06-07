@@ -189,12 +189,6 @@ class Bo
 
 
 
-
-
-
-
-
-
 // Didier - Route pour inscription cv
     public function gestion_cv(Request $request, Application $app){
 
@@ -270,7 +264,6 @@ class Bo
 
         return $app['twig']->render('/bo/gestion_cv.html.twig', $params);
     }
-
 
 
 }
