@@ -84,8 +84,6 @@ class CvDAO extends DAO
 
 
 
-
-
        /**
     * Retourne un objet de la classe Cv.
     *
@@ -228,6 +226,8 @@ class CvDAO extends DAO
 
 
 //////////////////   FIN DONNEES  CV    /////////////////////////////
+
+
 
 
     /**
