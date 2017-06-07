@@ -20,7 +20,7 @@ i:hover {
 	transition: 0.3s;
 }
 
-/* Adrien - Règlage conflit width li entre form-wizard &  tab-style-1 eastern template */
+/* Adrien - Règlage conflit width li entre form-wizard &  eastern template */
 .nav-tabs.tab-style-1 li {
   width: 20%;
 }
@@ -31,6 +31,10 @@ i:hover {
   margin: auto;
   border-radius: 0;
   padding: 10px 15px;
+}
+
+.tab-style-4.item-3 li {
+    width: 33.3333333%;
 }
 
 /* Adrien - Réglage visibilité header transparent et captions */

@@ -1,4 +1,4 @@
-{% extends "layout4.html.twig" %}
+{% extends "layout.html.twig" %}
 
 {% block content %}
 
@@ -102,7 +102,6 @@
 													<div class="form-group">
 														<label>Permis de travail / séjour</label>
 														{{ form_widget(formulaireForm.cv.permis_travail) }}
-
 													</div>
 
 													<div class="form-group">
@@ -164,7 +163,13 @@
 													</ul>
 													<div class="tab-content">
 														{% for experience in formulaireForm.experiences %}
-														<div id="Experience-{{ loop.index }}" class="tab-pane fade pdd-horizon-10">
+
+															{% if loop.first %}
+														    <div id="Experience-{{ loop.index }}" class="tab-pane fade pdd-horizon-10 in active">            
+														    {% else %}
+														    <div id="Experience-{{ loop.index }}" class="tab-pane fade pdd-horizon-10">
+														    {% endif %}
+														
 														{{ form_widget(experience.type,{value :'entreprise'}) }}
 
 															<h4>Entreprise :</h4>
@@ -284,7 +289,13 @@
 													</ul>
 													<div class="tab-content">
 														{% for formation in formulaireForm.formations %}
-														<div id="Formation-{{ loop.index }}" class="tab-pane fade pdd-horizon-10">
+
+															{% if loop.first %}
+															<div id="Formation-{{ loop.index }}" class="tab-pane fade pdd-horizon-10 in active">
+															{% else %}
+															<div id="Formation-{{ loop.index }}" class="tab-pane fade pdd-horizon-10">
+															{% endif %}
+
 														{{ form_widget(formation.type,{value :'formation'}) }}
 
 															<div class="form-group">
@@ -348,7 +359,13 @@
 													</ul>
 													<div class="tab-content">
 														{% for formation in formulaireForm.certifications %}
+
+														{% if loop.first %}
+														<div id="Certification-{{ loop.index }}" class="tab-pane fade pdd-horizon-10 in active">
+														{% else %}
 														<div id="Certification-{{ loop.index }}" class="tab-pane fade pdd-horizon-10">
+														{% endif %}
+
 														{{ form_widget(formation.type,{value :'certification'}) }}
 
 															<div class="form-group">
@@ -417,7 +434,13 @@
 													</ul>
 													<div class="tab-content">
 														{% for aptitude in formulaireForm.langues %}
-														<div id="Langue-{{ loop.index }}" class="tab-pane fade pdd-horizon-10">
+
+															{% if loop.first %}
+															<div id="Langue-{{ loop.index }}" class="tab-pane fade pdd-horizon-10 in active">
+															{% else %}
+															<div id="Langue-{{ loop.index }}" class="tab-pane fade pdd-horizon-10">
+															{% endif %}
+
 														{{ form_widget(aptitude.type,{value :'langue'}) }}
 
 															<div class="form-group">
@@ -429,6 +452,7 @@
 																<label for="niveau">Votre niveau de 1 à 100 : *</label>
 																<!-- <input type="text" id="langue_1_niveau"> -->
 																<span id="slider{{ loop.index }}value"></span><span> %</span>
+																<div style="max-width:250px" id="slider{{ loop.index }}"></div>
 															</div>
 
 															<div class="form-group">
@@ -470,7 +494,13 @@
 													</ul>
 													<div class="tab-content">
 														{% for experience in formulaireForm.benevolats %}
-														<div id="Benevolat-{{ loop.index }}" class="tab-pane fade pdd-horizon-10">
+
+															{% if loop.first %}
+															<div id="Benevolat-{{ loop.index }}" class="tab-pane fade pdd-horizon-10 in active">
+															{% else %}
+															<div id="Benevolat-{{ loop.index }}" class="tab-pane fade pdd-horizon-10">
+															{% endif %}
+
 														{{ form_widget(experience.type,{value :'benevolat'}) }}
 
 															<div class="form-group">
@@ -574,7 +604,13 @@
 													</ul>
 													<div class="tab-content">
 													{% for aptitude in formulaireForm.passions %}
+
+														{% if loop.first %}
+														<div id="Interet-{{ loop.index }}" class="tab-pane fade pdd-horizon-10 in active">
+														{% else %}
 														<div id="Interet-{{ loop.index }}" class="tab-pane fade pdd-horizon-10">
+														{% endif %}
+
 														{{ form_widget(aptitude.type,{value :'centre_interet'}) }}
 															<h4 class="no-mrg-top mrg-btm-20">Centre d'intérêt 1</h4>
 															<div class="form-group">
@@ -608,7 +644,7 @@
 															<h3 class="mrg-btm-40">Informations diverses</h3>
 														</div>
 														<div class="card">
-															<ul class="nav nav-tabs tab-style-4 item-4">
+															<ul class="nav nav-tabs tab-style-4 item-3">
 																<li><a data-toggle="tab" href="#s4-option-1"><i class="display-block ei ei-human-resources"></i>Description</a></li>
 																<li><a data-toggle="tab" href="#s4-option-2"><i class="ei ei-departures"></i>Voyages</a></li>
 																<li><a data-toggle="tab" href="#s4-option-3"><i class="ei ei-id-card-alt"></i>Divers</a></li>
@@ -617,11 +653,11 @@
 															<div class="tab-content pdd-horizon-30">
 																{% for autre_info in formulaireForm.autres_infos %}
 																<!-- Sous-partie description -->
-																<div id="s4-option-1" class="tab-pane fade">
+																<div id="s4-option-1" class="tab-pane fade in active">
 																	<div class="panel-body">
 																	{{ form_widget(autre_info.type,{value :'info'}) }}
 																		<div class="form-group">
-																			<label for="description">Décrivez vous en quelques mots ! Et essayez de répondre à la question épineuse de pourquoi voudriez vous travailler avec vous même ?</label>label>
+																			<label for="description">Décrivez vous en quelques mots ! Et essayez de répondre à la question épineuse de pourquoi voudriez vous travailler avec vous même ?</label>
 																			{{ form_widget(autre_info.description) }}
 																		</div>
 																		<div class="form-group col-md-12">
@@ -635,7 +671,7 @@
 
 																{% for autre_info in formulaireForm.voyages %}
 																<!-- Sous-partie voyage -->
-																<div id="s4-option-1" class="tab-pane fade">
+																<div id="s4-option-2" class="tab-pane fade">
 																	<div class="panel-body">
 																	{{ form_widget(autre_info.type,{value :'voyage'}) }}
 																		<div class="form-group">
@@ -653,7 +689,7 @@
 
 																{% for autre_info in formulaireForm.infos_diverses %}
 																<!-- Sous-partie informations diverses -->
-																<div id="s4-option-1" class="tab-pane fade">
+																<div id="s4-option-3" class="tab-pane fade">
 																	<div class="panel-body">
 																	{{ form_widget(autre_info.type,{value :'divers'}) }}
 																		<div class="form-group">
