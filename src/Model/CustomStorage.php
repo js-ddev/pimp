@@ -141,8 +141,18 @@ class CustomStorage implements StorageInterface
      *
      * @return object|null
      */
-    public function find($id)
+    public function find($details)
     {
+
+        $requete = "SELECT * FROM commande WHERE details = ?";
+        $resultat = $this -> getDb() -> fetchAssoc($requete, array($details));
+
+        if($resultat){
+            return $this -> buildEntityObject($resultat);
+        }
+        else{
+            throw new \Exception("Aucune commande à l'id:" . $details);
+        }
     }
 
 
@@ -170,4 +180,43 @@ class CustomStorage implements StorageInterface
         //     return new Identity($model->getId(), get_class($model));
         // }
     }
+
+
+	public function getStorages($storage)
+	{
+
+		$storage = new FilesystemStorage(
+		    '../storage/payment',
+		    'Payum\Core\Model\Payment',
+		    'number'
+		);
+
+		return $storage;
+	}
+
+
+    protected function BuildEntityObject(array $value){
+        $commande = new Commande;
+
+
+        $commande -> setId($value['id']);
+        $commande -> setIdMembre($value['id_membre']);
+        $commande -> setIdCv($value['id_cv']);
+        $commande -> setDateCommande($value['date_commande']);
+        $commande -> setStatutCommande($value['statut_commande']);
+        $commande -> setPrestation($value['prestation']);
+        $commande -> setPrix($value['prix']);
+        $commande -> setCommentaires($value['commentaires']);
+        $commande -> getNumber($value['number']);
+        $commande -> getCurrencyCode($value['currency_code']);
+        $commande -> getTotalAmount($value['total_amount']);
+        $commande -> getDescription($value['number']);
+        $commande -> getClientId($value['client_id']);
+        $commande -> getClientEmail($value['client_email']);
+        $commande -> getDetails($value['details']);
+
+        return $commande;
+    }
+
+
 }

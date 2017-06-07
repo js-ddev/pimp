@@ -13,6 +13,8 @@ use Payum\Core\Storage\StorageInterface;
 use Payum\Core\Security\GenericTokenFactory;
 use Payum\Core\Security\GenericTokenFactoryInterface;
 
+use Payum\PayumStorage;
+
 use Model\CommandeDAO;
 use Model\CustomStorage;
 
@@ -26,7 +28,7 @@ class PayumProvider implements ServiceProviderInterface
                 // cette ligne sert à ajouter notre storage BDD,ex :
                 // -> addStorage('\Model\CommandeDAO', new CommandeDAO())
                 ->setGenericTokenFactoryPaths(array(
-                    'capture' => $app['url_generator']->generate('payment_capture'),
+                    'capture' => $app['url_generator']->generate('payment_done'),
                     // 'notify' => $app['url_generator']->generate('payment_notify'),
                     // 'authorize' => $app['url_generator']->generate('payment_authorize'),
                     // 'refund' => $app['url_generator']->generate('payment_refund')
@@ -43,6 +45,11 @@ class PayumProvider implements ServiceProviderInterface
                 ])*/
                 ->addGateway('myGateway', [
                     'factory' => 'offline'
+                ])
+                ->addGateway('stripe_js', [
+                    'factory' => 'stripe_js',
+                    'publishable_key' => 'pk_live_v4vmiyrKnx0NobwRTVHVbKpM',
+                    'secret_key' => 'test'
                 ])
                 ->getPayum();
         };
