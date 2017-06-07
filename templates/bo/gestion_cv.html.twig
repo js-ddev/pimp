@@ -206,7 +206,7 @@
                 <div class="row">
 
                     <div class="col-lg-12">
-                        <h3>Formation</h3>
+                        <h3>Formation et certification</h3>
 
                         <!-- Didier - TABLEAU 3 : formation -->
 
@@ -217,7 +217,7 @@
 
                                         <!-- Didier - Partie Formation/formation -->
                                         <!-- Didier - Partie Formation/certification -->
-                                        <th>Formation</th><!-- type = formation -->
+                                        <th>Type (formation / certfication)</th><!-- type = formation -->
                                         <th>Diplôme</th>
                                         <th>Etablissement</th>
                                         <th>Spécialité</th>
@@ -228,7 +228,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
+                                    {% for formatio in formation %}
                                     <tr>
 
                                     <!-- En hidden :
@@ -237,17 +237,16 @@
 
                                         <!-- Didier - Partie Formation/formation -->
                                         <!-- Didier - Partie Formation/certification -->
-                                        <td>{{ formation.type }}</td><!-- type = formation -->
-                                        <td>{{ formation.diplome }}</td>
-                                        <td>{{ formation.etablissement }}</td>
-                                        <td>{{ formation.specialite }}</td>
-                                        <td>{{ formation.lieu }}</td>
-                                        <td>{{ formation.dateObtention }}</td>
-                                        <td>{{ formation.urlFormation }}</td>
+                                        <td>{{ formatio.type }}</td><!-- type = formation -->
+                                        <td>{{ formatio.diplome }}</td>
+                                        <td>{{ formatio.etablissement }}</td>
+                                        <td>{{ formatio.specialite }}</td>
+                                        <td>{{ formatio.lieu }}</td>
+                                        <td>{{ formatio.dateObtention }}</td>
+                                        <td>{{ formatio.urlFormation }}</td>
 
                                     </tr>
-
-
+                                    {% endfor %}
                                 </tbody>
                             </table>
                 
@@ -274,7 +273,7 @@
 
                                         <!-- Didier - Partie Expérience entreprise -->
                                         <!-- Didier - Partie Expérience bénévolat -->
-                                        <th>Type d'expérience</th>
+                                        <th>Type (entreprise / bénévolat)</th>
                                         <th>Nom de l'entité</th>
                                         <th>Secteur<!-- Secteur : menu déroulant commun à expérience entreprise et expérience bénévolat --></th>
                                         <th>Effectif</th>
@@ -300,6 +299,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {% for experienc in experience %}                                    
                                     <tr>
 
                                     <!-- En hidden :
@@ -308,30 +308,31 @@
 
                                         <!-- Didier - Partie Expérience entreprise -->
                                         <!-- Didier - Partie Expérience bénévolat -->
-                                        <td>{{ experience.type }}</td><!-- type = entreprise -->
-                                        <td>{{ experience.nom }}</td>
-                                        <td>{{ experience.secteur }}</td>
-                                        <td>{{ experience.effectif }}</td>
+                                        <td>{{ experienc.type }}</td><!-- type = entreprise -->
+                                        <td>{{ experienc.nom }}</td>
+                                        <td>{{ experienc.secteur }}</td>
+                                        <td>{{ experienc.effectif }}</td>
                                         <!-- <td>experience.description</td> NON implémenté-->
                                         <!-- <td>experience.ca</td> NON implémenté-->
-                                        <td>{{ experience.urlExperience }}</td>
-                                        <td>{{ experience.poste }}</td>
-                                        <td>{{ experience.lieu }}</td>
-                                        <td>{{ experience.role }}</td>
-                                        <td>{{ experience.dateDebut }}</td>
-                                        <td>{{ experience.dateFin }}</td>
-                                        <td>{{ experience.responsabilite1 }}</td>
-                                        <td>{{ experience.realisation1 }}</td>
-                                        <td>{{ experience.responsabilite2 }}</td>
-                                        <td>{{ experience.realisation2 }}</td>
-                                        <td>{{ experience.responsabilite3 }}</td>
-                                        <td>{{ experience.realisation3 }}</td>
-                                        <td>{{ experience.responsabilite4 }}</td>
-                                        <td>{{ experience.realisation4 }}</td>
-                                        <td>{{ experience.responsabilite5 }}</td>
-                                        <td>{{ experience.realisation5 }}</td>
+                                        <td>{{ experienc.urlExperience }}</td>
+                                        <td>{{ experienc.poste }}</td>
+                                        <td>{{ experienc.lieu }}</td>
+                                        <td>{{ experienc.role }}</td>
+                                        <td>{{ experienc.dateDebut }}</td>
+                                        <td>{{ experienc.dateFin }}</td>
+                                        <td>{{ experienc.responsabilite1 }}</td>
+                                        <td>{{ experienc.realisation1 }}</td>
+                                        <td>{{ experienc.responsabilite2 }}</td>
+                                        <td>{{ experienc.realisation2 }}</td>
+                                        <td>{{ experienc.responsabilite3 }}</td>
+                                        <td>{{ experienc.realisation3 }}</td>
+                                        <td>{{ experienc.responsabilite4 }}</td>
+                                        <td>{{ experienc.realisation4 }}</td>
+                                        <td>{{ experienc.responsabilite5 }}</td>
+                                        <td>{{ experienc.realisation5 }}</td>
 
                                     </tr>
+                                    {% endfor %}                                    
                                 </tbody>
                             </table>
                 
@@ -346,7 +347,7 @@
                 <div class="row">
 
                     <div class="col-lg-12">
-                        <h3>Langue</h3>
+                        <h3>Aptitude</h3>
 
                         <!-- Didier - TABLEAU 5 : aptitude -->
 
@@ -358,7 +359,7 @@
                                         <!-- Didier - Partie Aptitudes (langue) -->
                                         <!-- Didier - Partie Aptitudes (competence) -->
                                         <!-- Didier - Partie Aptitudes (centre_interet) -->
-                                        <th>Langue</th>
+                                        <th>Type (langue / centre d'intérêt / compétence)</th>
                                         <th>Nom</th>
                                         <th>Niveau</th>
                                         <th>Niveau TOEIC</th>
@@ -368,7 +369,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
+                                    {% for aptitud in aptitude %}
                                     <tr>
 
                                     <!-- En hidden :
@@ -378,21 +379,75 @@
                                         <!-- Didier - Partie Aptitudes (langue) -->
                                         <!-- Didier - Partie Aptitudes (competence) -->
                                         <!-- Didier - Partie Aptitudes (centre_interet) -->
-                                        <td>{{ aptitude.type }}</td><!-- type = langue -->
-                                        <td>{{ aptitude.nom }}</td>
-                                        <td>{{ aptitude.niveau }}</td>
-                                        <td>{{ aptitude.TOEIC }}</td>
-                                        <td>{{ aptitude.TOEFL }}</td>
-                                        <td>{{ aptitude.IELTS }}</td>
+                                        <td>{{ aptitud.type }}</td><!-- type = langue -->
+                                        <td>{{ aptitud.nom }}</td>
+                                        <td>{{ aptitud.niveau }}</td>
+                                        <td>{{ aptitud.TOEIC }}</td>
+                                        <td>{{ aptitud.TOEFL }}</td>
+                                        <td>{{ aptitud.IELTS }}</td>
 
                                     </tr>
-
+                                    {% endfor %}
                                 </tbody>
                             </table>
                 
                         </div>
 
                         <!-- Didier - FIN TABLEAU 5 -->
+
+                    </div>
+                    
+                </div>           
+
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <h3>Info / Voyage / Divers</h3>
+
+                        <!-- Didier - TABLEAU 6 : aptitude -->
+
+                        <div class="table-responsive">
+                            <table style="display: none;" class="myTable table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
+
+                                    <!-- En hidden :
+                                            - table autre_info : id, id_cv
+                                     -->
+
+                                        <!-- Didier - Partie Autre info (info) -->
+                                        <!-- Didier - Partie Autre info (voyage) -->
+                                        <!-- Didier - Partie Autre info (divers) -->
+                                        <th>Type (info / voyage / divers)</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for autre_inf in autre_info %}
+                                    <tr>
+                                    <!-- En hidden :
+                                            - table autre_info : id, id_cv
+                                     -->
+
+                                        <!-- Didier - Partie Autre info (info) -->
+                                        <!-- Didier - Partie Autre info (voyage) -->
+                                        <!-- Didier - Partie Autre info (divers) -->
+                                        <td>{{ autre_inf.type }}</td>
+                                        <td>{{ autre_inf.description }}</td>
+
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                
+                        </div>
+
+                        <!-- Didier - FIN TABLEAU 6 -->
+
+
+
+
+
 
                     </div>
                     
