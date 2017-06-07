@@ -73,23 +73,48 @@
                                     </div>
                                 </div>
                                 <div class="features-block-2 col-md-6">
-                                    <i id="rouge" class="ei-palette couleurs"></i>
-                                    <i id="vert" class="ei-palette couleurs"></i>
-                                    <i id="bleu" class="ei-palette couleurs"></i>
-                                    <i id="gris" class="ei-palette couleurs"></i>
-                                    <i id="marron" class="ei-palette couleurs"></i>
+                                    <div id="couleur-rouge" class="couleur couleur-first col-md-6">
+                                    <img class="img-responsive" src="{{ asset('images/palette-rouge.png') }}" alt="">
+                                    </div>
+                                    <div id="couleur-vert" class="couleur col-md-6">
+                                    <img class="img-responsive" src="{{ asset('images/palette-vert.png') }}" alt="">
+                                    </div>
+                                    <div id="couleur-bleu" class="couleur col-md-6">
+                                    <img class="img-responsive" src="{{ asset('images/palette-XX.png') }}" alt="">
+                                    </div>
+                                    <div id="couleur-noir" class="couleur col-md-6">
+                                    <img class="img-responsive" src="{{ asset('images/palette-XX.png') }}" alt="">
+                                    </div>
+                                    <div id="couleur-marron" class="couleur col-md-6">
+                                    <img class="img-responsive" id"jepue" src="{{ asset('images/palette-XX.png') }}" alt="">
+                                    </div> 
                                     <div class="form-group features-info">
                                         <span class="features-tittle theme-color">Couleur</span>
                                         {{ form_errors(optionForm.couleur) }}
                                         {{ form_widget(optionForm.couleur) }}
                                     </div>
                                 </div>
-                                <div class="features-block-2 col-md-6">
-                                    <i id="puce1" class="glyphicon glyphicon-option-vertical puces-first"></i>
-                                    <i id="puce2" class="glyphicon glyphicon-option-vertical puces"></i>
-                                    <i id="puce3"class="glyphicon glyphicon-option-vertical puces"></i>
-                                    <i id="puce4" class="glyphicon glyphicon-option-vertical puces"></i>
-                                    <i id="puce5" class="glyphicon glyphicon-option-vertical puces"></i>
+                               
+                                 <div class="features-block-2 col-md-6">
+                                    
+                                    <div id="puce-1" class="puce puce-first col-md-6">
+                                    <img class="img-responsive" src="{{ asset('images/puce-1.ico') }}" alt="">
+                                    </div>
+                                    <div id="puce-2" class="puce col-md-6" >
+                                    <img class="img-responsive" src="{{ asset('images/puce-2.ico') }}" alt="">
+                                    </div>
+                                    <div id="puce-3" class="puce col-md-6">
+                                    <img class="img-responsive" src="{{ asset('images/puce-3.ico') }}" alt="">
+                                    </div>
+                                    <div id="puce-4" class="puce col-md-6">
+                                    <img class="img-responsive" src="{{ asset('images/puce-4.ico') }}" alt="">
+                                    </div>
+                                    <div id="puce-5" class="puce col-md-6">
+                                    <img class="img-responsive" src="{{ asset('images/puce-5.ico') }}" alt="">
+                                    </div>
+                                    <div id="puce-6" class="puce col-md-6">
+                                    <img class="img-responsive" src="{{ asset('images/puce-6.ico') }}" alt="">
+                                    </div>
                                     <div class="form-group features-info">
                                         <span class="features-tittle theme-color">Puce</span><br>
                                         {{ form_errors(optionForm.puce) }}
@@ -110,14 +135,14 @@
                                         <i id="indicateur-barre" class="ei-bar-chart-1 indicateurs-performance"></i>
                                         <i id="indicateur-rond" class="ei-circle indicateurs-performance"></i>
                                     <div class="form-group features-info">
-                                        <span class="features-tittle theme-color">Indicateurs performance</span>
+                                        <span class="features-tittle theme-color">Performance</span>
                                         {{ form_errors(optionForm.indicateur_performance) }}
                                         {{ form_widget(optionForm.indicateur_performance) }}
                                     </div>
                                 </div>
                                 <div class="features-block-2 col-md-6">
                                     <i id="activite-texte" class="ei-font activites activites-first"></i>
-                                    <i id="activite-icone" class="ei-badminton activites"></i>
+                                    <i id="activite-icone" class="ei-football activites"></i>
                                     <div class="form-group features-info">
                                         <span class="features-tittle theme-color">Style activités</span>
                                         {{ form_errors(optionForm.activite) }}
@@ -144,6 +169,7 @@
                                 <img class="img-responsive" src="{{ asset('images/modele-cv4.jpg') }}" alt="">
                             </div>
                         </div>
+                          
 
             <div class="row mrg-top-50">
                 <ul class="list-inline pull-right">

@@ -21,29 +21,29 @@ class __TwigTemplate_49f17afc3a63b8420dac89d1862f5db64b4c761c416a1c0e8e57d74f80b
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_9faa8ceeac95dcbfef7a4f9306a79b0074382f18c8a4c39b57ca85d27cd60d12 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_9faa8ceeac95dcbfef7a4f9306a79b0074382f18c8a4c39b57ca85d27cd60d12->enter($__internal_9faa8ceeac95dcbfef7a4f9306a79b0074382f18c8a4c39b57ca85d27cd60d12_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "template_options.html.twig"));
+        $__internal_8529c39e4e9c5509c35df675fa38af941e5d97143204c197a84d6f6aea5e029b = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_8529c39e4e9c5509c35df675fa38af941e5d97143204c197a84d6f6aea5e029b->enter($__internal_8529c39e4e9c5509c35df675fa38af941e5d97143204c197a84d6f6aea5e029b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "template_options.html.twig"));
 
-        $__internal_c4435af03118776fdb17e58064662771ef74776c686b7d2f984924b4d6c45461 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_c4435af03118776fdb17e58064662771ef74776c686b7d2f984924b4d6c45461->enter($__internal_c4435af03118776fdb17e58064662771ef74776c686b7d2f984924b4d6c45461_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "template_options.html.twig"));
+        $__internal_4d6d960661bb675ba7087e3c40f6bfe046dee518a65dc14a1ddd160e4d531ff9 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_4d6d960661bb675ba7087e3c40f6bfe046dee518a65dc14a1ddd160e4d531ff9->enter($__internal_4d6d960661bb675ba7087e3c40f6bfe046dee518a65dc14a1ddd160e4d531ff9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "template_options.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_9faa8ceeac95dcbfef7a4f9306a79b0074382f18c8a4c39b57ca85d27cd60d12->leave($__internal_9faa8ceeac95dcbfef7a4f9306a79b0074382f18c8a4c39b57ca85d27cd60d12_prof);
+        $__internal_8529c39e4e9c5509c35df675fa38af941e5d97143204c197a84d6f6aea5e029b->leave($__internal_8529c39e4e9c5509c35df675fa38af941e5d97143204c197a84d6f6aea5e029b_prof);
 
         
-        $__internal_c4435af03118776fdb17e58064662771ef74776c686b7d2f984924b4d6c45461->leave($__internal_c4435af03118776fdb17e58064662771ef74776c686b7d2f984924b4d6c45461_prof);
+        $__internal_4d6d960661bb675ba7087e3c40f6bfe046dee518a65dc14a1ddd160e4d531ff9->leave($__internal_4d6d960661bb675ba7087e3c40f6bfe046dee518a65dc14a1ddd160e4d531ff9_prof);
 
     }
 
     // line 3
     public function block_content($context, array $blocks = array())
     {
-        $__internal_8d255b93b8cec441114f8108054b7462ae7b7fbf74318ea82ce52720cc532845 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_8d255b93b8cec441114f8108054b7462ae7b7fbf74318ea82ce52720cc532845->enter($__internal_8d255b93b8cec441114f8108054b7462ae7b7fbf74318ea82ce52720cc532845_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
+        $__internal_83a428f9f411e36a9ebbb8be191dde2a878b8fe4678ca91f5cb5171a5c6415ed = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_83a428f9f411e36a9ebbb8be191dde2a878b8fe4678ca91f5cb5171a5c6415ed->enter($__internal_83a428f9f411e36a9ebbb8be191dde2a878b8fe4678ca91f5cb5171a5c6415ed_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
 
-        $__internal_207ed7321b372e5d3058c44f1bf31514ecfdf7eb602a2ae5f0ec1bf734ca7dad = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_207ed7321b372e5d3058c44f1bf31514ecfdf7eb602a2ae5f0ec1bf734ca7dad->enter($__internal_207ed7321b372e5d3058c44f1bf31514ecfdf7eb602a2ae5f0ec1bf734ca7dad_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
+        $__internal_089bbdd7d5d0a4c80c5c1dbb9adcf447499d1331bd904e699e07b58f18deabf9 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_089bbdd7d5d0a4c80c5c1dbb9adcf447499d1331bd904e699e07b58f18deabf9->enter($__internal_089bbdd7d5d0a4c80c5c1dbb9adcf447499d1331bd904e699e07b58f18deabf9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
 
         // line 4
         echo "<!-- Page Tittle Start -->
@@ -130,37 +130,95 @@ class __TwigTemplate_49f17afc3a63b8420dac89d1862f5db64b4c761c416a1c0e8e57d74f80b
                                     </div>
                                 </div>
                                 <div class=\"features-block-2 col-md-6\">
-                                    <i id=\"rouge\" class=\"ei-palette couleurs\"></i>
-                                    <i id=\"vert\" class=\"ei-palette couleurs\"></i>
-                                    <i id=\"bleu\" class=\"ei-palette couleurs\"></i>
-                                    <i id=\"gris\" class=\"ei-palette couleurs\"></i>
-                                    <i id=\"marron\" class=\"ei-palette couleurs\"></i>
+                                    <div id=\"couleur-rouge\" class=\"couleur couleur-first col-md-6\">
+                                    <img class=\"img-responsive\" src=\"";
+        // line 77
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/palette-rouge.png"), "html", null, true);
+        echo "\" alt=\"\">
+                                    </div>
+                                    <div id=\"couleur-vert\" class=\"couleur col-md-6\">
+                                    <img class=\"img-responsive\" src=\"";
+        // line 80
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/palette-vert.png"), "html", null, true);
+        echo "\" alt=\"\">
+                                    </div>
+                                    <div id=\"couleur-bleu\" class=\"couleur col-md-6\">
+                                    <img class=\"img-responsive\" src=\"";
+        // line 83
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/palette-XX.png"), "html", null, true);
+        echo "\" alt=\"\">
+                                    </div>
+                                    <div id=\"couleur-noir\" class=\"couleur col-md-6\">
+                                    <img class=\"img-responsive\" src=\"";
+        // line 86
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/palette-XX.png"), "html", null, true);
+        echo "\" alt=\"\">
+                                    </div>
+                                    <div id=\"couleur-marron\" class=\"couleur col-md-6\">
+                                    <img class=\"img-responsive\" id\"jepue\" src=\"";
+        // line 89
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/palette-XX.png"), "html", null, true);
+        echo "\" alt=\"\">
+                                    </div> 
                                     <div class=\"form-group features-info\">
                                         <span class=\"features-tittle theme-color\">Couleur</span>
                                         ";
-        // line 83
+        // line 93
         echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock($this->getAttribute((isset($context["optionForm"]) ? $context["optionForm"] : $this->getContext($context, "optionForm")), "couleur", array()), 'errors');
         echo "
                                         ";
-        // line 84
+        // line 94
         echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock($this->getAttribute((isset($context["optionForm"]) ? $context["optionForm"] : $this->getContext($context, "optionForm")), "couleur", array()), 'widget');
         echo "
                                     </div>
                                 </div>
-                                <div class=\"features-block-2 col-md-6\">
-                                    <i id=\"puce1\" class=\"glyphicon glyphicon-option-vertical puces-first\"></i>
-                                    <i id=\"puce2\" class=\"glyphicon glyphicon-option-vertical puces\"></i>
-                                    <i id=\"puce3\"class=\"glyphicon glyphicon-option-vertical puces\"></i>
-                                    <i id=\"puce4\" class=\"glyphicon glyphicon-option-vertical puces\"></i>
-                                    <i id=\"puce5\" class=\"glyphicon glyphicon-option-vertical puces\"></i>
+                               
+                                 <div class=\"features-block-2 col-md-6\">
+                                    
+                                    <div id=\"puce-1\" class=\"puce puce-first col-md-6\">
+                                    <img class=\"img-responsive\" src=\"";
+        // line 101
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/puce-1.ico"), "html", null, true);
+        echo "\" alt=\"\">
+                                    </div>
+                                    <div id=\"puce-2\" class=\"puce col-md-6\" >
+                                    <img class=\"img-responsive\" src=\"";
+        // line 104
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/puce-2.ico"), "html", null, true);
+        echo "\" alt=\"\">
+                                    </div>
+                                    <div id=\"puce-3\" class=\"puce col-md-6\">
+                                    <img class=\"img-responsive\" src=\"";
+        // line 107
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/puce-3.ico"), "html", null, true);
+        echo "\" alt=\"\">
+                                    </div>
+                                    <div id=\"puce-4\" class=\"puce col-md-6\">
+                                    <img class=\"img-responsive\" src=\"";
+        // line 110
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/puce-4.ico"), "html", null, true);
+        echo "\" alt=\"\">
+                                    </div>
+                                    <div id=\"puce-5\" class=\"puce col-md-6\">
+                                    <img class=\"img-responsive\" src=\"";
+        // line 113
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/puce-5.ico"), "html", null, true);
+        echo "\" alt=\"\">
+                                    </div>
+                                    <div id=\"puce-6\" class=\"puce col-md-6\">
+                                    <img class=\"img-responsive\" src=\"";
+        // line 116
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/puce-6.ico"), "html", null, true);
+        echo "\" alt=\"\">
+                                    </div>
                                     <div class=\"form-group features-info\">
                                         <span class=\"features-tittle theme-color\">Puce</span><br>
                                         ";
-        // line 95
+        // line 120
         echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock($this->getAttribute((isset($context["optionForm"]) ? $context["optionForm"] : $this->getContext($context, "optionForm")), "puce", array()), 'errors');
         echo "
                                         ";
-        // line 96
+        // line 121
         echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock($this->getAttribute((isset($context["optionForm"]) ? $context["optionForm"] : $this->getContext($context, "optionForm")), "puce", array()), 'widget');
         echo "
                                     </div>
@@ -171,11 +229,11 @@ class __TwigTemplate_49f17afc3a63b8420dac89d1862f5db64b4c761c416a1c0e8e57d74f80b
                                     <div class=\"form-group features-info\">
                                         <span class=\"features-tittle theme-color\">Arrière plan</span>
                                         ";
-        // line 104
+        // line 129
         echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock($this->getAttribute((isset($context["optionForm"]) ? $context["optionForm"] : $this->getContext($context, "optionForm")), "fond", array()), 'errors');
         echo "
                                         ";
-        // line 105
+        // line 130
         echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock($this->getAttribute((isset($context["optionForm"]) ? $context["optionForm"] : $this->getContext($context, "optionForm")), "fond", array()), 'widget');
         echo "
                                     </div>
@@ -185,28 +243,28 @@ class __TwigTemplate_49f17afc3a63b8420dac89d1862f5db64b4c761c416a1c0e8e57d74f80b
                                         <i id=\"indicateur-barre\" class=\"ei-bar-chart-1 indicateurs-performance\"></i>
                                         <i id=\"indicateur-rond\" class=\"ei-circle indicateurs-performance\"></i>
                                     <div class=\"form-group features-info\">
-                                        <span class=\"features-tittle theme-color\">Indicateurs performance</span>
+                                        <span class=\"features-tittle theme-color\">Performance</span>
                                         ";
-        // line 114
+        // line 139
         echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock($this->getAttribute((isset($context["optionForm"]) ? $context["optionForm"] : $this->getContext($context, "optionForm")), "indicateur_performance", array()), 'errors');
         echo "
                                         ";
-        // line 115
+        // line 140
         echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock($this->getAttribute((isset($context["optionForm"]) ? $context["optionForm"] : $this->getContext($context, "optionForm")), "indicateur_performance", array()), 'widget');
         echo "
                                     </div>
                                 </div>
                                 <div class=\"features-block-2 col-md-6\">
                                     <i id=\"activite-texte\" class=\"ei-font activites activites-first\"></i>
-                                    <i id=\"activite-icone\" class=\"ei-badminton activites\"></i>
+                                    <i id=\"activite-icone\" class=\"ei-football activites\"></i>
                                     <div class=\"form-group features-info\">
                                         <span class=\"features-tittle theme-color\">Style activités</span>
                                         ";
-        // line 123
+        // line 148
         echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock($this->getAttribute((isset($context["optionForm"]) ? $context["optionForm"] : $this->getContext($context, "optionForm")), "activite", array()), 'errors');
         echo "
                                         ";
-        // line 124
+        // line 149
         echo $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->searchAndRenderBlock($this->getAttribute((isset($context["optionForm"]) ? $context["optionForm"] : $this->getContext($context, "optionForm")), "activite", array()), 'widget');
         echo "
                                     </div>
@@ -216,45 +274,46 @@ class __TwigTemplate_49f17afc3a63b8420dac89d1862f5db64b4c761c416a1c0e8e57d74f80b
                                 </div>
                             </div>
                             ";
-        // line 131
+        // line 156
         echo         $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->renderBlock((isset($context["optionForm"]) ? $context["optionForm"] : $this->getContext($context, "optionForm")), 'form_end');
         echo "
                             <!-- Fin formulaire options -->
 
                             <div id=\"template-1\" class=\"col-md-6 templates templates-first\">
                                 <img class=\"img-responsive\" src=\"";
-        // line 135
+        // line 160
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/modele-cv1.jpg"), "html", null, true);
         echo "\" alt=\"\">
                             </div>
                             <div id=\"template-2\" class=\"col-md-6 templates\">
                                 <img class=\"img-responsive\" src=\"";
-        // line 138
+        // line 163
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/modele-cv2.jpg"), "html", null, true);
         echo "\" alt=\"\">
                             </div>
                             <div id=\"template-3\" class=\"col-md-6 templates\">
                                 <img class=\"img-responsive\" src=\"";
-        // line 141
+        // line 166
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/modele-cv3.jpg"), "html", null, true);
         echo "\" alt=\"\">
                             </div>
                             <div id=\"template-4\" class=\"col-md-6 templates\">
                                 <img class=\"img-responsive\" src=\"";
-        // line 144
+        // line 169
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("images/modele-cv4.jpg"), "html", null, true);
         echo "\" alt=\"\">
                             </div>
                         </div>
+                          
 
             <div class=\"row mrg-top-50\">
                 <ul class=\"list-inline pull-right\">
                     <li><a href=\"";
-        // line 150
+        // line 176
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("pimpit_cv");
         echo "\"><button type=\"button\" class=\"btn btn-default prev-step\">Etape précédente</button></a></li>
                     <li><a href=\"";
-        // line 151
+        // line 177
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("recapitulatif_commande");
         echo "\"><button type=\"button\" class=\"btn btn-md btn-dark next step\">Etape suivante</button></a></li>
                 </ul>
@@ -267,10 +326,10 @@ class __TwigTemplate_49f17afc3a63b8420dac89d1862f5db64b4c761c416a1c0e8e57d74f80b
 
 ";
         
-        $__internal_207ed7321b372e5d3058c44f1bf31514ecfdf7eb602a2ae5f0ec1bf734ca7dad->leave($__internal_207ed7321b372e5d3058c44f1bf31514ecfdf7eb602a2ae5f0ec1bf734ca7dad_prof);
+        $__internal_089bbdd7d5d0a4c80c5c1dbb9adcf447499d1331bd904e699e07b58f18deabf9->leave($__internal_089bbdd7d5d0a4c80c5c1dbb9adcf447499d1331bd904e699e07b58f18deabf9_prof);
 
         
-        $__internal_8d255b93b8cec441114f8108054b7462ae7b7fbf74318ea82ce52720cc532845->leave($__internal_8d255b93b8cec441114f8108054b7462ae7b7fbf74318ea82ce52720cc532845_prof);
+        $__internal_83a428f9f411e36a9ebbb8be191dde2a878b8fe4678ca91f5cb5171a5c6415ed->leave($__internal_83a428f9f411e36a9ebbb8be191dde2a878b8fe4678ca91f5cb5171a5c6415ed_prof);
 
     }
 
@@ -286,7 +345,7 @@ class __TwigTemplate_49f17afc3a63b8420dac89d1862f5db64b4c761c416a1c0e8e57d74f80b
 
     public function getDebugInfo()
     {
-        return array (  258 => 151,  254 => 150,  245 => 144,  239 => 141,  233 => 138,  227 => 135,  220 => 131,  210 => 124,  206 => 123,  195 => 115,  191 => 114,  179 => 105,  175 => 104,  164 => 96,  160 => 95,  146 => 84,  142 => 83,  128 => 72,  124 => 71,  113 => 63,  53 => 6,  49 => 4,  40 => 3,  11 => 1,);
+        return array (  317 => 177,  313 => 176,  303 => 169,  297 => 166,  291 => 163,  285 => 160,  278 => 156,  268 => 149,  264 => 148,  253 => 140,  249 => 139,  237 => 130,  233 => 129,  222 => 121,  218 => 120,  211 => 116,  205 => 113,  199 => 110,  193 => 107,  187 => 104,  181 => 101,  171 => 94,  167 => 93,  160 => 89,  154 => 86,  148 => 83,  142 => 80,  136 => 77,  128 => 72,  124 => 71,  113 => 63,  53 => 6,  49 => 4,  40 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -374,23 +433,48 @@ class __TwigTemplate_49f17afc3a63b8420dac89d1862f5db64b4c761c416a1c0e8e57d74f80b
                                     </div>
                                 </div>
                                 <div class=\"features-block-2 col-md-6\">
-                                    <i id=\"rouge\" class=\"ei-palette couleurs\"></i>
-                                    <i id=\"vert\" class=\"ei-palette couleurs\"></i>
-                                    <i id=\"bleu\" class=\"ei-palette couleurs\"></i>
-                                    <i id=\"gris\" class=\"ei-palette couleurs\"></i>
-                                    <i id=\"marron\" class=\"ei-palette couleurs\"></i>
+                                    <div id=\"couleur-rouge\" class=\"couleur couleur-first col-md-6\">
+                                    <img class=\"img-responsive\" src=\"{{ asset('images/palette-rouge.png') }}\" alt=\"\">
+                                    </div>
+                                    <div id=\"couleur-vert\" class=\"couleur col-md-6\">
+                                    <img class=\"img-responsive\" src=\"{{ asset('images/palette-vert.png') }}\" alt=\"\">
+                                    </div>
+                                    <div id=\"couleur-bleu\" class=\"couleur col-md-6\">
+                                    <img class=\"img-responsive\" src=\"{{ asset('images/palette-XX.png') }}\" alt=\"\">
+                                    </div>
+                                    <div id=\"couleur-noir\" class=\"couleur col-md-6\">
+                                    <img class=\"img-responsive\" src=\"{{ asset('images/palette-XX.png') }}\" alt=\"\">
+                                    </div>
+                                    <div id=\"couleur-marron\" class=\"couleur col-md-6\">
+                                    <img class=\"img-responsive\" id\"jepue\" src=\"{{ asset('images/palette-XX.png') }}\" alt=\"\">
+                                    </div> 
                                     <div class=\"form-group features-info\">
                                         <span class=\"features-tittle theme-color\">Couleur</span>
                                         {{ form_errors(optionForm.couleur) }}
                                         {{ form_widget(optionForm.couleur) }}
                                     </div>
                                 </div>
-                                <div class=\"features-block-2 col-md-6\">
-                                    <i id=\"puce1\" class=\"glyphicon glyphicon-option-vertical puces-first\"></i>
-                                    <i id=\"puce2\" class=\"glyphicon glyphicon-option-vertical puces\"></i>
-                                    <i id=\"puce3\"class=\"glyphicon glyphicon-option-vertical puces\"></i>
-                                    <i id=\"puce4\" class=\"glyphicon glyphicon-option-vertical puces\"></i>
-                                    <i id=\"puce5\" class=\"glyphicon glyphicon-option-vertical puces\"></i>
+                               
+                                 <div class=\"features-block-2 col-md-6\">
+                                    
+                                    <div id=\"puce-1\" class=\"puce puce-first col-md-6\">
+                                    <img class=\"img-responsive\" src=\"{{ asset('images/puce-1.ico') }}\" alt=\"\">
+                                    </div>
+                                    <div id=\"puce-2\" class=\"puce col-md-6\" >
+                                    <img class=\"img-responsive\" src=\"{{ asset('images/puce-2.ico') }}\" alt=\"\">
+                                    </div>
+                                    <div id=\"puce-3\" class=\"puce col-md-6\">
+                                    <img class=\"img-responsive\" src=\"{{ asset('images/puce-3.ico') }}\" alt=\"\">
+                                    </div>
+                                    <div id=\"puce-4\" class=\"puce col-md-6\">
+                                    <img class=\"img-responsive\" src=\"{{ asset('images/puce-4.ico') }}\" alt=\"\">
+                                    </div>
+                                    <div id=\"puce-5\" class=\"puce col-md-6\">
+                                    <img class=\"img-responsive\" src=\"{{ asset('images/puce-5.ico') }}\" alt=\"\">
+                                    </div>
+                                    <div id=\"puce-6\" class=\"puce col-md-6\">
+                                    <img class=\"img-responsive\" src=\"{{ asset('images/puce-6.ico') }}\" alt=\"\">
+                                    </div>
                                     <div class=\"form-group features-info\">
                                         <span class=\"features-tittle theme-color\">Puce</span><br>
                                         {{ form_errors(optionForm.puce) }}
@@ -411,14 +495,14 @@ class __TwigTemplate_49f17afc3a63b8420dac89d1862f5db64b4c761c416a1c0e8e57d74f80b
                                         <i id=\"indicateur-barre\" class=\"ei-bar-chart-1 indicateurs-performance\"></i>
                                         <i id=\"indicateur-rond\" class=\"ei-circle indicateurs-performance\"></i>
                                     <div class=\"form-group features-info\">
-                                        <span class=\"features-tittle theme-color\">Indicateurs performance</span>
+                                        <span class=\"features-tittle theme-color\">Performance</span>
                                         {{ form_errors(optionForm.indicateur_performance) }}
                                         {{ form_widget(optionForm.indicateur_performance) }}
                                     </div>
                                 </div>
                                 <div class=\"features-block-2 col-md-6\">
                                     <i id=\"activite-texte\" class=\"ei-font activites activites-first\"></i>
-                                    <i id=\"activite-icone\" class=\"ei-badminton activites\"></i>
+                                    <i id=\"activite-icone\" class=\"ei-football activites\"></i>
                                     <div class=\"form-group features-info\">
                                         <span class=\"features-tittle theme-color\">Style activités</span>
                                         {{ form_errors(optionForm.activite) }}
@@ -445,6 +529,7 @@ class __TwigTemplate_49f17afc3a63b8420dac89d1862f5db64b4c761c416a1c0e8e57d74f80b
                                 <img class=\"img-responsive\" src=\"{{ asset('images/modele-cv4.jpg') }}\" alt=\"\">
                             </div>
                         </div>
+                          
 
             <div class=\"row mrg-top-50\">
                 <ul class=\"list-inline pull-right\">
