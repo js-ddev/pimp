@@ -127,7 +127,7 @@ class Bo
         );
 
         return $app['twig']->render('/bo/gestion_membre.html.twig', $params);
-    }   
+    }
 
 
 // Didier - Route pour inscription commande
@@ -143,7 +143,7 @@ class Bo
         $commandeFormBo -> handleRequest($request);
 
         if($commandeFormBo -> isSubmitted() && $commandeFormBo -> isValid()){
-  
+
 
             $app['dao.commande'] -> save($commande);
             $app['session'] -> getFlashBag() -> add('success', 'Votre inscription a bien été prise en compte !');
@@ -184,7 +184,7 @@ class Bo
         );
 
         return $app['twig']->render('/bo/gestion_cv.html.twig', $params);
-    }   
+    }
 */
 
 
@@ -200,11 +200,11 @@ class Bo
 
 /*        $request->query->get('id')
 */           $cv = $app['dao.cv'] -> find2($request->query->get('id'));
-            
+
             if( ! $cv){
                 // TODO faire qqchose si pas de cv
             }
-        
+
             $experience = $app['dao.experience'] -> find($cv->getId());
             $formation = $app['dao.formation'] -> find($cv->getId());
             $aptitude = $app['dao.aptitude'] -> find($cv->getId());
@@ -216,15 +216,15 @@ class Bo
 /*            print_r('<pre>');
             print_r($cv);
             print_r('</pre>');
-            
+
             print_r('<pre>');
             print_r($formation);
             print_r('</pre>');
+
             print_r('<pre>');
             print_r($experience);
             print_r('</pre>');
-            
-            
+
             print_r('<pre>');
             print_r($aptitude);
             print_r('</pre>');

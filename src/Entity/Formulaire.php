@@ -16,14 +16,14 @@ class Formulaire
     protected $aptitudes;
     protected $langues;
     protected $passions;
-    protected $autre_infos;
+    protected $autres_infos;
     protected $voyages;
     protected $infos_diverses;
 
     public function __construct()
     {
         $this->experiences = new ArrayCollection();
-        $this->benevolat = new ArrayCollection();
+        $this->benevolats = new ArrayCollection();
         $this->formations = new ArrayCollection();
         $this->certifications = new ArrayCollection();
         // $this->aptitudes = new ArrayCollection();
@@ -47,8 +47,8 @@ class Formulaire
     {
         return $this->experiences;
     }
-    public function setExperiences($experience) {
-        $this->experiences = $experience;
+    public function setExperiences($experiences) {
+        $this->experiences = $experiences;
         return $this;
     }
 
@@ -56,8 +56,8 @@ class Formulaire
     {
         return $this->benevolats;
     }
-    public function setBenevolats($benevolat) {
-        $this->benevolats = $benevolat;
+    public function setBenevolats($benevolats) {
+        $this->benevolats = $benevolats;
         return $this;
     }
 
@@ -65,8 +65,8 @@ class Formulaire
     {
         return $this->formations;
     }
-    public function setFormations($formation) {
-        $this->formations = $formation;
+    public function setFormations($formations) {
+        $this->formations = $formations;
         return $this;
     }
 
@@ -74,8 +74,8 @@ class Formulaire
     {
         return $this->certifications;
     }
-    public function setCertifications($certification) {
-        $this->certifications = $certification;
+    public function setCertifications($certifications) {
+        $this->certifications = $certifications;
         return $this;
     }
 
@@ -83,8 +83,8 @@ class Formulaire
     {
         return $this->aptitudes;
     }
-    public function setAptitudes($aptitude) {
-        $this->aptitudes = $aptitude;
+    public function setAptitudes($aptitudes) {
+        $this->aptitudes = $aptitudes;
         return $this;
     }
 
@@ -92,8 +92,8 @@ class Formulaire
     {
         return $this->langues;
     }
-    public function setLangues($langue) {
-        $this->langues = $langue;
+    public function setLangues($langues) {
+        $this->langues = $langues;
         return $this;
     }
 
@@ -101,8 +101,8 @@ class Formulaire
     {
         return $this->passions;
     }
-    public function setPassions($passion) {
-        $this->passions = $passion;
+    public function setPassions($passions) {
+        $this->passions = $passions;
         return $this;
     }
 
@@ -110,8 +110,8 @@ class Formulaire
     {
         return $this->autres_infos;
     }
-    public function setAutresInfos($autre_info) {
-        $this->autres_infos = $autre_info;
+    public function setAutresInfos($autres_infos) {
+        $this->autres_infos = $autres_infos;
         return $this;
     }
 
@@ -119,8 +119,8 @@ class Formulaire
     {
         return $this->voyages;
     }
-    public function setVoyages($voyage) {
-        $this->voyages = $voyage;
+    public function setVoyages($voyages) {
+        $this->voyages = $voyages;
         return $this;
     }
 
@@ -128,8 +128,8 @@ class Formulaire
     {
         return $this->infos_diverses;
     }
-    public function setInfosDiverses($info_diverse) {
-        $this->infos_diverses = $info_diverse;
+    public function setInfosDiverses($infos_diverses) {
+        $this->infos_diverses = $infos_diverses;
         return $this;
     }
 

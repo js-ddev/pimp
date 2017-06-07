@@ -51,7 +51,7 @@ class FormulaireType extends AbstractType
                 'prototype' => true,
                 'by_reference' => false,
             ))
-
+            /*
             ->add('aptitudes', CollectionType::class, array(
                 'entry_type' => AptitudeType::class,
                 'allow_add' => true,
@@ -59,7 +59,7 @@ class FormulaireType extends AbstractType
                 'prototype' => true,
                 'by_reference' => false,
             ))
-
+            */
             ->add('langues', CollectionType::class, array(
                 'entry_type' => LangueType::class,
                 'allow_add' => true,
