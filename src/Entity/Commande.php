@@ -5,6 +5,7 @@ namespace Entity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Payum\Core\Storage\FilesystemStorage;
 use Payum\Core\Storage\StorageInterface;
+use Model\CustomStorage;
 
 
 /*use Payum\Core\Model\Payment as BasePayment;

@@ -18,13 +18,17 @@ use Payum\PayumStorage;
 use Model\CommandeDAO;
 use Model\CustomStorage;
 
+use Entity\Commande;
+
 class PayumProvider implements ServiceProviderInterface
 {
     public function register(Container $app) {
         $app['payum'] = function () use ($app) {
             return (new PayumBuilder())
                 -> addDefaultStorages()
-                -> addStorage(\Model\CustomStorage::class, new CustomStorage($app['db']))
+                -> addStorage('Entity\Commande', new CustomStorage($app['db']))
+                // -> addStorage(\Model\CustomStorage::class, new CustomStorage($app['db'])) // Version Thibault
+
                 // cette ligne sert à ajouter notre storage BDD,ex :
                 // -> addStorage('\Model\CommandeDAO', new CommandeDAO())
                 ->setGenericTokenFactoryPaths(array(
