@@ -31,6 +31,8 @@ use Payum\PayumStorage;
 use Model\CommandeDAO;
 use Model\CustomStorage;
 
+use Entity\Commande;
+
 // Ajout pour le paiement test Payum
 class Gertrude
 {
@@ -41,30 +43,31 @@ class Gertrude
                 // $gatewayName = 'stripeGateway';
                 $gatewayName = 'myGateway';
 
-                $command = new \Entity\Commande;
 
-
-				// var_dump($command);
-
-
+				/** @var \Payum\Core\Payum $payum */
                 $payum = $app['payum'];
 
-                /** @var \Payum\Core\Payum $payum */
+				$command = new Commande();
+				// var_dump($command);
+				// $command = new \Entity\Commande; // Version Thibault du 31/05
+
+				$storage = new FilesystemStorage('../storage/payment', $command); // Inscrit le fichier sur le serveur (ne fonctionne pas si la ligne du dessous est décommentée...)
+
+				$storage = $payum->getStorage('Entity\Commande'); // Inscrit une nouvelle commande dans la BDD
+
+				// $storage = $payum->getStorage(\Model\CustomStorage::class); // Version Thibault du 31/05
+
 
                 //Info notée par Thibault
 				// $command = new Command();
 
-				// Tests JS :
-                // $command = new CommandeDAO();
 
-
-				// $storage = $payum->getStorage(\Model\CustomStorage::class); (fonctionne mais ne crée pas de fichier storage. Changement aussi ligne 98, le 2e argument était $storage)
+				// $storage = $payum->getStorage(\Model\CustomStorage::class); (fonctionne mais ne crée pas de fichier storage et ne correspond pas à la doc. Changement aussi ligne 98, le 2e argument était $storage)
 				// $storage = new FilesystemStorage('../storage/payment', $command);
 
 
-				$storage = new FilesystemStorage('../storage/payment', $command); // Inscrit le fichier sur le serveur (ne fonctionne pas si utilisé avec la ligne du dessous qui fonctionne pour la BDD...)
 
-                $storage = $payum->getStorage(\Model\CustomStorage::class); // Inscrit une nouvelle commande dans la BDD
+                // $storage = $payum->getStorage(\Model\CustomStorage::class); // Inscrit une nouvelle commande dans la BDD
 
 				$tokenstorage = new FilesystemStorage('/../storage/token', $command); // Ne fonctionne pas...
 
@@ -104,16 +107,14 @@ class Gertrude
 
 				// var_dump($storage); // OK, l'objet est créé, mais avec details : null
 
-                $captureToken = $payum->getTokenFactory()->createCaptureToken($gatewayName, $payum->getStorage(\Model\CustomStorage::class), $app['url_generator']->generate('payment_done'));
+                $captureToken = $payum->getTokenFactory()->createCaptureToken($gatewayName, $payment, $app['url_generator']->generate('payment_done'));
 
-
-				// JS - Test
-				// $captureToken = $app['payum.security.token_factory']->createCaptureToken($gatewayName, $payment, $app['url_generator']->generate('payment_done'));
 
                 return new RedirectResponse($captureToken->getTargetUrl());
         }
 
-        public function capture(Application $app) {
+        public function capture(Application $app, Request $request)
+		{
                 $payum = $app['payum'];
 
 				// var_dump($request);
@@ -166,11 +167,18 @@ class Gertrude
 
         }
 
-        public function paymentDone(Application $app)
+        public function paymentDone(Application $app, Request $request)
         {
                 $payum = $app['payum'];
 
-				//    	$request->attributes->set('payum_token', $request);
+				// $request->attributes->set('payum_token', $request);
+				// print_r('var_dump($_REQUEST) :');
+				// var_dump($_REQUEST);
+				//
+				// print_r('var_dump($request) :');
+				// var_dump($request);
+
+				// var_dump($request->query->parameters['payum_token']);
 
                 $token = $payum->getHttpRequestVerifier()->verify($_REQUEST);
 				print_r('var_dump($token) :');
@@ -189,9 +197,6 @@ class Gertrude
 				// $model = $payum->getStorage($identity->getClass())->find($identity);
 				// $payum -> setGateway($token->getGatewayName());
 
-				// JS - Test :
-				// $payment = $app['payum']
-				// ->getStorage(\Model\CustomStorage::class);
 
                 // you can invalidate the token. The url could not be requested any more.
                 // $payum->getHttpRequestVerifier()->invalidate($token);
@@ -204,8 +209,8 @@ class Gertrude
 
                 // or Payum can fetch the model for you while executing a request (Preferred).
 
-				$gateway->execute($status = new GetHumanStatus(\Model\CustomStorage::class));
-				// var_dump($GetHumanStatus);
+				$gateway->execute($status = new GetHumanStatus($token));
+
                 $payment = $status->getFirstModel();
 
 

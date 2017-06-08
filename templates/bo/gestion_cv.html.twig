@@ -32,7 +32,7 @@
                 <div class="row">
 
                     <div class="col-lg-12">
-                        <h2>Tableaux du CV</h2>
+                        <h2>Tableaux du CV  <small>|  <a href="#donneesbrutscv">Données bruts CV</a>  |</small></h2>
                     </div>
                 </div>
                         
@@ -47,6 +47,9 @@
 
                         <div class="table-responsive">
                             <table style="display: none;" class="myTable table table-bordered table-hover table-striped">
+                                <colgroup>
+                                    <col class="col-md-2">
+                                </colgroup>
                                 <thead>
                                     <tr>
 
@@ -124,6 +127,9 @@
 
                         <div class="table-responsive">
                             <table style="display: none;" class="myTable table table-bordered table-hover table-striped">
+                                <colgroup>
+                                    <col class="col-md-2">
+                                </colgroup>
                                 <thead>
                                     <tr>
 
@@ -212,6 +218,9 @@
 
                         <div class="table-responsive">
                             <table style="display: none;" class="myTable table table-bordered table-hover table-striped">
+                                <colgroup>
+                                    <col class="col-md-2">
+                                </colgroup>
                                 <thead>
                                     <tr>
 
@@ -268,6 +277,9 @@
 
                         <div class="table-responsive">
                             <table style="display: none;" class="myTable table table-bordered table-hover table-striped">
+                                <colgroup>
+                                    <col class="col-md-2">
+                                </colgroup>
                                 <thead>
                                     <tr>
 
@@ -353,6 +365,9 @@
 
                         <div class="table-responsive">
                             <table style="display: none;" class="myTable table table-bordered table-hover table-striped">
+                                <colgroup>
+                                    <col class="col-md-2">
+                                </colgroup>
                                 <thead>
                                     <tr>
 
@@ -408,6 +423,9 @@
 
                         <div class="table-responsive">
                             <table style="display: none;" class="myTable table table-bordered table-hover table-striped">
+                                <colgroup>
+                                    <col class="col-md-2">
+                                </colgroup>
                                 <thead>
                                     <tr>
 
@@ -444,14 +462,241 @@
 
                         <!-- Didier - FIN TABLEAU 6 -->
 
+                    </div>
+                    
+                </div> 
 
 
+                <!-- //////////////////////////////////////////////////////////// -->
+
+                <!-- Didier - DEBUT - Affichage des données bruts CV pour copier/coller -->
+
+                <div id="donneesbrutscv" class="row">
+
+                    <div class="col-lg-12">
+                        <h2>Données "bruts" du CV pour copier/coller</h2>
+                    </div>
+                </div>
+                        
+                <!-- Didier - DEBUT TABLEAUX DU CV -->
+
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <h3>Infos commande et design</h3>
+
+                        <!-- Didier - TABLEAU 1 : infos commande et design -->
+
+                        <!-- En hidden :
+                            - table expérience : id, id_cv
+                            - table formation : id, id_cv
+                            - table aptitude : id, id_cv
+                         -->
+
+                        <!-- Didier - Partie ID -->
+                        {{ cv.id }}<br/>
+                        {{ cv.idMembre }}<br/>
+
+                        <!-- Didier - Partie Fichier CV téléchargé -->
+                        {{ membre.cv }}<br/>
+
+                        <!-- Didier - Partie Structure du CV -->
+                        {{ cv.nombreSections }}<br/>
+                        {{ cv.nombrePage }}<br/>
+
+                        <!-- Didier - Partie Design du CV -->
+                        {{ options.template }}<br/>
+                        {{ cv.couleur }}<br/>
+                        {{ cv.puce }}<br/>
+                        {{ cv.fond }}<br/>
+                        {{ cv.indicateurPerformance }}<br/>
+                        {{ cv.activite }}<br/>
+
+                        <!-- Didier - FIN TABLEAU 1 -->
+                        
+                    </div>
+                    
+                </div>           
 
 
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <h3>Identité, coordonnées...</h3>
+
+                        <!-- Didier - TABLEAU 2 : ID, Fichier CV, Stucture CV, Design CV, Identité, Coordonnées, Infos perso, Réseaux sociaux et web -->
+
+                        <!-- Didier - Partie Identité -->
+                        {{ cv.photo }}<br/>
+                        {{ membre.prenom }}<br/>
+                        {{ membre.nom }}<br/>
+                        {{ membre.dateNaissance }}<br/>
+                        {{ cv.nationalite }}<br/>
+
+                        <!-- Didier - Partie Coordonnées -->
+                        {{ cv.emailCv }}<br/>
+                        {{ membre.telephone }}<br/>
+                        {{ membre.adresse }}<br/>
+                        {{ membre.codePostal }}<br/>
+                        {{ membre.ville }}<br/>
+                        {{ membre.pays }}<br/>
+
+                        <!-- Didier - Partie Informations personnelles -->
+                        {{ cv.famille }}<br/>
+                        {{ cv.langueMaternelle }}<br/>
+                        {{ cv.permisConduire }}<br/>
+                        {{ cv.permisTravail }}<br/>
+
+                        <!-- Didier - Partie Réseaux sociaux -->
+                        {{ cv.twitter }}<br/>
+                        {{ cv.linkedin }}<br/>
+                        {{ cv.skype }}<br/>
+                        {{ cv.sitePerso }}<br/>
+                        {{ cv.urlAutre }}<br/>
+
+                        <!-- Didier - FIN TABLEAU 2 -->
+
+                    </div>
+
+                </div>           
+
+
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <h3>Formation et certification</h3>
+
+                        <!-- Didier - TABLEAU 3 : formation -->
+
+                        {% for formatio in formation %}
+
+                        <!-- En hidden :
+                                - table formation : id, id_cv
+                         -->
+
+                        <!-- Didier - Partie Formation/formation -->
+                        <!-- Didier - Partie Formation/certification -->
+                        <strong>{{ formatio.type }}</strong><br/><!-- type = formation -->
+                        {{ formatio.diplome }}<br/>
+                        {{ formatio.etablissement }}<br/>
+                        {{ formatio.specialite }}<br/>
+                        {{ formatio.lieu }}<br/>
+                        {{ formatio.dateObtention }}<br/>
+                        {{ formatio.urlFormation }}<br/>
+
+                        {% endfor %}
+                
+                        <!-- Didier - FIN TABLEAU 3 -->
 
                     </div>
                     
                 </div>           
+
+
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <h3>Expérience</h3>
+
+                        <!-- Didier - TABLEAU 4 : experience -->
+
+                        {% for experienc in experience %}                                    
+
+                        <!-- En hidden :
+                                - table expérience : id, id_cv
+                         -->
+
+                        <!-- Didier - Partie Expérience entreprise -->
+                        <!-- Didier - Partie Expérience bénévolat -->
+                        <strong>{{ experienc.type }}</strong><br/><!-- type = entreprise -->
+                        {{ experienc.nom }}<br/>
+                        {{ experienc.secteur }}<br/>
+                        {{ experienc.effectif }}<br/>
+                        <!-- experience.description<br/> NON implémenté-->
+                        <!-- experience.ca<br/> NON implémenté-->
+                        {{ experienc.urlExperience }}<br/>
+                        {{ experienc.poste }}<br/>
+                        {{ experienc.lieu }}<br/>
+                        {{ experienc.role }}<br/>
+                        {{ experienc.dateDebut }}<br/>
+                        {{ experienc.dateFin }}<br/>
+                        {{ experienc.responsabilite1 }}<br/>
+                        {{ experienc.realisation1 }}<br/>
+                        {{ experienc.responsabilite2 }}<br/>
+                        {{ experienc.realisation2 }}<br/>
+                        {{ experienc.responsabilite3 }}<br/>
+                        {{ experienc.realisation3 }}<br/>
+                        {{ experienc.responsabilite4 }}<br/>
+                        {{ experienc.realisation4 }}<br/>
+                        {{ experienc.responsabilite5 }}<br/>
+                        {{ experienc.realisation5 }}<br/>
+
+                        {% endfor %}
+                
+                        <!-- Didier - FIN TABLEAU 4 -->
+
+                    </div>
+                    
+                </div>           
+
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <h3>Aptitude</h3>
+
+                        <!-- Didier - TABLEAU 5 : aptitude -->
+
+                        {% for aptitud in aptitude %}
+
+                        <!-- En hidden :
+                                - table aptitude : id, id_cv
+                         -->
+
+                        <!-- Didier - Partie Aptitudes (langue) -->
+                        <!-- Didier - Partie Aptitudes (competence) -->
+                        <!-- Didier - Partie Aptitudes (centre_interet) -->
+                        <strong>{{ aptitud.type }}</strong><br/><!-- type = langue -->
+                        {{ aptitud.nom }}<br/>
+                        {{ aptitud.niveau }}<br/>
+                        {{ aptitud.TOEIC }}<br/>
+                        {{ aptitud.TOEFL }}<br/>
+                        {{ aptitud.IELTS }}
+
+                        {% endfor %}
+
+                        <!-- Didier - FIN TABLEAU 5 -->
+
+                    </div>
+                    
+                </div>           
+
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <h3>Info / Voyage / Divers</h3>
+
+                        <!-- Didier - TABLEAU 6 : aptitude -->
+
+                        {% for autre_inf in autre_info %}
+                        <!-- En hidden :
+                                - table autre_info : id, id_cv
+                         -->
+
+                        <!-- Didier - Partie Autre info (info) -->
+                        <!-- Didier - Partie Autre info (voyage) -->
+                        <!-- Didier - Partie Autre info (divers) -->
+                        <strong>{{ autre_inf.type }}</strong><br/>
+                        {{ autre_inf.description }}<br/>
+
+                        {% endfor %}
+
+                        <!-- Didier - FIN TABLEAU 6 -->
+
+                    </div>
+                    
+                </div>
+
+                <!-- Didier - FIN - Affichage des données CV pour copier/coller -->                           
 
             </div>
             <!-- /.container-fluid -->

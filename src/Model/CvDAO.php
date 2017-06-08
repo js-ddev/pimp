@@ -227,6 +227,127 @@ class CvDAO extends DAO
 
 //////////////////   FIN DONNEES  CV    /////////////////////////////
 
+//////////////  RECUPERER LES DONNEES DES TABLES POUR EXPORTER LE CV EN CSV  ///////////////
+
+       /**
+    * Retourne un objet de la classe Cv. Affichage des données cv du membre en back office
+    *
+    * @param integer $id_membre The user id_membre.
+    *
+    * @return \Entity\Cv|throws an exception si pas de matching
+    */
+    public function find3($id){
+        $requete = "SELECT
+            cv.id,
+            cv.id_membre,
+
+            m.cv,
+
+            cv.nombre_sections,
+            cv.nombre_page,
+
+            cv.couleur,
+            cv.puce,
+            cv.fond,
+            cv.indicateur_performance,
+            cv.activite,
+
+            cv.photo,
+
+            m.prenom,
+            m.nom,
+            m.date_naissance,
+            cv.nationalite,
+
+            cv.email_cv,
+            m.telephone,
+            m.adresse,
+            m.code_postal,
+            m.ville,
+            m.pays,
+
+            cv.famille,
+            cv.langue_maternelle,
+            cv.permis_conduire,
+            cv.permis_travail,
+
+            cv.twitter,
+            cv.linkedin,
+            cv.skype,
+            cv.site_perso,
+            cv.url_autre,
+
+            e.type,
+            e.nom,
+            e.secteur,
+            e.effectif,
+            e.url_experience,
+            e.poste,
+            e.lieu,
+            e.role,
+            e.date_debut,
+            e.date_fin,
+            e.responsabilite1,
+            e.realisation1,
+            e.responsabilite2,
+            e.realisation2,
+            e.responsabilite3,
+            e.realisation3,
+            e.responsabilite4,
+            e.realisation4,
+            e.responsabilite5,
+            e.realisation5,
+
+            f.type,
+            f.diplome,
+            f.etablissement,
+            f.specialite,
+            f.lieu,
+            f.date_obtention,
+            f.url_formation,
+
+            a.type,
+            a.nom,
+            a.niveau,
+            a.TOEIC,
+            a.TOEFL,
+            a.IELTS,
+
+            a.type,
+            a.nom,
+            a.niveau,
+
+            a_i.type,
+            a_i.description
+        FROM
+            cv cv,
+            membre m,
+            experience e,
+            formation f,
+            aptitude a,
+            autre_info a_i
+        WHERE
+            m.id = cv.id_membre
+            AND cv.id = a.id_cv
+            AND cv.id = e.id_cv
+            AND cv.id = f.id_cv
+            AND cv.id = a_i.id_cv
+            AND cv.id = ?";
+        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id));
+/*        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_membre));
+*/
+        if($resultat){
+            return $this -> buildEntityObject($resultat);
+        }
+        
+        else{
+            throw new \Exception("Aucun CV à l'id:" . $id);
+        }
+        
+    }
+
+//////////////////   FIN DONNEES  CV EXPORT CSV    /////////////////////////////
+
 
 
 
