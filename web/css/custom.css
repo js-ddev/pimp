@@ -59,3 +59,20 @@ i:hover {
 h1.Pimpmycv {
   display: none;
 }
+
+/* Rudy - Template options puces */
+
+#puce-1, #puce-2, #puce-3, #puce-4, #puce-5, #puce-6 {
+position: absolute; 
+left: -0.6em;
+top: 2em;
+}
+
+
+/* Rudy - Template options couleurs */
+#jepue {
+  display: absolute;
+} ;
+
+
+
