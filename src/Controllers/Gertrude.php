@@ -51,9 +51,9 @@ class Gertrude
 				// var_dump($command);
 				// $command = new \Entity\Commande; // Version Thibault du 31/05
 
-				$storage = new FilesystemStorage('../storage/payment', $command); // Inscrit le fichier sur le serveur (ne fonctionne pas si la ligne du dessous est décommentée...)
+				// $storage = new FilesystemStorage('../storage/payment', $command); // Inscrit le fichier sur le serveur (ne fonctionne pas si la ligne du dessous est décommentée... Et selon la doc ne peut être utilisé que pour les tests, pas en production
 
-				// $storage = $payum->getStorage('Entity\Commande'); // Inscrit une nouvelle commande dans la BDD
+				$storage = $payum->getStorage('Entity\Commande'); // Inscrit une nouvelle commande dans la BDD
 
 				// $storage = $payum->getStorage(\Model\CustomStorage::class); // Version Thibault du 31/05
 
@@ -81,7 +81,7 @@ class Gertrude
                 $payment->setClientEmail('foo@example.com');
                 // $payment->setDetails('detail');
 				$payment->setDetails(array(
-             		'local' => ['save_card' => true, 'customer' => ['plan' => 'test','email'=>"foo@example.com"]]
+             // 		'local' => ['save_card' => true, 'customer' => ['plan' => 'test','email'=>"foo@example.com"]]
         		));
 				// 	"SOLUTIONTYPE" => 'Sole',
 				// 	"LANDINGPAGE" => 'Billing'
