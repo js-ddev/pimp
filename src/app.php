@@ -103,7 +103,7 @@ $app['swiftmailer.options'] = array(
     'host' => 'smtp.free.fr',
     'port' => '465',
     'username' => 'madibaivry',
-    'password' => 'M1llenmadiba',
+    'password' => 'test',
     'encryption' => 'ssl',
     'auth_mode' => null
 );

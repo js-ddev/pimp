@@ -45,6 +45,45 @@ class FormationDAO extends DAO
         return $formation;
     }
 
+    public function findFormation($id_cv){
+        $requete = "SELECT * FROM formation WHERE id_cv = ? AND type = 'formation'";
+        $resultat = $this -> getDb() -> fetchAll($requete, array($id_cv));
+
+        if($resultat){
+            $formations = array();
+            foreach ($resultat as $res) {
+
+                $formations[] = $this -> buildEntityObject($res);
+            }
+
+            return $formations;
+        }
+        else{
+            return FALSE;
+        }
+
+    }
+
+
+
+    public function findCertification($id_cv){
+        $requete = "SELECT * FROM formation WHERE id_cv = ? AND type = 'certification'";
+        $resultat = $this -> getDb() -> fetchAll($requete, array($id_cv));
+
+        if($resultat){
+            $certifications = array();
+            foreach ($resultat as $res) {
+
+                $certifications[] = $this -> buildEntityObject($res);
+            }
+
+            return $certifications;
+        }
+        else{
+            return FALSE;
+        }
+
+    }
 
     /**
     * Création d'une formation et enregistrement en BDD
@@ -53,7 +92,7 @@ class FormationDAO extends DAO
     *
     * @return \pimp\Entity\formation
     */
-    public function saveformation(formation $formation/*, Cv $cv*/){
+public function saveFormation(formation $formation, Cv $cv){
         $formationData = array(
             'id' => $formation -> getId(),
             'id_cv' => $cv -> getId(),
@@ -66,13 +105,12 @@ class FormationDAO extends DAO
             'url_formation' => $formation -> getUrlFormation(),
         );
 
-        // if($formation->getId()) { // Modifier un cv
-        //     $this->getDb()->update('formation', $formationData, array('id'=>$formation->getId()));
-        //
-        // }
-        // else { // Créer une formation
+        if($formation->getId()) { // Modifier un cv
+            $this->getDb()->update('formation', $formationData, array('id'=>$formation->getId()));
+        }
+        else { // Créer une formation
             $this -> getDb() -> insert('formation', $formationData);
-        // }
+        }
         $formation -> setId($this -> getDb() -> lastInsertId());
     }
 
