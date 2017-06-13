@@ -44,6 +44,63 @@ class AutreInfoDAO extends DAO
         return $autreInfo;
     }
 
+    public function findInfo($id_cv){
+        $requete = "SELECT * FROM autre_info WHERE id_cv = ? AND type = 'info'";
+        $resultat = $this -> getDb() -> fetchAll($requete, array($id_cv));
+
+        if($resultat){
+            $infos = array();
+            foreach ($resultat as $res) {
+
+                $infos[] = $this -> buildEntityObject($res);
+            }
+
+            return $infos;
+        }
+        else{
+            return FALSE;
+        }
+
+    }
+
+    public function findVoyage($id_cv){
+        $requete = "SELECT * FROM autre_info WHERE id_cv = ? AND type = 'voyage'";
+        $resultat = $this -> getDb() -> fetchAll($requete, array($id_cv));
+
+        if($resultat){
+            $voyages = array();
+            foreach ($resultat as $res) {
+
+                $voyages[] = $this -> buildEntityObject($res);
+            }
+
+            return $voyages;
+        }
+        else{
+            return FALSE;
+        }
+
+    }
+
+    public function findDivers($id_cv){
+        $requete = "SELECT * FROM autre_info WHERE id_cv = ? AND type = 'divers'";
+        $resultat = $this -> getDb() -> fetchAll($requete, array($id_cv));
+
+        if($resultat){
+            $divers = array();
+            foreach ($resultat as $res) {
+
+                $divers[] = $this -> buildEntityObject($res);
+            }
+
+            return $divers;
+        }
+        else{
+            return FALSE;
+        }
+
+    }
+
 
     /**
     * Création d'une autre_info et enregistrement en BDD
@@ -60,20 +117,19 @@ class AutreInfoDAO extends DAO
             'description' => $autre_info -> getDescription(),
         );
 
-        // if($aptitude->getId()) { // Modifier un cv
-        //     $this->getDb()->update('aptitude', $aptitudeData, array('id'=>$aptitude->getId()));
-        //
-        // }
-        // else { // Créer une aptitude
+        if($aptitude->getId()) { // Modifier une autre info
+            $this->getDb()->update('aptitude', $aptitudeData, array('id'=>$aptitude->getId()));
+
+        }
+        else { // Créer une autre info
             $this -> getDb() -> insert('autre_info', $autreInfo);
-        // }
+        }
         $autre_info -> setId($this -> getDb() -> lastInsertId());
     }
 
 
-    // Adrien - Methode obligatoirement déclarée dans le fichier
+
     protected function BuildEntityObject(array $value){
-        // Adrien - Création d'un nouveau CV
         $autre_info = new autreInfo;
 
         $autre_info -> setId($value['id']);
