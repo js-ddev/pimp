@@ -72,7 +72,7 @@ class Home
     }
 
 // Adrien - Controller pour envoi du mail de génération nouveau mdp
-  
+
     public function password(Request $request, Application $app){
         $membre = new \Entity\Membre;
 
@@ -85,14 +85,14 @@ class Home
             $email = $app['dao.membre'] -> findByUsername($request->query->get('username'));
 
            /* $data = $passwordForm->getData();*/
-        
+
             $message = \Swift_Message::newInstance()
-        
+
             ->setSubject('[PimpMyCV] Renvoi de votre mot de passe')
             ->setFrom(array('adrien.malavialle@gmail.com'))
             ->setTo(array('adrien.malavialle@gmail.com'))
             ->setBody($request->get('message de test'));
-            
+
             $app['mailer']->send($message);
 
             /*
@@ -100,7 +100,7 @@ class Home
             $message = $app['dao.membre'] -> EnvoiMdp($email);
             var_dump($message);
             */
-        
+
             return $app['twig']->render('password.html.twig', array(
                 'title' => 'Mot de passe oublié',
                 'email' => $message,
@@ -299,23 +299,6 @@ class Home
             // Création du formulaire et des formulaires qui ne sont pas bouclés :
             $formulaire = new \Entity\Formulaire;
 
-            $formation1 = new \Entity\Formation;
-            $formulaire -> getFormations() -> add($formation1);
-            $formation2 = new \Entity\Formation;
-            $formulaire -> getFormations() -> add($formation2);
-            $formation3 = new \Entity\Formation;
-            $formulaire -> getFormations() -> add($formation3);
-            $formation4 = new \Entity\Formation;
-            $formulaire -> getFormations() -> add($formation4);
-            $formation5 = new \Entity\Formation;
-            $formulaire -> getFormations() -> add($formation5);
-
-            $certification1 = new \Entity\Formation;
-            $formulaire -> getCertifications() -> add($certification1);
-            $certification2 = new \Entity\Formation;
-            $formulaire -> getCertifications() -> add($certification2);
-            $certification3 = new \Entity\Formation;
-            $formulaire -> getCertifications() -> add($certification3);
 
             $langue1 = new \Entity\Aptitude;
             $formulaire -> getLangues() -> add($langue1);
@@ -348,27 +331,25 @@ class Home
                 $cv = new \Entity\Cv;
                 $formulaire -> setCv($cv);
 
-                // TODO - Ces collections seront à mettre dans une boucle for plus tard :
-                $experience1 = new \Entity\Experience;
-                $formulaire -> getExperiences() -> add($experience1);
-                $experience2 = new \Entity\Experience;
-                $formulaire -> getExperiences() -> add($experience2);
-                $experience3 = new \Entity\Experience;
-                $formulaire -> getExperiences() -> add($experience3);
-                $experience4 = new \Entity\Experience;
-                $formulaire -> getExperiences() -> add($experience4);
-                $experience5 = new \Entity\Experience;
-                $formulaire -> getExperiences() -> add($experience5);
+                for($i=0; $i<=5; $i++){
+                    ${'experience'.$i} = new \Entity\Experience;
+                    $formulaire -> getExperiences() -> add(${'experience'.$i});
+                }
 
-                $benevolat1 = new \Entity\Experience;
-                $formulaire -> getBenevolats() -> add($benevolat1);
-                // var_dump($benevolat1);
-                // die();
-                $benevolat2 = new \Entity\Experience;
-                $formulaire -> getBenevolats() -> add($benevolat2);
-                $benevolat3 = new \Entity\Experience;
-                $formulaire -> getBenevolats() -> add($benevolat3);
+                for($i=0; $i<=3; $i++){
+                    ${'benevolat'.$i} = new \Entity\Experience;
+                    $formulaire -> getBenevolats() -> add(${'benevolat'.$i});
+                }
 
+                for($i=0; $i<=5; $i++){
+                    ${'formation'.$i} = new \Entity\Formation;
+                    $formulaire -> getFormations() -> add(${'formation'.$i});
+                }
+
+                for($i=0; $i<=3; $i++){
+                    ${'certification'.$i} = new \Entity\Formation;
+                    $formulaire -> getCertifications() -> add(${'certification'.$i});
+                }
 
             }
             else{
@@ -376,6 +357,7 @@ class Home
                 $cv = $app['dao.cv'] -> find($membre -> getId());
                 $formulaire -> setCv($cv);
                 // print_r($cv);
+
                 $experiences = $app['dao.experience'] -> findEntreprise($cv -> getId());
                 $countExperiences = count($experiences);
                 for($i=0; $i<=5 - $countExperiences; $i++){
@@ -392,8 +374,27 @@ class Home
 
                 }
 
+                $formation = $app['dao.formation'] -> findFormation($cv -> getId());
+                $countFormation = count($formation);
+                for($i=0; $i<=5 - $countFormation; $i++){
+
+                    $formation[] = new \Entity\Formation;
+
+                }
+
+                $certification = $app['dao.formation'] -> findCertification($cv -> getId());
+                $countCertification = count($certification);
+                for($i=0; $i<=3 - $countCertification; $i++){
+
+                    $certification[] = new \Entity\Formation;
+
+                }
+
+
                 $formulaire->setExperiences($experiences);
                 $formulaire->setBenevolats($benevolat);
+                $formulaire->setFormations($formation);
+                $formulaire->setCertifications($certification);
             }
 
 
@@ -409,10 +410,14 @@ class Home
                     foreach ($formulaire->getExperiences() as $experience) {
                         $app['dao.experience'] -> saveExperience($experience, $cv);
                     }
-                    $membre = $app['dao.membre'] -> find($app['user'] -> getId());
-                    $app['dao.cv'] -> saveCv($cv, $membre);
                     foreach ($formulaire->getBenevolats() as $experience) {
                         $app['dao.experience'] -> saveExperience($experience, $cv);
+                    }
+                    foreach ($formulaire->getFormations() as $formation) {
+                        $app['dao.formation'] -> saveFormation($formation, $cv);
+                    }
+                    foreach ($formulaire->getCertifications() as $formation) {
+                        $app['dao.formation'] -> saveFormation($formation, $cv);
                     }
                 }
             }
@@ -424,6 +429,12 @@ class Home
                     }
                     foreach ($formulaire->getBenevolats() as $experience) {
                         $app['dao.experience'] -> saveExperience($experience, $cv);
+                    }
+                    foreach ($formulaire->getFormations() as $formation) {
+                        $app['dao.formation'] -> saveFormation($formation, $cv);
+                    }
+                    foreach ($formulaire->getCertifications() as $formation) {
+                        $app['dao.formation'] -> saveFormation($formation, $cv);
                     }
                 }
             }

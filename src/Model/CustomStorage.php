@@ -150,9 +150,9 @@ class CustomStorage implements StorageInterface
         if($resultat){
             return $this -> buildEntityObject($resultat);
         }
-        else{
-            throw new \Exception("Aucune commande à l'id:" . $details);
-        }
+        // else{
+        //     throw new \Exception("Aucune commande à l'id:" . $details);
+        // }
     }
 
 

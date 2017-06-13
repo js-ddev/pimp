@@ -41,7 +41,7 @@ class Gertrude
 	{
 
                 // $gatewayName = 'stripeGateway';
-                $gatewayName = 'myGateway';
+                $gatewayName = 'stripe_js';
 
 
 				/** @var \Payum\Core\Payum $payum */
@@ -51,7 +51,7 @@ class Gertrude
 				// var_dump($command);
 				// $command = new \Entity\Commande; // Version Thibault du 31/05
 
-				$storage = new FilesystemStorage('../storage/payment', $command); // Inscrit le fichier sur le serveur (ne fonctionne pas si la ligne du dessous est décommentée...)
+				// $storage = new FilesystemStorage('../storage/payment', $command); // Inscrit le fichier sur le serveur (ne fonctionne pas si la ligne du dessous est décommentée... Et selon la doc ne peut être utilisé que pour les tests, pas en production
 
 				$storage = $payum->getStorage('Entity\Commande'); // Inscrit une nouvelle commande dans la BDD
 
@@ -80,10 +80,12 @@ class Gertrude
                 $payment->setClientId('4');
                 $payment->setClientEmail('foo@example.com');
                 // $payment->setDetails('detail');
-				// $payment->setDetails(array(
+				$payment->setDetails(array(
+             // 		'local' => ['save_card' => true, 'customer' => ['plan' => 'test','email'=>"foo@example.com"]]
+        		));
 				// 	"SOLUTIONTYPE" => 'Sole',
 				// 	"LANDINGPAGE" => 'Billing'
-				// ));
+
 				$payment->setIdCv('3');
                 // $payment->setId('6');
 				//
@@ -186,6 +188,8 @@ class Gertrude
 
 				$gateway = $payum->getGateway($token->getGatewayName());
 
+				print_r('var_dump($gateway) :');
+				var_dump($gateway);
 				// $storage = $payum->getStorage(\Model\CustomStorage::class);
 
 
@@ -193,33 +197,31 @@ class Gertrude
 				// var_dump($details);
 				// $details = $storage->findModelByIdentificator($token->getDetails());
 
-				// $identity = $token->getDetails();
-				// $model = $payum->getStorage($identity->getClass())->find($identity);
-				// $payum -> setGateway($token->getGatewayName());
-
 
                 // you can invalidate the token. The url could not be requested any more.
                 // $payum->getHttpRequestVerifier()->invalidate($token);
 
                 // Once you have token you can get the model from the storage directly.
-                // $identity = $token->getDetails();
-                // $payment = $payum->getStorage(\Model\CustomStorage::class)->find($identity);
+                $identity = $token->getDetails();
+				// $model = $payum->getStorage($identity->getClass())->find($identity);
+                $payment = $payum->getStorage('Entity\Commande')->find($identity);
 
+				// $payum -> setGateway($token->getGatewayName());
 				// $payment = $payum->getGateway($token->getGatewayName());
 
                 // or Payum can fetch the model for you while executing a request (Preferred).
 
-				$gateway->execute($status = new GetHumanStatus($token));
+				$gateway->execute($status = new GetHumanStatus($payment));
 
                 $payment = $status->getFirstModel();
 
 
-                return new JsonResponse(array(
-                    'status' => $status->getValue(),
-                    'details' => $payment->getDetails(),
+				return new JsonResponse(array(
+					'status' => $status->getValue(),
+					'details' => $payment->getDetails(),
 					'total_amount' => $payment->getTotalAmount(),
 					'currency_code' => $payment->getCurrencyCode(),
-                ));
+				));
         }
 }
 
