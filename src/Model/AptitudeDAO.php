@@ -44,6 +44,43 @@ class AptitudeDAO extends DAO
         return $aptitude;
     }
 
+    public function findLangue($id_cv){
+        $requete = "SELECT * FROM aptitude WHERE id_cv = ? AND type = 'langue'";
+        $resultat = $this -> getDb() -> fetchAll($requete, array($id_cv));
+
+        if($resultat){
+            $langues = array();
+            foreach ($resultat as $res) {
+
+                $langues[] = $this -> buildEntityObject($res);
+            }
+
+            return $langues;
+        }
+        else{
+            return FALSE;
+        }
+
+    }
+
+    public function findPassion($id_cv){
+        $requete = "SELECT * FROM aptitude WHERE id_cv = ? AND type = 'passion'";
+        $resultat = $this -> getDb() -> fetchAll($requete, array($id_cv));
+
+        if($resultat){
+            $passions = array();
+            foreach ($resultat as $res) {
+
+                $passions[] = $this -> buildEntityObject($res);
+            }
+
+            return $passions;
+        }
+        else{
+            return FALSE;
+        }
+
+    }
 
     /**
     * Création d'une aptitude et enregistrement en BDD
@@ -64,20 +101,19 @@ class AptitudeDAO extends DAO
             'ielts' => $aptitude -> getIelts(),
         );
 
-        // if($aptitude->getId()) { // Modifier un cv
-        //     $this->getDb()->update('aptitude', $aptitudeData, array('id'=>$aptitude->getId()));
-        //
-        // }
-        // else { // Créer une aptitude
+        if($aptitude->getId()) { // Modifier une aptitude
+            $this->getDb()->update('aptitude', $aptitudeData, array('id'=>$aptitude->getId()));
+
+        }
+        else { // Créer une aptitude
             $this -> getDb() -> insert('aptitude', $aptitudeData);
-        // }
+        }
         $aptitude -> setId($this -> getDb() -> lastInsertId());
     }
 
 
-    // Adrien - Methode obligatoirement déclarée dans le fichier
+
     protected function BuildEntityObject(array $value){
-        // Adrien - Création d'un nouveau CV
         $aptitude = new aptitude;
 
         $aptitude -> setId($value['id']);

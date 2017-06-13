@@ -300,13 +300,6 @@ class Home
             $formulaire = new \Entity\Formulaire;
 
 
-            $langue1 = new \Entity\Aptitude;
-            $formulaire -> getLangues() -> add($langue1);
-            $langue2 = new \Entity\Aptitude;
-            $formulaire -> getLangues() -> add($langue2);
-            $langue3 = new \Entity\Aptitude;
-            $formulaire -> getLangues() -> add($langue3);
-
             $autre_info = new \Entity\AutreInfo;
             $formulaire -> getAutresInfos() -> add($autre_info);
             $voyage = new \Entity\AutreInfo;
@@ -314,16 +307,6 @@ class Home
             $info_diverse = new \Entity\AutreInfo;
             $formulaire -> getInfosDiverses() -> add($info_diverse);
 
-            $passion1 = new \Entity\Aptitude;
-            $formulaire -> getPassions() -> add($passion1);
-            $passion2 = new \Entity\Aptitude;
-            $formulaire -> getPassions() -> add($passion2);
-            $passion3 = new \Entity\Aptitude;
-            $formulaire -> getPassions() -> add($passion3);
-            $passion4 = new \Entity\Aptitude;
-            $formulaire -> getPassions() -> add($passion4);
-            $passion5 = new \Entity\Aptitude;
-            $formulaire -> getPassions() -> add($passion5);
 
 
             // On vérifie la présence d'un cv pour générer les vues des collections et on créer une variable pour gérer les soumissions après :
@@ -351,6 +334,17 @@ class Home
                     $formulaire -> getCertifications() -> add(${'certification'.$i});
                 }
 
+                for($i=0; $i<=5; $i++){
+                    ${'langue'.$i} = new \Entity\Aptitude;
+                    $formulaire -> getLangues() -> add(${'langue'.$i});
+                }
+
+                for($i=0; $i<=5; $i++){
+                    ${'passion'.$i} = new \Entity\Aptitude;
+                    $formulaire -> getPassions() -> add(${'passion'.$i});
+                }
+
+
             }
             else{
                 $membre = $app['dao.membre'] -> find($app['user'] -> getId());
@@ -361,40 +355,45 @@ class Home
                 $experiences = $app['dao.experience'] -> findEntreprise($cv -> getId());
                 $countExperiences = count($experiences);
                 for($i=0; $i<=5 - $countExperiences; $i++){
-
                     $experiences[] = new \Entity\Experience;
-
                 }
 
                 $benevolat = $app['dao.experience'] -> findBenevolat($cv -> getId());
                 $countBenevolat = count($benevolat);
                 for($i=0; $i<=3 - $countBenevolat; $i++){
-
                     $benevolat[] = new \Entity\Experience;
-
                 }
 
                 $formation = $app['dao.formation'] -> findFormation($cv -> getId());
                 $countFormation = count($formation);
                 for($i=0; $i<=5 - $countFormation; $i++){
-
                     $formation[] = new \Entity\Formation;
-
                 }
 
                 $certification = $app['dao.formation'] -> findCertification($cv -> getId());
                 $countCertification = count($certification);
                 for($i=0; $i<=3 - $countCertification; $i++){
-
                     $certification[] = new \Entity\Formation;
-
                 }
 
+                $langue = $app['dao.aptitude'] -> findLangue($cv -> getId());
+                $countLangue = count($langue);
+                for($i=0; $i<=5 - $countLangue; $i++){
+                    $langue[] = new \Entity\Aptitude;
+                }
+
+                $passion = $app['dao.aptitude'] -> findPassion($cv -> getId());
+                $countPassion = count($passion);
+                for($i=0; $i<=5 - $countPassion; $i++){
+                    $passion[] = new \Entity\Aptitude;
+                }
 
                 $formulaire->setExperiences($experiences);
                 $formulaire->setBenevolats($benevolat);
                 $formulaire->setFormations($formation);
                 $formulaire->setCertifications($certification);
+                $formulaire->setLangues($langue);
+                $formulaire->setPassions($passion);
             }
 
 
@@ -410,14 +409,20 @@ class Home
                     foreach ($formulaire->getExperiences() as $experience) {
                         $app['dao.experience'] -> saveExperience($experience, $cv);
                     }
-                    foreach ($formulaire->getBenevolats() as $experience) {
-                        $app['dao.experience'] -> saveExperience($experience, $cv);
+                    foreach ($formulaire->getBenevolats() as $benevol) {
+                        $app['dao.experience'] -> saveExperience($benevol, $cv);
                     }
                     foreach ($formulaire->getFormations() as $formation) {
                         $app['dao.formation'] -> saveFormation($formation, $cv);
                     }
-                    foreach ($formulaire->getCertifications() as $formation) {
-                        $app['dao.formation'] -> saveFormation($formation, $cv);
+                    foreach ($formulaire->getCertifications() as $certif) {
+                        $app['dao.formation'] -> saveFormation($certif, $cv);
+                    }
+                    foreach ($formulaire->getLangues() as $lang) {
+                        $app['dao.aptitude'] -> saveAptitude($lang, $cv);
+                    }
+                    foreach ($formulaire->getPassions() as $passion) {
+                        $app['dao.aptitude'] -> saveAptitude($passion, $cv);
                     }
                 }
             }
@@ -427,14 +432,20 @@ class Home
                     foreach ($formulaire->getExperiences() as $experience) {
                         $app['dao.experience'] -> saveExperience($experience, $cv);
                     }
-                    foreach ($formulaire->getBenevolats() as $experience) {
-                        $app['dao.experience'] -> saveExperience($experience, $cv);
+                    foreach ($formulaire->getBenevolats() as $benevol) {
+                        $app['dao.experience'] -> saveExperience($benevol, $cv);
                     }
                     foreach ($formulaire->getFormations() as $formation) {
                         $app['dao.formation'] -> saveFormation($formation, $cv);
                     }
-                    foreach ($formulaire->getCertifications() as $formation) {
-                        $app['dao.formation'] -> saveFormation($formation, $cv);
+                    foreach ($formulaire->getCertifications() as $certif) {
+                        $app['dao.formation'] -> saveFormation($certif, $cv);
+                    }
+                    foreach ($formulaire->getLangues() as $lang) {
+                        $app['dao.aptitude'] -> saveAptitude($lang, $cv);
+                    }
+                    foreach ($formulaire->getPassions() as $passion) {
+                        $app['dao.aptitude'] -> saveAptitude($passion, $cv);
                     }
                 }
             }

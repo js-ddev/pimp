@@ -38,14 +38,16 @@ class PassionType extends AbstractType
             ),
             'required' => false,
         ))
-        /*
-        -> add('toeic', TextType::class, array(
-            'attr' => array(
-                'placeholder' => 'Score TOEIC',
-                'class' => 'form-control',
+
+        -> add('niveau', ChoiceType::class, array(
+            'choices' => array(
+                'débutant' => 'debutant',
+                'amateur' => 'amateur',
+                'confirmé' => 'confirme',
             ),
-            'required' => false,
+            'required' => true,
         ))
+        /*
 
         -> add('toefl', TextType::class, array(
             'attr' => array(
