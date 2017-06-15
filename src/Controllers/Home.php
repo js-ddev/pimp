@@ -71,6 +71,7 @@ class Home
         );
     }
 
+
 // Adrien - Controller pour envoi du mail de génération nouveau mdp
 
     public function password(Request $request, Application $app){
@@ -82,33 +83,19 @@ class Home
 
         if($passwordForm -> isSubmitted() && $passwordForm -> isValid()){
 
-            $email = $app['dao.membre'] -> findByUsername($request->query->get('username'));
-
-           /* $data = $passwordForm->getData();*/
+            // Adrien - On récupère l'email rentré dans le formulaire
+            $email = $membre -> getUsername();
 
             $message = \Swift_Message::newInstance()
 
             ->setSubject('[PimpMyCV] Renvoi de votre mot de passe')
             ->setFrom(array('adrien.malavialle@gmail.com'))
-            ->setTo(array('adrien.malavialle@gmail.com'))
+            ->setTo($email)
             ->setBody($request->get('message de test'));
 
             $app['mailer']->send($message);
 
-            /*
-            $email = 'adrien.malavialle@gmail.com';
-            $message = $app['dao.membre'] -> EnvoiMdp($email);
-            var_dump($message);
-            */
-
-            return $app['twig']->render('password.html.twig', array(
-                'title' => 'Mot de passe oublié',
-                'email' => $message,
-                'Response' => 'Nous vous avons envoyé un email !'
-                )
-            );
-
-            return $app->redirect('/');
+            return $app->redirect('/connexion/password_change');
 
         }
 
@@ -125,13 +112,25 @@ class Home
     }
 
 
-     public function action(Application $app){
+// Adrien - Controller pour redirection suite à la soumission du formulaire de mot de passe oublié
+
+    public function password_change(Application $app){
+        return $app['twig']->render('password_change.html.twig', array(
+            'title' => 'changement de mot de passe')
+        );
+    }
+
+
+// Adrien - Controller pour call-to-action suite à l'inscription
+
+    public function action(Application $app){
         return $app['twig']->render('action.html.twig', array(
             'title' => 'Action')
         );
     }
 
-// Adrien - Route pour inscription utilisateur :
+
+// Adrien - Controller pour inscription utilisateur :
 
     public function inscription(Request $request, Application $app){
         $membre = new \Entity\Membre;
