@@ -81,7 +81,7 @@ class Gertrude
                 $payment->setClientEmail('foo@example.com');
                 // $payment->setDetails('detail');
 				$payment->setDetails(array(
-             // 		'local' => ['save_card' => true, 'customer' => ['plan' => 'test','email'=>"foo@example.com"]]
+             		'local' => ['save_card' => true, 'customer' => ['plan' => 'test','email'=>"foo@example.com"]]
         		));
 				// 	"SOLUTIONTYPE" => 'Sole',
 				// 	"LANDINGPAGE" => 'Billing'

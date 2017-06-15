@@ -46,16 +46,12 @@ class AutreInfoDAO extends DAO
 
     public function findInfo($id_cv){
         $requete = "SELECT * FROM autre_info WHERE id_cv = ? AND type = 'info'";
-        $resultat = $this -> getDb() -> fetchAll($requete, array($id_cv));
+        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_cv));
 
         if($resultat){
-            $infos = array();
-            foreach ($resultat as $res) {
 
-                $infos[] = $this -> buildEntityObject($res);
-            }
+            return $this -> BuildEntityObject($resultat);
 
-            return $infos;
         }
         else{
             return FALSE;
@@ -65,16 +61,11 @@ class AutreInfoDAO extends DAO
 
     public function findVoyage($id_cv){
         $requete = "SELECT * FROM autre_info WHERE id_cv = ? AND type = 'voyage'";
-        $resultat = $this -> getDb() -> fetchAll($requete, array($id_cv));
+        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_cv));
 
         if($resultat){
-            $voyages = array();
-            foreach ($resultat as $res) {
+            return $this -> BuildEntityObject($resultat);
 
-                $voyages[] = $this -> buildEntityObject($res);
-            }
-
-            return $voyages;
         }
         else{
             return FALSE;
@@ -84,16 +75,11 @@ class AutreInfoDAO extends DAO
 
     public function findDivers($id_cv){
         $requete = "SELECT * FROM autre_info WHERE id_cv = ? AND type = 'divers'";
-        $resultat = $this -> getDb() -> fetchAll($requete, array($id_cv));
+        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_cv));
 
         if($resultat){
-            $divers = array();
-            foreach ($resultat as $res) {
+            return $this -> BuildEntityObject($resultat);
 
-                $divers[] = $this -> buildEntityObject($res);
-            }
-
-            return $divers;
         }
         else{
             return FALSE;
