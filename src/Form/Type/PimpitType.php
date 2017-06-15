@@ -74,6 +74,7 @@ class PimpitType extends AbstractType
                 // 'constraints' => array(
                 //     new Assert\Email(),
                 // ),
+                'required' => true,
                 'label' => 'Adresse email',
                 'attr' => array(
                     'placeholder' => 'Votre adresse email',
@@ -82,6 +83,7 @@ class PimpitType extends AbstractType
             ))
 
             -> add('date_naissance', TextType::class, array(
+                'required' => true,
                 'label' => 'Date de naissance',
                 'attr' => array(
                     'placeholder' => 'Votre date de naissance',
