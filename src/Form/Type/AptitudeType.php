@@ -32,6 +32,7 @@ class AptitudeType extends AbstractType
             ))
 
         -> add('nom', TextType::class, array(
+            'label' => 'Nom',
             'attr' => array(
                 'placeholder' => 'Intitulé*',
                 'class' => 'form-control',

@@ -32,6 +32,7 @@ class AutreInfoType extends AbstractType
             ))
 
         -> add('description', TextareaType::class, array(
+            'label' => 'Description',
             'attr' => array(
                 'placeholder' => '',
                 'class' => 'form-control',
