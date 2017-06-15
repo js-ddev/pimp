@@ -45,7 +45,7 @@ class PassionType extends AbstractType
                 'amateur' => 'amateur',
                 'confirmé' => 'confirme',
             ),
-            'required' => true,
+            'required' => false,
         ))
         /*
 
