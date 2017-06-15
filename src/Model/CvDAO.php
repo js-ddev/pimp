@@ -217,11 +217,11 @@ class CvDAO extends DAO
         if($resultat){
             return $this -> buildEntityObject($resultat);
         }
-        
+
         else{
             throw new \Exception("Aucun CV à l'id:" . $id);
         }
-        
+
     }
 
 
@@ -339,11 +339,11 @@ class CvDAO extends DAO
         if($resultat){
             return $this -> buildEntityObject($resultat);
         }
-        
+
         else{
             throw new \Exception("Aucun CV à l'id:" . $id);
         }
-        
+
     }
 
 //////////////////   FIN DONNEES  CV EXPORT CSV    /////////////////////////////
@@ -388,8 +388,9 @@ class CvDAO extends DAO
 
         if($cv->getId()) { // Modifier un cv
             $this->getDb()->update('cv', $cvData, array('id'=>$cv->getId()));
+        }
 
-        } else { // Créer un cv
+        else { // Créer un cv
             $this -> getDb() -> insert('cv', $cvData);
         }
         $cv -> setId($this -> getDb() -> lastInsertId());
@@ -429,7 +430,7 @@ class CvDAO extends DAO
 
         $cv = new cv;
         $membre = new Membre;
-        
+
         $cv -> setId($value['id']);
         $cv -> setIdMembre($value['id_membre']);
         $cv -> setNombreSections($value['nombre_sections']);
