@@ -300,19 +300,12 @@ class Home
             $formulaire = new \Entity\Formulaire;
 
 
-            $autre_info = new \Entity\AutreInfo;
-            $formulaire -> getAutresInfos() -> add($autre_info);
-            $voyage = new \Entity\AutreInfo;
-            $formulaire -> getVoyages() -> add($voyage);
-            $info_diverse = new \Entity\AutreInfo;
-            $formulaire -> getInfosDiverses() -> add($info_diverse);
-
-
-
-            // On vérifie la présence d'un cv pour générer les vues des collections et on créer une variable pour gérer les soumissions après :
+                    // On vérifie la présence d'un cv pour générer les vues des collections et on créer une variable pour gérer les soumissions après :
             if($pasdecv = is_null($app['dao.cv'] -> find($app['user'] -> getId()))){
                 $cv = new \Entity\Cv;
-                $formulaire -> setCv($cv);
+                $autre_info = new \Entity\AutreInfo;
+                $voyage = new \Entity\AutreInfo;
+                $info_diverse = new \Entity\AutreInfo;
 
                 for($i=0; $i<=5; $i++){
                     ${'experience'.$i} = new \Entity\Experience;
@@ -388,12 +381,35 @@ class Home
                     $passion[] = new \Entity\Aptitude;
                 }
 
+                $autre_info = $app['dao.autre_info'] -> findInfo($cv -> getId());
+                if($autre_info == FALSE){
+                    var_dump('if donc pas dinfo remplie');
+                    $autre_info = new \Entity\AutreInfo;
+                    $formulaire->setAutresInfos($autre_info);
+                }
+                else{
+                    var_dump('else');
+                    $autre_info = $app['dao.autre_info'] -> findInfo($cv -> getId());
+                }
+
+
+                $voyage = $app['dao.autre_info'] -> findVoyage($cv -> getId());
+                $voyage = new \Entity\AutreInfo;
+
+                $info_diverse = $app['dao.autre_info'] -> findDivers($cv -> getId());
+                $info_diverse = new \Entity\AutreInfo;
+
+
+
                 $formulaire->setExperiences($experiences);
                 $formulaire->setBenevolats($benevolat);
                 $formulaire->setFormations($formation);
                 $formulaire->setCertifications($certification);
                 $formulaire->setLangues($langue);
                 $formulaire->setPassions($passion);
+                $formulaire->setVoyages($voyage);
+                $formulaire->setInfosDiverses($info_diverse);
+
             }
 
 
@@ -424,6 +440,14 @@ class Home
                     foreach ($formulaire->getPassions() as $passion) {
                         $app['dao.aptitude'] -> saveAptitude($passion, $cv);
                     }
+                    var_dump($passion);
+                    var_dump($autre_info);
+                    var_dump($cv);
+                    die();
+                    $app['dao.autre_info'] -> saveAutreInfo($autre_info, $cv);
+                    $app['dao.autre_info'] -> saveAutreInfo($voyage, $cv);
+                    $app['dao.autre_info'] -> saveAutreInfo($info_diverse, $cv);
+
                 }
             }
             else{
@@ -447,6 +471,13 @@ class Home
                     foreach ($formulaire->getPassions() as $passion) {
                         $app['dao.aptitude'] -> saveAptitude($passion, $cv);
                     }
+                    var_dump($passion);
+                    var_dump($autre_info);
+                    var_dump($cv);
+                    die();
+                    $app['dao.autre_info'] -> saveAutreInfo($autre_info, $cv);
+                    $app['dao.autre_info'] -> saveAutreInfo($voyage, $cv);
+                    $app['dao.autre_info'] -> saveAutreInfo($info_diverse, $cv);
                 }
             }
 

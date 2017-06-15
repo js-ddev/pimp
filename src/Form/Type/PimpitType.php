@@ -47,6 +47,7 @@ class PimpitType extends AbstractType
                     ))
                 ),
                 'required' => true,
+                'label' => 'Prénom',
                 'attr' => array(
                     'placeholder' => 'Votre prénom',
                     'class' => 'form-control',
@@ -73,6 +74,7 @@ class PimpitType extends AbstractType
                 // 'constraints' => array(
                 //     new Assert\Email(),
                 // ),
+                'label' => 'Adresse email',
                 'attr' => array(
                     'placeholder' => 'Votre adresse email',
                     'class' => 'form-control',
@@ -80,6 +82,7 @@ class PimpitType extends AbstractType
             ))
 
             -> add('date_naissance', TextType::class, array(
+                'label' => 'Date de naissance',
                 'attr' => array(
                     'placeholder' => 'Votre date de naissance',
                     'class' => 'form-control',
@@ -94,6 +97,7 @@ class PimpitType extends AbstractType
 
             -> add('adresse', TextType::class, array(
                 'required' => true,
+                'label' => 'Adresse',
                 'attr' => array(
                     'placeholder' => 'Adresse',
                     'class' => 'form-control',
@@ -102,6 +106,7 @@ class PimpitType extends AbstractType
 
             -> add('ville', TextType::class, array(
                 'required' => true,
+                'label' => 'Ville',
                 'attr' => array(
                     'placeholder' => 'Ville',
                     'class' => 'form-control',
@@ -110,6 +115,7 @@ class PimpitType extends AbstractType
 
             -> add('code_postal', TextType::class, array(
                 'required' => true,
+                'label' => 'Code postal',
                 'attr' => array(
                     'placeholder' => 'Code postal',
                     'class' => 'form-control',
@@ -117,6 +123,7 @@ class PimpitType extends AbstractType
             ))
 
             -> add('pays', TextType::class, array(
+                'label' => 'Pays',
                 'required' => true,
                 'attr' => array(
                     'placeholder' => 'Pays',
@@ -125,6 +132,7 @@ class PimpitType extends AbstractType
             ))
 
             -> add('telephone', TextType::class, array(
+                'label' => 'Numéro de téléphone',
                 'required' => true,
                 'attr' => array(
                     'placeholder' => 'Téléphone',

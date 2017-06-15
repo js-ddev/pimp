@@ -8,7 +8,6 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Form\Type\CvType;
 
 
 
@@ -76,29 +75,11 @@ class FormulaireType extends AbstractType
                 'by_reference' => false,
             ))
 
-            ->add('autres_infos', CollectionType::class, array(
-                'entry_type' => AutreInfoType::class,
-                'allow_add' => true,
-                'allow_delete' => true,
-                'prototype' => true,
-                'by_reference' => false,
-            ))
+            ->add('autres_infos', AutreInfoType::class)
 
-            ->add('voyages', CollectionType::class, array(
-                'entry_type' => VoyageType::class,
-                'allow_add' => true,
-                'allow_delete' => true,
-                'prototype' => true,
-                'by_reference' => false,
-            ))
+            ->add('voyages', VoyageType::class)
 
-            ->add('infos_diverses', CollectionType::class, array(
-                'entry_type' => InfoDiverseType::class,
-                'allow_add' => true,
-                'allow_delete' => true,
-                'prototype' => true,
-                'by_reference' => false,
-            ));
+            ->add('infos_diverses', InfoDiverseType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)

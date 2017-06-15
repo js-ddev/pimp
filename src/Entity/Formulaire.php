@@ -29,9 +29,9 @@ class Formulaire
         // $this->aptitudes = new ArrayCollection();
         $this->langues = new ArrayCollection();
         $this->passions = new ArrayCollection();
-        $this->autres_infos = new ArrayCollection();
-        $this->voyages = new ArrayCollection();
-        $this->infos_diverses = new ArrayCollection();
+        // $this->autres_infos = new ArrayCollection();
+        // $this->voyages = new ArrayCollection();
+        // $this->infos_diverses = new ArrayCollection();
     }
 
     public function getCv()
