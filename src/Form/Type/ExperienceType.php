@@ -71,7 +71,7 @@ class ExperienceType extends AbstractType
             ),
             'required' => false,
         ))
-        
+
         -> add('description', TextType::class, array(
             'constraints' => array(
                 new Assert\Length(array(
@@ -93,7 +93,7 @@ class ExperienceType extends AbstractType
             ),
             'required' => false,
         ))
-      
+
         -> add('effectif', ChoiceType::class, array(
             'choices' => array(
                 'Entre 1 et 9 personnes' => '1',
@@ -292,7 +292,7 @@ class ExperienceType extends AbstractType
 
         ;
     }
-    
+
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
