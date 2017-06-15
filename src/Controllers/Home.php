@@ -72,10 +72,12 @@ class Home
     }
 
 
-// Adrien - Controller pour envoi du mail de génération nouveau mdp
+// Adrien - Controller pour envoi du mail d'accès au formulaire de réinitialisation du mdp
 
     public function password(Request $request, Application $app){
+
         $membre = new \Entity\Membre;
+        $password = new \Entity\Password;
 
         $passwordForm = $app['form.factory'] -> create(\Form\Type\PasswordType::class, $membre);
 
@@ -83,18 +85,29 @@ class Home
 
         if($passwordForm -> isSubmitted() && $passwordForm -> isValid()){
 
-            // Adrien - On récupère l'email rentré dans le formulaire
+            // Adrien - On récupère l'email rentré dans le formulaire et l'id du membre 
             $email = $membre -> getUsername();
+            $id = $app['dao.membre'] -> findByUsername($email) -> getId();
 
+            // Adrien - On génère un jeton unique
+            $password -> setToken(uniqid(rand(), true));
+
+            // Adrien - On enregistre le nouveau token en BDD
+            $app['dao.password'] -> savePassword($password, $id);
+            $app['session'] -> getFlashBag() -> add('success', 'Votre token a bien été généré !');
+
+            // Adrien - Création du message
             $message = \Swift_Message::newInstance()
 
-            ->setSubject('[PimpMyCV] Renvoi de votre mot de passe')
+            ->setSubject('[PimpMyCV] Réinitialisation de votre mot de passe')
             ->setFrom(array('adrien.malavialle@gmail.com'))
             ->setTo($email)
-            ->setBody($request->get('message de test'));
+            ->setBody('Pour réinitialiser votre mot de passe veuillez cliquer sur le lien suivant : <a href="www.pimpmycv.dev/connexion/password_init">Réinitialiser mon mot de passe</a>', 'text/html');
+       
 
             $app['mailer']->send($message);
 
+            // Adrien - redirection vers page de validation de l'envoi de l'email
             return $app->redirect('/connexion/password_change');
 
         }
@@ -108,7 +121,15 @@ class Home
         );
 
         return $app['twig']->render('password.html.twig', $params);
+    }
 
+
+// Adrien - Controller pour gestion du formulaire de réinitlisation du mot de passe
+
+    public function password_init(Application $app){
+        return $app['twig']->render('password_init.html.twig', array(
+            'title' => 'Réinitialiser le mot de passe')
+        );
     }
 
 
@@ -116,7 +137,7 @@ class Home
 
     public function password_change(Application $app){
         return $app['twig']->render('password_change.html.twig', array(
-            'title' => 'changement de mot de passe')
+            'title' => 'Changement de mot de passe')
         );
     }
 

@@ -71,6 +71,10 @@ $app['dao.options'] = function ($app) {
     return new Model\OptionsDAO($app['db']);
 };
 
+$app['dao.password'] = function ($app) {
+    return new Model\PasswordDAO($app['db']);
+};
+
 // Rudy - Enregistrement des services obligatoires pour le paiement:
 $app->register(new Payum\PayumProvider());
 
@@ -103,7 +107,7 @@ $app['swiftmailer.options'] = array(
     'host' => 'smtp.gmail.com',
     'port' => '465',
     'username' => 'adrien.malavialle@gmail.com',
-    'password' => 'denver16',
+    'password' => '',
     'encryption' => 'ssl',
     'auth_mode' => 'login'
 );
