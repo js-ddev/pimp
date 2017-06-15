@@ -109,7 +109,7 @@ class AutreInfoDAO extends DAO
     *
     * @return \pimp\Entity\AutreInfo
     */
-    public function saveAutreInfo(autre_info $autre_info, Cv $cv){
+    public function saveAutreInfo(AutreInfo $autre_info, Cv $cv){
         $autreInfoData = array(
             'id' => $autre_info -> getId(),
             'id_cv' => $cv -> getId(),
@@ -117,12 +117,12 @@ class AutreInfoDAO extends DAO
             'description' => $autre_info -> getDescription(),
         );
 
-        if($aptitude->getId()) { // Modifier une autre info
-            $this->getDb()->update('aptitude', $aptitudeData, array('id'=>$aptitude->getId()));
+        if($autre_info->getId()) { // Modifier une autre info
+            $this->getDb()->update('autre_info', $autreInfoData, array('id'=>$autre_info->getId()));
 
         }
         else { // Créer une autre info
-            $this -> getDb() -> insert('autre_info', $autreInfo);
+            $this -> getDb() -> insert('autre_info', $autreInfoData);
         }
         $autre_info -> setId($this -> getDb() -> lastInsertId());
     }

@@ -100,12 +100,12 @@ $app -> register(new Silex\Provider\SessionServiceProvider());
 $app->register(new Silex\Provider\SwiftmailerServiceProvider());
 
 $app['swiftmailer.options'] = array(
-    'host' => 'smtp.free.fr',
+    'host' => 'smtp.gmail.com',
     'port' => '465',
-    'username' => 'madibaivry',
-    'password' => 'test',
+    'username' => 'adrien.malavialle@gmail.com',
+    'password' => 'denver16',
     'encryption' => 'ssl',
-    'auth_mode' => null
+    'auth_mode' => 'login'
 );
 
 // Adrien - Gestion de la sécurité en connexion

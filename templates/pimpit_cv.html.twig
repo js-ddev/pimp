@@ -657,14 +657,14 @@
 															</ul>
 
 															<div class="tab-content pdd-horizon-30">
-																{% for autre_info in formulaireForm.autres_infos %}
+
 																<!-- Sous-partie description -->
 																<div id="s4-option-1" class="tab-pane fade in active">
 																	<div class="panel-body">
-																	{{ form_widget(autre_info.type,{value :'info'}) }}
+																	{{ form_widget(formulaireForm.autres_infos.type,{value :'info'}) }}
 																		<div class="form-group">
 																			<label for="description">Décrivez vous en quelques mots ! Et essayez de répondre à la question épineuse de pourquoi voudriez vous travailler avec vous même ?</label>
-																			{{ form_widget(autre_info.description) }}
+																			{{ form_widget(formulaireForm.autres_infos.description) }}
 																		</div>
 																		<div class="form-group col-md-12">
 																			<input class="btn btn-md btn-dark" type="submit" value="Valider">
@@ -672,17 +672,17 @@
 																	</div>
 																</div>
 																<!-- Sous-partie description -->
-																{% endfor %}
 
 
-																{% for autre_info in formulaireForm.voyages %}
+
+
 																<!-- Sous-partie voyage -->
 																<div id="s4-option-2" class="tab-pane fade">
 																	<div class="panel-body">
-																	{{ form_widget(autre_info.type,{value :'voyage'}) }}
+																	{{ form_widget(formulaireForm.voyages.type,{value :'voyage'}) }}
 																		<div class="form-group">
 																			<label for="description">Si vous avez voyagé, indiquez nous vos dernières destinations</label>
-																			{{ form_widget(autre_info.description) }}
+																			{{ form_widget(formulaireForm.voyages.description) }}
 																		</div>
 																		<div class="form-group col-md-12">
 																			<input class="btn btn-md btn-dark" type="submit" value="Valider">
@@ -690,17 +690,17 @@
 																	</div>
 																</div>
 																<!-- Fin Sous-partie voyage -->
-																{% endfor %}
 
 
-																{% for autre_info in formulaireForm.infos_diverses %}
+
+
 																<!-- Sous-partie informations diverses -->
 																<div id="s4-option-3" class="tab-pane fade">
 																	<div class="panel-body">
-																	{{ form_widget(autre_info.type,{value :'divers'}) }}
+																	{{ form_widget(formulaireForm.infos_diverses.type,{value :'divers'}) }}
 																		<div class="form-group">
 																			<label for="description">Informations diverses que vous souhaitez nous communiquer par rapport à votre CV</label>
-																			{{ form_widget(autre_info.description) }}
+																			{{ form_widget(formulaireForm.infos_diverses.description) }}
 																		</div>
 																		<div class="form-group col-md-12">
 																			<input class="btn btn-md btn-dark" type="submit" value="Valider">
@@ -708,7 +708,7 @@
 																	</div>
 																</div>
 																<!-- Fin Sous-partie informations diverses -->
-																{% endfor %}
+
 															</div>
 														</div>
 													</div>

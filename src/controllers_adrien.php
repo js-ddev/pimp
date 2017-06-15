@@ -34,6 +34,9 @@ $app -> match('/connexion', 'Controllers\\Home::connexion') -> bind('connexion')
 // Route pour redirection suite à la connexion utilisateur
 $app -> get('/login/redirect', 'Controllers\\Home::index') -> bind('index');
 
+// Route pour redirection suite à la soumission du formulaire de mot de passe oublié
+$app -> get('/connexion/password_change','Controllers\\Home::password_change') -> bind('password_change');
+
 // Route pour accès au formulaire de connexion admin
 $app -> get('/login_bo','Controllers\\Bo::index') -> bind('login_bo');
 
