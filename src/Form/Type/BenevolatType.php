@@ -45,15 +45,14 @@ class BenevolatType extends AbstractType
             ),
         ))
 
-    //////// JS - MANQUE DES VALEURS !!
-
-        -> add('secteur', ChoiceType::class, array(
-            'choices' => array(
-                'Agroalimentaire' => 'agroalimentaire',
-                'Banque / Assurance' => 'banque',
-            ),
-            'required' => false,
-        ))
+        // 
+        // -> add('secteur', ChoiceType::class, array(
+        //     'choices' => array(
+        //         'Agroalimentaire' => 'agroalimentaire',
+        //         'Banque / Assurance' => 'banque',
+        //     ),
+        //     'required' => false,
+        // ))
         /*
         -> add('description', TextType::class, array(
             'constraints' => array(

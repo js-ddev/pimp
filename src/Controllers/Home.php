@@ -470,13 +470,13 @@ class Home
                     foreach ($formulaire->getPassions() as $passion) {
                         $app['dao.aptitude'] -> saveAptitude($passion, $cv);
                     }
-                    var_dump($passion);
-                    var_dump($autre_info);
-                    var_dump($cv);
-                    die();
-                    $app['dao.autre_info'] -> saveAutreInfo($autre_info, $cv);
-                    $app['dao.autre_info'] -> saveAutreInfo($voyage, $cv);
-                    $app['dao.autre_info'] -> saveAutreInfo($info_diverse, $cv);
+                    // var_dump($passion);
+                    // var_dump($autre_info);
+                    // var_dump($cv);
+                    // die();
+                    // $app['dao.autre_info'] -> saveAutreInfo($autre_info, $cv);
+                    // $app['dao.autre_info'] -> saveAutreInfo($voyage, $cv);
+                    // $app['dao.autre_info'] -> saveAutreInfo($info_diverse, $cv);
                 }
             }
 
