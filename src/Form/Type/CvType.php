@@ -69,7 +69,7 @@ class CvType extends AbstractType
                     'placeholder' => 'Nationalité*',
                     'class' => 'form-control',
                 ),
-                'required' => true,
+                'required' => false,
             ))
 
             -> add('permis_travail', ChoiceType::class, array(

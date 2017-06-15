@@ -38,7 +38,7 @@ class ExperienceType extends AbstractType
         -> add('nom', TextType::class, array(
             'constraints' => array(
             ),
-            'required' => true,
+            'required' => false,
             'attr' => array(
                 'placeholder' => 'Nom de la structure*',
                 'class' => 'form-control',
@@ -69,7 +69,7 @@ class ExperienceType extends AbstractType
                 'Transports / Logistique' => 'transports-logistique'
 
             ),
-            'required' => true,
+            'required' => false,
         ))
         
         -> add('description', TextType::class, array(
@@ -121,7 +121,7 @@ class ExperienceType extends AbstractType
                 'placeholder' => 'Intitulé du poste*',
                 'class' => 'form-control',
             ),
-            'required' => true,
+            'required' => false,
         ))
 
         -> add('role', TextareaType::class, array(
@@ -131,7 +131,7 @@ class ExperienceType extends AbstractType
                 'placeholder' => 'Rôle dans la structure*',
                 'class' => 'form-control',
             ),
-            'required' => true,
+            'required' => false,
         ))
 
         -> add('lieu', TextType::class, array(
@@ -141,7 +141,7 @@ class ExperienceType extends AbstractType
                 'placeholder' => 'Localisation du poste*',
                 'class' => 'form-control',
             ),
-            'required' => true,
+            'required' => false,
         ))
 
         -> add('date_debut', ChoiceType::class, array(
@@ -163,7 +163,7 @@ class ExperienceType extends AbstractType
             ),
             'expanded' => false,
             'multiple' => false,
-            'required' => true,
+            'required' => false,
         ))
 
         -> add('date_fin', ChoiceType::class, array(
@@ -185,7 +185,7 @@ class ExperienceType extends AbstractType
             ),
             'expanded' => false,
             'multiple' => false,
-            'required' => true,
+            'required' => false,
         ))
 
         -> add('responsabilite1', TextType::class, array(
@@ -195,7 +195,7 @@ class ExperienceType extends AbstractType
                 'placeholder' => '1 *',
                 'class' => 'form-control',
             ),
-            'required' => true,
+            'required' => false,
         ))
 
         -> add('responsabilite2', TextType::class, array(
@@ -205,7 +205,7 @@ class ExperienceType extends AbstractType
                 'placeholder' => '2 *',
                 'class' => 'form-control',
             ),
-            'required' => true,
+            'required' => false,
         ))
 
         -> add('responsabilite3', TextType::class, array(
@@ -215,7 +215,7 @@ class ExperienceType extends AbstractType
                 'placeholder' => '3 *',
                 'class' => 'form-control',
             ),
-            'required' => true,
+            'required' => false,
         ))
 
         -> add('responsabilite4', TextType::class, array(
@@ -245,7 +245,7 @@ class ExperienceType extends AbstractType
                 'placeholder' => '1 *',
                 'class' => 'form-control',
             ),
-            'required' => true,
+            'required' => false,
         ))
 
         -> add('realisation2', TextType::class, array(
@@ -255,7 +255,7 @@ class ExperienceType extends AbstractType
                 'placeholder' => '2 *',
                 'class' => 'form-control',
             ),
-            'required' => true,
+            'required' => false,
         ))
 
         -> add('realisation3', TextType::class, array(
@@ -265,7 +265,7 @@ class ExperienceType extends AbstractType
                 'placeholder' => '3 *',
                 'class' => 'form-control',
             ),
-            'required' => true,
+            'required' => false,
         ))
 
         -> add('realisation4', TextType::class, array(

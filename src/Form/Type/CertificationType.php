@@ -38,7 +38,7 @@ class CertificationType extends AbstractType
                 'placeholder' => 'Intitulé*',
                 'class' => 'form-control',
             ),
-            'required' => true,
+            'required' => false,
         ))
 
         -> add('etablissement', TextType::class, array(
@@ -48,7 +48,7 @@ class CertificationType extends AbstractType
                 'placeholder' => 'Etablissement*',
                 'class' => 'form-control',
             ),
-            'required' => true,
+            'required' => false,
         ))
 
         -> add('specialite', TextType::class, array(
