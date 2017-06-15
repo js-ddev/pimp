@@ -3,6 +3,7 @@
 namespace Form\Type;
 
 use Entity\Membre;
+use Entity\Password;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
