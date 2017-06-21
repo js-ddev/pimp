@@ -32,7 +32,7 @@ class PayumProvider implements ServiceProviderInterface
                 // cette ligne sert à ajouter notre storage BDD,ex :
                 // -> addStorage('\Model\CommandeDAO', new CommandeDAO())
                 ->setGenericTokenFactoryPaths(array(
-                    'capture' => $app['url_generator']->generate('payment_done'),
+                    'capture' => $app['url_generator']->generate('payment_capture'),
                     // 'notify' => $app['url_generator']->generate('payment_notify'),
                     // 'authorize' => $app['url_generator']->generate('payment_authorize'),
                     // 'refund' => $app['url_generator']->generate('payment_refund')
