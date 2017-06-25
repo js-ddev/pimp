@@ -33,7 +33,6 @@
 										<div class="col-md-7 col-md-offset-5">
 											<div class="text-content pdd-horizon-60 pdd-vertical-60">
 												<h3 class="mrg-btm-30 mrg-top-15">Inscription</h3>
-												{% if inscriptionForm %}
 												{{ form_start(inscriptionForm) }}
 												<form method="post">
 													<div class="row">
@@ -68,7 +67,6 @@
 															<div class="form-wrapper">
 																<input class="btn btn-md btn-dark" type="submit" value="Inscription"><br>
 																{{ form_end(inscriptionForm) }}
-																{% endif %}
 																<span class="mrg-top-10 text-gray">Vous avez déjà un compte ? <a class="theme-color" href="{{ path('connexion') }}">Se connecter</a></span>
 															</div>
 														</div>

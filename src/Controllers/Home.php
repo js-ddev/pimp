@@ -126,10 +126,54 @@ class Home
 
 // Adrien - Controller pour gestion du formulaire de réinitlisation du mot de passe
 
-    public function password_init(Application $app){
-        return $app['twig']->render('password_init.html.twig', array(
-            'title' => 'Réinitialiser le mot de passe')
+    public function password_init(Request $request, Application $app){
+
+        $membre = new \Entity\Membre;
+
+        $inscriptionForm = $app['form.factory'] -> create(\Form\Type\InscriptionType::class, $membre);
+
+        $inscriptionForm -> handleRequest($request);
+
+        if($inscriptionForm -> isSubmitted() && $inscriptionForm -> isValid()){
+
+            // Adrien - Vérification de la présence de l'email dans la base et récupération de l'id du membre :
+            $email = $membre -> getUsername();
+            $id = $app['dao.membre'] -> findByUsername($email);
+
+            // Gestion de l'absence de l'email dans la base et renvoi vers l'incription (à améliorer) :
+            if(is_null($id)){
+
+                header("Location:/inscription");
+                exit();
+            }
+            else{
+            $salt = substr(md5(time()), 0, 23);
+            $membre -> setSalt($salt);
+
+            $password = $membre -> getPassword();
+
+            $password_encode = $app["security.encoder.bcrypt"]->encodePassword($password, $membre->getSalt());
+
+            $membre -> setPassword($password_encode);
+
+            //!\\ Adrien - La fonction save($membre) devrait permettre de faire un update du password (non fonctionnel !!)
+            $app['dao.membre'] -> save($membre);
+            $app['session'] -> getFlashBag() -> add('success', 'Votre réinitlisation de mot de passe a bien été prise en compte !');
+
+            // Adrien - Redirection suite à la réinitialisation du mot de passe
+            return $app->redirect('/connexion');
+            }
+        }
+
+        $inscriptionFormView = $inscriptionForm -> createView();
+
+        $params = array(
+            'title' => 'Réinitialisation du mot de passe',
+            'inscriptionForm' => $inscriptionFormView,
+            'erreur' => '',
         );
+
+        return $app['twig']->render('password_init.html.twig', $params);
     }
 
 
