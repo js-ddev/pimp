@@ -1,0 +1,17 @@
+{% extends "layout2.html.twig" %}
+
+{% block content %}
+
+<script src="https://checkout.stripe.com/checkout.js"></script>
+
+<form action="charge.php" method="post">
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="{{stripe['publishable_key']}}"
+        data-name="pimpmycv.fr"
+        data-description="Pack standard"
+        data-amount="5000"
+        data-locale="eur">
+    </script>
+</form>
+
+{% endblock %}
