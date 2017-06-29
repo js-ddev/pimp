@@ -85,7 +85,7 @@ class Home
 
         if($passwordForm -> isSubmitted() && $passwordForm -> isValid()){
 
-            // Adrien - On récupère l'email rentré dans le formulaire et l'id du membre 
+            // Adrien - On récupère l'email rentré dans le formulaire et l'id du membre
             $email = $membre -> getUsername();
             $id = $app['dao.membre'] -> findByUsername($email) -> getId();
 
@@ -103,7 +103,7 @@ class Home
             ->setFrom(array('adrien.malavialle@gmail.com'))
             ->setTo($email)
             ->setBody('Pour réinitialiser votre mot de passe veuillez cliquer sur le lien suivant : <a href="www.pimpmycv.dev/connexion/password_init">Réinitialiser mon mot de passe</a>', 'text/html');
-       
+
 
             $app['mailer']->send($message);
 
