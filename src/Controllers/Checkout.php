@@ -36,8 +36,13 @@ use Payum\Core\Reply\HttpResponse;
 use Entity\Commande;
 
 // Ajout pour le paiement test Payum
-class Gertrude
+class Checkout
 {
+
+
+	public function checkout(Application $app){
+		return $app['twig']->render('checkout.html');
+	}
 
 	public function preparePayment(Application $app)
 	{

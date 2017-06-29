@@ -50,8 +50,8 @@ class PayumProvider implements ServiceProviderInterface
                 ->addGateway('myGateway', [
                     'factory' => 'offline'
                 ])
-                ->addGateway('stripe_js', [
-                    'factory' => 'stripe_js',
+                ->addGateway('gatewayName', [
+                    'factory' => 'stripe_checkout',
                     'publishable_key' => 'pk_live_v4vmiyrKnx0NobwRTVHVbKpM',
                     'secret_key' => 'test'
                 ])
