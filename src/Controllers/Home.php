@@ -44,14 +44,14 @@ class Home
         );
     }
 
-    public function recapitulatif_commande(Application $app){
-        $commande = $app['dao.commande'] -> findRudy(1);
-        return $app['twig']->render('recapitulatif_commande.html.twig',
-            array(
-            'title' => 'Récapitulatif de votre commande',
-            'commande' => $commande)
-        );
-    }
+    // public function recapitulatif_commande(Application $app){
+    //     $commande = $app['dao.commande'] -> findRudy(1);
+    //     return $app['twig']->render('recapitulatif_commande.html.twig',
+    //         array(
+    //         'title' => 'Récapitulatif de votre commande',
+    //         'commande' => $commande)
+    //     );
+    // }
 
     public function paiement(Application $app){
         return $app['twig']->render('paiement.html.twig', array(
@@ -307,7 +307,7 @@ class Home
                 $app['session'] -> getFlashBag() -> add('success', 'Formulaire pris en compte !');
 
                 // Adrien - Redirection suite à la sousmission Pimp It pour step2 form wizard
-                return $app->redirect('/pimpit/cv');
+                return $app->redirect('/cv');
             }
 
             $pimpitFormView = $pimpitForm -> createView();

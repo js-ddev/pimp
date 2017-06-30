@@ -1,0 +1,80 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+	<!-- Page Tittle Start -->
+        <section class="page-tittle page-tittle-md bg dark-overlay" style="background-image: url({{ asset('images/bg-2.jpg') }})">
+            <div class="container">                         
+                <div class="page-tittle-head display-block text-center">
+                    <h2>Paiement</h2>
+                </div>
+            </div>
+        </section>
+        <!-- Page Tittle End -->
+        
+        
+        <!-- Checkout Start -->
+        <section class="section-1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h2 class="mrg-btm-30">Modes de paiement</h2>
+                        <div class="card padding-30">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="radio mrg-btm-10">
+                                        <input type="radio" name="group1" id="radio1" checked="">
+                                        <label for="radio1"><span class="lh-0 font-size-22 pdd-left-10 ls-0-5"><b>Paypal</b></span></label>
+                                    </div>
+                                    <p class="pdd-left-40 width-90">PayPal is a service that enables you to pay, send money, and accept payments without revealing your financial details.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card padding-30">
+                            <div class="row border bottom pdd-btm-20">
+                                <div class="col-md-9">
+                                    <div class="radio mrg-btm-10">
+                                        <input type="radio" name="group1" id="radio2">
+                                        <label for="radio2"><span class="lh-0 font-size-22 pdd-left-10 ls-0-5"><b>Credit Cards</b></span></label>
+                                    </div>
+                                    <p class="pdd-left-40 width-90">We Accept U.S. businesses can accept Visa, MasterCard, American Express, JCB, Discover.</p>
+                                </div>
+                            </div>
+                            <form class="mrg-top-30">
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <label><span class="pdd-left-5"><b>CREDIT CARD NUMBER</b></span></label>
+                                        <input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="form-control" placeholder="Number here">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label><span class="pdd-left-5"><b>CVV Code</b></span></label>
+                                        <input type="text" class="form-control" placeholder="Code here">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label><span class="pdd-left-5"><b>Expired Date</b></span></label>
+                                        <input type="text" class="form-control" placeholder="MM/YY">
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label><span class="pdd-left-5"><b>Cardholder Name</b></span></label>
+                                        <input type="text" class="form-control" placeholder="Card Name">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card pdd-horizon-30 pdd-vertical-25 mrg-top-80">
+                            <div class="border bottom">
+                                <h3 class="mrg-btm-30">Order Summary</h3>
+                                <p>Subtotal: <span class="pull-right">$1,600</span></p>
+                                <p>Shipping: <span class="pull-right">$30</span></p>
+                                <p class="mrg-top-20">Discount: <span class="pull-right">$300</span></p>
+                            </div>
+                            <p class="mrg-top-20">Grand Total: <span class="pull-right text-dark font-size-18"><b>€250</b></span></p>
+                        </div>
+                        <a href="{{ path('validation_commande') }}"><button class="btn btn-block btn-dark">Valider</button></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Checkout End -->
+{% endblock %}

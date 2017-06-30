@@ -1,80 +1,197 @@
 {% extends "layout.html.twig" %}
 
 {% block content %}
-	<!-- Page Tittle Start -->
-        <section class="page-tittle page-tittle-md bg dark-overlay" style="background-image: url({{ asset('images/bg-2.jpg') }})">
-            <div class="container">                         
+
+    <noscript>You must <a href="http://www.enable-javascript.com" target="_blank">Activez JavaScript</a> pour pouvoir payer votre commande avec notre partenaire Stripe !</noscript>
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+	 <!-- Page Tittle Start -->
+        <section class="page-tittle page-tittle-md bg dark-overlay" style="background-image: url({{ asset('images/bg-2.jpg') }}">
+            <div class="container">
                 <div class="page-tittle-head display-block text-center">
-                    <h2>Paiement</h2>
+                    <h2>Récapitulatif de la commande</h2>
                 </div>
             </div>
         </section>
         <!-- Page Tittle End -->
-        
-        
-        <!-- Checkout Start -->
-        <section class="section-1">
+
+        <!-- Form wizard -->
+        <div class="container">
+            <div class="row">
+                <section>
+                <div class="wizard">
+                    <div class="wizard-inner">
+                        <div class="connecting-line"></div>
+                        <ul class="nav nav-tabs" role="tablist">
+
+                            <li role="presentation">
+                                <a href="{{ path('pimpit') }}" aria-controls="step1" role="tab" title="Informations générales">
+                                    <span class="round-tab">
+                                        <i class="glyphicon glyphicon-folder-open"></i>
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li role="presentation">
+                                <a href="{{ path('cv') }}" aria-controls="step2" role="tab" title="Contenu de votre CV">
+                                    <span class="round-tab">
+                                        <i class="glyphicon glyphicon-pencil"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="{{ path('template_options') }}" aria-controls="step3" role="tab" title="Template et options">
+                                    <span class="round-tab">
+                                        <i class="glyphicon glyphicon-picture"></i>
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li role="presentation" class="active">
+                                <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Récapitulatif">
+                                    <span class="round-tab">
+                                        <i class="glyphicon glyphicon-ok"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="card pdd-horizon-30 pdd-vertical-50 mrg-top-30">
+                            <div class="">
+                                <h3 class="mrg-btm-30">Résumé de votre commande :</h3>
+                                <p>Numéro de la commande: <span class="pull-right">{{ commande.Id }}</span></p>
+                                <p>Date commande: <span class="pull-right"> {{ commande.dateCommande|date("m/d/Y")}} </span></p>
+                                <p>Statut de la commande <span class="pull-right">{{ commande.statutCommande }} </span></p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+        <!-- Pricing Table 2 Start -->
+        <section class="section-3">
+            <h3 class="mrg-btm-30">Choix de votre formule :</h3>
             <div class="container">
                 <div class="row">
-                    <div class="col-md-8">
-                        <h2 class="mrg-btm-30">Modes de paiement</h2>
-                        <div class="card padding-30">
-                            <div class="row">
-                                <div class="col-md-9">
-                                    <div class="radio mrg-btm-10">
-                                        <input type="radio" name="group1" id="radio1" checked="">
-                                        <label for="radio1"><span class="lh-0 font-size-22 pdd-left-10 ls-0-5"><b>Paypal</b></span></label>
-                                    </div>
-                                    <p class="pdd-left-40 width-90">PayPal is a service that enables you to pay, send money, and accept payments without revealing your financial details.</p>
+                <div class="pricing-2 column-2">
+                    <div class="pricing-table">
+                        <div class="pricing-info">
+                            <div class="pricing-status">
+                                <i class="ei ei-cart"></i>
+                                <div class="plan border bottom">
+                                    <h2 class="mrg-btm-20">Standard</h2>
+                                    <span class="mrg-btm-10"><span class="font-size-25 theme-color price"><b>€100</b></span></span>
+                                    <p class="width-80 mrg-horizon-auto">Lorem Ipsum has been the industry's standard dummy text ever.</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="card padding-30">
-                            <div class="row border bottom pdd-btm-20">
-                                <div class="col-md-9">
-                                    <div class="radio mrg-btm-10">
-                                        <input type="radio" name="group1" id="radio2">
-                                        <label for="radio2"><span class="lh-0 font-size-22 pdd-left-10 ls-0-5"><b>Credit Cards</b></span></label>
-                                    </div>
-                                    <p class="pdd-left-40 width-90">We Accept U.S. businesses can accept Visa, MasterCard, American Express, JCB, Discover.</p>
-                                </div>
-                            </div>
-                            <form class="mrg-top-30">
-                                <div class="row">
-                                    <div class="form-group col-md-12">
-                                        <label><span class="pdd-left-5"><b>CREDIT CARD NUMBER</b></span></label>
-                                        <input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="form-control" placeholder="Number here">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label><span class="pdd-left-5"><b>CVV Code</b></span></label>
-                                        <input type="text" class="form-control" placeholder="Code here">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label><span class="pdd-left-5"><b>Expired Date</b></span></label>
-                                        <input type="text" class="form-control" placeholder="MM/YY">
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label><span class="pdd-left-5"><b>Cardholder Name</b></span></label>
-                                        <input type="text" class="form-control" placeholder="Card Name">
-                                    </div>
-                                </div>
+                        <div class="pricing-footer">
+                            <form action="{{ path('validation') }}" method="post">
+
+
+                                    <input
+                                        type="submit"
+                                        value="Choisir la formule Standard"
+                                        data-key="{{stripe['publishable_key']}}"
+                                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                        data-amount="10000"
+                                        data-currency="eur"
+                                        data-name="PimpMyCV"
+                                        data-description="Formule standard"
+                                        data-locale="auto"
+                                        data-allow-remember-me="false"
+                                        class="btn btn-block btn-dark no-mrg-btm"
+                                    />
+
+                                    <script>
+                                    $(document).ready(function() {
+                                        $(':submit').on('click', function(event) {
+                                            event.preventDefault();
+                                            var $button = $(this),
+                                                $form = $button.parents('form');
+                                            var opts = $.extend({}, $button.data(), {
+                                                token: function(result) {
+                                                    $form.append($('<input>').attr({ type: 'hidden', name: 'stripeToken', value: result.id })).submit();
+                                                }
+                                            });
+                                            StripeCheckout.open(opts);
+                                        });
+                                    });
+                                    </script>
                             </form>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card pdd-horizon-30 pdd-vertical-25 mrg-top-80">
-                            <div class="border bottom">
-                                <h3 class="mrg-btm-30">Order Summary</h3>
-                                <p>Subtotal: <span class="pull-right">$1,600</span></p>
-                                <p>Shipping: <span class="pull-right">$30</span></p>
-                                <p class="mrg-top-20">Discount: <span class="pull-right">$300</span></p>
+                    <div class="pricing-table">
+                        <div class="pricing-info">
+                            <div class="pricing-status">
+                                <i class="ei ei-airplane-side"></i>
+                                <div class="plan border bottom">
+                                    <h2 class="mrg-btm-20">Premium</h2>
+                                    <span class="mrg-btm-10"><span class="font-size-25 theme-color price"><b>€250</b></span>
+                                    <p class="width-80 mrg-horizon-auto">Lorem Ipsum has been the industry's standard dummy text ever.</p>
+                                </div>
                             </div>
-                            <p class="mrg-top-20">Grand Total: <span class="pull-right text-dark font-size-18"><b>€250</b></span></p>
                         </div>
-                        <a href="{{ path('validation_commande') }}"><button class="btn btn-block btn-dark">Valider</button></a>
+                        <div class="pricing-footer">
+                            <form action="{{ path('validation') }}" method="post">
+
+
+                                    <input
+                                        type="submit"
+                                        value="Choisir la formule Premium"
+                                        data-key="{{stripe['publishable_key']}}"
+                                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                        data-amount="25000"
+                                        data-currency="eur"
+                                        data-name="PimpMyCV"
+                                        data-description="Formule Premium"
+                                        data-locale="auto"
+                                        data-allow-remember-me="false"
+                                        class="btn btn-block btn-dark no-mrg-btm"
+                                    />
+
+                                    <script>
+                                    $(document).ready(function() {
+                                        $(':submit').on('click', function(event) {
+                                            event.preventDefault();
+                                            var $button = $(this),
+                                                $form = $button.parents('form');
+                                            var opts = $.extend({}, $button.data(), {
+                                                token: function(result) {
+                                                    $form.append($('<input>').attr({ type: 'hidden', name: 'stripeToken', value: result.id })).submit();
+                                                }
+                                            });
+                                            StripeCheckout.open(opts);
+                                        });
+                                    });
+                                    </script>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
         </section>
-        <!-- Checkout End -->
-{% endblock %}
+        <!-- Pricing Table 2 End -->
+
+        <!-- Cart Start -->
+        <section class="section-6">
+
+        <div class="row mrg-top-50">
+            <ul class="list-inline pull-right">
+                <li><a href="{{ path('template_options') }}"><button type="button" class="btn btn-default prev-step">Etape précédente</button></a></li>
+            </ul>
+        </div>
+
+        </section>
+
+        <!-- Cart End -->
+
+
+
+    {% endblock %}

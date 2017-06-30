@@ -12,7 +12,7 @@
     </div>
 </section>
 <!-- Page Tittle End -->
-      
+
 <!-- Form wizard -->
 <div class="container">
     <div class="row">
@@ -69,7 +69,7 @@
                                     <div class="form-group features-info">
                                         <span class="features-tittle theme-color">Template</span>
                                         {{ form_errors(optionForm.template) }}
-                                        {{ form_widget(optionForm.template) }}                                   
+                                        {{ form_widget(optionForm.template) }}
                                     </div>
                                 </div>
                                 <div class="features-block-2 col-md-6">
@@ -87,16 +87,16 @@
                                     </div>
                                     <div id="couleur-marron" class="couleur col-md-6">
                                     <img class="img-responsive" id"jepue" src="{{ asset('images/palette-XX.png') }}" alt="">
-                                    </div> 
+                                    </div>
                                     <div class="form-group features-info">
                                         <span class="features-tittle theme-color">Couleur</span>
                                         {{ form_errors(optionForm.couleur) }}
                                         {{ form_widget(optionForm.couleur) }}
                                     </div>
                                 </div>
-                               
+
                                  <div class="features-block-2 col-md-6">
-                                    
+
                                     <div id="puce-1" class="puce puce-first col-md-6">
                                     <img class="img-responsive" src="{{ asset('images/puce-1.ico') }}" alt="">
                                     </div>
@@ -172,12 +172,12 @@
                                 <img class="img-responsive" src="{{ asset('images/modele-cv4.jpg') }}" alt="">
                             </div>
                         </div>
-                          
+
 
             <div class="row mrg-top-50">
                 <ul class="list-inline pull-right">
-                    <li><a href="{{ path('pimpit_cv') }}"><button type="button" class="btn btn-default prev-step">Etape précédente</button></a></li>
-                    <li><a href="{{ path('recapitulatif_commande') }}"><button type="button" class="btn btn-md btn-dark next step">Etape suivante</button></a></li>
+                    <li><a href="{{ path('cv') }}"><button type="button" class="btn btn-default prev-step">Etape précédente</button></a></li>
+                    <li><a href="{{ path('paiement') }}"><button type="button" class="btn btn-md btn-dark next step">Etape suivante</button></a></li>
                 </ul>
             </div>
         </div>
