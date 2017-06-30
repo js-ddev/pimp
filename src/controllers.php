@@ -31,12 +31,14 @@ $bo = $app['controllers_factory'];
     $bo -> get('/gestion_commandes', 'Controllers\\Bo::gestion_commandes') ;
 
     // Deuxième page du formulaire Pimpit : remplissage du CV si l'utilisateur n'a pas envoyé de fichier :
-    $app -> match('/pimpit/cv1','Controllers\\Home::formulaire1') -> bind('pimpit_cv1');
-    $app -> match('/pimpit/cv','Controllers\\Home::formulaire') -> bind('pimpit_cv');
+    // $app -> match('/pimpit/cv1','Controllers\\Home::formulaire1') -> bind('pimpit_cv1');
+    $app -> match('/cv','Controllers\\Home::formulaire') -> bind('cv');
 
     $app -> match('/password','Controllers\\Home::password') -> bind('password');
 
-    $app -> match('/checkout','Controllers\Checkout::checkout') -> bind('checkout');
+    $app -> match('/checkout','Controllers\Checkout::paiement') -> bind('checkout');
+
+    $app -> match('/validation','Controllers\Checkout::validation') -> bind('validation');
 
 // Adrien :
 
@@ -55,11 +57,11 @@ $bo = $app['controllers_factory'];
 
     $app -> match('/template_options/','Controllers\\Home::option') -> bind('template_options');
 
-    $app -> get('/recapitulatif_commande','Controllers\\Home::recapitulatif_commande') -> bind('recapitulatif_commande');
+    // $app -> get('/recapitulatif_commande','Controllers\\Home::recapitulatif_commande') -> bind('recapitulatif_commande');
 
-    $app -> get('/paiement','Controllers\\Home::paiement') -> bind('paiement');
+    $app -> get('/paiement','Controllers\\Checkout::paiement') -> bind('paiement');
 
-    $app -> get('/validation_commande','Controllers\\Home::validation_commande') -> bind('validation_commande');
+    // $app -> get('/validation_commande','Controllers\\Home::validation_commande') -> bind('validation_commande');
 
 
     // Route pour formulaire d'inscription
