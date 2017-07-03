@@ -7,8 +7,8 @@
 	<img class="parallax-img no-mobile-parallax" src="{{ asset('images/about-bg1.jpg') }}" alt="" data-parallax='{"y": 150}'>
 	<div class="container">
 		<div class="page-tittle-head">
-			<h2>Pimp It !</h2>
-			<p>Pimper votre CV !</p>
+			<h1><small>Etape 1 : </small>Informations générales</h2>
+			<p>L'étape indispensable pour nous permettre de pimper votre CV !</p>
 		</div>
 	</div>
 </section>
@@ -19,42 +19,42 @@
 	<div class="row">
 		<section>
         <div class="wizard">
-            <div class="wizard-inner">
-                <div class="connecting-line"></div>
-                <ul class="nav nav-tabs" role="tablist">
+			<div class="wizard-inner">
+				<div class="connecting-line"></div>
+				<ul class="nav nav-tabs" role="tablist">
 
-                    <li role="presentation" class="active">
-                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Informations générales">
-                            <span class="round-tab">
-                                <i class="glyphicon glyphicon-folder-open"></i>
-                            </span>
-                        </a>
-                    </li>
+					<li role="presentation" class="active">
+						<a href="{{ path('pimpit') }}" aria-controls="step1" role="tab" title="Informations générales">
+							<span class="round-tab">
+								<i class="glyphicon glyphicon-folder-open"></i>
+							</span>
+						</a>
+					</li>
 
-                    <li role="presentation" class="disabled">
-                        <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Contenu de votre CV">
-                            <span class="round-tab">
-                                <i class="glyphicon glyphicon-pencil"></i>
-                            </span>
-                        </a>
-                    </li>
-                    <li role="presentation" class="disabled">
-                        <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Template et options">
-                            <span class="round-tab">
-                                <i class="glyphicon glyphicon-picture"></i>
-                            </span>
-                        </a>
-                    </li>
+					<li role="presentation">
+						<a href="" aria-controls="step2" role="tab" title="Contenu de votre CV">
+							<span class="round-tab">
+								<i class="glyphicon glyphicon-pencil"></i>
+							</span>
+						</a>
+					</li>
+					<li role="presentation">
+						<a href="" aria-controls="step3" role="tab" title="Template et options">
+							<span class="round-tab">
+								<i class="glyphicon glyphicon-picture"></i>
+							</span>
+						</a>
+					</li>
 
-                    <li role="presentation" class="disabled">
-                        <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Récapitulatif">
-                            <span class="round-tab">
-                                <i class="glyphicon glyphicon-ok"></i>
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+					<li role="presentation">
+						<a href="" data-toggle="tab" aria-controls="complete" role="tab" title="Récapitulatif">
+							<span class="round-tab">
+								<i class="glyphicon glyphicon-ok"></i>
+							</span>
+						</a>
+					</li>
+				</ul>
+			</div>
 
             <!-- Pimp It ! -->
             {{ form_start(pimpitForm) }}
@@ -62,7 +62,7 @@
 			{{ form_widget(pimpitForm.id,{value : app.user.id}) }}
                 <div class="tab-content">
                     <div class="tab-pane active" role="tabpanel" id="step1">
-                        <h2>Informations générales</h2>
+                        <!-- <h2>Informations générales</h2> -->
                         <div class="container">
 							<div class="row">
 								<h3>A votre sujet :</h3>
@@ -114,6 +114,8 @@
 								<div class="form-group">
 									{{ form_widget(pimpitForm.cv) }}
 								</div>
+
+								<p>Sinon pas de problème, vous pourrez remplir votre futur CV à la page suivante !</p>
 
 								<div class="form-group">
 									<ul class="list-inline pull-right">

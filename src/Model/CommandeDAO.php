@@ -72,12 +72,6 @@ class CommandeDAO extends DAO/* implements StorageInterface*/
             'prix' => $commande -> getPrix(),
             'commentaires' => $commande -> getCommentaires(),
             'number' => $commande -> getNumber(),
-            'currency_code' => $commande -> getCurrencyCode(),
-            'total_amount' => $commande -> getTotalAmount(),
-            'description' => $commande -> getDescription(),
-            'client_id' => $commande -> getClientId(),
-            'client_email' => $commande -> getClientEmail(),
-            'details' => $commande -> getDetails(),
         );
         // Didier - Back office commande - Modifier les données d'une commande ou créer une commande
         ///////////////////////////////////////////////////////////////////
@@ -112,12 +106,6 @@ class CommandeDAO extends DAO/* implements StorageInterface*/
         $commande -> setPrix($value['prix']);
         $commande -> setCommentaires($value['commentaires']);
         $commande -> getNumber($value['number']);
-        $commande -> getCurrencyCode($value['currency_code']);
-        $commande -> getTotalAmount($value['total_amount']);
-        $commande -> getDescription($value['number']);
-        $commande -> getClientId($value['client_id']);
-        $commande -> getClientEmail($value['client_email']);
-        $commande -> getDetails($value['details']);
 
         return $commande;
     }
@@ -139,10 +127,10 @@ class CommandeDAO extends DAO/* implements StorageInterface*/
         }
     }*/
 
-    public function findRudy($id_cv){
+    public function findRudy($id_cv, $id_membre){
 
-   $requete = "SELECT * FROM commande WHERE id_cv = ?";
-        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_cv));
+   $requete = "SELECT * FROM commande WHERE id_cv = ? AND id_membre = ?";
+        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_cv, $id_membre));
 
      if($resultat){
             return $this -> buildEntityObject($resultat);
@@ -150,27 +138,13 @@ class CommandeDAO extends DAO/* implements StorageInterface*/
         else{
             throw new \Exception("Aucune commande à l'id:" . $id_cv);
         }
-          return $commande;
+          return $options;
     }
 
 /*    "SELECT co.date_commande, co.statut_commande, co.prix, op.couleur, op.puce, op.fond, op.indicateur_performance, op.activite, c.email_cv
     FROM commande co, options op, c cv
     where co.id_cv = op.id_cv
     And c.id_membre = co.id_membre";*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

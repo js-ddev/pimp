@@ -10,6 +10,7 @@ class Options
 {
     private $id;
     private $id_cv;
+    private $id_membre;
     private $template;
     private $nombre_pages;
     private $couleur;
@@ -63,6 +64,30 @@ class Options
     public function setIdCv($id_cv)
     {
         $this->id_cv = $id_cv;
+
+        return $this;
+    }
+
+    /**
+     * Gets the value of id_cv.
+     *
+     * @return mixed
+     */
+    public function getIdMembre()
+    {
+        return $this->id_membre;
+    }
+
+    /**
+     * Sets the value of id_cv.
+     *
+     * @param mixed $id_cv the id cv
+     *
+     * @return self
+     */
+    public function setIdMembre($id_membre)
+    {
+        $this->id_membre = $id_membre;
 
         return $this;
     }
