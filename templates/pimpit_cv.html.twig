@@ -7,8 +7,8 @@
 	<img class="parallax-img no-mobile-parallax" src="{{ asset('images/about-bg1.jpg') }}" alt="" data-parallax='{"y": 150}'>
 	<div class="container">
 		<div class="page-tittle-head">
-			<h2>Pimp It !</h2>
-			<p>Pimper votre CV !</p>
+			<h1><small>Etape 2 : </small>Contenu de votre CV</h1>
+			<p>Si vous ne nous avez envoyé de fichier, merci de nous indiquer impérativement le contenu de votre futur CV :</p>
 		</div>
 	</div>
 </section>
@@ -19,49 +19,49 @@
 	<div class="row">
 		<section>
         <div class="wizard">
-            <div class="wizard-inner">
-                <div class="connecting-line"></div>
-                <ul class="nav nav-tabs" role="tablist">
+			<div class="wizard-inner">
+				<div class="connecting-line"></div>
+				<ul class="nav nav-tabs" role="tablist">
 
-                    <li role="presentation" class="disabled">
-                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Informations personnelles">
-                            <span class="round-tab">
-                                <i class="glyphicon glyphicon-folder-open"></i>
-                            </span>
-                        </a>
-                    </li>
+					<li role="presentation">
+						<a href="{{ path('pimpit') }}" aria-controls="step1" role="tab" title="Informations générales">
+							<span class="round-tab">
+								<i class="glyphicon glyphicon-folder-open"></i>
+							</span>
+						</a>
+					</li>
 
-                    <li role="presentation" class="active">
-                        <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Contenu du CV">
-                            <span class="round-tab">
-                                <i class="glyphicon glyphicon-pencil"></i>
-                            </span>
-                        </a>
-                    </li>
-                    <li role="presentation" class="disabled">
-                        <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Template et options">
-                            <span class="round-tab">
-                                <i class="glyphicon glyphicon-picture"></i>
-                            </span>
-                        </a>
-                    </li>
+					<li role="presentation" class="active">
+						<a href="{{ path('cv') }}" aria-controls="step2" role="tab" title="Contenu de votre CV">
+							<span class="round-tab">
+								<i class="glyphicon glyphicon-pencil"></i>
+							</span>
+						</a>
+					</li>
+					<li role="presentation">
+						<a href="" aria-controls="step3" role="tab" title="Template et options">
+							<span class="round-tab">
+								<i class="glyphicon glyphicon-picture"></i>
+							</span>
+						</a>
+					</li>
 
-                    <li role="presentation" class="disabled">
-                        <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Récapitulatif">
-                            <span class="round-tab">
-                                <i class="glyphicon glyphicon-ok"></i>
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+					<li role="presentation">
+						<a href="" data-toggle="tab" aria-controls="complete" role="tab" title="Récapitulatif">
+							<span class="round-tab">
+								<i class="glyphicon glyphicon-ok"></i>
+							</span>
+						</a>
+					</li>
+				</ul>
+			</div>
 
             <!-- Formulaire -->
             {{ form_start(formulaireForm)}}
 			{{ form_errors(formulaireForm)}}
                 <div class="tab-content">
                     <div class="tab-pane active" role="tabpanel" id="step2">
-                        <h3>Contenu de votre CV</h3>
+                        <!-- <h3 class="heading-1">Contenu de votre CV :</h3> -->
 
                         <div class="container">
 							<div class="row">
@@ -171,8 +171,6 @@
 														    {% endif %}
 
 														{{ form_widget(experience.type,{value :'entreprise'}) }}
-
-															<h4>Entreprise :</h4>
 
 															<div class="form-group">
 																<label for="nom">Nom de l'entreprise*</label>

@@ -27,7 +27,9 @@ class Checkout
 
 		\Stripe\Stripe::setApiKey($stripe['secret_key']);
 
-	    $commande = $app['dao.commande'] -> findRudy(1);
+		// Vérification de l'id du CV et de l'id du membre connecté pour afficher la page (TODO : Faire une page d'erreur si le GET est changé)
+	    $options = $app['dao.options'] -> findPaiement($_GET['id'], $app['user'] -> getId());
+		$commande = new \Entity\Commande;
 
 		$params = array(
 			'title' => 'Récapitulatif de votre commande et paiement',

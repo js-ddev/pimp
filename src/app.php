@@ -75,17 +75,6 @@ $app['dao.password'] = function ($app) {
     return new Model\PasswordDAO($app['db']);
 };
 
-// Rudy - Enregistrement des services obligatoires pour le paiement:
-$app->register(new Payum\PayumProvider());
-
-$app['payum.security.token_storage'] = function($app) {
-    return new FilesystemStorage( realpath(__DIR__.'/../storage/tokens'), 'Payum\Core\Model\Token', 'hash');
-};
-
-$app['payum.security.token_storage'] = (function($app) {
-    return new FilesystemStorage(__DIR__.'/../storage/tokens', 'Payum\Core\Model\Token', 'hash');
-});
-
 
 
 // Adrien - Enregistrement des services pour les formulaires

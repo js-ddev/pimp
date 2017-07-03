@@ -4,10 +4,10 @@ namespace Model;
 
 use Entity\Cv;
 use Entity\Options;
+use Entity\Membre;
 
 class OptionsDAO extends DAO
 {
-
 
 
 /*
@@ -37,21 +37,33 @@ class OptionsDAO extends DAO
     *
     * @return \Entity\Cv|throws an exception si pas de matching
     */
-   public function find($id_cv){
-        $requete = "SELECT * FROM options WHERE id_cv = ?";
-        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_cv));
+    public function find($id_membre){
+        $requete = "SELECT * FROM options WHERE id_membre = ?";
+        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_membre));
 
         if($resultat){
             return $this -> buildEntityObject($resultat);
         }
         /*
         else{
-            throw new \Exception("Aucun CV à l'id_membre:" . $id_membre);
-        }
-        */
+        throw new \Exception("Aucun CV à l'id_membre:" . $id_membre);
+    }
+    */
         }
 
+    public function findPaiement($id_cv, $id_membre){
 
+        $requete = "SELECT * FROM options WHERE id_cv = ? AND id_membre = ?";
+            $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_cv, $id_membre));
+
+        if($resultat){
+                return $this -> buildEntityObject($resultat);
+            }
+            else{
+                throw new \Exception("Aucune commande à l'id:" . $id_cv);
+            }
+            return $options;
+    }
 
 
     /**
@@ -61,10 +73,11 @@ class OptionsDAO extends DAO
     *
     * @return \pimp\Entity\cv
     */
-    public function saveOptions(Options $options, $cv){
+    public function saveOptions(Options $options, CV $cv, Membre $membre){
         $optionsData = array(
             'id' => $options -> getId(),
             'id_cv' => $cv -> getId(),
+            'id_membre' => $membre -> getId(),
             'template' => $options -> getTemplate(),
             'nombre_pages' => $options -> getNombrePages(),
             'couleur' => $options -> getCouleur(),

@@ -331,23 +331,46 @@ class Home
 // Rudy - Route pour la génération du formulaire options :
 
     public function option(Request $request, Application $app){
-        $options = new \Entity\Options;
-        $optionForm = $app['form.factory'] -> create(\Form\Type\OptionType::class, $options);
 
-        $optionForm -> handleRequest($request);
+        if(is_null($app['dao.options'] -> find($app['user'] -> getId()))){
 
-        if($optionForm -> isSubmitted() && $optionForm -> isValid()){
-            $membre = $app['dao.membre'] -> find($app['user'] -> getId());
-            $cv = $app['dao.cv'] -> find($membre -> getId());
-            $app['dao.options'] -> saveOptions($options, $cv);
-            $app['session'] -> getFlashBag() -> add('success', 'vos options sont prises en compte !');
+            $options = new \Entity\Options;
+            $optionForm = $app['form.factory'] -> create(\Form\Type\OptionType::class, $options);
+            $message ="";
+
+            $optionForm -> handleRequest($request);
+
+            if($optionForm -> isSubmitted() && $optionForm -> isValid()){
+                $membre = $app['dao.membre'] -> find($app['user'] -> getId());
+                $cv = $app['dao.cv'] -> find($membre -> getId());
+                $message = "Vos options ont étés enregistrées !";
+                $app['dao.options'] -> saveOptions($options, $cv, $membre);
+            }
+        }
+
+        else{
+
+            $options = $app['dao.options'] -> find($app['user'] -> getId());
+            $optionForm = $app['form.factory'] -> create(\Form\Type\OptionType::class, $options);
+            $message ="Vos choix sont bien enregistrés";
+
+            $optionForm -> handleRequest($request);
+
+            if($optionForm -> isSubmitted() && $optionForm -> isValid()){
+                $membre = $app['dao.membre'] -> find($app['user'] -> getId());
+                $cv = $app['dao.cv'] -> find($membre -> getId());
+                $message = "Vos modifications ont étés enregistrées !";
+                $app['dao.options'] -> saveOptions($options, $cv, $membre);
+            }
         }
 
         $optionFormView = $optionForm -> createView();
 
         $params = array(
             'title' => 'Options',
-            'optionForm' => $optionFormView
+            'optionForm' => $optionFormView,
+            'message' => $message,
+            'options' => $options
         );
 
         return $app['twig']->render('template_options.html.twig', $params);

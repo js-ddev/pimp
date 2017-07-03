@@ -6,8 +6,8 @@
     <img class="parallax-img no-mobile-parallax" src="{{ asset('images/bg-2.jpg') }}" alt="" data-parallax='{"y": 150}'>
     <div class="container">
         <div class="page-tittle-head">
-            <h2>Template et options</h2>
-            <p>Choix de votre template et de vos options graphiques</p>
+            <h1><small>Etape 3 : </small>Personnalisez votre CV</h1>
+            <p>Choix de votre style et de vos options graphiques</p>
         </div>
     </div>
 </section>
@@ -19,55 +19,56 @@
         <section>
         <div class="wizard">
             <div class="wizard-inner">
-                <div class="connecting-line"></div>
-                <ul class="nav nav-tabs" role="tablist">
+				<div class="connecting-line"></div>
+				<ul class="nav nav-tabs" role="tablist">
 
-                    <li role="presentation" class="disabled">
-                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Informations générales">
-                            <span class="round-tab">
-                                <i class="glyphicon glyphicon-folder-open"></i>
-                            </span>
-                        </a>
-                    </li>
+					<li role="presentation">
+						<a href="{{ path('pimpit') }}" aria-controls="step1" role="tab" title="Informations générales">
+							<span class="round-tab">
+								<i class="glyphicon glyphicon-folder-open"></i>
+							</span>
+						</a>
+					</li>
 
-                    <li role="presentation" class="disabled">
-                        <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Contenu de votre CV">
-                            <span class="round-tab">
-                                <i class="glyphicon glyphicon-pencil"></i>
-                            </span>
-                        </a>
-                    </li>
-                    <li role="presentation" class="active">
-                        <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Template et options">
-                            <span class="round-tab">
-                                <i class="glyphicon glyphicon-picture"></i>
-                            </span>
-                        </a>
-                    </li>
+					<li role="presentation">
+						<a href="{{ path('cv') }}" aria-controls="step2" role="tab" title="Contenu de votre CV">
+							<span class="round-tab">
+								<i class="glyphicon glyphicon-pencil"></i>
+							</span>
+						</a>
+					</li>
+					<li role="presentation" class="active">
+						<a href="{{ path('template_options') }}" aria-controls="step3" role="tab" title="Template et options">
+							<span class="round-tab">
+								<i class="glyphicon glyphicon-picture"></i>
+							</span>
+						</a>
+					</li>
 
-                    <li role="presentation" class="disabled">
-                        <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Récapitulatif">
-                            <span class="round-tab">
-                                <i class="glyphicon glyphicon-ok"></i>
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+					<li role="presentation">
+						<a href="" data-toggle="tab" aria-controls="complete" role="tab" title="Récapitulatif">
+							<span class="round-tab">
+								<i class="glyphicon glyphicon-ok"></i>
+							</span>
+						</a>
+					</li>
+				</ul>
+			</div>
 
             <div class="row mrg-top-50 features-block-2">
                 <section class="bg-gray">
                     <div class="container">
                         <div class="row">
+                            <h2 class="bg-success text-center">{{message}}</h2>
                             <!-- Début formulaire options -->
                             {{ form_start(optionForm) }}
                             <div class="col-md-5 col-md-offset-1 pdd-vertical-80">
-                            <h2 class="heading-1 right">Personnalisez votre Cv</h2>
+                            <h2 class="heading-2 right">Choisissez vos options :</h2>
                                 <div class="features-block-2 col-md-12 mrg-top-10"></div>
                                 <div class="features-block-2 col-md-6">
                                     <i class="ei-id-card-alt"></i>
                                     <div class="form-group features-info">
-                                        <span class="features-tittle theme-color">Template</span>
+                                        <span class="features-tittle theme-color">Style</span>
                                         {{ form_errors(optionForm.template) }}
                                         {{ form_widget(optionForm.template) }}
                                     </div>
@@ -147,7 +148,7 @@
                                     <i id="activite-icone" class="ei-football activites"></i>
 
                                     <div class="form-group features-info">
-                                        <span class="features-tittle theme-color">Style activités</span>
+                                        <span class="features-tittle theme-color">Activités</span>
                                         {{ form_errors(optionForm.activite) }}
                                         {{ form_widget(optionForm.activite) }}
                                     </div>
@@ -177,7 +178,7 @@
             <div class="row mrg-top-50">
                 <ul class="list-inline pull-right">
                     <li><a href="{{ path('cv') }}"><button type="button" class="btn btn-default prev-step">Etape précédente</button></a></li>
-                    <li><a href="{{ path('paiement') }}"><button type="button" class="btn btn-md btn-dark next step">Etape suivante</button></a></li>
+                    <li><a href="{{ path('paiement', {'id':options.idcv}) }}"><button type="button" class="btn btn-md btn-dark next step">Etape suivante</button></a></li>
                 </ul>
             </div>
         </div>

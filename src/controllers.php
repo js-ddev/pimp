@@ -86,7 +86,7 @@ $bo = $app['controllers_factory'];
     $app -> get('/login_bo','Controllers\\Bo::index') -> bind('login_bo');
 
     // Route pour redirection suite à la connexion admin
-    $bo -> get('/', 'Controllers\\Bo::accueil') -> bind('accueil');
+    $bo -> get('/', 'Controllers\\Bo::accueil') -> bind('/');
 
 // Rudy :
 

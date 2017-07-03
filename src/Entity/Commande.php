@@ -29,14 +29,6 @@ class Commande /*extends BasePayment*/
     private $prix;
     private $commentaires;
     protected $number;
-    protected $currency_code;
-    protected $total_amount;
-    protected $description;
-    protected $client_id;
-    protected $client_email;
-    protected $details;
-
-
 
 
     /**
