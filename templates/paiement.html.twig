@@ -57,22 +57,6 @@
                         </ul>
                     </div>
 
-                    <div class="row">
-
-                        <div class="card pdd-horizon-30 pdd-vertical-50 mrg-top-30">
-                            <div class="">
-                                <h3 class="mrg-btm-30">Résumé de votre commande :</h3>
-                                <p>Numéro de la commande: <span class="pull-right">{{ commande.Id }}</span></p>
-                                <p>Date commande: <span class="pull-right"> {{ commande.dateCommande|date("m/d/Y")}} </span></p>
-                                <p>Statut de la commande <span class="pull-right">{{ commande.statutCommande }} </span></p>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
         <!-- Pricing Table 2 Start -->
         <section class="section-3">
             <h3 class="mrg-btm-30">Choix de votre formule :</h3>
@@ -178,6 +162,22 @@
         </div>
         </section>
         <!-- Pricing Table 2 End -->
+
+
+        <div class="row">
+
+            <div class="card pdd-horizon-30 pdd-vertical-50 mrg-top-30">
+                <div class="">
+                    <h3 class="mrg-btm-30">Résumé de votre commande :</h3>
+                    <p>Numéro de la commande: <span class="pull-right">{{ commande.Id }}</span></p>
+                    <p>Date commande: <span class="pull-right"> {{ commande.dateCommande}} </span></p>
+                    <p>Statut de la commande <span class="pull-right">{{ commande.statutCommande }} </span></p>
+
+                </div>
+
+            </div>
+
+        </div>
 
         <!-- Cart Start -->
         <section class="section-6">

@@ -30,16 +30,53 @@ class CommandeDAO extends DAO/* implements StorageInterface*/
     *
     * @return \Entity\Membre|throws an exception si pas de matching
     */
-    public function find($id_commande){
+    public function find($id){
         $requete = "SELECT * FROM commande WHERE id = ?";
-        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_commande));
+        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id));
 
         if($resultat){
             return $this -> buildEntityObject($resultat);
         }
         else{
-            throw new \Exception("Aucune commande à l'id:" . $id_commande);
+            throw new \Exception("Aucune commande à l'id:" . $id);
         }
+        return $commande;
+    }
+
+    public function findMembre($id_membre){
+        $requete = "SELECT * FROM commande WHERE id_membre = ?";
+        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_membre));
+
+        if($resultat){
+            return $this -> buildEntityObject($resultat);
+        }
+        // else{
+        //     throw new \Exception("Aucune commande à l'id:" . $id);
+        // }
+        // return $commande;
+    }
+
+    public function findCv($id_cv){
+        $requete = "SELECT * FROM commande WHERE id_cv = ?";
+        $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_cv));
+
+        if($resultat){
+            return $this -> buildEntityObject($resultat);
+        }
+    }
+
+    public function findCommande($id_cv, $id_membre){
+
+        $requete = "SELECT * FROM commande WHERE id_cv = ? AND id_membre = ?";
+            $resultat = $this -> getDb() -> fetchAssoc($requete, array($id_cv, $id_membre));
+
+        if($resultat){
+                return $this -> buildEntityObject($resultat);
+            }
+            else{
+                throw new \Exception("Aucune commande à l'id:" . $id_cv);
+            }
+            return $commande;
     }
 
     public function findAll(){
@@ -87,6 +124,23 @@ class CommandeDAO extends DAO/* implements StorageInterface*/
         $commande -> setId($this -> getDb() -> lastInsertId());
     }
 
+    public function create(Commande $commande, CV $cv, Membre $membre){
+        $commandeData = array(
+            'id_cv' => $cv -> getId(),
+            'id_membre' => $membre -> getId(),
+            'statut_commande' => 'en attente',
+            'date_commande' => date("Y-m-d H:i:s"),
+        );
+
+        if($commande->getId()) { // Modifier une commande
+            $this->getDb()->update('commande', $commandeData, array('id'=>$commande->getId()));
+        }
+        else { // Créer une commande
+            $this -> getDb() -> insert('commande', $commandeData);
+        }
+        $commande -> setId($this -> getDb() -> lastInsertId());
+    }
+
     // Didier - Back office commande - Supprimer une commande dans la BDD
     public function deleteBo($id) {
 
@@ -95,8 +149,6 @@ class CommandeDAO extends DAO/* implements StorageInterface*/
 
     protected function BuildEntityObject(array $value){
         $commande = new Commande;
-
-// JS - Valeurs
         $commande -> setId($value['id']);
         $commande -> setIdMembre($value['id_membre']);
         $commande -> setIdCv($value['id_cv']);

@@ -27,9 +27,17 @@ class Checkout
 
 		\Stripe\Stripe::setApiKey($stripe['secret_key']);
 
-		// Vérification de l'id du CV et de l'id du membre connecté pour afficher la page (TODO : Faire une page d'erreur si le GET est changé)
+		// Vérification de l'id du CV et de l'id du membre connecté pour afficher la page (TODO : Faire une page d'erreur si le GET est changé dans l'url)
 	    $options = $app['dao.options'] -> findPaiement($_GET['id'], $app['user'] -> getId());
-		$commande = new \Entity\Commande;
+
+		if(is_null($app['dao.commande'] -> findCv($options -> getIdCv()))){
+			// print_r('pas de commande trouvée dans la BDD');
+			$commande = new \Entity\Commande;
+		}
+		else{
+			$commande = $app['dao.commande'] -> findCommande($options -> getIdCv(), $app['user'] -> getId());
+
+		}
 
 		$params = array(
 			'title' => 'Récapitulatif de votre commande et paiement',
