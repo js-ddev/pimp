@@ -335,6 +335,7 @@ class Home
         if(is_null($app['dao.options'] -> find($app['user'] -> getId()))){
 
             $options = new \Entity\Options;
+            $commande = new \Entity\Commande;
             $optionForm = $app['form.factory'] -> create(\Form\Type\OptionType::class, $options);
             $message ="";
 
@@ -345,11 +346,18 @@ class Home
                 $cv = $app['dao.cv'] -> find($membre -> getId());
                 $message = "Vos options ont étés enregistrées !";
                 $app['dao.options'] -> saveOptions($options, $cv, $membre);
+                $app['dao.commande'] -> create($commande, $cv, $membre);
             }
         }
 
         else{
-
+            // On vérifie si une commande a déjà été créée :
+            if(is_null($app['dao.commande'] -> findMembre($app['user'] -> getId()))){
+                $commande = new \Entity\Commande;
+            }
+            else{
+                $commande = $app['dao.commande'] -> findMembre($app['user'] -> getId());
+            }
             $options = $app['dao.options'] -> find($app['user'] -> getId());
             $optionForm = $app['form.factory'] -> create(\Form\Type\OptionType::class, $options);
             $message ="Vos choix sont bien enregistrés";
@@ -361,6 +369,7 @@ class Home
                 $cv = $app['dao.cv'] -> find($membre -> getId());
                 $message = "Vos modifications ont étés enregistrées !";
                 $app['dao.options'] -> saveOptions($options, $cv, $membre);
+                $app['dao.commande'] -> create($commande, $cv, $membre);
             }
         }
 
