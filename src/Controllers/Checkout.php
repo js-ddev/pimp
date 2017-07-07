@@ -22,7 +22,7 @@ class Checkout
 	public function paiement(Application $app){
 		$stripe = array(
 			"publishable_key" => "pk_test_Fvg9iHKnz8Sgz6lk2AA6llsU",
-			"secret_key"      => "sk_test_xs7T0BvzbSboMzrQ8cdaoGgH"
+			"secret_key"      => "test"
 		);
 
 		\Stripe\Stripe::setApiKey($stripe['secret_key']);
