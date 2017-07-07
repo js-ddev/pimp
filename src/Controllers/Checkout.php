@@ -22,7 +22,7 @@ class Checkout
 	public function paiement(Application $app){
 		$stripe = array(
 			"publishable_key" => "pk_test_Fvg9iHKnz8Sgz6lk2AA6llsU",
-			"secret_key"      => "test"
+			"secret_key"      => "sk_test_xs7T0BvzbSboMzrQ8cdaoGgH"
 		);
 
 		\Stripe\Stripe::setApiKey($stripe['secret_key']);
@@ -43,19 +43,21 @@ class Checkout
 			'title' => 'Récapitulatif de votre commande et paiement',
 			'commande' => $commande,
 			'stripe' => $stripe,
+			'email' => $app['user'] -> getUsername(),
 		);
 
 		return $app['twig']->render('paiement.html.twig', $params);
 	}
 
-	public function validation(Application $app){
+	public function validationStandard(Application $app){
 		$token  = $_POST['stripeToken'];
 
 		\Stripe\Stripe::setApiKey("test");
 
 		$customer = \Stripe\Customer::create(array(
-			'email' => 'customer@example.com',
-			'source'  => $token
+			'email' => $app['user'] -> getUsername(),
+			'source'  => $token,
+			'description'  => 'Formule standard',
 		));
 
 		$charge = \Stripe\Charge::create(array(
@@ -64,8 +66,30 @@ class Checkout
 			'currency' => 'eur'
 		));
 
-		return $app['twig']->render('validation_commande.html.twig', array(
-            'title' => 'Validation de votre commande')
+		return $app['twig']->render('validation_standard.html.twig', array(
+            'title' => 'Validation de votre commande Standard')
+        );
+	}
+
+	public function validationPremium(Application $app){
+		$token  = $_POST['stripeToken'];
+
+		\Stripe\Stripe::setApiKey("test");
+
+		$customer = \Stripe\Customer::create(array(
+			'email' => $app['user'] -> getUsername(),
+			'source'  => $token,
+			'description'  => 'Formule premium',
+		));
+
+		$charge = \Stripe\Charge::create(array(
+			'customer' => $customer->id,
+			'amount'   => 25000,
+			'currency' => 'eur'
+		));
+
+		return $app['twig']->render('validation_premium.html.twig', array(
+            'title' => 'Validation de votre commande Premium')
         );
 	}
 
