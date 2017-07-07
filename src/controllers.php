@@ -38,7 +38,8 @@ $bo = $app['controllers_factory'];
 
     $app -> match('/checkout','Controllers\Checkout::paiement') -> bind('checkout');
 
-    $app -> match('/validation','Controllers\Checkout::validation') -> bind('validation');
+    $app -> match('/validation_standard','Controllers\Checkout::validationStandard') -> bind('validationStandard');
+    $app -> match('/validation_premium','Controllers\Checkout::validationPremium') -> bind('validationPremium');
 
 // Adrien :
 

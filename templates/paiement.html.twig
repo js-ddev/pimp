@@ -57,9 +57,24 @@
                         </ul>
                     </div>
 
+                    <div class="row">
+
+                        <div class="card pdd-horizon-30 pdd-vertical-50 mrg-top-30">
+                            <div class="">
+                                <h3 class="mrg-btm-30">Résumé de votre commande :</h3>
+                                <p>Numéro de votre commande: <span class="pull-right">{{ commande.Id }}</span></p>
+                                <p>Date de votre commande: <span class="pull-right"> {{ commande.dateCommande}} </span></p>
+                                <p>Statut de votre commande <span class="pull-right">{{ commande.statutCommande }} </span></p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
         <!-- Pricing Table 2 Start -->
         <section class="section-3">
-            <h3 class="mrg-btm-30">Choix de votre formule :</h3>
+            <h3 class="mrg-btm-30">Choix de votre formule et paiement :</h3>
             <div class="container">
                 <div class="row">
                 <div class="pricing-2 column-2">
@@ -75,13 +90,14 @@
                             </div>
                         </div>
                         <div class="pricing-footer">
-                            <form action="{{ path('validation') }}" method="post">
+                            <form action="{{ path('validationStandard') }}" method="post">
 
 
                                     <input
                                         type="submit"
                                         value="Choisir la formule Standard"
                                         data-key="{{stripe['publishable_key']}}"
+                                        data-email="{{email}}"
                                         data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
                                         data-amount="10000"
                                         data-currency="eur"
@@ -122,13 +138,14 @@
                             </div>
                         </div>
                         <div class="pricing-footer">
-                            <form action="{{ path('validation') }}" method="post">
+                            <form action="{{ path('validationPremium') }}" method="post">
 
 
                                     <input
                                         type="submit"
                                         value="Choisir la formule Premium"
                                         data-key="{{stripe['publishable_key']}}"
+                                        data-email="{{email}}"
                                         data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
                                         data-amount="25000"
                                         data-currency="eur"
@@ -162,22 +179,6 @@
         </div>
         </section>
         <!-- Pricing Table 2 End -->
-
-
-        <div class="row">
-
-            <div class="card pdd-horizon-30 pdd-vertical-50 mrg-top-30">
-                <div class="">
-                    <h3 class="mrg-btm-30">Résumé de votre commande :</h3>
-                    <p>Numéro de la commande: <span class="pull-right">{{ commande.Id }}</span></p>
-                    <p>Date commande: <span class="pull-right"> {{ commande.dateCommande}} </span></p>
-                    <p>Statut de la commande <span class="pull-right">{{ commande.statutCommande }} </span></p>
-
-                </div>
-
-            </div>
-
-        </div>
 
         <!-- Cart Start -->
         <section class="section-6">

@@ -361,12 +361,12 @@ class Home
             $options = $app['dao.options'] -> find($app['user'] -> getId());
             $optionForm = $app['form.factory'] -> create(\Form\Type\OptionType::class, $options);
             $message ="Vos choix sont bien enregistrés";
+            $membre = $app['dao.membre'] -> find($app['user'] -> getId());
+            $cv = $app['dao.cv'] -> find($membre -> getId());
 
             $optionForm -> handleRequest($request);
 
             if($optionForm -> isSubmitted() && $optionForm -> isValid()){
-                $membre = $app['dao.membre'] -> find($app['user'] -> getId());
-                $cv = $app['dao.cv'] -> find($membre -> getId());
                 $message = "Vos modifications ont étés enregistrées !";
                 $app['dao.options'] -> saveOptions($options, $cv, $membre);
                 $app['dao.commande'] -> create($commande, $cv, $membre);
@@ -379,7 +379,9 @@ class Home
             'title' => 'Options',
             'optionForm' => $optionFormView,
             'message' => $message,
-            'options' => $options
+            'options' => $options,
+            // Pour envoyer l'id en GET pour la vérif du CV :
+            'id' => $cv -> getID()
         );
 
         return $app['twig']->render('template_options.html.twig', $params);
@@ -525,6 +527,9 @@ class Home
 
             $formulaireForm->handleRequest($request);
 
+            // TODO : Si pas de formulaire soumis, créer un id de CV avec uniquement l'ID du membre
+            // TODO : Vérifier qu'un fomulaire avec des champs remplis a bien été soumis
+
             // A la soumission on vérifie si on doit créer ou updater des données :
             if($pasdecv){
                 if ($formulaireForm->isSubmitted() && $formulaireForm->isValid()) {
@@ -600,7 +605,7 @@ class Home
             return $app['twig']->render('pimpit_cv.html.twig', $params);
 
         }
-        // JS - A prevoir une meilleure redirection et une page d'inscription avec message :
+        // JS - TODO une meilleure redirection et une page d'inscription avec message :
         header("Location:/connexion");
         exit();
 

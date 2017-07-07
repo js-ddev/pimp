@@ -49,7 +49,6 @@ class ExperienceType extends AbstractType
 
         -> add('secteur', ChoiceType::class, array(
             'choices' => array(
-                '' => '',
                 'Agroalimentaire' => 'agroalimentaire',
                 'Banque / Assurance' => 'banque-assurance',
                 'Bois / Papier / Carton / Imprimerie' => 'bois- papier-carton-imprimerie',
