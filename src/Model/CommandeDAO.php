@@ -8,15 +8,6 @@ use Entity\Cv;
 
 use Entity\Commande;
 
-/*use Payum\Core\Storage\StorageInterface;
-use Payum\Core\Model\Identity;
-
-use Payum\Core\Model\Payment;
-
-
-use Payum\Core\Storage\FilesystemStorage;
-
-use Payum\PayumStorage;*/
 
 // Sur la doc Payum : class CustomStorage
 class CommandeDAO extends DAO/* implements StorageInterface*/

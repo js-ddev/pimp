@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -64,6 +65,17 @@ class CertificationType extends AbstractType
                 'placeholder' => 'Localisation',
                 'class' => 'form-control',
             ),
+            'required' => false,
+        ))
+
+        -> add('date_obtention', BirthdayType::class, array(
+            'placeholder' => array(
+        'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
+            ),
+            'widget' => 'choice',
+            'years' => range(date('Y') -60, date('Y')),
+            'format' => 'dd-MMMM-yyyy',
+            'input' => 'string',
             'required' => false,
         ))
 

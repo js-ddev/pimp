@@ -266,7 +266,7 @@ class Home
         }
 
 
-// JS - Route pour la connexion à la première page du formulaire Pimpit :
+// JS - Connexion à la première page du formulaire Pimpit :
 
     public function pimpit(Request $request, Application $app){
 
@@ -328,66 +328,6 @@ class Home
         }
     }
 
-// Rudy - Route pour la génération du formulaire options :
-
-    public function option(Request $request, Application $app){
-
-        if(is_null($app['dao.options'] -> find($app['user'] -> getId()))){
-
-            $options = new \Entity\Options;
-            $commande = new \Entity\Commande;
-            $optionForm = $app['form.factory'] -> create(\Form\Type\OptionType::class, $options);
-            $message ="";
-
-            $optionForm -> handleRequest($request);
-
-            if($optionForm -> isSubmitted() && $optionForm -> isValid()){
-                $membre = $app['dao.membre'] -> find($app['user'] -> getId());
-                $cv = $app['dao.cv'] -> find($membre -> getId());
-                $message = "Vos options ont étés enregistrées !";
-                $app['dao.options'] -> saveOptions($options, $cv, $membre);
-                $app['dao.commande'] -> create($commande, $cv, $membre);
-            }
-        }
-
-        else{
-            // On vérifie si une commande a déjà été créée :
-            if(is_null($app['dao.commande'] -> findMembre($app['user'] -> getId()))){
-                $commande = new \Entity\Commande;
-            }
-            else{
-                $commande = $app['dao.commande'] -> findMembre($app['user'] -> getId());
-            }
-            $options = $app['dao.options'] -> find($app['user'] -> getId());
-            $optionForm = $app['form.factory'] -> create(\Form\Type\OptionType::class, $options);
-            $message ="Vos choix sont bien enregistrés";
-            $membre = $app['dao.membre'] -> find($app['user'] -> getId());
-            $cv = $app['dao.cv'] -> find($membre -> getId());
-
-            $optionForm -> handleRequest($request);
-
-            if($optionForm -> isSubmitted() && $optionForm -> isValid()){
-                $message = "Vos modifications ont étés enregistrées !";
-                $app['dao.options'] -> saveOptions($options, $cv, $membre);
-                $app['dao.commande'] -> create($commande, $cv, $membre);
-            }
-        }
-
-        $optionFormView = $optionForm -> createView();
-
-        $params = array(
-            'title' => 'Options',
-            'optionForm' => $optionFormView,
-            'message' => $message,
-            'options' => $options,
-            // Pour envoyer l'id en GET pour la vérif du CV :
-            'id' => $cv -> getID()
-        );
-
-        return $app['twig']->render('template_options.html.twig', $params);
-
-    }
-
 
 // JS - Controller pour générer le formulaire parent sur Pimpit/cv
 
@@ -443,6 +383,8 @@ class Home
                 $membre = $app['dao.membre'] -> find($app['user'] -> getId());
                 $cv = $app['dao.cv'] -> find($membre -> getId());
                 $formulaire -> setCv($cv);
+                // var_dump($cv);
+                // print_r('cv trouvé');
 
                 $experiences = $app['dao.experience'] -> findEntreprise($cv -> getId());
                 $countExperiences = count($experiences);
@@ -608,6 +550,70 @@ class Home
         // JS - TODO une meilleure redirection et une page d'inscription avec message :
         header("Location:/connexion");
         exit();
+
+    }
+
+// Rudy - Etape 3 : Génération du formulaire options :
+
+    public function option(Request $request, Application $app){
+
+        if(is_null($app['dao.options'] -> find($app['user'] -> getId()))){
+
+            $options = new \Entity\Options;
+            $commande = new \Entity\Commande;
+            $membre = $app['dao.membre'] -> find($app['user'] -> getId());
+            $cv = $app['dao.cv'] -> find($membre -> getId());
+            $optionForm = $app['form.factory'] -> create(\Form\Type\OptionType::class, $options);
+            $message ="";
+
+            $optionForm -> handleRequest($request);
+
+            if($optionForm -> isSubmitted() && $optionForm -> isValid()){
+                // $cv = $app['dao.cv'] -> find($membre -> getId());
+                $message = "Vos options ont étés enregistrées !";
+                $app['dao.options'] -> saveOptions($options, $cv, $membre);
+                $app['dao.commande'] -> create($commande, $cv, $membre);
+            }
+        }
+
+        else{
+            // On vérifie si une commande a déjà été créée :
+            if(is_null($app['dao.commande'] -> findMembre($app['user'] -> getId()))){
+                $commande = new \Entity\Commande;
+            }
+            else{
+                $commande = $app['dao.commande'] -> findMembre($app['user'] -> getId());
+            }
+
+            // TODO : meilleure mise en forme du $message
+
+            $options = $app['dao.options'] -> find($app['user'] -> getId());
+            $optionForm = $app['form.factory'] -> create(\Form\Type\OptionType::class, $options);
+            $message ="Vos choix sont bien enregistrés";
+            $membre = $app['dao.membre'] -> find($app['user'] -> getId());
+            $cv = $app['dao.cv'] -> find($membre -> getId());
+
+            $optionForm -> handleRequest($request);
+
+            if($optionForm -> isSubmitted() && $optionForm -> isValid()){
+                $message = "Vos modifications ont étés enregistrées !";
+                $app['dao.options'] -> saveOptions($options, $cv, $membre);
+                $app['dao.commande'] -> create($commande, $cv, $membre);
+            }
+        }
+
+        $optionFormView = $optionForm -> createView();
+
+        $params = array(
+            'title' => 'Options',
+            'optionForm' => $optionFormView,
+            'message' => $message,
+            'options' => $options,
+            // Pour envoyer l'id en GET pour la vérif du CV :
+            'id' => $cv -> getID()
+        );
+
+        return $app['twig']->render('template_options.html.twig', $params);
 
     }
 

@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -143,47 +144,25 @@ class ExperienceType extends AbstractType
             'required' => false,
         ))
 
-        -> add('date_debut', ChoiceType::class, array(
-            'choices' => array(
-                '' => '',
-                'janvier' => 'janvier',
-                'février' => 'fevrier',
-                'mars' => 'mars',
-                'avril' => 'avril',
-                'mai' => 'mai',
-                'juin' => 'juin',
-                'juillet' => 'juillet',
-                'août' => 'aout',
-                'septembre' => 'septembre',
-                'octobre' => 'octobre',
-                'novembre' => 'novembre',
-                'décembre' => 'decembre',
-                'Ne pas sélectionner de mois' => 'non_precise'
+        -> add('date_debut', BirthdayType::class, array(
+            'placeholder' => array(
+        'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
             ),
-            'expanded' => false,
-            'multiple' => false,
+            'widget' => 'choice',
+            'years' => range(date('Y') -60, date('Y')),
+            'format' => 'dd-MMMM-yyyy',
+            'input' => 'string',
             'required' => false,
         ))
 
-        -> add('date_fin', ChoiceType::class, array(
-            'choices' => array(
-                '' => '',
-                'janvier' => 'janvier',
-                'février' => 'fevrier',
-                'mars' => 'mars',
-                'avril' => 'avril',
-                'mai' => 'mai',
-                'juin' => 'juin',
-                'juillet' => 'juillet',
-                'août' => 'aout',
-                'septembre' => 'septembre',
-                'octobre' => 'octobre',
-                'novembre' => 'novembre',
-                'décembre' => 'decembre',
-                'Ne pas sélectionner de mois' => 'non_precise'
+        -> add('date_fin', BirthdayType::class, array(
+            'placeholder' => array(
+        'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
             ),
-            'expanded' => false,
-            'multiple' => false,
+            'widget' => 'choice',
+            'years' => range(date('Y') -60, date('Y')),
+            'format' => 'dd-MMMM-yyyy',
+            'input' => 'string',
             'required' => false,
         ))
 

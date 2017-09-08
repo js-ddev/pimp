@@ -195,6 +195,7 @@ class Bo
 /*        $request->query->get('id')
 */           $cv = $app['dao.cv'] -> find2($request->query->get('id'));
 
+
             if( ! $cv){
                 // TODO faire qqchose si pas de cv
             }
@@ -203,9 +204,8 @@ class Bo
             $formation = $app['dao.formation'] -> find($cv->getId());
             $aptitude = $app['dao.aptitude'] -> find($cv->getId());
             $autre_info = $app['dao.autre_info'] -> find($cv->getId());
-            $options = $app['dao.options'] -> find($cv->getId());
-            $membre = $app['dao.membre'] -> find($cv->getId());
-
+            $options = $app['dao.options'] -> find($cv->getIdMembre());
+            $membre = $app['dao.membre'] -> find($cv->getIdMembre());
 
 /*            print_r('<pre>');
             print_r($cv);
