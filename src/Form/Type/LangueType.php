@@ -38,7 +38,17 @@ class LangueType extends AbstractType
             ),
             'required' => false,
         ))
-        
+
+        -> add('niveau', ChoiceType::class, array(
+            'choices' => array(
+                'occasionnel' => 'occasionnel',
+                'régulier' => 'regulier',
+                'professionnel' => 'professionnel',
+                'bilingue' => 'bilingue',
+            ),
+            'required' => false,
+        ))
+
         -> add('toeic', TextType::class, array(
             'attr' => array(
                 'placeholder' => 'Score TOEIC',
@@ -62,7 +72,7 @@ class LangueType extends AbstractType
             ),
             'required' => false,
         ))
-        
+
     ;
     }
 

@@ -5,7 +5,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Payum\Core\Storage\FilesystemStorage; // Ajout pour le paiement Payum
+// use Payum\Core\Storage\FilesystemStorage; // Ajout pour le paiement Payum
 
 //Request::setTrustedProxies(array('127.0.0.1'));
 
@@ -16,7 +16,7 @@ $app->get('/', function () use ($app) {
 ;
 
 // la suivante signifie que l'url /hello/john orientera vers la méthode hello du contrôleur Home situé de le fichier src/Controllers/Home.php
-$app -> get('/hello/{name}','Controllers\\Home::hello');
+// $app -> get('/hello/{name}','Controllers\\Home::hello');
 
 
 // Groupe de controllers pour le backoffice :
@@ -97,7 +97,6 @@ $bo = $app['controllers_factory'];
     $app->get('/payment/capture', 'Controllers\Gertrude::capture')->bind('payment_capture');
 
     $app->get('/payment/test/done', 'Controllers\Gertrude::paymentDone')->bind('payment_done');
-
 
     $app->get('/payment/capture', 'Controllers\Gertrude::paymentDone')->bind('payment_notify');
 

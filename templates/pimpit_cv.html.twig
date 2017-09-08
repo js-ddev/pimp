@@ -220,26 +220,19 @@
 															</div>
 
 															<div class="form-group">
-																<label for="Duree">Durée du poste* : </label>
-																<span> de </span>
+																<label for="Duree">Durée du poste (si vous ne connaissez pas les jours précis mettez au 1er !) : </label>
+																<div>
+																	<span>du </span>
 
-																{{ form_widget(experience.date_debut) }}
+																	<label for="annee_debut"></label>
+																	{{ form_widget(experience.date_debut) }}
 
-																<select class="" name="annee_debut">
-																	{% for annee_debut in range("now"|date("Y"),1950) %}
-																		<option value="{{ annee_debut }}"> {{ annee_debut }}</option>
-																	{% endfor %}
-																</select>
+																	<span>au </span>
 
-																<span> à </span>
+																	<label for="annee_fin"></label>
+																	{{ form_widget(experience.date_fin) }}
+																</div>
 
-																{{ form_widget(experience.date_fin) }}
-
-																<select class="" name="annee_fin">
-																	{% for annee_fin in range("now"|date("Y"),1950) %}
-																		<option value="{{ annee_fin }}"> {{ annee_fin }}</option>
-																	{% endfor %}
-																</select>
 															</div>
 
 															<div class="form-group">
@@ -318,13 +311,11 @@
 																{{ form_widget(formation.lieu) }}
 															</div>
 
+
 															<div class="form-group">
-																<label for="date_diplome">Année d'obtention du diplome* : </label>
-																<select class="" name="annee_diplome">
-																	{% for annee_diplome in range("now"|date("Y"),1950) %}
-																		<option value="{{ annee_diplome }}"> {{ annee_diplome }}</option>
-																	{% endfor %}
-																</select>
+																<label for="date_diplome">Date d'obtention du diplôme (si vous ne connaissez pas le jour mettez au 1er !) : </label>
+																{{ form_widget(formation.date_obtention) }}
+
 															</div>
 
 															<div class="form-group">
@@ -393,12 +384,8 @@
 															</div>
 
 															<div class="form-group">
-																<label for="date_formation">Année d'obtention de la certification* : </label>
-																<select class="" name="annee_formation">
-																	{% for annee_formation in range("now"|date("Y"),1950) %}
-																		<option value="{{ annee_formation }}"> {{ annee_formation }}</option>
-																	{% endfor %}
-																</select>
+																<label for="date_formation">Date d'obtention de la certification (si vous ne connaissez pas le jour mettez au 1er !) : </label>
+																{{ form_widget(formation.date_obtention) }}
 															</div>
 
 															<div class="form-group">
@@ -407,7 +394,7 @@
 																{{ form_widget(formation.url_formation) }}
 															</div>
 															<div class="form-group col-md-12">
-																<input class="btn btn-md btn-dark" type="submit" value="Validerr">
+																<input class="btn btn-md btn-dark" type="submit" value="Valider">
 															</div>
 														</div>
 														{% endfor %}
@@ -451,10 +438,8 @@
 															</div>
 
 															<div class="form-group">
-																<label for="niveau">Votre niveau de 1 à 100 : *</label>
-																<!-- <input type="text" id="langue_1_niveau"> -->
-																<span id="slider{{ loop.index }}value"></span><span> %</span>
-																<div style="max-width:250px" id="slider{{ loop.index }}"></div>
+																<label>Votre niveau de pratique* : </label>
+																{{ form_widget(aptitude.niveau) }}
 															</div>
 
 															<div class="form-group">
@@ -536,25 +521,17 @@
 															</div>
 
 															<div class="form-group">
-																<label for="Duree">Durée du poste* : </label>
-																<span>de </span>
-																{{ form_widget(experience.date_debut) }}
+																<label for="Duree">Durée du poste (si vous ne connaissez pas les jours précis mettez au 1er !) : </label>
+																<div>
+																	<span>du</span>											<label for="annee_debut"></label>
+																	{{ form_widget(experience.date_debut) }}
 
+																	<span> au </span>
 
-																<select class="" name="annee_debut">
-																	{% for annee_debut in range("now"|date("Y"),1950) %}
-																		<option value="{{ annee_debut }}"> {{ annee_debut }}</option>
-																	{% endfor %}
-																</select>
-
-																<span>à </span>
+																	<label for="annee_fin"></label>
 																	{{ form_widget(experience.date_fin) }}
+																</div>
 
-																<select class="" name="annee_fin">
-																	{% for annee_fin in range("now"|date("Y"),1950) %}
-																		<option value="{{ annee_fin }}"> {{ annee_fin }}</option>
-																	{% endfor %}
-																</select>
 															</div>
 
 															<div class="form-group">

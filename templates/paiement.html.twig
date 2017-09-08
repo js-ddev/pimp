@@ -57,11 +57,13 @@
                         </ul>
                     </div>
 
+                    <div class="tab-pane active" role="tabpanel" id="step2">
                     <div class="row">
 
+
+                        <h3 class="mrg-btm-30">Résumé de votre commande :</h3>
                         <div class="card pdd-horizon-30 pdd-vertical-50 mrg-top-30">
                             <div class="">
-                                <h3 class="mrg-btm-30">Résumé de votre commande :</h3>
                                 <p>Numéro de votre commande: <span class="pull-right">{{ commande.Id }}</span></p>
                                 <p>Date de votre commande: <span class="pull-right"> {{ commande.dateCommande}} </span></p>
                                 <p>Statut de votre commande <span class="pull-right">{{ commande.statutCommande }} </span></p>
@@ -72,124 +74,75 @@
 
                     </div>
 
-        <!-- Pricing Table 2 Start -->
-        <section class="section-3">
-            <h3 class="mrg-btm-30">Choix de votre formule et paiement :</h3>
-            <div class="container">
-                <div class="row">
-                <div class="pricing-2 column-2">
-                    <div class="pricing-table">
-                        <div class="pricing-info">
-                            <div class="pricing-status">
-                                <i class="ei ei-cart"></i>
-                                <div class="plan border bottom">
-                                    <h2 class="mrg-btm-20">Standard</h2>
-                                    <span class="mrg-btm-10"><span class="font-size-25 theme-color price"><b>€100</b></span></span>
-                                    <p class="width-80 mrg-horizon-auto">Lorem Ipsum has been the industry's standard dummy text ever.</p>
+                    <div class="row">
+
+                        <h3 class="mrg-btm-30">Paiement de votre commande :</h3>
+                        <div class="card padding-30">
+                            <div class="row border bottom pdd-btm-20">
+                                <div class="col-md-9">
+                                    <div class="radio mrg-btm-10">
+                                        <input type="radio" name="group1" id="radio2" checked="">
+                                        <label for="radio2"><span class="lh-0 font-size-22 pdd-left-10 ls-0-5"><b>Carte de Credit</b></span></label>
+                                    </div>
+                                    <p class="pdd-left-40 width-90">Module de notre partenaire de paiement Stripe, sécurisé par SSL. <br />Cartes acceptées : Visa, MasterCard.</p>
+                                </div>
+                                <div class="col-md-3">
+                                    <img class="img-responsive mrg-top-30" src="assets/images/thumb/credit-card.png" alt="">
                                 </div>
                             </div>
-                        </div>
-                        <div class="pricing-footer">
-                            <form action="{{ path('validationStandard') }}" method="post">
+                            <div class="pricing-footer">
+                                <form action="{{ path('validationStandard') }}" method="post">
 
 
-                                    <input
-                                        type="submit"
-                                        value="Choisir la formule Standard"
-                                        data-key="{{stripe['publishable_key']}}"
-                                        data-email="{{email}}"
-                                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                                        data-amount="10000"
-                                        data-currency="eur"
-                                        data-name="PimpMyCV"
-                                        data-description="Formule standard"
-                                        data-locale="auto"
-                                        data-allow-remember-me="false"
-                                        class="btn btn-block btn-dark no-mrg-btm"
-                                    />
+                                        <input
+                                            type="submit"
+                                            value="Valider ma commande"
+                                            data-key="{{stripe['publishable_key']}}"
+                                            data-email="{{email}}"
+                                            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                            data-amount="10000"
+                                            data-currency="eur"
+                                            data-name="PimpMyCV"
+                                            data-description="Commande {{ commande.Id }}"
+                                            data-locale="auto"
+                                            data-allow-remember-me="false"
+                                            class="btn btn-block btn-dark no-mrg-btm"
+                                        />
 
-                                    <script>
-                                    $(document).ready(function() {
-                                        $(':submit').on('click', function(event) {
-                                            event.preventDefault();
-                                            var $button = $(this),
-                                                $form = $button.parents('form');
-                                            var opts = $.extend({}, $button.data(), {
-                                                token: function(result) {
-                                                    $form.append($('<input>').attr({ type: 'hidden', name: 'stripeToken', value: result.id })).submit();
-                                                }
+                                        <script>
+                                        $(document).ready(function() {
+                                            $(':submit').on('click', function(event) {
+                                                event.preventDefault();
+                                                var $button = $(this),
+                                                    $form = $button.parents('form');
+                                                var opts = $.extend({}, $button.data(), {
+                                                    token: function(result) {
+                                                        $form.append($('<input>').attr({ type: 'hidden', name: 'stripeToken', value: result.id })).submit();
+                                                    }
+                                                });
+                                                StripeCheckout.open(opts);
                                             });
-                                            StripeCheckout.open(opts);
                                         });
-                                    });
-                                    </script>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="pricing-table">
-                        <div class="pricing-info">
-                            <div class="pricing-status">
-                                <i class="ei ei-airplane-side"></i>
-                                <div class="plan border bottom">
-                                    <h2 class="mrg-btm-20">Premium</h2>
-                                    <span class="mrg-btm-10"><span class="font-size-25 theme-color price"><b>€250</b></span>
-                                    <p class="width-80 mrg-horizon-auto">Lorem Ipsum has been the industry's standard dummy text ever.</p>
-                                </div>
+                                        </script>
+                                </form>
                             </div>
                         </div>
-                        <div class="pricing-footer">
-                            <form action="{{ path('validationPremium') }}" method="post">
 
-
-                                    <input
-                                        type="submit"
-                                        value="Choisir la formule Premium"
-                                        data-key="{{stripe['publishable_key']}}"
-                                        data-email="{{email}}"
-                                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                                        data-amount="25000"
-                                        data-currency="eur"
-                                        data-name="PimpMyCV"
-                                        data-description="Formule Premium"
-                                        data-locale="auto"
-                                        data-allow-remember-me="false"
-                                        class="btn btn-block btn-dark no-mrg-btm"
-                                    />
-
-                                    <script>
-                                    $(document).ready(function() {
-                                        $(':submit').on('click', function(event) {
-                                            event.preventDefault();
-                                            var $button = $(this),
-                                                $form = $button.parents('form');
-                                            var opts = $.extend({}, $button.data(), {
-                                                token: function(result) {
-                                                    $form.append($('<input>').attr({ type: 'hidden', name: 'stripeToken', value: result.id })).submit();
-                                                }
-                                            });
-                                            StripeCheckout.open(opts);
-                                        });
-                                    });
-                                    </script>
-                            </form>
-                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        </section>
-        <!-- Pricing Table 2 End -->
 
-        <!-- Cart Start -->
-        <section class="section-6">
 
-        <div class="row mrg-top-50">
-            <ul class="list-inline pull-right">
-                <li><a href="{{ path('template_options') }}"><button type="button" class="btn btn-default prev-step">Etape précédente</button></a></li>
-            </ul>
-        </div>
+                <!-- Cart Start -->
+                <section class="section-6">
 
-        </section>
+                    <div class="row mrg-top-50">
+                        <ul class="list-inline pull-right">
+                            <li><a href="{{ path('template_options') }}"><button type="button" class="btn btn-default prev-step">Etape précédente</button></a></li>
+                        </ul>
+                    </div>
+
+                </section>
+
+            </section>
 
         <!-- Cart End -->
 

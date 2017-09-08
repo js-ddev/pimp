@@ -124,11 +124,11 @@ class CvDAO extends DAO
             cv.nombre_sections,
             cv.nombre_page,
 
-            cv.couleur,
-            cv.puce,
-            cv.fond,
-            cv.indicateur_performance,
-            cv.activite,
+            -- cv.couleur,
+            -- cv.puce,
+            -- cv.fond,
+            -- cv.indicateur_performance,
+            -- cv.activite,
 
             cv.photo,
 
@@ -379,11 +379,11 @@ class CvDAO extends DAO
             'site_perso' => $cv -> getSitePerso(),
             'url_autre' => $cv -> getUrlAutre(),
             'nombre_page' => $cv -> getNombrePage(),
-            'couleur' => $cv -> getCouleur(),
-            'puce' => $cv -> getPuce(),
-            'fond' => $cv -> getFond(),
-            'indicateur_performance' => $cv -> getIndicateurPerformance(),
-            'activite' => $cv -> getActivite(),
+            // 'couleur' => $cv -> getCouleur(),
+            // 'puce' => $cv -> getPuce(),
+            // 'fond' => $cv -> getFond(),
+            // 'indicateur_performance' => $cv -> getIndicateurPerformance(),
+            // 'activite' => $cv -> getActivite(),
         );
 
         if($cv->getId()) { // Modifier un cv
@@ -416,11 +416,11 @@ class CvDAO extends DAO
         $cv -> setSitePerso($value['site_perso']);
         $cv -> setUrlAutre($value['url_autre']);
         $cv -> setNombrePage($value['nombre_page']);
-        $cv -> setCouleur($value['couleur']);
-        $cv -> setPuce($value['puce']);
-        $cv -> setFond($value['fond']);
-        $cv -> setIndicateurPerformance($value['indicateur_performance']);
-        $cv -> setActivite($value['activite']);
+        // $cv -> setCouleur($value['couleur']);
+        // $cv -> setPuce($value['puce']);
+        // $cv -> setFond($value['fond']);
+        // $cv -> setIndicateurPerformance($value['indicateur_performance']);
+        // $cv -> setActivite($value['activite']);
 
         return $cv;
     }

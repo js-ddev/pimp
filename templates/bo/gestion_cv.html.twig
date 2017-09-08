@@ -16,12 +16,12 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Gestion du CV du membre
+                            Gestion du CV du membre {{ cv.idMembre }}
                             <small>Consulter</small>
                         </h1>
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-dashboard" aria-hidden="true"></i> <a href="{{ path('accueil') }}">Dashboard</a>
+                                <i class="fa fa-dashboard" aria-hidden="true"></i> <a href="{{ path('accueil') }}">Accueil</a>
                             </li>
                         </ol>
                     </div>
@@ -32,10 +32,10 @@
                 <div class="row">
 
                     <div class="col-lg-12">
-                        <h2>Tableaux du CV  <small>|  <a href="#donneesbrutscv">Données bruts CV</a>  |</small></h2>
+                        <h2>CV n°{{ cv.id }} du membre <small>|  <a href="#donneesbrutscv">Données brutes du CV</a>  |</small></h2>
                     </div>
                 </div>
-                        
+
                 <!-- Didier - DEBUT TABLEAUX DU CV -->
 
                 <div class="row">
@@ -97,25 +97,25 @@
 
                                         <!-- Didier - Partie Design du CV -->
                                         <td>{{ options.template }}</td>
-                                        <td>{{ cv.couleur }}</td>
-                                        <td>{{ cv.puce }}</td>
-                                        <td>{{ cv.fond }}</td>
-                                        <td>{{ cv.indicateurPerformance }}</td>
-                                        <td>{{ cv.activite }}</td>
+                                        <td>{{ options.couleur }}</td>
+                                        <td>{{ options.puce }}</td>
+                                        <td>{{ options.fond }}</td>
+                                        <td>{{ options.indicateurPerformance }}</td>
+                                        <td>{{ options.activite }}</td>
 
                                     </tr>
 
 
                                 </tbody>
                             </table>
-                
+
                         </div>
 
                         <!-- Didier - FIN TABLEAU 1 -->
-                        
+
                     </div>
-                    
-                </div>           
+
+                </div>
 
 
                 <div class="row">
@@ -199,14 +199,14 @@
 
                                 </tbody>
                             </table>
-                
+
                         </div>
 
                         <!-- Didier - FIN TABLEAU 2 -->
 
                     </div>
 
-                </div>           
+                </div>
 
 
                 <div class="row">
@@ -258,14 +258,14 @@
                                     {% endfor %}
                                 </tbody>
                             </table>
-                
+
                         </div>
 
                         <!-- Didier - FIN TABLEAU 3 -->
 
                     </div>
-                    
-                </div>           
+
+                </div>
 
 
                 <div class="row">
@@ -311,7 +311,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {% for experienc in experience %}                                    
+                                    {% for experienc in experience %}
                                     <tr>
 
                                     <!-- En hidden :
@@ -344,17 +344,17 @@
                                         <td>{{ experienc.realisation5 }}</td>
 
                                     </tr>
-                                    {% endfor %}                                    
+                                    {% endfor %}
                                 </tbody>
                             </table>
-                
+
                         </div>
 
                         <!-- Didier - FIN TABLEAU 4 -->
 
                     </div>
-                    
-                </div>           
+
+                </div>
 
                 <div class="row">
 
@@ -405,14 +405,14 @@
                                     {% endfor %}
                                 </tbody>
                             </table>
-                
+
                         </div>
 
                         <!-- Didier - FIN TABLEAU 5 -->
 
                     </div>
-                    
-                </div>           
+
+                </div>
 
                 <div class="row">
 
@@ -457,27 +457,27 @@
                                     {% endfor %}
                                 </tbody>
                             </table>
-                
+
                         </div>
 
                         <!-- Didier - FIN TABLEAU 6 -->
 
                     </div>
-                    
-                </div> 
+
+                </div>
 
 
                 <!-- //////////////////////////////////////////////////////////// -->
 
-                <!-- Didier - DEBUT - Affichage des données bruts CV pour copier/coller -->
+                <!-- Didier - DEBUT - Affichage des données brutes CV pour copier/coller -->
 
                 <div id="donneesbrutscv" class="row">
 
                     <div class="col-lg-12">
-                        <h2>Données "bruts" du CV pour copier/coller</h2>
+                        <h2>Données "brutes" du CV pour copier/coller</h2>
                     </div>
                 </div>
-                        
+
                 <!-- Didier - DEBUT TABLEAUX DU CV -->
 
                 <div class="row">
@@ -513,10 +513,10 @@
                         {{ cv.activite }}<br/>
 
                         <!-- Didier - FIN TABLEAU 1 -->
-                        
+
                     </div>
-                    
-                </div>           
+
+                </div>
 
 
                 <div class="row">
@@ -558,7 +558,7 @@
 
                     </div>
 
-                </div>           
+                </div>
 
 
                 <div class="row">
@@ -585,12 +585,12 @@
                         {{ formatio.urlFormation }}<br/>
 
                         {% endfor %}
-                
+
                         <!-- Didier - FIN TABLEAU 3 -->
 
                     </div>
-                    
-                </div>           
+
+                </div>
 
 
                 <div class="row">
@@ -600,7 +600,7 @@
 
                         <!-- Didier - TABLEAU 4 : experience -->
 
-                        {% for experienc in experience %}                                    
+                        {% for experienc in experience %}
 
                         <!-- En hidden :
                                 - table expérience : id, id_cv
@@ -632,12 +632,12 @@
                         {{ experienc.realisation5 }}<br/>
 
                         {% endfor %}
-                
+
                         <!-- Didier - FIN TABLEAU 4 -->
 
                     </div>
-                    
-                </div>           
+
+                </div>
 
                 <div class="row">
 
@@ -667,8 +667,8 @@
                         <!-- Didier - FIN TABLEAU 5 -->
 
                     </div>
-                    
-                </div>           
+
+                </div>
 
                 <div class="row">
 
@@ -693,10 +693,10 @@
                         <!-- Didier - FIN TABLEAU 6 -->
 
                     </div>
-                    
+
                 </div>
 
-                <!-- Didier - FIN - Affichage des données CV pour copier/coller -->                           
+                <!-- Didier - FIN - Affichage des données CV pour copier/coller -->
 
             </div>
             <!-- /.container-fluid -->
