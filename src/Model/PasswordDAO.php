@@ -39,15 +39,18 @@ class PasswordDAO extends DAO
     */
 public function savePassword(password $password, $id){
         $passwordData = array(
-            'id' => $password -> getId(),
             'id_membre' => $id,
             'token' => $password -> getToken(),
         );
+        var_dump($password);
 
         if($password->getId()) { // Modifier un password
+            // var_dump($password->getId());
+            // TODO : ajouter la recherche de l'ID de l'entrée dans la table Password :
             $this->getDb()->update('password', $passwordData, array('id'=>$password->getId()));
         }
         else { // Créer un password
+            // var_dump('création password');
             $this -> getDb() -> insert('password', $passwordData);
         }
         $password -> setId($this -> getDb() -> lastInsertId());

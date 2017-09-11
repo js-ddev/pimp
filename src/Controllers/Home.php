@@ -88,21 +88,28 @@ class Home
             // Adrien - On récupère l'email rentré dans le formulaire et l'id du membre
             $email = $membre -> getUsername();
             $id = $app['dao.membre'] -> findByUsername($email) -> getId();
+            var_dump($id);
+
+            // TODO : prévoir un if avec message si l'email n'existe pas dans la BDD
+            // TODO : Pour une meilleure utilisation du site décommenter la procédure d'envoi vers la page de changement de mot de passe. Il faut gérer l'inscription des mdp dans la table password, et le changement de ceux ci dans le formulaire n'est pas opérationnel
+
 
             // Adrien - On génère un jeton unique
-            $password -> setToken(uniqid(rand(), true));
+            // $password -> setToken(uniqid(rand(), true));
 
             // Adrien - On enregistre le nouveau token en BDD
-            $app['dao.password'] -> savePassword($password, $id);
-            $app['session'] -> getFlashBag() -> add('success', 'Votre token a bien été généré !');
+            // $app['dao.password'] -> savePassword($password, $id);
+            // $app['session'] -> getFlashBag() -> add('success', 'Votre token a bien été généré !');
 
             // Adrien - Création du message
             $message = \Swift_Message::newInstance()
 
-            ->setSubject('[PimpMyCV] Réinitialisation de votre mot de passe')
-            ->setFrom(array('adrien.malavialle@gmail.com'))
-            ->setTo($email)
-            ->setBody('Pour réinitialiser votre mot de passe veuillez cliquer sur le lien suivant : <a href="www.pimpmycv.dev/connexion/password_init">Réinitialiser mon mot de passe</a>', 'text/html');
+            ->setSubject('[PimpMyCV] Réinitialisation du mot de passe d\'un client du site')
+            ->setFrom(array('secret@gmail.com'))
+            ->setTo('secret@free.fr')
+            ->setBody('Bonjour, le membre n° <b>'.$id.'</b> dont l\'email est <b>'.$email.'</b> n\'a plus accès à son mot de passe ! </br>
+            Merci de le remplacer dans la BDD par celui générique, et lui renvoyer par email dès que possible.','text/html');
+            // ->setBody('Pour réinitialiser votre mot de passe veuillez cliquer sur le lien suivant : <a href="www.pimpmycv.dev/connexion/password_init">Réinitialiser mon mot de passe</a>', 'text/html');
 
 
             $app['mailer']->send($message);
@@ -124,67 +131,67 @@ class Home
     }
 
 
-// Adrien - Controller pour gestion du formulaire de réinitlisation du mot de passe
+// Adrien - Controller pour gestion du formulaire de réinitialisation du mot de passe
 
     public function password_init(Request $request, Application $app){
 
-        $membre = new \Entity\Membre;
-
-        $inscriptionForm = $app['form.factory'] -> create(\Form\Type\InscriptionType::class, $membre);
-
-        $inscriptionForm -> handleRequest($request);
-
-        if($inscriptionForm -> isSubmitted() && $inscriptionForm -> isValid()){
-
-            // Adrien - Vérification de la présence de l'email dans la base et récupération de l'id du membre :
-            $email = $membre -> getUsername();
-            $id = $app['dao.membre'] -> findByUsername($email);
-
-            // Gestion de l'absence de l'email dans la base et renvoi vers l'incription (à améliorer) :
-            if(is_null($id)){
-
-                header("Location:/inscription");
-                exit();
-            }
-            else{
-            $salt = substr(md5(time()), 0, 23);
-            $membre -> setSalt($salt);
-
-            $password = $membre -> getPassword();
-
-            $password_encode = $app["security.encoder.bcrypt"]->encodePassword($password, $membre->getSalt());
-
-            $membre -> setPassword($password_encode);
-
-            //!\\ Adrien - La fonction save($membre) devrait permettre de faire un update du password (non fonctionnel !!)
-            $app['dao.membre'] -> save($membre);
-            $app['session'] -> getFlashBag() -> add('success', 'Votre réinitlisation de mot de passe a bien été prise en compte !');
-
-            // Adrien - Redirection suite à la réinitialisation du mot de passe
-            return $app->redirect('/connexion');
-            }
-        }
-
-        $inscriptionFormView = $inscriptionForm -> createView();
-
-        $params = array(
-            'title' => 'Réinitialisation du mot de passe',
-            'inscriptionForm' => $inscriptionFormView,
-            'erreur' => '',
-        );
-
-        return $app['twig']->render('password_init.html.twig', $params);
+        // $membre = new \Entity\Membre;
+        //
+        // $inscriptionForm = $app['form.factory'] -> create(\Form\Type\InscriptionType::class, $membre);
+        //
+        // $inscriptionForm -> handleRequest($request);
+        //
+        // if($inscriptionForm -> isSubmitted() && $inscriptionForm -> isValid()){
+        //
+        //     // Adrien - Vérification de la présence de l'email dans la base et récupération de l'id du membre :
+        //     $email = $membre -> getUsername();
+        //     $id = $app['dao.membre'] -> findByUsername($email);
+        //
+        //     // Gestion de l'absence de l'email dans la base et renvoi vers l'incription (à améliorer) :
+        //     if(is_null($id)){
+        //
+        //         header("Location:/inscription");
+        //         exit();
+        //     }
+        //     else{
+        //     $salt = substr(md5(time()), 0, 23);
+        //     $membre -> setSalt($salt);
+        //
+        //     $password = $membre -> getPassword();
+        //
+        //     $password_encode = $app["security.encoder.bcrypt"]->encodePassword($password, $membre->getSalt());
+        //
+        //     $membre -> setPassword($password_encode);
+        //
+        //     //!\\ Adrien - La fonction save($membre) devrait permettre de faire un update du password (non fonctionnel !!)
+        //     $app['dao.membre'] -> save($membre);
+        //     $app['session'] -> getFlashBag() -> add('success', 'Votre réinitlisation de mot de passe a bien été prise en compte !');
+        //
+        //     // Adrien - Redirection suite à la réinitialisation du mot de passe
+        //     return $app->redirect('/connexion');
+        //     }
+        // }
+        //
+        // $inscriptionFormView = $inscriptionForm -> createView();
+        //
+        // $params = array(
+        //     'title' => 'Réinitialisation du mot de passe',
+        //     'inscriptionForm' => $inscriptionFormView,
+        //     'erreur' => '',
+        // );
+        //
+        // return $app['twig']->render('password_init.html.twig', $params);
     }
 
 
 // Adrien - Controller pour redirection suite à la soumission du formulaire de mot de passe oublié
 
-    public function password_change(Application $app){
-        return $app['twig']->render('password_change.html.twig', array(
-            'title' => 'Changement de mot de passe')
-        );
-    }
-
+    // public function password_change(Application $app){
+    //     return $app['twig']->render('password_change.html.twig', array(
+    //         'title' => 'Changement de mot de passe')
+    //     );
+    // }
+    //
 
 // Adrien - Controller pour call-to-action suite à l'inscription
 
@@ -609,7 +616,7 @@ class Home
             'optionForm' => $optionFormView,
             'message' => $message,
             'options' => $options,
-            // Pour envoyer l'id en GET pour la vérif du CV :
+            // JS - Pour envoyer l'id en GET pour la vérif du CV :
             'id' => $cv -> getID()
         );
 
