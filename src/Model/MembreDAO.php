@@ -28,6 +28,11 @@ class MembreDAO extends DAO implements UserProviderInterface
     // }
 
 
+    // TODO : fonction pour modifier le mdp d'un membre.
+    // Si le formulaire de changement par le membre ne fonctionne pas, prévoir sur le bo le changement par un mdp générique, par exemple "positivement" : $2y$13$WYF/0a2Lh7DPOH3g5jSGWuBO6u7SSU3tqVdu.tnnT0HL1I8EHy5Ti
+    // Sinon, le changement devra se faire en dur dans la BDD.
+
+
     /**
     * Retourne un objet de la classe Membre.
     *
