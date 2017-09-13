@@ -1,28 +1,28 @@
 // Google maps main api
 
 	var markers = [
-    	{   // Map Coordination 
-       		"lat": '3.117726',
-            "lng": '101.677358',
-			
+    	{   // Map Coordination
+       		"lat": '46.538718',
+            "lng": '6.612773',
+
 			// Map pop up desription
-			"description": '<div class="map-info"><h3>We Are Here</h3> <p>Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.</p></div>'
+			"description": '<div class="map-info"><h3>Nous sommes ici !</h3></div>'
         }
 	];
-	
-	
+
+
 	window.onload = function () {
 		var mapOptions = {
 			center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
-        	zoom: 14,
+        	zoom: 10,
 			flat: false,
 			scrollwheel:false,
 			panControl:false,
 			zoomControl:true,
 			streetViewControl: false,
 			mapTypeControl: false,
-		
-	// Google maps style	
+
+	// Google maps style
            	styles: [
     {
         "featureType": "landscape",
@@ -148,7 +148,7 @@
 			for (i = 0; i < markers.length; i++) {
 			var data = markers[i]
            	var myLatlng = new google.maps.LatLng(data.lat, data.lng);
-			
+
 			var marker = new google.maps.Marker({
            	position: myLatlng,
            	map: map,

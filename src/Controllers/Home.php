@@ -105,8 +105,8 @@ class Home
             $message = \Swift_Message::newInstance()
 
             ->setSubject('[PimpMyCV] Réinitialisation du mot de passe d\'un client du site')
-            ->setFrom(array('secret@gmail.com'))
-            ->setTo('secret@free.fr')
+            ->setFrom(array('secret@gmail.com')) // SENSIBLE
+            ->setTo('secret@free.fr') // SENSIBLE
             ->setBody('Bonjour, le membre n° <b>'.$id.'</b> dont l\'email est <b>'.$email.'</b> n\'a plus accès à son mot de passe ! </br>
             Merci de le remplacer dans la BDD par celui générique, et lui renvoyer par email dès que possible.','text/html');
             // ->setBody('Pour réinitialiser votre mot de passe veuillez cliquer sur le lien suivant : <a href="www.pimpmycv.dev/connexion/password_init">Réinitialiser mon mot de passe</a>', 'text/html');
@@ -186,12 +186,12 @@ class Home
 
 // Adrien - Controller pour redirection suite à la soumission du formulaire de mot de passe oublié
 
-    // public function password_change(Application $app){
-    //     return $app['twig']->render('password_change.html.twig', array(
-    //         'title' => 'Changement de mot de passe')
-    //     );
-    // }
-    //
+    public function password_change(Application $app){
+        return $app['twig']->render('password_change.html.twig', array(
+            'title' => 'Changement de mot de passe')
+        );
+    }
+
 
 // Adrien - Controller pour call-to-action suite à l'inscription
 
@@ -212,7 +212,7 @@ class Home
 
         if($inscriptionForm -> isSubmitted() && $inscriptionForm -> isValid()){
 
-            // JS Vérification de la présence de l'email dans la base :
+            // JS - Vérification de la présence de l'email dans la base :
             $email = $membre -> getUsername();
 
             $id = $app['dao.membre'] -> findByUsername($email);
@@ -229,6 +229,9 @@ class Home
                 );
             }
             else{
+
+            // TODO : Cas ou les 2 mots de passe ne sont pas identiques !
+
             $salt = substr(md5(time()), 0, 23);
             $membre -> setSalt($salt);
 
@@ -240,6 +243,20 @@ class Home
 
             $app['dao.membre'] -> save($membre);
             $app['session'] -> getFlashBag() -> add('success', 'Votre inscription a bien été prise en compte !');
+
+            // JS - Envoie de l'email de confirmation
+            $email = $membre -> getUsername();
+
+            $message = \Swift_Message::newInstance()
+
+            ->setSubject('Bienvenue sur PimpMyCV !')
+            ->setFrom(array('secret@gmail.com')) // SENSIBLE
+            ->setTo($email)
+            ->setBody('Bonjour, nous avons bien pris en compte votre inscription, la première étape vers la refonte de votre CV !<br  />
+            Rendez-vous quand vous le souhaitez sur PimpMyCV site à la rubrique <a href="http://www.pimpmycv.dev/pimpit">Pimp it !</a> pour démarrer le pimpage de votre CV !','text/html');
+
+            $app['mailer']->send($message);
+
 
             // Adrien - Redirection suite à l'inscription
             return $app->redirect('/connexion');

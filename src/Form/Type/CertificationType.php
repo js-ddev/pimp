@@ -73,7 +73,7 @@ class CertificationType extends AbstractType
         'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
             ),
             'widget' => 'choice',
-            'years' => range(date('Y') -60, date('Y')),
+            'years' => range(date('Y'), date('Y') -60),
             'format' => 'dd-MMMM-yyyy',
             'input' => 'string',
             'required' => false,

@@ -77,26 +77,20 @@ class CvType extends AbstractType
                     'travail' => 'travail',
                     'sejour' => 'sejour',
                 ),
-                'expanded' => true,
+                'expanded' => false,
                 'multiple' => false,
                 'required' => false,
-                'choice_attr' => array(
-                    'class' => 'radio'
-                ),
             ))
 
             -> add('permis_conduire', ChoiceType::class, array(
                 'choices' => array(
-                    'permis A' => 'permis_a',
-                    'permis B' => 'permis_b',
-                    'permis C' => 'permis_c',
+                    'permis A ' => 'permis_a',
+                    'permis B ' => 'permis_b',
+                    'permis C ' => 'permis_c',
                 ),
-                'expanded' => true,
+                'expanded' => false,
                 'multiple' => false,
                 'required' => false,
-                'choice_attr' => array(
-                    'class' => 'radio'
-                ),
             ))
 
             -> add('langue_maternelle', TextType::class, array(
@@ -109,7 +103,7 @@ class CvType extends AbstractType
 
             -> add('linkedin', TextType::class, array(
                 'attr' => array(
-                    'placeholder' => 'lien Linkedin',
+                    'placeholder' => 'https://www.linkedin.com/in/votreprofil',
                     'class' => 'form-control',
                 ),
                 'required' => false,
@@ -117,7 +111,7 @@ class CvType extends AbstractType
 
             -> add('twitter', TextType::class, array(
                 'attr' => array(
-                    'placeholder' => 'lien Twitter',
+                    'placeholder' => 'https://twitter.com/votreprofil',
                     'class' => 'form-control',
                 ),
                 'required' => false,
@@ -125,7 +119,7 @@ class CvType extends AbstractType
 
             -> add('skype', TextType::class, array(
                 'attr' => array(
-                    'placeholder' => 'lien Skype',
+                    'placeholder' => 'pseudo Skype',
                     'class' => 'form-control',
                 ),
                 'required' => false,
@@ -133,7 +127,7 @@ class CvType extends AbstractType
 
             -> add('site_perso', TextType::class, array(
                 'attr' => array(
-                    'placeholder' => 'Site perso',
+                    'placeholder' => 'http://votresite.fr',
                     'class' => 'form-control',
                 ),
                 'required' => false,
@@ -141,7 +135,7 @@ class CvType extends AbstractType
 
             -> add('url_autre', TextType::class, array(
                 'attr' => array(
-                    'placeholder' => 'Autre site à indiquer',
+                    'placeholder' => 'Autre site que vous souhaitez faire apparaître',
                     'class' => 'form-control',
                 ),
                 'required' => false,
