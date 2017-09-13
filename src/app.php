@@ -96,7 +96,7 @@ $app['swiftmailer.options'] = array(
     'host' => 'smtp.gmail.com',
     'port' => '465',
     'username' => 'js.dennebouy@gmail.com',
-    'password' => 'millengudg', // SENSIBLE
+    'password' => 'secret', // SENSIBLE
     'encryption' => 'ssl',
     'auth_mode' => 'login'
 );

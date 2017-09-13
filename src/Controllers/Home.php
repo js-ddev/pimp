@@ -105,8 +105,8 @@ class Home
             $message = \Swift_Message::newInstance()
 
             ->setSubject('[PimpMyCV] Réinitialisation du mot de passe d\'un client du site')
-            ->setFrom(array('js.dennebouy@gmail.com')) // SENSIBLE
-            ->setTo('presse.descente@free.fr') // SENSIBLE
+            ->setFrom(array('secret@gmail.com')) // SENSIBLE
+            ->setTo('secret@free.fr') // SENSIBLE
             ->setBody('Bonjour, le membre n° <b>'.$id.'</b> dont l\'email est <b>'.$email.'</b> n\'a plus accès à son mot de passe ! </br>
             Merci de le remplacer dans la BDD par celui générique, et lui renvoyer par email dès que possible.','text/html');
             // ->setBody('Pour réinitialiser votre mot de passe veuillez cliquer sur le lien suivant : <a href="www.pimpmycv.dev/connexion/password_init">Réinitialiser mon mot de passe</a>', 'text/html');
@@ -250,7 +250,7 @@ class Home
             $message = \Swift_Message::newInstance()
 
             ->setSubject('Bienvenue sur PimpMyCV !')
-            ->setFrom(array('js.dennebouy@gmail.com')) // SENSIBLE
+            ->setFrom(array('secret@gmail.com')) // SENSIBLE
             ->setTo($email)
             ->setBody('Bonjour, nous avons bien pris en compte votre inscription, la première étape vers la refonte de votre CV !<br  />
             Rendez-vous quand vous le souhaitez sur PimpMyCV site à la rubrique <a href="http://www.pimpmycv.dev/pimpit">Pimp it !</a> pour démarrer le pimpage de votre CV !','text/html');
